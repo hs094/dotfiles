@@ -16,6 +16,7 @@ alias cat='bat'
 alias cd='z'
 alias diff='difft'
 alias mem='ncdu'
+alias htop='btop'
 
 # Git
 alias g='git'
