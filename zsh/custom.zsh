@@ -22,9 +22,6 @@ export PATH="/opt/homebrew/Cellar/gcc/14.2.0_1/bin:$PATH"
 export HOMEBREW_NO_AUTO_UPDATE=1
 # Pipenv
 export PIPENV_VENV_IN_PROJECT=1
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
 
 # Conda Setup
 __conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -59,7 +56,6 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 # Activate autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-eval "$(pyenv init -)" # Initialize pyenv when a new shell spawns
 eval $(thefuck --alias)
 
 # Load Git completion
