@@ -36,6 +36,8 @@ else
 fi
 unset __conda_setup
 
+# fzf
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
 # Configure Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"
@@ -89,9 +91,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # export AMAZONREDSHIFTODBCINI="/opt/amazon/redshift/lib/amazon.redshiftodbc.ini"
 # export DYLD_LIBRARY_PATH="$DYLD_LIBRARY_PATH:/usr/local/lib"
 
-# fzf
-# [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
-
 # export FZF_CTRL_T_OPTS="
 #   --preview 'bat -n --color=always {}'
 #   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
@@ -111,14 +110,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # fh() {
 #   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 # }
-
-# # Tmux
-# # Always work in a tmux session if Tmux is installed
-# if which tmux 2>&1 >/dev/null; then
-#   if [ $TERM != "screen-256color" ] && [  $TERM != "screen" ]; then
-#     tmux attach -t default || tmux new -s default; exit
-#   fi
-# fi
 
 # Vi mode
 # ANSI cursor escape codes:
@@ -140,6 +131,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 #     echo -ne '\e[5 q' # beam
 #   fi
 # }
+
 # zle -N zle-keymap-select
 # zle-line-init() {
 #   zle -K viins # initiate 'vi insert' as keymap (can be removed if 'binkey -V has been set elsewhere')
