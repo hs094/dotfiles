@@ -2,8 +2,9 @@
 alias vim=nvim
 alias zshconfig="bat ~/.zshrc"
 alias zshreload="source ~/.config/.zshrc"
-alias ls="eza -al --icons=always --ignore-glob=.git"
-alias ll="eza -aT --icons --ignore-glob=.git"
+alias ls="eza -a --icons=always --ignore-glob=.git"
+alias ll="eza -al --icons=always --ignore-glob=.git"
+alias lt="eza -aT --icons --ignore-glob=.git"
 
 # System
 alias shutdown='sudo shutdown now'
@@ -15,7 +16,7 @@ alias e='exit'
 alias cat='bat'
 alias cd='z'
 alias diff='difft'
-alias mem='ncdu'
+alias mem='ncdu .'
 alias htop='btop'
 alias yf='yazi'
 alias fzf='fzf --preview "bat --color=always {}"'
