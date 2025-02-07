@@ -6,21 +6,11 @@ fi
 
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
-
-export ZSH="$HOME/.oh-my-zsh"
-
+# Load plugins
 source $ZSH/oh-my-zsh.sh
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
-# Poetry
-export PATH="$HOME/.local/bin:$PATH"
-# Add Homebrew binaries to PATH
-export PATH="/opt/homebrew/bin:$PATH"
-# Add GCC binaries
-export PATH="/opt/homebrew/Cellar/gcc/14.2.0_1/bin:$PATH"
-export HOMEBREW_NO_AUTO_UPDATE=1
-# Pipenv
-export PIPENV_VENV_IN_PROJECT=1
+# FZF with Git right in the shell by Junegunn : check out his github below
+# Keymaps for this is available at https://github.com/junegunn/fzf-git.sh
+source ~/.config/scripts/fzf_git.sh
 
 # Conda Setup
 __conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -35,14 +25,23 @@ else
 fi
 unset __conda_setup
 
+# Yazi
+function y() {
+    local tmp cwd
+    tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+    command yazi "$@" --cwd-file="$tmp"  # Ensure it calls 'yazi' and not 'y' again
+    if [[ -f "$tmp" ]]; then
+        cwd="$(<"$tmp")"
+        rm -f "$tmp"
 
-# fzf
+        if [[ -n "$cwd" && "$cwd" != "$PWD" ]]; then
+            cd "$cwd" || return
+        fi
+    fi
+}
+
+# NOTE: FZF
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
-
-# Configure Node Version Manager (NVM)
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
 
 # Activate syntax highlighting
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -57,8 +56,6 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 # Activate autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# eval $(thefuck --alias)
 
 # Load Git completion
 zstyle ':completion:*:*:git:*' script $HOME/.config/zsh/git-completion.bash
@@ -79,18 +76,6 @@ setopt hist_find_no_dups
 
 # Completion styling 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-
-
-export EDITOR="nvim"
-# Yazi
-# function y() {
-# 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-# 	yazi "$@" --cwd-file="$tmp"
-# 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-# 		cd "$cwd" || return
-# 	fi
-# 	rm -f -- "$tmp"
-# }
 
 # ================================================================================================================================================================================
 

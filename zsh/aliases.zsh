@@ -19,8 +19,9 @@ alias diff='difft'
 alias mem='ncdu .'
 alias htop='btop'
 alias yf='yazi'
-alias yazi='y'
 alias fzf='fzf --preview "bat --color=always {}"'
+alias nlof="~/.config/scripts/fzf_listoldfiles.sh"
+alias nzo="~/.config/scripts/zoxide_openfiles_nvim.sh"
 
 # Git
 alias g='git'
@@ -97,5 +98,6 @@ alias r=". ranger"
 # Poetry
 alias poetry_shell='. "$(dirname $(poetry run which python))/activate"'
 
+# 
 # Docker
 alias dfzf="docker ps -a | fzf --preview 'docker inspect {1}'"
