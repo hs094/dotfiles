@@ -36,6 +36,7 @@ else
 fi
 unset __conda_setup
 
+
 # fzf
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
