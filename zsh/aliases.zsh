@@ -19,6 +19,7 @@ alias diff='difft'
 alias mem='ncdu .'
 alias htop='btop'
 alias yf='yazi'
+alias yazi='y'
 alias fzf='fzf --preview "bat --color=always {}"'
 
 # Git

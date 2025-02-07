@@ -7,7 +7,6 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-
 export ZSH="$HOME/.oh-my-zsh"
 
 source $ZSH/oh-my-zsh.sh
@@ -80,6 +79,18 @@ setopt hist_find_no_dups
 
 # Completion styling 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+
+
+export EDITOR="nvim"
+# Yazi
+# function y() {
+# 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+# 	yazi "$@" --cwd-file="$tmp"
+# 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+# 		cd "$cwd" || return
+# 	fi
+# 	rm -f -- "$tmp"
+# }
 
 # ================================================================================================================================================================================
 
