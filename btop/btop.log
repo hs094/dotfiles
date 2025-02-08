@@ -13,3 +13,13 @@
 2025/02/06 (02:37:00) | INFO: Logger set to DEBUG
 2025/02/06 (02:37:13) | DEBUG: Writing new config file
 2025/02/06 (02:37:13) | INFO: Quitting! Runtime: 00:03:35
+
+2025/02/08 (21:57:27) | ===> btop++ v.1.4.0
+2025/02/08 (21:57:27) | INFO: Logger set to DEBUG
+2025/02/08 (21:57:27) | DEBUG: Using locale en_US.UTF-8
+2025/02/08 (21:57:27) | INFO: Running on /dev/ttys005
+2025/02/08 (21:57:27) | INFO: Forcing tty mode: setting 16 color mode and using tty friendly graph symbols
+2025/02/08 (21:57:27) | DEBUG: get_sensors(): show_coretemp=1 check_temp=1
+2025/02/08 (21:57:27) | DEBUG: M1 sensors found
+2025/02/08 (21:58:18) | DEBUG: Writing new config file
+2025/02/08 (21:58:18) | INFO: Quitting! Runtime: 00:00:51
