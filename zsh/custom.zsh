@@ -6,11 +6,23 @@ fi
 
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
-# Load plugins
 source $ZSH/oh-my-zsh.sh
 # FZF with Git right in the shell by Junegunn : check out his github below
 # Keymaps for this is available at https://github.com/junegunn/fzf-git.sh
 source ~/.config/scripts/fzf_git.sh
+
+# Activate syntax highlighting
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# Disable underline
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+# Change colors
+# export ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=blue
+# export ZSH_HIGHLIGHT_STYLES[precommand]=fg=blue
+# export ZSH_HIGHLIGHT_STYLES[arg0]=fg=blue
+
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Conda Setup
 __conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
@@ -26,36 +38,29 @@ fi
 unset __conda_setup
 
 # Yazi
-function y() {
-    local tmp cwd
-    tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-    command yazi "$@" --cwd-file="$tmp"  # Ensure it calls 'yazi' and not 'y' again
-    if [[ -f "$tmp" ]]; then
-        cwd="$(<"$tmp")"
-        rm -f "$tmp"
+# function y() {
+#     local tmp cwd
+#     tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+#     command yazi "$@" --cwd-file="$tmp"  # Ensure it calls 'yazi' and not 'y' again
+#     if [[ -f "$tmp" ]]; then
+#         cwd="$(<"$tmp")"
+#         rm -f "$tmp"
 
-        if [[ -n "$cwd" && "$cwd" != "$PWD" ]]; then
-            cd "$cwd" || return
-        fi
-    fi
-}
+#         if [[ -n "$cwd" && "$cwd" != "$PWD" ]]; then
+#             cd "$cwd" || return
+#         fi
+#     fi
+# }
 
 # NOTE: FZF
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
 
-# Activate syntax highlighting
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# Disable underline
-(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
-ZSH_HIGHLIGHT_STYLES[path]=none
-ZSH_HIGHLIGHT_STYLES[path_prefix]=none
-# Change colors
-# export ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=blue
-# export ZSH_HIGHLIGHT_STYLES[precommand]=fg=blue
-# export ZSH_HIGHLIGHT_STYLES[arg0]=fg=blue
+# bun completions
+[ -s "/Users/personal/.bun/_bun" ] && source "/Users/personal/.bun/_bun"
 
-# Activate autosuggestions
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+. "/Users/personal/.deno/env"
 
 # Load Git completion
 zstyle ':completion:*:*:git:*' script $HOME/.config/zsh/git-completion.bash

@@ -1,14 +1,14 @@
+export LANG=en_US.UTF-8
 # Add local ~/scripts to the PATH
 export PATH="$HOME/.config/scripts:$PATH"
-
 export ZSH="$HOME/.oh-my-zsh"
 # Poetry
 export PATH="$HOME/.local/bin:$PATH"
 # Add Homebrew binaries to PATH
 export PATH="/opt/homebrew/bin:$PATH"
+export HOMEBREW_NO_AUTO_UPDATE=1
 # Add GCC binaries
 export PATH="/opt/homebrew/Cellar/gcc/14.2.0_1/bin:$PATH"
-export HOMEBREW_NO_AUTO_UPDATE=1
 # Pipenv
 export PIPENV_VENV_IN_PROJECT=1
 
@@ -19,11 +19,12 @@ export NVM_DIR="$HOME/.nvm"
 
 export EDITOR="nvim"
 
-
+# TMUX
+export TMUX_CONF="~/.config/tmux/.tmux.conf"
+# FZF
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git "
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-
 export FZF_DEFAULT_OPTS="--height 50% --layout=default --border --color=hl:#2dd4bf"
 
 # Setup fzf previews
@@ -32,3 +33,12 @@ export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | 
 
 # fzf preview for tmux
 export FZF_TMUX_OPTS=" -p90%,70% "  
+
+# Go Path
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+export PATH=$PATH:$(go env GOPATH)/bin
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

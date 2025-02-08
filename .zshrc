@@ -16,7 +16,13 @@ eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 eval $(thefuck --alias)
+eval "$(brew shellenv)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# plugins = ( git zsh-autosuggestions zsh-syntax-highlighting web-search)
 
 export STARSHIP_CONFIG="~/.config/starship/starship.toml"
 export FUNCNEST=1000
+. "/Users/hardiksoni/.deno/env"
+# bun completions
+[ -s "/Users/hardiksoni/.bun/_bun" ] && source "/Users/hardiksoni/.bun/_bun"

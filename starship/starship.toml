@@ -18,7 +18,7 @@ $cmd_duration\
 $line_break\
 $character"""
 
-command_timeout = 2000  # Increase timeout to 2 seconds (2000 ms)
+command_timeout = 5000  # Increase timeout to 2 seconds (2000 ms)
 
 add_newline = true
 palette = 'nord'

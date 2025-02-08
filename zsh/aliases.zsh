@@ -2,9 +2,9 @@
 alias vim=nvim
 alias zshconfig="bat ~/.zshrc"
 alias zshreload="source ~/.config/.zshrc"
-alias ls="eza -a --icons=always --ignore-glob=.git"
-alias ll="eza -al --icons=always --ignore-glob=.git"
-alias lt="eza -aT --icons --ignore-glob=.git"
+alias ls="eza -a --no-filesize --icons=always --color=always --ignore-glob=.git --no-user"
+alias ll="eza -al --no-filesize  --icons=always --color=always --ignore-glob=.git --no-user"
+alias lt="eza -aT --no-filesize --icons --color=always --ignore-glob=.git --no-user"
 
 # System
 alias shutdown='sudo shutdown now'
@@ -18,20 +18,42 @@ alias cd='z'
 alias diff='difft'
 alias mem='ncdu .'
 alias htop='btop'
-alias yf='yazi'
+alias y='yazi'
+
+# fzf
 alias fzf='fzf --preview "bat --color=always {}"'
 alias nlof="~/.config/scripts/fzf_listoldfiles.sh"
+# opens documentation through fzf (eg: git,zsh etc.)
+alias fman="compgen -c | fzf | xargs man"
+
+# tree
+alias tree="tree -L 3 -a -I '.git' --charset X "
+alias dtree="tree -L 3 -a -d -I '.git' --charset X "
+alias ntree="tree"
+
+# zoxide
 alias nzo="~/.config/scripts/zoxide_openfiles_nvim.sh"
 
+# Tmux 
+# alias tmux="tmux -f $TMUX_CONF"
+alias a="attach"
+# calls the tmux new session script
+alias tns="~/.config/scripts/tmux_sessionizer"
+
+# git aliases
+alias gs="git status -s"
+alias gc='git commit -m'
+alias glog='git log --oneline --graph --all'
 # Git
 alias g='git'
-alias ga='git add'
+alias lg="lazygit"
+alias ga='git add .'
 alias gafzf='git ls-files -m -o --exclude-standard | grep -v "__pycache__" | fzf -m --print0 | xargs -0 -o -t git add' # Git add with fzf
 alias grmfzf='git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git rm' # Git rm with fzf
 alias grfzf='git diff --name-only | fzf -m --print0 | xargs -0 -o -t git restore' # Git restore with fzf
 alias grsfzf='git diff --name-only | fzf -m --print0 | xargs -0 -o -t git restore --staged' # Git restore --staged with fzf
 alias gf='git fetch'
-alias gs='git status'
+alias gs='git status -s'
 alias gss='git status -s'
 alias gup='git fetch && git rebase'
 alias gtd='git tag --delete'
@@ -91,6 +113,7 @@ alias v='poetry_run_nvim'
 # Folders
 alias doc="$HOME/Documents"
 alias dow="$HOME/Downloads"
+alias dev="$HOME/Dev.hs"
 
 # Ranger
 alias r=". ranger"
@@ -98,6 +121,10 @@ alias r=". ranger"
 # Poetry
 alias poetry_shell='. "$(dirname $(poetry run which python))/activate"'
 
-# 
 # Docker
 alias dfzf="docker ps -a | fzf --preview 'docker inspect {1}'"
+
+# Go
+  # These alias need to have the same exact space as written here
+  # HACK: For Running Go Server using Air
+alias air='$(go env GOPATH)/bin/air'

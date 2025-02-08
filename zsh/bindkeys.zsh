@@ -8,5 +8,6 @@ zle -N fzf-history
 
 bindkey -e
 bindkey '^h' fzf-history
+bindkey -r "^G"
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward

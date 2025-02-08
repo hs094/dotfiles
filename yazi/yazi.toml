@@ -19,9 +19,9 @@ title_format   = "Yazi: {cwd}"
 [preview]
 wrap            = "no"
 tab_size        = 2
-max_width       = 600
-max_height      = 900
-cache_dir       = ""
+max_width       = 1000
+max_height      = 1200
+cache_dir       = "~/.cache/yazi"
 image_delay     = 30
 image_filter    = "triangle"
 image_quality   = 75
