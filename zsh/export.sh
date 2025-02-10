@@ -1,4 +1,6 @@
 export LANG=en_US.UTF-8
+export INPUTRC="$HOME/.config/readline/inputrc"
+
 # Add local ~/scripts to the PATH
 export PATH="$HOME/.config/scripts:$PATH"
 export ZSH="$HOME/.oh-my-zsh"

@@ -26,3 +26,6 @@
 
 [merge]
     conflictstyle = zdiff3
+
+[core]
+    excludesFile = ~/.config/git/gitignore_global

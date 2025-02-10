@@ -1,4 +1,6 @@
-raycast
+raycast/extensions
+raycast/my-extensions
+raycast/config.json
 yarn
 .zsh_sessions
 configstore

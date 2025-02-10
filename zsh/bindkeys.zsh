@@ -6,7 +6,8 @@ function fzf-history() {
 # Convert function to a Zsh widget
 zle -N fzf-history
 
-bindkey -e
+bindkey -e   # Use Emacs keybindings (default)
+bindkey -v   # Use Vi keybindings
 bindkey '^h' fzf-history
 bindkey -r "^G"
 bindkey '^p' history-search-backward
