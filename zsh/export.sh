@@ -36,7 +36,7 @@ export FZF_ALT_C_OPTS="--preview 'eza --icons=always --tree --color=always {} | 
 # fzf preview for tmux
 export FZF_TMUX_OPTS=" -p90%,70% "  
 
-# Go Path
+# Go
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
 export PATH=$PATH:$(go env GOPATH)/bin
@@ -44,3 +44,6 @@ export PATH=$PATH:$(go env GOPATH)/bin
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Meteor
+export PATH="/Users/hardiksoni/.meteor:$PATH"

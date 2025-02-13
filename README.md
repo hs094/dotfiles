@@ -11,3 +11,7 @@ Tech I am using
 8. yazi - File Manager
 9. mc - midknight commander
 10. uv - Fastest Python Manager
+
+
+# Node.js Management
+1. Everything is managed by nvm (Node Version mangeer), npm in uninstalled
