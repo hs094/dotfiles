@@ -2,7 +2,7 @@
 
 # Required parameters:
 # @raycast.schemaVersion 1
-# @raycast.title Start and Verify Colima
+# @raycast.title Start and Verify Docker
 # @raycast.mode compact
 
 # Optional parameters:

@@ -1,9 +1,13 @@
 export LANG=en_US.UTF-8
 export INPUTRC="$HOME/.config/readline/inputrc"
+# VS Code
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin$PATH"
 
 # Add local ~/scripts to the PATH
 export PATH="$HOME/.config/scripts:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
+# Python
+export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:$PATH"
 # Poetry
 export PATH="$HOME/.local/bin:$PATH"
 # Add Homebrew binaries to PATH

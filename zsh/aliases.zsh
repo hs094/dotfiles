@@ -1,5 +1,12 @@
+# Folders
+alias doc="$HOME/Documents"
+alias dow="$HOME/Downloads"
+alias dev="$HOME/Dev.hs"
+
 # Add personal aliases and configurations
-alias vim=nvim
+alias vim="nvim"
+alias python="python3.10"
+alias python3="python3.13" 
 alias zshconfig="bat ~/.zshrc"
 alias zshreload="source ~/.config/.zshrc"
 alias ls="eza -a --no-filesize --icons=always --color=always --ignore-glob=.git --no-user"
@@ -22,9 +29,9 @@ alias y='yazi'
 
 # fzf
 alias fzf='fzf --preview "bat --color=always {}"'
-alias nlof="~/.config/scripts/fzf_listoldfiles.sh"
-# opens documentation through fzf (eg: git,zsh etc.)
-alias fman="compgen -c | fzf | xargs man"
+alias flof="~/.config/scripts/fzf_listoldfiles.sh"
+alias fzfd="docker ps -a | fzf --preview 'docker inspect {1}'" # Docker
+alias fman="command -v | fzf | xargs man" # opens documentation through fzf (eg: git,zsh etc.)
 
 # tree
 alias tree="tree -L 3 -a -I '.git' --charset X "
@@ -35,7 +42,7 @@ alias ntree="tree"
 alias nzo="~/.config/scripts/zoxide_openfiles_nvim.sh"
 
 # Tmux 
-# alias tmux="tmux -f $TMUX_CONF"
+alias tmux="tmux -f $TMUX_CONF"
 alias a="attach"
 # calls the tmux new session script
 alias tns="~/.config/scripts/tmux_sessionizer"
@@ -110,19 +117,8 @@ poetry_run_nvim() {
 alias vi='poetry_run_nvim'
 alias v='poetry_run_nvim'
 
-# Folders
-alias doc="$HOME/Documents"
-alias dow="$HOME/Downloads"
-alias dev="$HOME/Dev.hs"
-
-# Ranger
-alias r=". ranger"
-
 # Poetry
 alias poetry_shell='. "$(dirname $(poetry run which python))/activate"'
-
-# Docker
-alias dfzf="docker ps -a | fzf --preview 'docker inspect {1}'"
 
 # Go
   # These alias need to have the same exact space as written here
