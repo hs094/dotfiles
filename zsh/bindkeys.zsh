@@ -1,14 +1,5 @@
-# Fuzzy search history with fzf
-function fzf-history() {
-    history | fzf --tac --preview "echo {} | cut -c 8- | head -n 10" --preview-window=up:10
-}
-
-# Convert function to a Zsh widget
-zle -N fzf-history
-
-bindkey -e   # Use Emacs keybindings (default)
-bindkey -v   # Use Vi keybindings
-bindkey '^h' fzf-history
-bindkey -r "^G"
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^[^?' backward-delete-word
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward

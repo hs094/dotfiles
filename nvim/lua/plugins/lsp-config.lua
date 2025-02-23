@@ -1,4 +1,4 @@
-return { 
+return {
     {
         'williamboman/mason.nvim',
         config = function()
@@ -19,21 +19,23 @@ return {
     },
     {
         "neovim/nvim-lspconfig",
+        dependencies = { "hrsh7th/cmp-nvim-lsp" },  -- Ensure cmp-nvim-lsp is installed
         config = function()
-            local capabilities = require('cmp_nvim_lsp').default_capabilities()
             local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup({
-                capabilities = capabilities
-            })
-            lspconfig.ts_ls.setup({
-                capabilities = capabilities
-            })
-            lspconfig.html.setup({
-                capabilities = capabilities
-            })
-            vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
-            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-            vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
+            local capabilities = require('cmp_nvim_lsp').default_capabilities()  -- ✅ Corrected
+
+            -- Configure LSP servers
+            local servers = { "lua_ls", "ts_ls", "html", "pyright", "jdtls", "clangd" }
+            for _, server in ipairs(servers) do
+                lspconfig[server].setup({
+                    capabilities = capabilities
+                })
+            end
+
+            -- Keybindings for LSP
+            vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "LSP Hover" })
+            vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to Definition" })
+            vim.keymap.set('n', 'ca', vim.lsp.buf.code_action, { desc = "Code Action" })
         end
     }
 }

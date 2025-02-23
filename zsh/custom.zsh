@@ -11,6 +11,8 @@ source "${HOME}/.nvm/nvm.sh"
 # FZF with Git right in the shell by Junegunn : check out his github below
 # Keymaps for this is available at https://github.com/junegunn/fzf-git.sh
 source ~/.config/scripts/fzf_git.sh
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 # Activate syntax highlighting
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

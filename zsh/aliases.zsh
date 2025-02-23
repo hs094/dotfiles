@@ -9,7 +9,8 @@ alias python="python3.10"
 alias python3="python3.13" 
 alias zshconfig="bat ~/.zshrc"
 alias zshreload="source ~/.config/.zshrc"
-alias ls="eza -a --no-filesize --icons=always --color=always --ignore-glob=.git --no-user"
+alias ls="eza --no-filesize --icons=always --color=always --ignore-glob=.git --no-user"
+alias lsh="eza -a --no-filesize --icons=always --color=always --ignore-glob=.git --no-user"
 alias ll="eza -al --no-filesize  --icons=always --color=always --ignore-glob=.git --no-user"
 alias lt="eza -aT --no-filesize --icons --color=always --ignore-glob=.git --no-user"
 
@@ -32,27 +33,18 @@ alias fzf='fzf --preview "bat --color=always {}"'
 alias flof="~/.config/scripts/fzf_listoldfiles.sh"
 alias fzfd="docker ps -a | fzf --preview 'docker inspect {1}'" # Docker
 alias fman="command -v | fzf | xargs man" # opens documentation through fzf (eg: git,zsh etc.)
-
-# tree
-alias tree="tree -L 3 -a -I '.git' --charset X "
-alias dtree="tree -L 3 -a -d -I '.git' --charset X "
-alias ntree="tree"
-
-# zoxide
-alias nzo="~/.config/scripts/zoxide_openfiles_nvim.sh"
+alias fzo="~/.config/scripts/zoxide_openfiles_nvim.sh"
 
 # Tmux 
-alias tmux="tmux -f $TMUX_CONF"
+alias tmux="tmux -f ~/.config/tmux/tmux.conf"
 alias a="attach"
-# calls the tmux new session script
 alias tns="~/.config/scripts/tmux_sessionizer"
 
-# git aliases
-alias gs="git status -s"
-alias gc='git commit -m'
-alias glog='git log --oneline --graph --all'
 # Git
 alias g='git'
+alias gc='git commit -m'
+alias gs="git status -s"
+alias glog='git log --oneline --graph --all'
 alias lg="lazygit"
 alias ga='git add .'
 alias gafzf='git ls-files -m -o --exclude-standard | grep -v "__pycache__" | fzf -m --print0 | xargs -0 -o -t git add' # Git add with fzf

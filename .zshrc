@@ -6,11 +6,11 @@ if [ -f "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-eval "$(/opt/homebrew/bin/brew shellenv)"  # Ensure Homebrew is available
+# eval "$(/opt/homebrew/bin/brew shellenv)"  # Ensure Homebrew is available
 eval "$(starship init zsh)"
-eval "$(fzf --zsh)"
+# eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
-eval $(thefuck --alias)
+eval "$(thefuck --alias)"
 
 # Custom zsh
 [ -f "$HOME/.config/zsh/export.zsh" ] && source "$HOME/.config/zsh/export.zsh"
