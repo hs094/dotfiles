@@ -24,15 +24,17 @@ alias e='exit'
 alias cat='bat'
 alias cd='z'
 alias diff='difft'
-alias mem='ncdu .'
+alias mem='gdu-go .'
+alias ncdu='gdu-go'
 alias htop='btop'
 alias y='yazi'
 
 # fzf
 alias fzf='fzf --preview "bat --color=always {}"'
-alias flof="~/.config/scripts/fzf_listoldfiles.sh"
+alias fzlof="~/.config/scripts/fzf_listoldfiles.sh"
 alias fzfd="docker ps -a | fzf --preview 'docker inspect {1}'" # Docker
-alias fman="command -v | fzf | xargs man" # opens documentation through fzf (eg: git,zsh etc.)
+alias fzman="command -v | fzf | xargs man" # opens documentation through fzf (eg: git,zsh etc.)
+alias fzbat='bat --color=always --paging=never | fzf --ansi'
 alias fzo="~/.config/scripts/zoxide_openfiles_nvim.sh"
 
 # Tmux 

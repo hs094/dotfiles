@@ -25,6 +25,21 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 # export ZSH_HIGHLIGHT_STYLES[precommand]=fg=blue
 # export ZSH_HIGHLIGHT_STYLES[arg0]=fg=blue
 
+
+# . "/Users/hardiksoni/.deno/env"
+[ -s "/Users/hardiksoni/.bun/_bun" ] && source "/Users/hardiksoni/.bun/_bun"
+
+# export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+
+# pnpm
+export PNPM_HOME="/Users/hardiksoni/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Conda Setup

@@ -25,6 +25,3 @@ eval "$(thefuck --alias)"
 
 export STARSHIP_CONFIG="~/.config/starship/starship.toml"
 export FUNCNEST=1000
-. "/Users/hardiksoni/.deno/env"
-# bun completions
-[ -s "/Users/hardiksoni/.bun/_bun" ] && source "/Users/hardiksoni/.bun/_bun"
