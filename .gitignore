@@ -1,0 +1,11 @@
+raycast/extensions
+raycast/my-extensions
+raycast/config.json
+yarn
+.zsh_sessions
+configstore
+flutter
+simple-update-notifier
+.zcompdump*
+.zsh_history
+.DS_Store
