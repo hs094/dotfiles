@@ -9,3 +9,4 @@ simple-update-notifier
 .zcompdump*
 .zsh_history
 .DS_Store
+.zcompcache
