@@ -67,7 +67,7 @@ alias glo='git pull origin'
 alias gl='git pull'
 alias gb='git branch '
 alias gbr='git branch -r'
-alias gd='git diff'
+alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
 alias gco='git checkout '
 alias gcob='git checkout -b '
 alias gcofzf='git branch | fzf | xargs git checkout' # Select branch with fzf

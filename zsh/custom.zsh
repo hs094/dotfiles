@@ -7,7 +7,7 @@ fi
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-source "${HOME}/.nvm/nvm.sh"
+# source "${HOME}/.nvm/nvm.sh"
 # FZF with Git right in the shell by Junegunn : check out his github below
 # Keymaps for this is available at https://github.com/junegunn/fzf-git.sh
 source ~/.config/scripts/fzf_git.sh
