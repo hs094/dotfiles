@@ -1,0 +1,4 @@
+# Base URL used to expand short topic names in the "ntfy publish" and "ntfy subscribe" commands.
+# If you self-host a ntfy server, you'll likely want to change this.
+#
+default-host: http://localhost:80

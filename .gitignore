@@ -1,0 +1,82 @@
+# Raycast
+raycast/extensions
+raycast/my-extensions
+raycast/ai
+raycast/ca.pem
+raycast/config.json
+
+# Application-specific directories
+sourcery/
+configstore/
+containers/
+github-copilot/
+goose/
+pinecone/
+flutter/
+simple-update-notifier/
+
+# Shell files
+.zsh_sessions
+.zcompdump*
+.zsh_history
+.zcompcache
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env*
+
+# Log files
+*.log
+
+# Lock files
+*.lock
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor/IDE files
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+*.pid
+
+# Language-specific
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Lua
+.luarc.json
+
+# Neovim
+nvim/lazy-lock.json
+nvim/plugin/packer_compiled.lua
+
+# User-specific configs (be selective about these)
+zed/settings.json
+zed/conversations/
+zed/prompts/
+zed/themes/
+
+# Duplicate config paths
+tealdeer/~/
+~/

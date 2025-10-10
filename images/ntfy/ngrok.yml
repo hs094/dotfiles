@@ -1,0 +1,8 @@
+version: "2"
+authtoken_from_env: true
+tunnels:
+  ntfy:
+    proto: http
+    addr: ntfy:80
+    bind_tls: true
+    inspect: false
