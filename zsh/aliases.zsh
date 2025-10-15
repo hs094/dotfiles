@@ -68,8 +68,8 @@ alias gbd='git branch -d'
 alias gi='git init'
 alias gcl='git clone'
 
-alias gs="git status --short"
-alias lg="lazygit"
+alias gs="git status"
+alias gss="git status --short"
 
 alias gf='git fetch'
 alias gup='git fetch && git rebase'
@@ -154,3 +154,13 @@ alias poetry_shell='. "$(dirname $(poetry run which python))/activate"'
   # These alias need to have the same exact space as written here
   # HACK: For Running Go Server using Air
 alias air='$(go env GOPATH)/bin/air'
+
+
+
+################################################################################
+####################              Lazy-Tookit             ######################
+################################################################################
+alias lgit="lazygit"
+alias ldock="lazydocker"
+alias lssh="lazyssh"
+alias lsql="lazysql"

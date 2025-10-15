@@ -8,7 +8,7 @@
 # Optional parameters:
 # @raycast.icon 🤖
 # @raycast.packageName Developer Utils
-# @raycast.needsConfirmation true
+# @raycast.needsConfirmation false
 
 # Documentation:
 # @raycast.description The generate_brewfile.sh script automates the process of backing up your currently installed Homebrew packages. 
@@ -28,7 +28,9 @@ brew bundle dump --file="$BREWFILE_PATH" --force
 
 # Confirmation
 if [ -f "$BREWFILE_PATH" ]; then
-    echo "✅ Brewfile successfully created at: $BREWFILE_PATH"
+    echo "✅ Brewfile Successfully Generated"
+    # Close Raycast window after successful completion
+    osascript -e 'tell application "Raycast" to activate' -e 'tell application "System Events" to keystroke "w" using command down'
 else
     echo "❌ Failed to create Brewfile."
     exit 1

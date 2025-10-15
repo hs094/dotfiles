@@ -7,6 +7,26 @@ clip() {
   fi
 }
 
+clipl() {
+  if [[ $# -ne 3 ]]; then
+    echo "Usage: clipl <file_path> <start_line> <end_line>" >&2
+    return 1
+  fi
+
+  local file_path="$1"
+  local start_line="$2"
+  local end_line="$3"
+
+  if [[ ! -f "$file_path" ]]; then
+    echo "Error: File '$file_path' not found." >&2
+    return 1
+  fi
+
+  # Extract lines from start_line to end_line (inclusive), preserving indentation
+  # Output to stdout; pipe to pbcopy (macOS), xclip -sel clip (Linux), or similar for clipboard
+  sed -n "${start_line},${end_line}p" "$file_path"
+}
+
 # Copy file content + metadata to clipboard
 clipd() {
   if [[ -z "$1" ]]; then

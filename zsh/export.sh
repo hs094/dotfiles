@@ -3,8 +3,10 @@ export INPUTRC="$HOME/.config/readline/inputrc"
 # VS Code
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin$PATH"
 
+# Docker
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/hardiksoni/.docker/completions $fpath)
+export DOCKER_HOST=$(limactl list docker --format 'unix://{{.Dir}}/sock/docker.sock')
 
 # Add local ~/scripts to the PATH
 export PATH="$HOME/.config/scripts:$PATH"
@@ -20,8 +22,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export PATH="/opt/homebrew/Cellar/gcc/14.2.0_1/bin:$PATH"
 # Pipenv
 export PIPENV_VENV_IN_PROJECT=1
-
-export POSTING_EDITOR="nvim"       # or "vim", "nvim", "code --wait", etc.
 
 # Configure Node Version Manager (NVM)
 export NVM_DIR="$HOME/.nvm"

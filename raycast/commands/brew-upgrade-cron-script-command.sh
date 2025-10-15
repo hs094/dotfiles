@@ -3,7 +3,7 @@
 # Required parameters:
 # @raycast.schemaVersion 1
 # @raycast.title Brew Upgrade
-# @raycast.mode silent
+# @raycast.mode fullOutput
 
 # Optional parameters:
 # @raycast.icon 🍺
@@ -17,8 +17,7 @@
 {
   set -e
   trap 'echo "❌ An error occurred during the brew upgrade process."' ERR
-
-  brew update | brew upgrade
+  brew update && brew upgrade
   echo "Brew Packages Upgraded 🎉"
   trap - ERR
 }

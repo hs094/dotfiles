@@ -1,0 +1,58 @@
+# ruff.toml
+# Place this file in your project root (e.g., /my-project/ruff.toml)
+
+# General settings
+[lint]
+# Enable a curated set of rules (Pyflake8, some PEP8, and others)
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "B",  # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "UP", # pyupgrade (e.g., modernize Python 2 code to 3)
+]
+# Ignore specific rules if needed (example: E501 for line length)
+ignore = ["E501"]
+
+# Exclude files and directories
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    ".venv",
+    "venv",
+    "*.pyc",
+    "*.egg-info",
+]
+
+# Formatting settings (Ruff's built-in formatter)
+[format]
+# Use 4-space indentation
+indent-style = "space"
+indent-width = 4
+# Use double quotes for strings
+quote-style = "double"
+# Respect PEP 8 line length (default is 88, but you can adjust)
+line-length = 88
+
+# Linting settings
+[lint.per-file-ignores]
+# Ignore certain rules for specific files (example)
+"tests/*" = ["B011"]  # Allow assert False in tests
+
+# Project-specific settings
+[lint.pyflake8]
+# Example: Max line length for linting (matches formatter)
+max-line-length = 88
+
+# Ruff LSP settings (for Neovim integration)
+[tool.ruff]
+# Ensure compatibility with Python version
+target-version = "py38"  # Adjust to your project's minimum Python version (e.g., py39, py310)
+
+# Enable code actions (e.g., autofix) in ruff_lsp
+[tool.ruff.lint]
+fixable = ["ALL"]  # Allow all fixable issues to be auto-fixed via code actions
