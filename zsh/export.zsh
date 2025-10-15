@@ -6,7 +6,7 @@ export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin$PAT
 # Docker
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/hardiksoni/.docker/completions $fpath)
-export DOCKER_HOST=$(limactl list docker --format 'unix://{{.Dir}}/sock/docker.sock')
+# Note: DOCKER_HOST is now set in ~/.zprofile to ensure it takes precedence over OrbStack
 
 # Add local ~/scripts to the PATH
 export PATH="$HOME/.config/scripts:$PATH"
