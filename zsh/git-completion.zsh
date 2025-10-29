@@ -33,18 +33,22 @@ if [ -z "$script" ]; then
 		bash_completion='/usr/share/bash-completion/completions/'
 
 	locations=(
+		"$HOME/.config/zsh/git-completion.bash"
 		"$(dirname ${funcsourcetrace[1]%:*})"/git-completion.bash
 		"$HOME/.local/share/bash-completion/completions/git"
 		"$bash_completion/git"
+		"${HOMEBREW_PREFIX:-/opt/homebrew}/etc/bash_completion.d/git-completion.bash"
+		"${HOMEBREW_PREFIX:-/opt/homebrew}/share/bash-completion/completions/git"
 		'/etc/bash_completion.d/git' # old debian
 		)
-	for e in $locations; do
-		test -f $e && script="$e" && break
+	for e in "${locations[@]}"; do
+		[[ -f "$e" ]] && script="$e" && break
 	done
 fi
 
 local old_complete="$functions[complete]"
 functions[complete]=:
+setopt localoptions nonomatch
 GIT_SOURCING_ZSH_COMPLETION=y . "$script"
 functions[complete]="$old_complete"
 

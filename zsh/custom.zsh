@@ -119,6 +119,14 @@ clipfd() {
   echo "Directory structure + metadata copied to clipboard."
 }
 
+weather() {
+  if [ -z "$1" ]; then
+    curl wttr.in
+  else
+    curl "wttr.in/$1"
+  fi
+}
+
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then 
   mkdir -p "$(dirname $ZINIT_HOME)" 
@@ -161,20 +169,10 @@ case ":$PATH:" in
 esac
 # pnpm end
 
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# Conda Setup
-__conda_setup="$('/opt/homebrew/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/homebrew/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/homebrew/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/homebrew/anaconda3/bin:$PATH"
-    fi
+# Load zsh-autosuggestions only if Atuin is not available
+if ! command -v atuin >/dev/null 2>&1; then
+    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
-unset __conda_setup
 
 # Yazi
 # function y() {
@@ -201,13 +199,6 @@ unset __conda_setup
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 # . "/Users/personal/.deno/env"´
 
-# Load Git completion
-zstyle ':completion:*:*:git:*' script $HOME/.config/zsh/git-completion.bash
-fpath=($HOME/.config/zsh $fpath)
-
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/hardiksoni/.docker/completions $fpath)
-
 # History 
 HISTSIZE=5000 
 HISTFILE=~/.zsh_history 
@@ -224,11 +215,6 @@ setopt hist_find_no_dups
 # Completion styling 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
-# ================================================================================================================================================================================
-
-
-
-
 # Redshift
 # export ODBCINI="$HOME/.odbc.ini"
 # export ODBCSYSINI="/opt/amazon/redshift/Setup"
@@ -240,8 +226,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 #   --bind 'ctrl-/:change-preview-window(down|hidden|)'"
 # export FZF_DEFAULT_COMMAND='rg --hidden -l ""' # Include hidden files
 
-# bindkey "ç" fzf-cd-widget # Fix for ALT+C on Mac
-
 # # fd - cd to selected directory
 # fd() {
 #   local dir
@@ -251,9 +235,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # }
 
 # fh - search in your command history and execute selected command
-# fh() {
-#   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
-# }
+h() {
+   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
+}
 
 # Vi mode
 # ANSI cursor escape codes:
@@ -284,11 +268,11 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # zle -N zle-line-init
 # echo -ne '\e[5 q' # Use beam shape cursor on startup
 
-# # Yank to the system clipboard
-# function vi-yank-xclip {
-#   zle vi-yank
-#   echo "$CUTBUFFER" | pbcopy -i
-# }
+# Yank to the system clipboard
+function vi-yank-xclip {
+  zle vi-yank
+  echo "$CUTBUFFER" | pbcopy -i
+}
 
 # zle -N vi-yank-xclip
 # bindkey -M vicmd 'y' vi-yank-xclip

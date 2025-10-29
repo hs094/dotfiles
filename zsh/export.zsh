@@ -1,20 +1,26 @@
 export LANG=en_US.UTF-8
 export INPUTRC="$HOME/.config/readline/inputrc"
+
 # VS Code
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin$PATH"
 
+# uv
+export PATH="/Users/hs094/.local/bin:$PATH"
+
+# Set DOCKER_HOST to lima docker socket if lima is running
+# if command -v limactl >/dev/null 2>&1 && limactl list docker --format '{{.Status}}' 2>/dev/null | grep -q "Running"; then
+#  export DOCKER_HOST=$(limactl list docker --format 'unix://{{.Dir}}/sock/docker.sock')
+# fi
+
 # Docker
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+# export DOCKER_HOST=$(limactl list docker --format 'unix://{{.Dir}}/sock/docker.sock')
 fpath=(/Users/hardiksoni/.docker/completions $fpath)
-# Note: DOCKER_HOST is now set in ~/.zprofile to ensure it takes precedence over OrbStack
 
 # Add local ~/scripts to the PATH
 export PATH="$HOME/.config/scripts:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 # Python
 export PATH="/opt/homebrew/opt/python@3.10/libexec/bin:$PATH"
-# Poetry
-export PATH="$HOME/.local/bin:$PATH"
 # Add Homebrew binaries to PATH
 export PATH="/opt/homebrew/bin:$PATH"
 export HOMEBREW_NO_AUTO_UPDATE=1

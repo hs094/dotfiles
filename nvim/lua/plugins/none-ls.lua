@@ -19,6 +19,6 @@ return {
         -- or install none-ls-extras.nvim for additional sources
       },
     })
-    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {desc = 'Apply Formatting using the LSP Installed'})
+    -- Formatting keymap is now managed in config/keymap.lua
   end,
 }

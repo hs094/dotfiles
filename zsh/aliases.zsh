@@ -1,5 +1,19 @@
-# Help
+# Secret Generators
+alias genpass="openssl rand -base64 12" 
+
+# Weathers
+alias pnq="weather Pune"
+alias blr="weather Bengaluru"
+
+# CLI AI Editors
+alias ca="cursor-agent"
+alias co="codex"
+alias cc="claude code"
+
+
+# Help 
 alias help="bat ~/.config/README.md"
+alias ff="fastfetch"
 
 # Edit Important Files
 alias ezshrc="nvim ~/.zshrc"
@@ -32,6 +46,8 @@ alias suspend='sudo pm-suspend'
 alias sleep='pmset sleepnow'
 alias c='clear'
 alias e='exit'
+
+# Modern Replacements to Linux Distros
 alias cat='bat'
 alias cd='z'
 alias diff='difft'
@@ -72,6 +88,7 @@ alias gs="git status"
 alias gss="git status --short"
 
 alias gf='git fetch'
+alias gfo='git fetch origin'
 alias gup='git fetch && git rebase'
 alias gtd='git tag --delete'
 alias gtdr='git tag --delete origin'
@@ -106,49 +123,20 @@ alias di='docker images'
 alias dps='docker ps'
 alias dpsa='docker ps -a'
 alias dstop='docker stop $(docker ps -q)'
-alias drm='docker rm $(docker ps -aq)'
-alias drmi='docker rmi $(docker images -q)'
+alias drmf='docker rm $(docker ps -aq)'          # Remove all Containers 
+alias drm='docker container prune -f'            # Only Remove Stopped Containers
+alias drmi='docker image prune -a -f'            # Remove all Images that are not associated with a container
 alias dlog='docker logs -f'
 alias dinspect='docker inspect'
 
-# Function to commit with ticket ID from current branch, with optional push
-quick_commit() {
-  local branch_name ticket_id commit_message push_flag
-  branch_name=$(git branch --show-current)
-  ticket_id=$(echo "$branch_name" | awk -F '-' '{print toupper($1"-"$2)}')
-  commit_message="$ticket_id: $*"
-  push_flag=$1
-
-  if [[ "$push_flag" == "push" ]]; then
-    # Remove 'push' from the commit message
-    commit_message="$ticket_id: ${*:2}" # take all positional parameters starting from the second one
-    git commit --no-verify -m "$commit_message" && git push
-  else
-    git commit --no-verify -m "$commit_message"
-  fi
-}
-
-alias gqc='quick_commit'
-alias gqcp='quick_commit push'
-
-# Neovim
-# If poetry is installed and an environment exists, run "poetry run nvim"
-poetry_run_nvim() {
-  if command -v poetry >/dev/null 2>&1 && [ -f "poetry.lock" ]; then
-    poetry run nvim "$@"
-  else
-    nvim "$@"
-  fi
-}
-alias vi='poetry_run_nvim'
-alias v='poetry_run_nvim'
+# Docker Compose
+alias dc='docker compose'
+alias dcl='docker compose logs'
+alias dclf='docker compose logs -f'
 
 # Python
-alias acenv='source .venv/bin/activate'
-alias deenv='deactivate'
-
-# Poetry
-alias poetry_shell='. "$(dirname $(poetry run which python))/activate"'
+alias aenv='source .venv/bin/activate'
+alias denv='deactivate'
 
 # Go
   # These alias need to have the same exact space as written here
