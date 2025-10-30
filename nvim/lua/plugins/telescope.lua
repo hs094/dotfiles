@@ -77,6 +77,15 @@ return {
           },
         },
       })
+
+      -- Telescope keymaps
+      local builtin = require("telescope.builtin")
+      vim.keymap.set('n', '<C-p>', builtin.find_files, {
+        desc = 'Find files with Telescope'
+      })
+      vim.keymap.set('n', '<leader>rg', builtin.live_grep, {
+        desc = 'Live grep with Telescope'
+      })
     end,
   },
   {
