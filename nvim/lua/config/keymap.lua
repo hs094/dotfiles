@@ -1,8 +1,6 @@
 -- Keymap configuration for Neovim
 -- Centralized keymap management with proper descriptions and lazy loading support
 
-
-
 local M = {}
 
 -- Core keymaps (no dependencies)
@@ -15,30 +13,29 @@ end
 M.telescope = function()
   if pcall(require, 'telescope.builtin') then
     local builtin = require('telescope.builtin')
-    
-    vim.keymap.set('n', '<C-p>', builtin.find_files, { 
-      desc = 'Find files with Telescope' 
+    vim.keymap.set('n', '<C-p>', builtin.find_files, {
+      desc = 'Find files with Telescope'
     })
-    vim.keymap.set('n', '<leader>rg', builtin.live_grep, { 
-      desc = 'Live grep with Telescope' 
+    vim.keymap.set('n', '<leader>rg', builtin.live_grep, {
+      desc = 'Live grep with Telescope'
     })
   end
 end
 
 -- Neo-tree keymaps
-M.neo_tree = function()
-  if pcall(require, 'neo-tree') then
-    vim.keymap.set('n', '<C-n>', ':Neotree toggle<CR>', { 
-      desc = 'Toggle Neo-tree file explorer' 
-    })
-    vim.keymap.set('n', '<leader>e', ':Neotree focus<CR>', { 
-      desc = 'Focus Neo-tree' 
-    })
-    vim.keymap.set('n', '<leader>o', ':Neotree filesystem reveal left<CR>', { 
-      desc = 'Open Neo-tree and reveal current file' 
-    })
-  end
-end
+-- M.neo_tree = function()
+--   if pcall(require, 'neo-tree') then
+--     vim.keymap.set('n', '<C-n>', ':Neotree toggle<CR>', { 
+--       desc = 'Toggle Neo-tree file explorer' 
+--     })
+--     vim.keymap.set('n', '<leader>e', ':Neotree focus<CR>', { 
+--       desc = 'Focus Neo-tree' 
+--     })
+--     vim.keymap.set('n', '<leader>o', ':Neotree filesystem reveal left<CR>', { 
+--       desc = 'Open Neo-tree and reveal current file' 
+--     })
+--   end
+-- end
 
 -- LSP keymaps
 M.lsp = function()
@@ -96,7 +93,7 @@ end
 M.load_all = function()
   M.core()
   M.telescope()
-  M.neo_tree()
+  --  M.neo_tree()
   M.lsp()
   M.formatting()
   M.ai()
@@ -105,5 +102,5 @@ end
 
 -- Auto-load keymaps
 M.load_all()
-
+vim.api.nvim_set_keymap('n', '<Leader>/', ':noh<CR>', { noremap = true, silent = true })
 return M
