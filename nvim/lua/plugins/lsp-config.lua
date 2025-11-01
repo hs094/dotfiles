@@ -63,13 +63,22 @@ return {
         { border = "rounded" }
       )
 
+      -- Define diagnostic signs
+      local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = "󰋽 " }
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      end
+
       -- Configure diagnostic signs and display
       vim.diagnostic.config({
         virtual_text = {
           prefix = "●",
           spacing = 4,
         },
-        signs = true,
+        signs = {
+          active = signs,
+        },
         underline = true,
         update_in_insert = false,
         severity_sort = true,
@@ -78,13 +87,6 @@ return {
           source = "always",
         },
       })
-
-      -- Define diagnostic signs
-      local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = "󰋽 " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
 
       -- Define servers with configs
       local servers = {

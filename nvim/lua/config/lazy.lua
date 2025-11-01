@@ -30,6 +30,14 @@ require("lazy").setup({
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
   install = { colorscheme = { "habamax" } },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
+  -- automatically check for plugin updates silently in the background
+  checker = {
+    enabled = true,
+    notify = false,        -- disable update notifications
+    frequency = 604800,    -- check for updates once a week (in seconds)
+    concurrency = 10,      -- number of concurrent update checks
+  },
+  rocks = {
+    enabled = false,       -- disable luarocks support to avoid installation issues
+  },
 })

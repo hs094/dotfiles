@@ -23,6 +23,7 @@
   preloadindex = true
   pager = delta
 	excludesfile = $HOME/.config/git/.gitignore_global
+	editor = nvim
 
 [advice]
   addEmptyPathspec = false

@@ -62,3 +62,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Meteor
 export PATH="/Users/hardiksoni/.meteor:$PATH"
+
+# Function to count files up to a specified depth level
+countfiles() {
+  local depth=${1:-100}
+  find . -maxdepth "$depth" -type f | wc -l
+}

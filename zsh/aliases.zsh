@@ -30,7 +30,6 @@ alias dev="cd $HOME/Dev.hs"
 alias ss="cd $HOME/Screenshot/"
 
 # Add personal aliases and configurations
-alias vim="nvim"
 alias zshreload="source ~/.zshrc"
 alias sshconf='bat ~/.ssh/config'
 alias zshconfig="bat ~/.zshrc"
@@ -80,6 +79,7 @@ alias gd='git diff'
 alias gl='git log --oneline --graph --all'
 alias gb='git branch'
 alias gbd='git branch -d'
+alias gbD='git branch -D'
 
 alias gi='git init'
 alias gcl='git clone'
@@ -89,6 +89,7 @@ alias gss="git status --short"
 
 alias gf='git fetch'
 alias gfo='git fetch origin'
+alias gfp='git fetch --prune'
 alias gup='git fetch && git rebase'
 alias gtd='git tag --delete'
 alias gtdr='git tag --delete origin'
@@ -130,6 +131,9 @@ alias dinspect='docker inspect'
 
 # Docker Compose
 alias dc='docker compose'
+alias dcd='docker compose down'
+alias dcu='docker compose up -d'
+alias dcb='docker compose build'
 alias dcl='docker compose logs'
 alias dclf='docker compose logs -f'
 
