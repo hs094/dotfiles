@@ -13,14 +13,6 @@ return {
         wo = { wrap = true } -- Wrap notifications
       }
     },
-    dashboard = {
-      enabled = true,
-      sections = {
-        { section = "header" },
-        { section = "keys", gap = 1, padding = 1 },
-        { section = "startup" },
-      },
-    },
     picker = {
       enabled = true,
       sources = {
@@ -54,7 +46,6 @@ return {
     { "<leader>gc", function() Snacks.picker.git_commits() end, desc = "Git Commits" },
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
     { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
-    { "<leader>sd", function() Snacks.dashboard() end, desc = "Dashboard" },
     { "<leader>rl", function() Snacks.reload() end, desc = "Reload" },
     { "<leader>h", function() Snacks.notifier.show_history() end, desc = "Notification History" },
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },

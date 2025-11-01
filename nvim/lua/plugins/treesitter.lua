@@ -4,10 +4,10 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     config = function()
       require("nvim-treesitter.configs").setup {
-        ensure_installed = { "cpp", "javascript", "python", "java", "lua", "markdown"},
+        ensure_installed = { "cpp", "javascript", "python", "java", "lua", "markdown", "css", "html", "latex", "scss", "svelte", "tsx", "typst", "vue"},
         sync_install = false,
         auto_install = true,
-        ignore_install = { "javascript" },
+        ignore_install = {},
         highlight = {
           enable = true,
           additional_vim_regex_highlighting = false,
