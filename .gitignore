@@ -85,3 +85,6 @@ zed/themes/
 # Duplicate config paths
 tealdeer/~/
 ~/
+
+# OpenCode
+opencode/

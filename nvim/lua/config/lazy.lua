@@ -41,3 +41,13 @@ require("lazy").setup({
     enabled = false,       -- disable luarocks support to avoid installation issues
   },
 })
+
+-- Prevent neo-tree netrw hijacking issues
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if package.loaded["neo-tree"] then
+      -- Safely disable netrw hijacking to prevent window ID conflicts
+      vim.g.neo_tree_remove_legacy_commands = 1
+    end
+  end,
+})

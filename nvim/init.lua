@@ -18,7 +18,7 @@ vim.opt.signcolumn = "yes"                       -- Always show sign column
 
 -- Core keymaps
 vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { desc = 'Open/Close Lazy plugin manager' })
-vim.api.nvim_set_keymap('n', '<Leader>/', ':noh<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>.', ':noh<CR>', { noremap = true, silent = true })
 
 -- Load lazy.nvim configuration
 require('config.lazy')
