@@ -3,7 +3,7 @@ return {
 		"github/copilot.vim",
 		config = function()
 			-- Enable tab completion for Copilot
-			vim.g.copilot_no_tab_map = false
+			vim.g.copilot_no_tab_map = true
 			-- Set up keybindings for Copilot
 			vim.api.nvim_set_keymap("i", "<Tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 			vim.api.nvim_set_keymap("i", "<C-J>", "copilot#Next()", { silent = true, expr = true })
@@ -57,7 +57,6 @@ return {
 					end,
 				},
 			})
-
 			-- Additional keymaps for quick access
 			vim.keymap.set("n", "<C-a>", ":CursorAgent<CR>", {
 				desc = "Toggle Cursor AI agent terminal (quick)",

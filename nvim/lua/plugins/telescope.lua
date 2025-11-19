@@ -3,11 +3,23 @@ return {
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
 			local telescope = require("telescope")
 			telescope.setup({
 				defaults = {
+					file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+					grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+					qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+					file_sorter = require("telescope.sorters").get_fuzzy_file,
+					generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
+					path_display = { "truncate" },
+					winblend = 0,
+					border = {},
+					borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+					color_devicons = true,
+					set_env = { ["COLORTERM"] = "truecolor" },
 					vimgrep_arguments = {
 						"rg",
 						"--color=never",
