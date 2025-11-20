@@ -13,10 +13,10 @@ return {
 			vim.api.nvim_set_keymap("v", "<Tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 			-- Copilot keymaps
-			vim.keymap.set("n", "<leader>cp", ":Copilot status<CR>", {
+			vim.keymap.seti("n", "<leader>cp", ":Copilot status<CR>", {
 				desc = "Show Copilot status",
 			})
-			vim.keymap.set("n", "<leader>cps", ":Copilot panel<CR>", {
+			vim.keymap.seti("n", "<leader>cps", ":Copilot panel<CR>", {
 				desc = "Open Copilot panel",
 			})
 		end,
@@ -58,10 +58,10 @@ return {
 				},
 			})
 			-- Additional keymaps for quick access
-			vim.keymap.set("n", "<C-a>", ":CursorAgent<CR>", {
+			vim.keymap.seti("n", "<C-a>", ":CursorAgent<CR>", {
 				desc = "Toggle Cursor AI agent terminal (quick)",
 			})
-			vim.keymap.set("v", "<C-a>", ":CursorAgent<CR>", {
+			vim.keymap.seti("v", "<C-a>", ":CursorAgent<CR>", {
 				desc = "Toggle Cursor AI agent and send selection",
 			})
 		end,

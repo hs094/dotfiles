@@ -104,33 +104,33 @@ return {
 
 			-- Telescope keymaps
 			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<C-p>", builtin.find_files, {
+			vim.keymap.seti("n", "<leader>ff", builtin.find_files, {
 				desc = "Find files with Telescope",
 			})
-			vim.keymap.set("n", "<leader>rg", builtin.live_grep, {
+			vim.keymap.seti("n", "<leader>rg", builtin.live_grep, {
 				desc = "Live grep with Telescope",
 			})
-			vim.keymap.set("n", "<leader>db", function()
+			vim.keymap.seti("n", "<leader>db", function()
 				require("telescope.builtin").diagnostics({ bufnr = 0 })
 			end, {
         desc = "Buffer Diagnostics",
       })
-			vim.keymap.set("n", "<leader>dw", function()
+			vim.keymap.seti("n", "<leader>dw", function()
 				require("telescope.builtin").diagnostics()
 			end, {
         desc = "Workspace Diagnostics",
       })
-			vim.keymap.set("n", "<leader>fs", function()
+			vim.keymap.seti("n", "<leader>fs", function()
 				require("telescope.builtin").lsp_document_symbols()
 			end, {
 				desc = "Find Symbols",
 			})
-      vim.keymap.set("n", "<leader>fb", function()
+      vim.keymap.seti("n", "<leader>fb", function()
         require("telescope.builtin").buffers()
       end, {
         desc = "Find Buffers",
       })
-      vim.keymap.set("n", "<leader>fw", function()
+      vim.keymap.seti("n", "<leader>fw", function()
         require("telescope.builtin").lsp_dynamic_workspace_symbols()
       end, {
         desc = "Find Words",

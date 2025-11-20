@@ -17,8 +17,9 @@ vim.opt.updatetime = 300                         -- Faster completion
 vim.opt.signcolumn = "yes"                       -- Always show sign column
 
 -- Core keymaps
-vim.keymap.set('n', '<leader>l', ':Lazy<CR>', { desc = 'Open/Close Lazy plugin manager' })
-vim.api.nvim_set_keymap('n', '<Leader>.', ':noh<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>l', function() vim.cmd('Lazy') end, { desc = 'Open/Close Lazy plugin manager' })
+-- Note: <leader>. is mapped to Snacks.scratch() in snacks.lua
+-- To clear search highlights, press <Esc> (works by default) or use :noh
 
 -- Load lazy.nvim configuration
 require('config.lazy')

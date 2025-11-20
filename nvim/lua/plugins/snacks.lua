@@ -6,8 +6,8 @@ return {
 	opts = {
 		-- Core features
 		bigfile = { enabled = true },
-		dashboard = { enabled = true },
-		explorer = { enabled = true },
+		dashboard = { enabled = false }, -- Disabled: conflicts with nvimdev/dashboard-nvim
+		-- explorer = { enabled = true },
 		indent = { enabled = true },
 		input = { enabled = true },
 		notifier = {
@@ -20,16 +20,9 @@ return {
 		scroll = { enabled = true },
 		statuscolumn = { enabled = true },
 		words = { enabled = true },
-		terminal = { enabled = true },
+		terminal = { enabled = false },
 		zen = { enabled = true },
-		blame = {
-			width = 0.6,
-			height = 0.6,
-			border = true,
-			title = " Git Blame ",
-			title_pos = "center",
-			ft = "git",
-		},
+
 		-- Image viewer configuration
 		image = {
 			enabled = true,
@@ -56,31 +49,16 @@ return {
 				"icns",
 			},
 		},
-
 		-- Custom styles
 		styles = {
 			notification = {
 				wo = { wrap = true }, -- Wrap notifications
 			},
 		},
-
-		-- Explorer configuration
-		explorer = {
-			enabled = true,
-			replace_netrw = true,
-		},
 	},
-
 	-- Comprehensive key mappings
 	keys = {
 		-- Top Pickers & Explorer
-		{
-			"<leader><space>",
-			function()
-				Snacks.picker.smart()
-			end,
-			desc = "Smart Find Files",
-		},
 		{
 			"<leader>,",
 			function()
@@ -102,20 +80,6 @@ return {
 			end,
 			desc = "Command History",
 		},
-		{
-			"<leader>n",
-			function()
-				Snacks.picker.notifications()
-			end,
-			desc = "Notification History",
-		},
-		{
-			"<leader>e",
-			function()
-				Snacks.explorer()
-			end,
-			desc = "File Explorer",
-		},
 
 		-- File finding
 		{
@@ -133,19 +97,13 @@ return {
 			desc = "Find Config File",
 		},
 		{
-			"<leader>ff",
+			"<C-p>",
 			function()
 				Snacks.picker.files()
 			end,
 			desc = "Find Files",
 		},
-		{
-			"<leader>fg",
-			function()
-				Snacks.picker.git_files()
-			end,
-			desc = "Find Git Files",
-		},
+
 		{
 			"<leader>fp",
 			function()
@@ -159,118 +117,6 @@ return {
 				Snacks.picker.recent()
 			end,
 			desc = "Recent",
-		},
-
-		-- Git integration
-		{
-			"<leader>gb",
-			function()
-				Snacks.picker.git_branches()
-			end,
-			desc = "Git Branches",
-		},
-		{
-			"<leader>gl",
-			function()
-				Snacks.picker.git_log()
-			end,
-			desc = "Git Log",
-		},
-		{
-			"<leader>gL",
-			function()
-				Snacks.picker.git_log_line()
-			end,
-			desc = "Git Log Line",
-		},
-		{
-			"<leader>gs",
-			function()
-				Snacks.picker.git_status()
-			end,
-			desc = "Git Status",
-		},
-		{
-			"<leader>gS",
-			function()
-				Snacks.picker.git_stash()
-			end,
-			desc = "Git Stash",
-		},
-		{
-			"<leader>gd",
-			function()
-				Snacks.picker.git_diff()
-			end,
-			desc = "Git Diff (Hunks)",
-		},
-		{
-			"<leader>gf",
-			function()
-				Snacks.picker.git_log_file()
-			end,
-			desc = "Git Log File",
-		},
-		{
-			"<leader>gg",
-			function()
-				Snacks.lazygit()
-			end,
-			desc = "Lazygit",
-		},
-		{
-			"<leader>gB",
-			function()
-				Snacks.gitbrowse()
-			end,
-			desc = "Git Browse",
-			mode = { "n", "v" },
-		},
-
-		-- GitHub integration
-		{
-			"<leader>gi",
-			function()
-				Snacks.picker.gh_issue()
-			end,
-			desc = "GitHub Issues (open)",
-		},
-		{
-			"<leader>gI",
-			function()
-				Snacks.picker.gh_issue({ state = "all" })
-			end,
-			desc = "GitHub Issues (all)",
-		},
-		{
-			"<leader>gp",
-			function()
-				Snacks.picker.gh_pr()
-			end,
-			desc = "GitHub Pull Requests (open)",
-		},
-		{
-			"<leader>gP",
-			function()
-				Snacks.picker.gh_pr({ state = "all" })
-			end,
-			desc = "GitHub Pull Requests (all)",
-		},
-
-		-- Git blame integration (using snacks.nvim native functions)
-		{
-			"<leader>gbl",
-			function()
-				Snacks.git.blame_line()
-			end,
-			desc = "Git Blame Line",
-		},
-		{
-			"<leader>gt",
-			function()
-				vim.cmd("Git blame --toggle")
-			end,
-			desc = "Toggle git blame",
 		},
 
 		-- Grep & Search
@@ -381,7 +227,7 @@ return {
 			desc = "Jumps",
 		},
 		{
-			"<leader>sk",
+			"<leader>k",
 			function()
 				Snacks.picker.keymaps()
 			end,
@@ -540,13 +386,6 @@ return {
 			desc = "Select Scratch Buffer",
 		},
 		{
-			"<leader>n",
-			function()
-				Snacks.notifier.show_history()
-			end,
-			desc = "Notification History",
-		},
-		{
 			"<leader>bd",
 			function()
 				Snacks.bufdelete()
@@ -583,85 +422,13 @@ return {
 			desc = "Prev Reference",
 			mode = { "n", "t" },
 		},
-
-		-- Terminal
-		{
-			"<c-/>",
-			function()
-				Snacks.terminal()
-			end,
-			desc = "Toggle Terminal",
-		},
-		{
-			"<c-_>",
-			function()
-				Snacks.terminal()
-			end,
-			desc = "which_key_ignore",
-		},
-
-		-- Neovim news
-		{
-			"<leader>N",
-			desc = "Neovim News",
-			function()
-				Snacks.win({
-					file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-					width = 0.6,
-					height = 0.6,
-					wo = {
-						spell = false,
-						wrap = false,
-						signcolumn = "yes",
-						statuscolumn = " ",
-						conceallevel = 3,
-					},
-				})
-			end,
-		},
-
 		-- Preserve existing custom mappings
-		{
-			"<leader>ff",
-			function()
-				Snacks.picker.files()
-			end,
-			desc = "Find Files",
-		},
-		{
-			"<leader>fb",
-			function()
-				Snacks.picker.buffers()
-			end,
-			desc = "Buffers",
-		},
 		{
 			"<leader>fh",
 			function()
 				Snacks.picker.help()
 			end,
 			desc = "Help",
-		},
-		{
-			"<leader>gc",
-			function()
-				Snacks.picker.git_commits()
-			end,
-			desc = "Git Commits",
-		},
-		{
-			"<leader>gb",
-			function()
-				Snacks.picker.git_branches()
-			end,
-			desc = "Git Branches",
-		},
-		{
-			"<leader>gs",
-			function()
-				Snacks.picker.git_status()
-			end,
-			desc = "Git Status",
 		},
 		{
 			"<leader>rl",
@@ -676,49 +443,7 @@ return {
 				Snacks.notifier.show_history()
 			end,
 			desc = "Notification History",
-		},
-		{
-			"<leader>bd",
-			function()
-				Snacks.bufdelete()
-			end,
-			desc = "Delete Buffer",
-		},
-		{
-			"<leader>e",
-			function()
-				Snacks.explorer()
-			end,
-			desc = "Toggle File Explorer",
-		},
-		{
-			"<leader>o",
-			function()
-				Snacks.explorer.open({ cwd = vim.fn.expand("%:p:h") })
-			end,
-			desc = "Open File Explorer",
-		},
-		{
-			"<c-/>",
-			function()
-				Snacks.terminal()
-			end,
-			desc = "Terminal",
-		},
-		{
-			"]",
-			function()
-				Snacks.words.jump(vim.v.count1)
-			end,
-			desc = "Next Reference",
-		},
-		{
-			"[",
-			function()
-				Snacks.words.jump(-vim.v.count1)
-			end,
-			desc = "Prev Reference",
-		},
+		}
 	},
 
 	init = function()
@@ -758,11 +483,6 @@ return {
 				Snacks.toggle.inlay_hints():map("<leader>uh")
 				Snacks.toggle.indent():map("<leader>ug")
 				Snacks.toggle.dim():map("<leader>uD")
-
-				-- Git blame toggle (snacks.nvim doesn't have toggle, so use git plugin)
-				vim.keymap.set("n", "<leader>gt", function()
-					vim.cmd("Git blame --toggle")
-				end, { desc = "Toggle git blame" })
 			end,
 		})
 	end,

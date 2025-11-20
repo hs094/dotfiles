@@ -1,6 +1,15 @@
 # Secret Generators
 alias genpass="openssl rand -base64 12" 
 
+# Generating a Public SSH Key
+alias sshpass="ssh-keygen -t ed25519 -C" # Usage type sshpass <"YOUR_EMAIL@DOMAIN.COM">
+
+# Disk Utility Manger
+alias duai="dua interactive"
+
+# Vim -> Neovim
+alias vim="nvim"
+
 # Weathers
 alias pnq="weather Pune"
 alias blr="weather Bengaluru"
@@ -8,18 +17,25 @@ alias blr="weather Bengaluru"
 # CLI AI Editors
 alias ca="cursor-agent"
 alias co="codex"
-alias cc="claude code"
-
+alias cc="claude"
+alias cl="cline"
+alias ge="goose"
 
 # Help 
 alias help="bat ~/.config/README.md"
 alias ff="fastfetch"
 
+# uv Aliases
+alias uvt="uv tree"
+alias uva="uv add --active"
+alias uvr="uv remove --active"
+
+
 # Edit Important Files
 alias ezshrc="nvim ~/.zshrc"
 alias ealias="nvim ~/.config/zsh/aliases.zsh"
 alias ecustom="nvim ~/.config/zsh/custom.zsh"
-alias eghost="nvim '/Users/hs094/Library/Application Support/com.mitchellh.ghostty/config'"
+alias eghost="nvim ~/.config/ghostty/config"
 export obsidian="/Users/hs094/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 export rcscriptcmd="~/.config/raycast/commands"
 
@@ -36,7 +52,6 @@ alias zshconfig="bat ~/.zshrc"
 alias ls="eza --no-filesize --icons=always --color=always --ignore-glob=.git --no-user"
 alias lsa="eza -a --no-filesize --icons=always --color=always --ignore-glob=.git --no-user"
 alias ll="eza -al --no-filesize  --icons=always --color=always --ignore-glob=.git --no-user"
-alias lt="eza -aT --no-filesize --icons --color=always --ignore-glob=.git --no-user"
 
 # System
 alias shutdown='sudo shutdown now'
@@ -109,9 +124,9 @@ alias gres='git remote show'
 alias glgg='git log --graph --max-count=5 --decorate --pretty="oneline"'
 alias gm='git merge'
 
-alias gpsh='git push'
+alias gph='git push'
 alias gpo='git push origin'
-alias ggpush='git push origin $(current_branch)'
+alias gcph='git push origin $1'
 
 # Git Stash Alias Shortcuts
 alias gsl='git stash list' 
@@ -120,9 +135,10 @@ alias gsu='git stash -u'
 # Docker 
 alias d='docker'
 alias di='docker images'
+alias ddf='docker system df'
 alias dps='docker ps'
 alias dpsa='docker ps -a'
-alias dstop='docker stop $(docker ps -q)'
+alias dstop='docker stop $(docker ps -q)'        # Stop all Containers 
 alias drmf='docker rm $(docker ps -aq)'          # Remove all Containers 
 alias drm='docker container prune -f'            # Only Remove Stopped Containers
 alias drmi='docker image prune -a -f'            # Remove all Images that are not associated with a container
@@ -132,7 +148,10 @@ alias dinspect='docker inspect'
 # Docker Compose
 alias dc='docker compose'
 alias dcd='docker compose down'
-alias dcu='docker compose up -d'
+alias dcu='docker compose up'
+alias dcud='docker compose up -d'
+alias dcub='docker compose up --build'
+alias dcudb='docker compose up -d --build'
 alias dcb='docker compose build'
 alias dcl='docker compose logs'
 alias dclf='docker compose logs -f'

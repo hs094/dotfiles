@@ -8,9 +8,13 @@ if [ -f "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+# Add to ~/.zshrc
+export PATH="$HOME/.local/bin:$PATH"
+
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 eval "$(direnv hook zsh)"
+# eval "$(register-python-argcomplete --shell zsh eval-main)"
 # eval "$(atuin init zsh)"
 
 export PATH="$PATH:/Users/hs094/.cargo/bin"
@@ -51,3 +55,6 @@ export INTELLI_HOME="/Users/hs094/Library/Application Support/org.IntelliShell.I
 alias is="intelli-shell"
 export PATH="$INTELLI_HOME/bin:$PATH"
 eval "$(intelli-shell init zsh)"
+
+# Added by Antigravity
+export PATH="/Users/hs094/.antigravity/antigravity/bin:$PATH"
