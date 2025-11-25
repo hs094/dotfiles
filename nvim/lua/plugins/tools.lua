@@ -1,87 +1,13 @@
 return {
 	{
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	},
-	{
 		"windwp/nvim-autopairs",
 		config = function()
 			require("nvim-autopairs").setup({})
 		end,
 	},
 	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		},
-	},
-	{
-		"nvimdev/dashboard-nvim",
-		event = "VimEnter",
-		config = function()
-			require("dashboard").setup({
-				theme = "hyper",
-				config = {
-					week_header = {
-						enable = false, -- Disable week header to save space
-					},
-					packages = { enable = false }, -- Disable packages count to save space
-					project = {
-						enable = true,
-						limit = 4, -- Reduced from default 8
-						icon = "󰉋 ",
-						label = "",
-						action = "Telescope find_files cwd=",
-					},
-					mru = {
-						enable = true,
-						limit = 5, -- Reduced from default 10
-						icon = "󰈙 ",
-						label = "",
-						cwd_only = false,
-					},
-					footer = function()
-						local stats = require("lazy").stats()
-						local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-						return { "󰥔  Startup time: " .. ms .. "ms" }
-					end,
-				},
-			})
-		end,
-		requires = { "nvim-tree/nvim-web-devicons" },
-	},
-	{
-		"wakatime/vim-wakatime",
-		lazy = false,
-		opts = {},
-	},
-	{
 		"j-hui/fidget.nvim",
-	},
-	-- {
-	-- 	"vimpostor/vim-tpipeline",
-	-- 	config = function()
-	-- 		require("tpipeline").setup()
-	-- 	end,
-	-- },
-	{
-		"norcalli/nvim-colorizer.lua",
-		config = function()
-			-- Ensure true color support is enabled
-			vim.opt.termguicolors = true
-
-			-- Attach to all filetypes with common options
-			require("colorizer").setup({
-				"*", -- All filetypes
-				css = { rgb_fn = true }, -- Enable rgb() functions in CSS
-				html = { names = false }, -- Disable color names in HTML
-			})
-		end,
+		opts = {},
 	},
 	{
 		"folke/which-key.nvim",

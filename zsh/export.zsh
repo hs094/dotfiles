@@ -36,8 +36,6 @@ export NVM_DIR="$HOME/.nvm"
 
 export EDITOR="nvim"
 
-# TMUX
-export TMUX_CONF="~/.config/tmux/tmux.conf"
 # FZF
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git "
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

@@ -1,3 +1,6 @@
+# Brew Upgrade and Update
+alias brewup="brew update && brew upgrade && brew cleanup && brew doctor"
+
 # Secret Generators
 alias genpass="openssl rand -base64 12" 
 
@@ -17,9 +20,11 @@ alias blr="weather Bengaluru"
 # CLI AI Editors
 alias ca="cursor-agent"
 alias co="codex"
+alias oc="opencode"
 alias cc="claude"
 alias cl="cline"
 alias ge="goose"
+# alias cf=
 
 # Help 
 alias help="bat ~/.config/README.md"
@@ -134,7 +139,7 @@ alias gsu='git stash -u'
 
 # Docker 
 alias d='docker'
-alias di='docker images'
+alias di='docker images --tree'
 alias ddf='docker system df'
 alias dps='docker ps'
 alias dpsa='docker ps -a'

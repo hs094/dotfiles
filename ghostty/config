@@ -13,13 +13,13 @@ background-opacity = 0.85
 background-blur-radius = 30
 
 # Tmux Window decoration
-# window-decoration = none 
-# window-padding-balance = true
-# macos-titlebar-style = hidden
+window-decoration = none 
+window-padding-balance = true
+macos-titlebar-style = hidden
 
 # Native Window Decoration 
-window-decoration = true
-macos-titlebar-style = tabs
+# window-decoration = true
+# macos-titlebar-style = tabs
 
 # ----------------------------------------------------------------------------
 # Font Settings
