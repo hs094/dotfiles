@@ -58,3 +58,6 @@ eval "$(intelli-shell init zsh)"
 
 # Added by Antigravity
 export PATH="/Users/hs094/.antigravity/antigravity/bin:$PATH"
+
+# Added by Antigravity
+export PATH="/Users/hs094/.antigravity/antigravity/bin:$PATH"

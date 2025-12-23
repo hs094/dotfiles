@@ -1,0 +1,6 @@
+{
+  "provider": "ollama",
+  "openai_api_key": "",
+  "ollama_model": "llama3.1",
+  "ollama_url": "http://localhost:11434"
+}

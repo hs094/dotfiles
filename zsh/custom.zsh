@@ -127,6 +127,11 @@ weather() {
   fi
 }
 
+drmpat() {
+  local pattern="${1:?Provide a regex pattern}"
+  docker volume ls -q | grep -E "$pattern" | xargs docker volume rm
+}
+
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then 
   mkdir -p "$(dirname $ZINIT_HOME)" 

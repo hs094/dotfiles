@@ -1,0 +1,20 @@
+# gitleaks.toml
+
+title = "Gitleaks Configuration"
+description = "Configuration for Gitleaks to ignore sensitive files."
+
+[allowlist]
+  # Add patterns of files to ignore
+  path = [
+    "^.*\\.env$",        # Ignore all .env files
+    "^.*\\.env.*$",     # Ignore all files with names like .env*, e.g., .env.local
+    # Add more patterns as needed
+  ]
+
+[[rules]]
+  # Example rule that matches a specific pattern (this is just an example)
+  description = "Generic password"
+  regex = '''(?i)(password|pass|pw)=([^\n\r]+)'''
+  file = "" # No file restriction for this rule, will check all files
+
+# Other rules can be defined below

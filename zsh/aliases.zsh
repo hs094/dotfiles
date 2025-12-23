@@ -24,7 +24,14 @@ alias oc="opencode"
 alias cc="claude"
 alias cl="cline"
 alias ge="goose"
+alias cpl="copilot"
+alias kil="kilocode"
+alias qw="qwen"
+alias ag="auggie"
+alias misv="vibe"
 # alias cf=
+
+alias lc="nvim leetcode.nvim"
 
 # Help 
 alias help="bat ~/.config/README.md"
@@ -55,7 +62,6 @@ alias zshreload="source ~/.zshrc"
 alias sshconf='bat ~/.ssh/config'
 alias zshconfig="bat ~/.zshrc"
 alias ls="eza --no-filesize --icons=always --color=always --ignore-glob=.git --no-user"
-alias lsa="eza -a --no-filesize --icons=always --color=always --ignore-glob=.git --no-user"
 alias ll="eza -al --no-filesize  --icons=always --color=always --ignore-glob=.git --no-user"
 
 # System
@@ -104,10 +110,9 @@ alias gbD='git branch -D'
 alias gi='git init'
 alias gcl='git clone'
 
-alias gs="git status"
-alias gss="git status --short"
-
+alias gs="git status --short"
 alias gf='git fetch'
+alias gpu='git push origin'
 alias gfo='git fetch origin'
 alias gfp='git fetch --prune'
 alias gup='git fetch && git rebase'

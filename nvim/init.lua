@@ -5,7 +5,6 @@ vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.clipboard = "unnamedplus"                -- Use system clipboard
 vim.opt.termguicolors = true                     -- Enable true colors
 vim.opt.cursorline = true                        -- Highlight current line
 vim.opt.wrap = false                             -- Disable line wrapping
@@ -16,10 +15,8 @@ vim.opt.smartcase = true                         -- Case sensitive if uppercase 
 vim.opt.updatetime = 300                         -- Faster completion
 vim.opt.signcolumn = "yes"                       -- Always show sign column
 
--- Core keymaps
-vim.keymap.set('n', '<leader>l', function() vim.cmd('Lazy') end, { desc = 'Open/Close Lazy plugin manager' })
--- Note: <leader>. is mapped to Snacks.scratch() in snacks.lua
--- To clear search highlights, press <Esc> (works by default) or use :noh
+-- Load keymaps
+require('config.keymaps')
 
 -- Load lazy.nvim configuration
 require('config.lazy')

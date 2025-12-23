@@ -85,3 +85,5 @@
 [rebase]
   autoStash = true
   missingCommitsCheck = warn
+[alias]
+	commit-at = "!f() { \\\n  TS=$(gdate -d \"$1\" --iso-8601=seconds); \\\n  GIT_AUTHOR_DATE=\"$TS\" GIT_COMMITTER_DATE=\"$TS\" git commit -m \"$2\"; \\\n}; f"
