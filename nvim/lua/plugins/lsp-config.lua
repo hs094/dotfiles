@@ -86,7 +86,7 @@ return {
 				)
 			end
 
-			local servers = { "lua_ls", "ts_ls", "ruff" }
+			local servers = { "lua_ls", "ts_ls", "ruff", "basedpyright", "jdtls", "yamlls", "clangd" }
 
 			for _, server in ipairs(servers) do
 				vim.lsp.config(server, {

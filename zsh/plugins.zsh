@@ -1,1 +1,1 @@
-plugins=(git kubectl history copybuffer dirhistory man-preview cdf)
+plugins=(git aws kubectl history copybuffer dirhistory man-preview cdf)

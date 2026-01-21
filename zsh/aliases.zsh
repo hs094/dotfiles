@@ -1,3 +1,24 @@
+alias ghbranches='git fetch --quiet 2>/dev/null; printf "\033[1;37m%-35s %-15s %10s\033[0m\n" "BRANCH" "UPDATED" "BEHIND|AHEAD"; printf "\033[2m%s\033[0m\n" "$(printf "%.80s" "────────────────────────────────────────────────────────────────────────────────")"; git for-each-ref --sort=-committerdate --format="%(refname:short)|%(committerdate:relative)" refs/heads/ | while IFS="|" read branch date; do
+  if [ "$branch" != "main" ]; then
+    counts=$(git rev-list --left-right --count main...${branch} 2>/dev/null)
+    if [ -n "$counts" ]; then
+      behind=$(echo $counts | awk '\''{print $1}'\'')
+      ahead=$(echo $counts | awk '\''{print $2}'\'')
+      if [ $behind -eq 0 ] && [ $ahead -eq 0 ]; then
+        color="\033[0;32m"
+      elif [ $behind -gt 0 ] && [ $ahead -eq 0 ]; then
+        color="\033[0;31m"
+      elif [ $behind -eq 0 ] && [ $ahead -gt 0 ]; then
+        color="\033[0;36m"
+      else
+        color="\033[0;33m"
+      fi
+      printf "${color}%-35s\033[0m \033[2m%-15s\033[0m %2d\033[2m|\033[0m%2d\n" "$branch" "$date" "$behind" "$ahead"
+    fi
+  fi
+done'
+
+
 # Brew Upgrade and Update
 alias brewup="brew update && brew upgrade && brew cleanup && brew doctor"
 
@@ -46,6 +67,7 @@ alias uvr="uv remove --active"
 # Edit Important Files
 alias ezshrc="nvim ~/.zshrc"
 alias ealias="nvim ~/.config/zsh/aliases.zsh"
+alias eexport="nvim ~/.config/zsh/exports.zsh"
 alias ecustom="nvim ~/.config/zsh/custom.zsh"
 alias eghost="nvim ~/.config/ghostty/config"
 export obsidian="/Users/hs094/Library/Mobile Documents/iCloud~md~obsidian/Documents"
@@ -90,6 +112,7 @@ alias gafzf='git ls-files -m -o --exclude-standard | grep -v "__pycache__" | fzf
 alias grmfzf='git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 -o -t git rm' # Git rm with fzf
 alias grfzf='git diff --name-only | fzf -m --print0 | xargs -0 -o -t git restore' # Git restore with fzf
 alias grsfzf='git diff --name-only | fzf -m --print0 | xargs -0 -o -t git restore --staged' # Git restore --staged with fzf
+
 
 # Git
 alias ghps='git@ghp:hs094'

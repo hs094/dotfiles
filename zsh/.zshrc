@@ -1,7 +1,11 @@
+autoload -Uz compinit
+compinit
 unsetopt login
 
 # Set the dorectory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+
+export INTELLI_BOOKMARK_HOTKEY=\C-o
 
 # Ensure Homebrew is available
 if [ -f "/opt/homebrew/bin/brew" ]; then
@@ -13,9 +17,8 @@ export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-eval "$(direnv hook zsh)"
-# eval "$(register-python-argcomplete --shell zsh eval-main)"
-# eval "$(atuin init zsh)"
+eval "$(register-python-argcomplete --shell zsh eval-main)"
+eval "$(atuin init zsh)"
 
 export PATH="$PATH:/Users/hs094/.cargo/bin"
 
@@ -30,7 +33,7 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export FUNCNEST=1000
 export PATH="$HOME/.local/bin:$PATH"
 export PATH=$PATH:/usr/local/bin
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Custom Exports to Load
 [ -f "$HOME/.config/zsh/export.zsh" ] && source "$HOME/.config/zsh/export.zsh"

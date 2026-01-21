@@ -1,6 +1,11 @@
 export LANG=en_US.UTF-8
 export INPUTRC="$HOME/.config/readline/inputrc"
 
+
+#Flags for AWS
+export AWS_CLI_AUTO_PROMPT=on
+
+
 # VS Code
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin$PATH"
 
@@ -60,6 +65,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Meteor
 export PATH="/Users/hardiksoni/.meteor:$PATH"
+export CARAPACE_BRIDGES='zsh'
 
 # Function to count files up to a specified depth level
 countfiles() {

@@ -5,6 +5,8 @@ raycast/ai
 raycast/ca.pem
 raycast/config.json
 
+helix/languages.toml
+
 # Application-specific directories
 sourcery/
 configstore/

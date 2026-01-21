@@ -1,5 +1,13 @@
-return {
+ return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
-	opts = {},
+	opts = {
+		spec = {
+			{
+				"<leader>gf",
+				desc = "Format file using LSP",
+				icon = "󰽰",
+			},
+		},
+	},
 }

@@ -386,20 +386,6 @@ return {
 			desc = "Select Scratch Buffer",
 		},
 		{
-			"<leader>bd",
-			function()
-				Snacks.bufdelete()
-			end,
-			desc = "Delete Buffer",
-		},
-		{
-			"<leader>cR",
-			function()
-				Snacks.rename.rename_file()
-			end,
-			desc = "Rename File",
-		},
-		{
 			"<leader>un",
 			function()
 				Snacks.notifier.hide()

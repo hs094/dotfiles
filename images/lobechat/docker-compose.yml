@@ -1,0 +1,13 @@
+services:
+  lobe-chat:
+    image: lobehub/lobe-chat
+    container_name: lobe-chat
+    restart: always
+    ports:
+      - '3210:3210'
+    env_file:
+      - .env
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_PROXY_URL=${OPENAI_PROXY_URL?https://api-proxy.com/v1}
+      - ACCESS_CODE= lobe66

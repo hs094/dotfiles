@@ -1,20 +1,71 @@
-# gitleaks.toml
+title = "Production Gitleaks Configuration"
+description = "High-signal Gitleaks configuration for scanning all files including ignored ones when used with --no-git."
 
-title = "Gitleaks Configuration"
-description = "Configuration for Gitleaks to ignore sensitive files."
-
+# ---------------------------------------------------
+# GLOBAL ALLOWLIST (tight, intentional)
+# ---------------------------------------------------
 [allowlist]
-  # Add patterns of files to ignore
-  path = [
-    "^.*\\.env$",        # Ignore all .env files
-    "^.*\\.env.*$",     # Ignore all files with names like .env*, e.g., .env.local
-    # Add more patterns as needed
-  ]
+description = "Paths and patterns intentionally excluded"
+
+# Only exclude things that should NEVER contain secrets
+paths = [
+  '''^vendor/''',
+  '''^node_modules/''',
+  '''^dist/''',
+  '''^build/''',
+  '''^\\.git/''',
+  '''^coverage/''',
+  '''^\\.next/''',
+]
+
+# Allow known placeholder values (important for templates)
+regexes = [
+  '''(?i)example(_|-)?(key|token|secret)''',
+  '''(?i)your_(api|secret|token)_here''',
+  '''(?i)changeme''',
+  '''(?i)dummy(_|-)?(key|token|secret)'''
+]
+
+# ---------------------------------------------------
+# CORE SECRET RULES
+# ---------------------------------------------------
 
 [[rules]]
-  # Example rule that matches a specific pattern (this is just an example)
-  description = "Generic password"
-  regex = '''(?i)(password|pass|pw)=([^\n\r]+)'''
-  file = "" # No file restriction for this rule, will check all files
+id = "generic-secret"
+description = "Generic high-entropy secret assignment"
+regex = '''(?i)(api|auth|access|secret|token|key|password)[^=\n]{0,20}=[^=\n]{20,}'''
+entropy = 3.5
+keywords = ["secret", "token", "key", "password"]
 
-# Other rules can be defined below
+[[rules]]
+id = "aws-access-key"
+description = "AWS Access Key ID"
+regex = '''AKIA[0-9A-Z]{16}'''
+
+[[rules]]
+id = "aws-secret-key"
+description = "AWS Secret Access Key"
+regex = '''(?i)aws(.{0,20})?(secret|access).{0,20}=[0-9a-zA-Z/+]{40}'''
+entropy = 4.5
+
+[[rules]]
+id = "jwt-token"
+description = "JWT token"
+regex = '''eyJ[A-Za-z0-9_-]+\\.eyJ[A-Za-z0-9_-]+\\.[A-Za-z0-9_-]+'''
+
+[[rules]]
+id = "private-key"
+description = "Private key blocks"
+regex = '''-----BEGIN (RSA|EC|DSA|OPENSSH|PGP) PRIVATE KEY-----'''
+
+# ---------------------------------------------------
+# ENV FILES — EXPLICITLY INCLUDED
+# ---------------------------------------------------
+
+[[rules]]
+id = "env-files-secrets"
+description = "Secrets inside env and env.example files"
+path = '''\\.env(\\.example|\\.local|\\.prod|\\.dev)?$'''
+regex = '''(?i)(api|secret|token|key|password)[^=\n]*=[^=\n]{12,}'''
+entropy = 3.0
+

@@ -1,0 +1,57 @@
+services:
+  # traefik:
+  #   image: traefik:v3.0
+  #   restart: always
+  #   command:
+  #     - "--api.insecure=true"
+  #     - "--providers.docker=true"
+  #     - "--providers.docker.exposedbydefault=false"
+  #     - "--entrypoints.web.address=:80"
+  #     - "--entrypoints.websecure.address=:443"
+  #     - "--certificatesresolvers.duckdns.acme.email=${SSL_EMAIL}"
+  #     - "--certificatesresolvers.duckdns.acme.storage=/letsencrypt/acme.json"
+  #     - "--certificatesresolvers.duckdns.acme.dnschallenge=true"
+  #     - "--certificatesresolvers.duckdns.acme.dnschallenge.provider=duckdns"
+  #     - "--certificatesresolvers.duckdns.acme.dnschallenge.delaybeforecheck=0"
+  #   environment:
+  #     - DUCKDNS_TOKEN=${DUCKDNS_TOKEN}
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - traefik_data:/letsencrypt
+  #     - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    restart: always
+    expose:
+      - "5678"
+    ports:
+      - "5678:5678"
+    # labels:
+    #   - traefik.enable=true
+    #   - traefik.http.routers.n8n.rule=Host(`n8n-hs094.duckdns.org`)
+    #   - traefik.http.routers.n8n.entrypoints=web,websecure
+    #   - traefik.http.routers.n8n.tls=true
+    #   - traefik.http.routers.n8n.tls.certresolver=duckdns
+    #   - traefik.http.services.n8n.loadbalancer.server.port=5678
+    environment:
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - N8N_RUNNERS_ENABLED=true
+      - NODE_ENV=production
+    # - WEBHOOK_URL=https://n8n-hs094.duckdns.org/
+      - N8N_SECURE_COOKIE=false
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+      - TZ=${GENERIC_TIMEZONE}
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./local-files:/files
+
+volumes:
+  n8n_data:
+  traefik_data:
+
