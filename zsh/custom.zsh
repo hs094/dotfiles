@@ -132,6 +132,21 @@ drmpat() {
   docker volume ls -q | grep -E "$pattern" | xargs docker volume rm
 }
 
+# Git Sparse Clone and Checkout
+gcls() {
+  if [ "$#" -lt 2 ]; then
+    echo "Usage: gcls <org/repo> <path>"
+    return 1
+  fi
+  repo="$1"
+  path="$2"
+  git clone --filter=blob:none --sparse "git@github.com:${repo}" &&
+  cd "$dir" &&
+  git sparse-checkout set "$path"
+}
+
+
+
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then 
   mkdir -p "$(dirname $ZINIT_HOME)" 
@@ -165,14 +180,6 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 
 # Forgit
 [ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ] && source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh
-
-# pnpm
-export PNPM_HOME="/Users/hardiksoni/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
 # Load zsh-autosuggestions only if Atuin is not available
 if ! command -v atuin >/dev/null 2>&1; then
@@ -278,6 +285,3 @@ function vi-yank-xclip {
   zle vi-yank
   echo "$CUTBUFFER" | pbcopy -i
 }
-
-# zle -N vi-yank-xclip
-# bindkey -M vicmd 'y' vi-yank-xclip

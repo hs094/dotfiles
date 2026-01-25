@@ -64,3 +64,4 @@ export PATH="/Users/hs094/.antigravity/antigravity/bin:$PATH"
 
 # Added by Antigravity
 export PATH="/Users/hs094/.antigravity/antigravity/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"

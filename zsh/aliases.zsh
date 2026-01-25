@@ -52,6 +52,9 @@ alias ag="auggie"
 alias misv="vibe"
 # alias cf=
 
+# Neovim Configuration Aliases
+alias nvims="nvims"
+
 alias lc="nvim leetcode.nvim"
 
 # Help 
@@ -70,8 +73,7 @@ alias ealias="nvim ~/.config/zsh/aliases.zsh"
 alias eexport="nvim ~/.config/zsh/exports.zsh"
 alias ecustom="nvim ~/.config/zsh/custom.zsh"
 alias eghost="nvim ~/.config/ghostty/config"
-export obsidian="/Users/hs094/Library/Mobile Documents/iCloud~md~obsidian/Documents"
-export rcscriptcmd="~/.config/raycast/commands"
+
 
 # Folders
 alias doc="cd $HOME/Documents"
@@ -114,10 +116,9 @@ alias grfzf='git diff --name-only | fzf -m --print0 | xargs -0 -o -t git restore
 alias grsfzf='git diff --name-only | fzf -m --print0 | xargs -0 -o -t git restore --staged' # Git restore --staged with fzf
 
 
-# Git
-alias ghps='git@ghp:hs094'
-alias ghws='git@ghp:hardik0942'
+alias nvima='NVIM_APPNAME=nvim-astro nvim'
 
+# Git
 alias ga='git add'
 alias gc='git commit'
 alias gcm='git commit -m'
@@ -131,7 +132,7 @@ alias gbd='git branch -d'
 alias gbD='git branch -D'
 
 alias gi='git init'
-alias gcl='git clone'
+alias gcl='git clone git@github.com:' # Usage: gcl <username/repo.git>
 
 alias gs="git status --short"
 alias gf='git fetch'
