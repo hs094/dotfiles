@@ -8,82 +8,67 @@
 	name = hs094
 	email = iamhardikat11@gmail.com
 
-[http]
-	postBuffer = 524288000
-
 [credential]
 	helper = osxkeychain
 
 [init]
-  defaultBranch = main
+	defaultBranch = main
 
 [core]
-  compression = 9
-  whitespace = error
-  preloadindex = true
-  pager = delta
-	excludesfile = $HOME/.config/git/.gitignore_global
+	excludesfile = ~/.config/git/.gitignore_global
 	editor = nvim
 
-[advice]
-  addEmptyPathspec = false
-  pushNonFastForward = false
-  statusHints = false
-
-[interactive]
-  diffFilter = delta --color-only
-  singlekey = true
-
-[delta]
-    navigate = true  # use n and N to move between diff sections
-    dark = true      # or light = true, or omit for auto-detection
-
-[merge]
-  conflictstyle = zdiff3
-
-[url "git@github.com:hs094/"]
-  insteadOf = "hs:"
-
-[url "git@github.com:"]
-  insteadOf = "gh:"
-
-[url "git@github.com:Tailored-AI-Hub/"]
-  insteadOf = "tai:" 
-
 [status]
-  branch = true
-  showStash = true
-  showUntrackedFiles = all
+	branch = true
+	showStash = true
+	showUntrackedFiles = all
 
 [diff]
-  context = 3
-  renames = copies
-  interHunkContext = 10
+	context = 3
+	renames = true
+	interHunkContext = 10
 
 [pager]
-  diff = diff-so-fancy | $PAGER
+	diff = delta
 
-[diff-so-fancy]
-  markEmptyLines = false
+[delta]
+	navigate = true
+	dark = true
+	side-by-side = false
+	line-numbers = true
 
 [color "diff"]
-  meta = black bold
-  frag = magenta
-  context = white
-  whitespace = yellow reverse
-  old = red
+	meta = black bold
+	frag = magenta
+	context = white
+	whitespace = yellow reverse
+	old = red
 
 [push]
-  autoSetupRemote = true
-  default = current
-  followTags = true
+	autoSetupRemote = true
+	default = current
+	followTags = true
 
 [pull]
-  default = current
-  rebase = true
+	default = current
+	rebase = true
 
 [rebase]
-  autoStash = true
-  missingCommitsCheck = warn
+	autoStash = true
+	missingCommitsCheck = warn
+
+[url "git@github.com:hs094/"]
+	insteadOf = hs:
+
+[url "git@github.com:"]
+	insteadOf = gh:
+
+[url "git@github.com:Tailored-AI-Hub/"]
+	insteadOf = tai:
+
 [alias]
-	commit-at = "!f() { \\\n  TS=$(gdate -d \"$1\" --iso-8601=seconds); \\\n  GIT_AUTHOR_DATE=\"$TS\" GIT_COMMITTER_DATE=\"$TS\" git commit -m \"$2\"; \\\n}; f"
+	commit-at = "!f() { \
+	  TS=$(date -j -f \"%Y-%m-%d %H:%M:%S\" \"$1\" \"+%Y-%m-%dT%H:%M:%S\"); \
+	  GIT_AUTHOR_DATE=\"$TS\" GIT_COMMITTER_DATE=\"$TS\" git commit -m \"$2\"; \
+	}; f"
+

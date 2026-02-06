@@ -423,7 +423,7 @@ return {
 				Snacks.notifier.show_history()
 			end,
 			desc = "Notification History",
-		}
+		},
 	},
 
 	init = function()

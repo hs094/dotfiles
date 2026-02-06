@@ -288,8 +288,9 @@ return {
 			vim.keymap.set("n", "<leader>dj", dap.down, { desc = "Move Down Stack Frame" })
 			vim.keymap.set("n", "<leader>dH", dap.clear_breakpoints, { desc = "Clear All Breakpoints" })
 			vim.keymap.set("n", "<leader>dx", dap.terminate, { desc = "Terminate Debug Session" })
-			vim.keymap.set("n", "<leader>dw", dap.eval, { desc = "Evaluate Word Under Cursor" })
-			vim.keymap.set("v", "<leader>dw", dap.visual_eval, { desc = "Evaluate Visual Selection" })
+			local widgets = require("dap.ui.widgets")
+			vim.keymap.set("n", "<leader>dw", widgets.hover, { desc = "Evaluate Word Under Cursor" })
+			vim.keymap.set("v", "<leader>dw", widgets.hover, { desc = "Evaluate Visual Selection" })
 		end,
 	},
 	{
@@ -314,14 +315,7 @@ return {
 					}
 					return config
 				end,
-				js_debug = function(config)
-					config.adapters = {
-						type = "server",
-						host = "127.0.0.1",
-						port = "${port}",
-					}
-					return config
-				end,
+
 			},
 			ensure_installed = {
 				"python",

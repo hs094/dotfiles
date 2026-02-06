@@ -19,6 +19,11 @@ alias ghbranches='git fetch --quiet 2>/dev/null; printf "\033[1;37m%-35s %-15s %
 done'
 
 
+alias ghopen='gh repo view --web'
+
+alias skill-add='npx skills add'
+
+alias jl='jless'
 # Brew Upgrade and Update
 alias brewup="brew update && brew upgrade && brew cleanup && brew doctor"
 
@@ -83,6 +88,7 @@ alias ss="cd $HOME/Screenshot/"
 
 # Add personal aliases and configurations
 alias zshreload="source ~/.zshrc"
+alias zshr="source ~/.zshrc"
 alias sshconf='bat ~/.ssh/config'
 alias zshconfig="bat ~/.zshrc"
 alias ls="eza --no-filesize --icons=always --color=always --ignore-glob=.git --no-user"

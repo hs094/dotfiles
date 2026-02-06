@@ -181,25 +181,21 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]=none
 # Forgit
 [ -f $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh ] && source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.zsh
 
-# Load zsh-autosuggestions only if Atuin is not available
-if ! command -v atuin >/dev/null 2>&1; then
-    source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
 
 # Yazi
-# function y() {
-#     local tmp cwd
-#     tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-#     command yazi "$@" --cwd-file="$tmp"  # Ensure it calls 'yazi' and not 'y' again
-#     if [[ -f "$tmp" ]]; then
-#         cwd="$(<"$tmp")"
-#         rm -f "$tmp"
+function y() {
+     local tmp cwd
+     tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+     command yazi "$@" --cwd-file="$tmp"  # Ensure it calls 'yazi' and not 'y' again
+     if [[ -f "$tmp" ]]; then
+         cwd="$(<"$tmp")"
+         rm -f "$tmp"
 
-#         if [[ -n "$cwd" && "$cwd" != "$PWD" ]]; then
-#             cd "$cwd" || return
-#         fi
-#     fi
-# }
+         if [[ -n "$cwd" && "$cwd" != "$PWD" ]]; then
+             cd "$cwd" || return
+         fi
+     fi 
+}
 
 # NOTE: FZF
 [ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"

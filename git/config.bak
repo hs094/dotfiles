@@ -1,0 +1,89 @@
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[user]
+	name = hs094
+	email = iamhardikat11@gmail.com
+
+[http]
+	postBuffer = 524288000
+
+[credential]
+	helper = osxkeychain
+
+[init]
+  defaultBranch = main
+
+; [core]
+;   compression = 9
+;   whitespace = error
+;   preloadindex = true
+;   pager = delta
+; 	excludesfile = $HOME/.config/git/.gitignore_global
+; 	editor = nvim
+;
+; [advice]
+;   addEmptyPathspec = false
+;   pushNonFastForward = false
+;   statusHints = false
+;
+; [interactive]
+;     diffFilter = delta --color-only
+;
+; [delta]
+;     navigate = true  # use n and N to move between diff sections
+;     dark = true      # or light = true, or omit for auto-detection
+;
+; [merge]
+;     conflictStyle = zdiff3
+;
+
+[url "git@github.com:hs094/"]
+  insteadOf = "hs:"
+
+[url "git@github.com:"]
+  insteadOf = "gh:"
+
+[url "git@github.com:Tailored-AI-Hub/"]
+  insteadOf = "tai:" 
+
+[status]
+  branch = true
+  showStash = true
+  showUntrackedFiles = all
+
+[diff]
+  context = 3
+  renames = copies
+  interHunkContext = 10
+
+[pager]
+  diff = diff-so-fancy | $PAGER
+
+[diff-so-fancy]
+  markEmptyLines = false
+
+[color "diff"]
+  meta = black bold
+  frag = magenta
+  context = white
+  whitespace = yellow reverse
+  old = red
+
+[push]
+  autoSetupRemote = true
+  default = current
+  followTags = true
+
+[pull]
+  default = current
+  rebase = true
+
+[rebase]
+  autoStash = true
+  missingCommitsCheck = warn
+[alias]
+	commit-at = "!f() { \\\n  TS=$(gdate -d \"$1\" --iso-8601=seconds); \\\n  GIT_AUTHOR_DATE=\"$TS\" GIT_COMMITTER_DATE=\"$TS\" git commit -m \"$2\"; \\\n}; f"

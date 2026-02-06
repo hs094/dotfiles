@@ -17,8 +17,6 @@ export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-eval "$(register-python-argcomplete --shell zsh eval-main)"
-eval "$(atuin init zsh)"
 
 export PATH="$PATH:/Users/hs094/.cargo/bin"
 
@@ -65,3 +63,9 @@ export PATH="/Users/hs094/.antigravity/antigravity/bin:$PATH"
 # Added by Antigravity
 export PATH="/Users/hs094/.antigravity/antigravity/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export ANTHROPIC_BASE_URL="http://localhost:8080"
+export ANTHROPIC_API_KEY="test"
+export ANTHROPIC_API_KEY="test"
+export ANTHROPIC_BASE_URL="http://localhost:8080"
+export ANTHROPIC_BASE_URL="http://localhost:8080"
+export ANTHROPIC_API_KEY="test"

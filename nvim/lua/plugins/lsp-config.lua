@@ -78,6 +78,7 @@ return {
 				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 				vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 				vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+				vim.keymap.set("n", "<leader>D", vim.diagnostic.setloclist, opts)
 				vim.keymap.set(
 					"n",
 					"<leader>gf",
@@ -86,7 +87,7 @@ return {
 				)
 			end
 
-			local servers = { "lua_ls", "ts_ls", "ruff", "basedpyright", "jdtls", "yamlls", "clangd" }
+			local servers = { "lua_ls", "ts_ls", "ruff", "basedpyright", "jdtls", "yamlls" }
 
 			for _, server in ipairs(servers) do
 				vim.lsp.config(server, {
@@ -95,6 +96,38 @@ return {
 				})
 				vim.lsp.enable(server)
 			end
+
+			vim.lsp.config("clangd", {
+				capabilities = capabilities,
+				on_attach = on_attach,
+				cmd = {
+					"clangd",
+					"--offset-encoding=utf-16",
+					"--background-index",
+					"--clang-tidy",
+					"--header-insertion=iwyu",
+					"--completion-style=detailed",
+					"--function-arg-placeholders",
+				},
+				root_dir = vim.fs.dirname(vim.fs.find({ ".git", "compile_commands.json" }, { upward = true })[1]),
+				single_file_support = true,
+				init_options = {
+					clangdFileStatus = true,
+					useColorHighlighting = true,
+					completeUnimported = true,
+					headerInsertion = "never",
+				},
+				compile_commands = {
+					fallbackFlags = {
+						"-I/opt/homebrew/Cellar/gcc/15.2.0/include/c++/15",
+						"-I/opt/homebrew/Cellar/gcc/15.2.0/include/c++/15/aarch64-apple-darwin25",
+						"-I/opt/homebrew/Cellar/gcc/15.2.0/include/c++/15/backward",
+						"-I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
+						"-I/Library/Developer/CommandLineTools/usr/lib/clang/17/include",
+					},
+				},
+			})
+			vim.lsp.enable("clangd")
 		end,
 	},
 }
