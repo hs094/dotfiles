@@ -145,13 +145,36 @@ gcls() {
   git sparse-checkout set "$path"
 }
 
+gitfco() {
+  local path="$1"
 
+  if [[ -z "$path" ]]; then
+    echo "Usage: gitfco <file-or-directory-path>"
+    return 1
+  fi
 
-# Download Zinit, if it's not there yet
-if [ ! -d "$ZINIT_HOME" ]; then 
-  mkdir -p "$(dirname $ZINIT_HOME)" 
-  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME" 
-fi
+  local selected
+  selected=$(git log --all --reverse \
+    --pretty=format:'%C(yellow)%h%Creset %C(white)%<(50,trunc)%s%Creset %C(cyan)%an%Creset %C(green)%ad%Creset' \
+    --date=relative \
+    -- "$path" |
+    fzf --ansi \
+        --no-sort \
+        --reverse \
+        --height=80% \
+        --preview 'git show --color=always {1}' \
+        --preview-window=right:60% )
+
+  if [[ -n "$selected" ]]; then
+    local commit
+    commit=$(echo "$selected" | awk '{print $1}')
+    echo "🔁 Checking out commit $commit"
+    git checkout "$commit"
+  else
+    echo "❌ No commit selected"
+  fi
+}
+
 
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"

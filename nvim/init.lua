@@ -15,6 +15,8 @@ vim.opt.smartcase = true -- Case sensitive if uppercase letters are used
 vim.opt.updatetime = 300 -- Faster completion
 vim.opt.signcolumn = "yes" -- Always show sign column
 vim.opt.clipboard = "unnamedplus" -- Use system clipboard
+vim.opt.title = true -- Enable window title
+vim.opt.titlestring = "%t" -- Show only filename in title bar
 
 vim.cmd("filetype plugin on") -- Enable filetype detection
 vim.cmd("syntax on") -- Enable syntax highlighting

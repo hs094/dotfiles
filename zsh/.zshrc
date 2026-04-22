@@ -1,8 +1,6 @@
-autoload -Uz compinit
-compinit
 unsetopt login
 
-# Set the dorectory we want to store zinit and plugins
+# Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 export INTELLI_BOOKMARK_HOTKEY=\C-o
@@ -12,7 +10,6 @@ if [ -f "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Add to ~/.zshrc
 export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(starship init zsh)"
@@ -23,13 +20,12 @@ export PATH="$PATH:/Users/hs094/.cargo/bin"
 # Add completion directories to fpath BEFORE compinit
 fpath=($HOME/.config/zsh $fpath)
 
-# Initialize completion system after fpath is set
+# Initialize completion system once, after fpath is set
 autoload -Uz compinit
 compinit
 
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export FUNCNEST=1000
-export PATH="$HOME/.local/bin:$PATH"
 export PATH=$PATH:/usr/local/bin
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
@@ -52,20 +48,17 @@ export INTELLI_HOME="/Users/hs094/Library/Application Support/org.IntelliShell.I
 # export INTELLI_VARIABLE_HOTKEY='^l'
 # export INTELLI_BOOKMARK_HOTKEY='^b'
 # export INTELLI_FIX_HOTKEY='^x'
-# export INTELLI_SKIP_ESC_BIND=0
+# export INTELLI_SKIP_ESC_BIND=0ƒ
 alias is="intelli-shell"
 export PATH="$INTELLI_HOME/bin:$PATH"
 eval "$(intelli-shell init zsh)"
 
 # Added by Antigravity
 export PATH="/Users/hs094/.antigravity/antigravity/bin:$PATH"
-
-# Added by Antigravity
-export PATH="/Users/hs094/.antigravity/antigravity/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export ANTHROPIC_BASE_URL="http://localhost:8080"
-export ANTHROPIC_API_KEY="test"
-export ANTHROPIC_API_KEY="test"
-export ANTHROPIC_BASE_URL="http://localhost:8080"
-export ANTHROPIC_BASE_URL="http://localhost:8080"
-export ANTHROPIC_API_KEY="test"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+# OpenClaw Completion
+source "/Users/hs094/.openclaw/completions/openclaw.zsh"
+
+alias claude-mem='bun "/Users/hs094/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'

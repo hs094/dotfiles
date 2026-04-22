@@ -17,7 +17,15 @@ export STARSHIP_CONFIG="~/.config/starship/starship.toml"
 export FUNCNEST=1000
 export EDITOR="nvim"
 
-export AWS_CLI_AUTO_PROMPT=on
+
+# AWS
+export AWS_CLI_AUTO_PROMPT=on-partial
+
+# Git
+export GIT_EDITOR="nvim"
+export LG_CONFIG_FILE="$HOME/.config/lazygit/config.yml"
+
+
 export PIPENV_VENV_IN_PROJECT=1
 export NVM_DIR="$HOME/.nvm"
 export ZSH="$HOME/.config/.oh-my-zsh"

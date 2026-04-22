@@ -71,4 +71,5 @@
 	  TS=$(date -j -f \"%Y-%m-%d %H:%M:%S\" \"$1\" \"+%Y-%m-%dT%H:%M:%S\"); \
 	  GIT_AUTHOR_DATE=\"$TS\" GIT_COMMITTER_DATE=\"$TS\" git commit -m \"$2\"; \
 	}; f"
+	prune-gone = "!git config --global --get alias.prune-gone fetch --prune && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D"
 

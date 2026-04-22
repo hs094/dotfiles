@@ -20,7 +20,7 @@ done'
 
 
 alias ghopen='gh repo view --web'
-
+alias bai='npx @langwatch/better-agents init'
 alias skill-add='npx skills add'
 
 alias jl='jless'
@@ -168,8 +168,11 @@ alias gph='git push'
 alias gpo='git push origin'
 alias gcph='git push origin $1'
 
+# Git Worktree
+alias gwl='git worktree list'
+
 # Git Stash Alias Shortcuts
-alias gsl='git stash list' 
+alias gsl='git stash list'
 alias gsu='git stash -u'
 
 # Docker 
