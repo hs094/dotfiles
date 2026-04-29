@@ -14,7 +14,12 @@ return {
 			enabled = true,
 			timeout = 3000,
 		},
-		picker = { enabled = true },
+		picker = {
+			enabled = true,
+			layout = {
+				preset = "telescope",
+			},
+		},
 		quickfile = { enabled = true },
 		scope = { enabled = true },
 		scroll = { enabled = true },
@@ -83,13 +88,6 @@ return {
 
 		-- File finding
 		{
-			"<leader>fb",
-			function()
-				Snacks.picker.buffers()
-			end,
-			desc = "Buffers",
-		},
-		{
 			"<leader>fc",
 			function()
 				Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
@@ -135,19 +133,19 @@ return {
 			desc = "Grep Open Buffers",
 		},
 		{
-			"<leader>sg",
-			function()
-				Snacks.picker.grep()
-			end,
-			desc = "Grep",
-		},
-		{
 			"<leader>sw",
 			function()
 				Snacks.picker.grep_word()
 			end,
 			desc = "Visual selection or word",
 			mode = { "n", "x" },
+		},
+		{
+			"<leader>rg",
+			function()
+				Snacks.picker.grep()
+			end,
+			desc = "Live grep (Snacks)",
 		},
 		{
 			"<leader>s'",
@@ -169,13 +167,6 @@ return {
 				Snacks.picker.autocmds()
 			end,
 			desc = "Autocmds",
-		},
-		{
-			"<leader>sc",
-			function()
-				Snacks.picker.command_history()
-			end,
-			desc = "Command History",
 		},
 		{
 			"<leader>sC",
@@ -387,7 +378,7 @@ return {
 			desc = "Dismiss All Notifications",
 		},
 		{
-			"]",
+			"]w",
 			function()
 				Snacks.words.jump(vim.v.count1)
 			end,
@@ -395,7 +386,7 @@ return {
 			mode = { "n", "t" },
 		},
 		{
-			"[",
+			"[w",
 			function()
 				Snacks.words.jump(-vim.v.count1)
 			end,
@@ -403,13 +394,6 @@ return {
 			mode = { "n", "t" },
 		},
 		-- Preserve existing custom mappings
-		{
-			"<leader>fh",
-			function()
-				Snacks.picker.help()
-			end,
-			desc = "Help",
-		},
 		{
 			"<leader>rl",
 			function()

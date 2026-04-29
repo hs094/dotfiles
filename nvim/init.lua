@@ -18,9 +18,6 @@ vim.opt.clipboard = "unnamedplus" -- Use system clipboard
 vim.opt.title = true -- Enable window title
 vim.opt.titlestring = "%t" -- Show only filename in title bar
 
-vim.cmd("filetype plugin on") -- Enable filetype detection
-vim.cmd("syntax on") -- Enable syntax highlighting
-
 -- Load keymaps
 require("config.keymaps")
 

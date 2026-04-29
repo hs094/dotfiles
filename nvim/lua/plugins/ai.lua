@@ -1,101 +1,26 @@
 return {
 	{
-		"github/copilot.vim",
-		config = function()
-			-- Enable tab completion for Copilot
-			vim.g.copilot_no_tab_map = true
-			-- Set up keybindings for Copilot
-			vim.api.nvim_set_keymap("i", "<Tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-			vim.api.nvim_set_keymap("i", "<C-J>", "copilot#Next()", { silent = true, expr = true })
-			vim.api.nvim_set_keymap("i", "<C-K>", "copilot#Previous()", { silent = true, expr = true })
-			vim.api.nvim_set_keymap("i", "<C-O>", "copilot#Dismiss()", { silent = true, expr = true })
-			-- Optional: Set up visual mode keybindings
-			vim.api.nvim_set_keymap("v", "<Tab>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
-
-			-- Copilot keymaps
-			vim.keymap.set("n", "<leader>cp", ":Copilot status<CR>", {
-				desc = "Show Copilot status",
-			})
-			vim.keymap.set("n", "<leader>cps", ":Copilot panel<CR>", {
-				desc = "Open Copilot panel",
-			})
-		end,
-	},
-	{
-		"NickvanDyke/opencode.nvim",
-		dependencies = {
-			-- Recommended for `ask()` and `select()`.
-			-- Required for `snacks` provider.
-			---@module 'snacks' <- Loads `snacks.nvim` types for configuration intellisense.
-			{ "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
-		},
-		config = function()
-			---@type opencode.Opts
-			vim.g.opencode_opts = {
-				-- Your configuration, if any — see `lua/opencode/config.lua`, or "goto definition".
-			}
-
-			-- Required for `opts.events.reload`.
-			vim.o.autoread = true
-
-			-- Recommended/example keymaps.
-			vim.keymap.set({ "n", "x" }, "<C-a>", function()
-				require("opencode").ask("@this: ", { submit = true })
-			end, { desc = "Ask opencode" })
-			vim.keymap.set({ "n", "x" }, "<C-x>", function()
-				require("opencode").select()
-			end, { desc = "Execute opencode action…" })
-			vim.keymap.set({ "n", "t" }, "<C-.>", function()
-				require("opencode").toggle()
-			end, { desc = "Toggle opencode" })
-
-			vim.keymap.set({ "n", "x" }, "go", function()
-				return require("opencode").operator("@this ")
-			end, { expr = true, desc = "Add range to opencode" })
-			vim.keymap.set("n", "goo", function()
-				return require("opencode").operator("@this ") .. "_"
-			end, { expr = true, desc = "Add line to opencode" })
-
-			vim.keymap.set("n", "<S-C-u>", function()
-				require("opencode").command("session.half.page.up")
-			end, { desc = "opencode half page up" })
-			vim.keymap.set("n", "<S-C-d>", function()
-				require("opencode").command("session.half.page.down")
-			end, { desc = "opencode half page down" })
-
-			-- You may want these if you stick with the opinionated "<C-a>" and "<C-x>" above — otherwise consider "<leader>o".
-			vim.keymap.set("n", "+", "<C-a>", { desc = "Increment", noremap = true })
-			vim.keymap.set("n", "-", "<C-x>", { desc = "Decrement", noremap = true })
-		end,
-	},
-	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		enabled = false,
-		dependencies = {
-			{ "nvim-lua/plenary.nvim", branch = "master" },
-		},
-		build = "make tiktoken",
-		opts = {
-			model = "gpt-4o",
-			temperature = 0.1,
-			window = {
-				layout = "vertical",
-				width = 0.5,
-			},
-			auto_insert_mode = true,
-			show_help = false,
-			show_folds = true,
-			highlight_selection = true,
-			question_header = "  User ",
-			answer_header = "烙  Copilot ",
-			error_header = "  Error ",
-			separator = "───",
-		},
+		"coder/claudecode.nvim",
+		dependencies = { "folke/snacks.nvim" },
+		config = true,
 		keys = {
-			{ "<leader>ac", ":CopilotChatToggle<CR>", desc = "Toggle Copilot Chat", mode = "n" },
-			{ "<leader>ae", ":CopilotChatExplain<CR>", desc = "Explain with Copilot", mode = "v" },
-			{ "<leader>ar", ":CopilotChatReview<CR>", desc = "Review with Copilot", mode = "v" },
-			{ "<leader>af", ":CopilotChatFix<CR>", desc = "Fix with Copilot", mode = "v" },
+			{ "<leader>a", nil, desc = "AI/Claude Code" },
+			{ "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
+			{ "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
+			{ "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
+			{ "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
+			{ "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
+			{ "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
+			{ "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+			{
+				"<leader>as",
+				"<cmd>ClaudeCodeTreeAdd<cr>",
+				desc = "Add file",
+				ft = { "NvimTree", "neo-tree", "oil", "minifiles", "netrw" },
+			},
+			-- Diff management
+			{ "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
+			{ "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
 		},
 	},
 }

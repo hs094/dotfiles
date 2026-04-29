@@ -6,26 +6,26 @@ return {
   cmd = "Spectre",
   keys = {
     {
-      "<leader>sr",
+      "<leader>R",
       function()
         require("spectre").open()
       end,
       desc = "Search & Replace (Spectre)",
     },
     {
-      "<leader>sw",
+      "<leader>Rw",
       function()
         require("spectre").open_visual({ select_word = true })
       end,
       mode = { "n", "v" },
-      desc = "Replace Word",
+      desc = "Replace Word (Spectre)",
     },
     {
-      "<leader>sf",
+      "<leader>Rf",
       function()
         require("spectre").open_file_search()
       end,
-      desc = "Replace in File",
+      desc = "Replace in File (Spectre)",
     },
   },
   config = function()

@@ -1,6 +1,10 @@
 return {
 	{
 		"williamboman/mason.nvim",
+		cmd = "Mason",
+		keys = {
+			{ "<leader>m", "<cmd>Mason<cr>", desc = "Open Mason" },
+		},
 		opts = {
 			ui = {
 				icons = {
@@ -10,7 +14,6 @@ return {
 				},
 			},
 		},
-		vim.keymap.set("n", "<leader>m", ":Mason<CR>", { desc = "Open Mason" }),
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
@@ -65,9 +68,8 @@ return {
 				local opts = { buffer = bufnr, silent = true }
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+				-- gD, gr handled by Snacks pickers (lsp_declarations / lsp_references)
 				vim.keymap.set(
 					{ "n", "v" },
 					"<leader>ca",
@@ -75,9 +77,18 @@ return {
 					vim.tbl_extend("force", opts, { desc = "Code Actions" })
 				)
 				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
-				vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
-				vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+				vim.keymap.set("n", "[d", function()
+					vim.diagnostic.jump({ count = -1, float = true })
+				end, opts)
+				vim.keymap.set("n", "]d", function()
+					vim.diagnostic.jump({ count = 1, float = true })
+				end, opts)
+				vim.keymap.set(
+					"n",
+					"<leader>cd",
+					vim.diagnostic.open_float,
+					vim.tbl_extend("force", opts, { desc = "Show line diagnostic" })
+				)
 				vim.keymap.set("n", "<leader>D", vim.diagnostic.setloclist, opts)
 				vim.keymap.set(
 					"n",
@@ -87,7 +98,30 @@ return {
 				)
 			end
 
-			local servers = { "lua_ls", "ts_ls", "ruff", "basedpyright", "jdtls", "yamlls" }
+			local servers = {
+				-- Core languages
+				"lua_ls",
+				"jdtls",
+				"basedpyright",
+				"ruff",
+				"rust_analyzer",
+				"gopls",
+				-- JS/TS ecosystem
+				"ts_ls",
+				"eslint",
+				"tailwindcss",
+				-- DevOps / config
+				"dockerls",
+				"docker_compose_language_service",
+				"yamlls",
+				"jsonls",
+				-- Extras
+				"marksman",
+				"bashls",
+				"sqls",
+				"prismals",
+				"graphql",
+			}
 
 			for _, server in ipairs(servers) do
 				vim.lsp.config(server, {
@@ -116,15 +150,6 @@ return {
 					useColorHighlighting = true,
 					completeUnimported = true,
 					headerInsertion = "never",
-				},
-				compile_commands = {
-					fallbackFlags = {
-						"-I/opt/homebrew/Cellar/gcc/15.2.0/include/c++/15",
-						"-I/opt/homebrew/Cellar/gcc/15.2.0/include/c++/15/aarch64-apple-darwin25",
-						"-I/opt/homebrew/Cellar/gcc/15.2.0/include/c++/15/backward",
-						"-I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include",
-						"-I/Library/Developer/CommandLineTools/usr/lib/clang/17/include",
-					},
 				},
 			})
 			vim.lsp.enable("clangd")

@@ -18,11 +18,11 @@ alias ghbranches='git fetch --quiet 2>/dev/null; printf "\033[1;37m%-35s %-15s %
   fi
 done'
 
-
+alias rm='trash'
 alias ghopen='gh repo view --web'
 alias bai='npx @langwatch/better-agents init'
 alias skill-add='npx skills add'
-
+alias rm="trash"
 alias jl='jless'
 # Brew Upgrade and Update
 alias brewup="brew update && brew upgrade && brew cleanup && brew doctor"
@@ -44,7 +44,7 @@ alias pnq="weather Pune"
 alias blr="weather Bengaluru"
 
 # CLI AI Editors
-alias ca="cursor-agent"
+alias a="agent"
 alias co="codex"
 alias oc="opencode"
 alias cc="claude"
@@ -217,3 +217,6 @@ alias lgit="lazygit"
 alias ldock="lazydocker"
 alias lssh="lazyssh"
 alias lsql="lazysql"
+alias lenv="lazyenv"
+
+alias mmdc="mmdc -p $HOME/.config/mermaid/puppeteer-config.json"

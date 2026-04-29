@@ -127,6 +127,29 @@ weather() {
   fi
 }
 
+# Kill process(es) listening on a given TCP port
+killp() {
+  if [[ -z "$1" ]]; then
+    echo "Usage: killp <port> [-9]" >&2
+    return 1
+  fi
+
+  local port="$1"
+  local sig="${2:-TERM}"
+  sig="${sig#-}"
+
+  local pids
+  pids=$(lsof -ti tcp:"$port")
+
+  if [[ -z "$pids" ]]; then
+    echo "No process listening on port $port"
+    return 0
+  fi
+
+  echo "Killing PID(s) on port $port: ${pids//$'\n'/ } (SIG$sig)"
+  echo "$pids" | xargs kill -"$sig"
+}
+
 drmpat() {
   local pattern="${1:?Provide a regex pattern}"
   docker volume ls -q | grep -E "$pattern" | xargs docker volume rm
