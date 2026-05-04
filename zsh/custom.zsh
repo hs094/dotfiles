@@ -155,6 +155,106 @@ drmpat() {
   docker volume ls -q | grep -E "$pattern" | xargs docker volume rm
 }
 
+# Generic docker-service lifecycle: start | stop | status | rm
+# Usage: _docker_svc <action> <name> <url> <image> [docker-run-args...]
+_docker_svc() {
+  local action="$1" name="$2" url="$3" image="$4"
+  shift 4
+
+  local state
+  state=$(docker inspect -f '{{.State.Status}}' "$name" 2>/dev/null)
+
+  case "${action:-start}" in
+    start)
+      case "$state" in
+        running)
+          echo "$name is already running at $url"
+          ;;
+        exited|created|paused)
+          echo "Starting existing $name container..."
+          docker start "$name" >/dev/null && echo "$name running at $url"
+          ;;
+        "")
+          echo "Creating and starting $name container..."
+          docker run -d --name "$name" "$@" "$image" >/dev/null \
+            && echo "$name running at $url"
+          ;;
+        *)
+          echo "$name in unexpected state: $state" >&2
+          return 1
+          ;;
+      esac
+      ;;
+    stop)
+      if [[ "$state" == "running" ]]; then
+        docker stop "$name" >/dev/null && echo "$name stopped"
+      elif [[ -z "$state" ]]; then
+        echo "$name container does not exist"
+      else
+        echo "$name is not running (state: $state)"
+      fi
+      ;;
+    status)
+      if [[ -z "$state" ]]; then
+        echo "$name: not created"
+      else
+        echo "$name: $state"
+      fi
+      ;;
+    rm)
+      [[ "$state" == "running" ]] && docker stop "$name" >/dev/null
+      if [[ -n "$state" ]]; then
+        docker rm "$name" >/dev/null && echo "$name container removed"
+      else
+        echo "$name container does not exist"
+      fi
+      ;;
+    *)
+      echo "Usage: $name [start|stop|status|rm]" >&2
+      return 1
+      ;;
+  esac
+}
+
+dozzle() {
+  _docker_svc "${1:-start}" dozzle http://localhost:8080 amir20/dozzle:latest \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v dozzle_data:/data \
+    -p 8080:8080
+}
+
+n8n() {
+  local tz="${GENERIC_TIMEZONE:-Asia/Mumbai}"
+  _docker_svc "${1:-start}" n8n http://localhost:5678 docker.n8n.io/n8nio/n8n \
+    --restart always \
+    -p 5678:5678 \
+    -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
+    -e N8N_HOST=localhost \
+    -e N8N_PORT=5678 \
+    -e N8N_PROTOCOL=http \
+    -e N8N_RUNNERS_ENABLED=true \
+    -e N8N_SECURE_COOKIE=false \
+    -e NODE_ENV=production \
+    -e GENERIC_TIMEZONE="$tz" \
+    -e TZ="$tz" \
+    -v n8n_data:/home/node/.n8n \
+    -v n8n_files:/files
+}
+
+metabase() {
+  _docker_svc "${1:-start}" metabase http://localhost:3000 metabase/metabase \
+    --restart unless-stopped \
+    -p 3000:3000 \
+    -v metabase_data:/metabase-data
+}
+
+lobechat() {
+  local envfile="$HOME/.config/images/lobechat/.env"
+  local args=(--restart always -p 3210:3210 -e ACCESS_CODE=lobe66)
+  [[ -f "$envfile" ]] && args+=(--env-file "$envfile")
+  _docker_svc "${1:-start}" lobe-chat http://localhost:3210 lobehub/lobe-chat "${args[@]}"
+}
+
 # Git Sparse Clone and Checkout
 gcls() {
   if [ "$#" -lt 2 ]; then

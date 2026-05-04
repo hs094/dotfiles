@@ -154,8 +154,8 @@ alias gb='git branch '
 alias gbr='git branch -r'
 alias gba='git branch -a'
 alias gd="git diff --output-indicator-new=' ' --output-indicator-old=' '"
-alias gco='git checkout'
-alias gcob='git checkout -b'
+alias gco='git switch'
+alias gcob='git switch -c'
 
 alias gcofzf='git branch | fzf | xargs git checkout' # Select branch with fzf
 alias gre='git remote'
