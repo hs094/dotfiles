@@ -213,10 +213,12 @@ alias air='$(go env GOPATH)/bin/air'
 ################################################################################
 ####################              Lazy-Tookit             ######################
 ################################################################################
-alias lgit="lazygit"
-alias ldock="lazydocker"
+alias lg="lazygit"
+alias ld="lazydocker"
 alias lssh="lazyssh"
 alias lsql="lazysql"
 alias lenv="lazyenv"
+alias lnpm="lazynpm"
+alias lact="lazyactions"
 
 alias mmdc="mmdc -p $HOME/.config/mermaid/puppeteer-config.json"

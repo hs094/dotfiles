@@ -252,7 +252,93 @@ lobechat() {
   local envfile="$HOME/.config/images/lobechat/.env"
   local args=(--restart always -p 3210:3210 -e ACCESS_CODE=lobe66)
   [[ -f "$envfile" ]] && args+=(--env-file "$envfile")
-  _docker_svc "${1:-start}" lobe-chat http://localhost:3210 lobehub/lobe-chat "${args[@]}"
+  _docker_svc "${1:-start}" lobechat http://localhost:3210 lobehub/lobe-chat "${args[@]}"
+}
+
+# Set INFISICAL_DB_URI, INFISICAL_REDIS_URL, INFISICAL_SITE_URL before `infisical start`
+infisical() {
+  local version="${INFISICAL_VERSION:-latest}"
+  _docker_svc "${1:-start}" infisical http://localhost:80 "infisical/infisical:${version}" \
+    --restart unless-stopped \
+    -p 80:8080 \
+    -e ENCRYPTION_KEY="${INFISICAL_ENCRYPTION_KEY:-f40c9178624764ad85a6830b37ce239a}" \
+    -e AUTH_SECRET="${INFISICAL_AUTH_SECRET:-q6LRi7c717a3DQ8JUxlWYkZpMhG4+RHLoFUVt3Bvo2U=}" \
+    -e DB_CONNECTION_URI="${INFISICAL_DB_URI:?set INFISICAL_DB_URI}" \
+    -e REDIS_URL="${INFISICAL_REDIS_URL:?set INFISICAL_REDIS_URL}" \
+    -e SITE_URL="${INFISICAL_SITE_URL:?set INFISICAL_SITE_URL}"
+}
+
+# Registry: container-name -> "url|description"
+# (lobechat's docker container is named lobe-chat to match the original compose)
+typeset -gA DSVC_REGISTRY=(
+  dozzle    "http://localhost:8080|Live docker container log viewer"
+  n8n       "http://localhost:5678|Workflow automation / low-code"
+  metabase  "http://localhost:3000|Open-source BI dashboards"
+  lobechat  "http://localhost:3210|Multi-LLM chat UI"
+  infisical "http://localhost:80|Self-hosted secrets manager"
+)
+
+# Pretty-print all docker service wrappers with current state
+dsvc() {
+  local hdr=$'\e[1;36m' name_c=$'\e[1;35m' url_c=$'\e[36m'
+  local dim=$'\e[2m' rst=$'\e[0m' green=$'\e[32m' yellow=$'\e[33m'
+
+  printf "\n  ${hdr}%-12s %-26s %-10s %s${rst}\n" "SERVICE" "URL" "STATE" "DESCRIPTION"
+  printf "  ${dim}%s${rst}\n" "──────────────────────────────────────────────────────────────────────────────"
+
+  local name entry url desc state sc
+  for name in ${(ko)DSVC_REGISTRY}; do
+    entry="${DSVC_REGISTRY[$name]}"
+    url="${entry%%|*}"
+    desc="${entry#*|}"
+    state=$(docker inspect -f '{{.State.Status}}' "$name" 2>/dev/null)
+    [[ -z "$state" ]] && state="—"
+    case "$state" in
+      running)               sc=$green ;;
+      exited|created|paused) sc=$yellow ;;
+      *)                     sc=$dim ;;
+    esac
+    printf "  ${name_c}%-12s${rst} ${url_c}%-26s${rst} ${sc}%-10s${rst} %s\n" \
+      "$name" "$url" "$state" "$desc"
+  done
+
+  printf "\n  ${dim}Use${rst} ${name_c}<service>${rst} ${dim}[start|stop|status|rm]${rst} ${dim}to control.${rst}\n\n"
+}
+
+# Registry: alias -> "binary|description"
+typeset -gA LSVC_REGISTRY=(
+  lg   "lazygit|Terminal UI for git"
+  ld   "lazydocker|Terminal UI for Docker"
+  lssh "lazyssh|TUI for SSH connection management"
+  lsql "lazysql|TUI for SQL databases"
+  lenv "lazyenv|TUI for .env files"
+  lnpm "lazynpm|TUI for npm"
+  lact "lazyactions|TUI for GitHub Actions workflows"
+)
+
+# Pretty-print all lazy-toolkit aliases with installed state
+lsvc() {
+  local hdr=$'\e[1;36m' name_c=$'\e[1;35m' bin_c=$'\e[36m'
+  local dim=$'\e[2m' rst=$'\e[0m' green=$'\e[32m' yellow=$'\e[33m'
+
+  printf "\n  ${hdr}%-8s %-14s %-12s %s${rst}\n" "ALIAS" "COMMAND" "STATE" "DESCRIPTION"
+  printf "  ${dim}%s${rst}\n" "──────────────────────────────────────────────────────────────────────────────"
+
+  local alias_name entry bin desc state sc
+  for alias_name in ${(ko)LSVC_REGISTRY}; do
+    entry="${LSVC_REGISTRY[$alias_name]}"
+    bin="${entry%%|*}"
+    desc="${entry#*|}"
+    if command -v "$bin" >/dev/null 2>&1; then
+      state="installed"; sc=$green
+    else
+      state="missing";   sc=$yellow
+    fi
+    printf "  ${name_c}%-8s${rst} ${bin_c}%-14s${rst} ${sc}%-12s${rst} %s\n" \
+      "$alias_name" "$bin" "$state" "$desc"
+  done
+
+  printf "\n  ${dim}Run${rst} ${name_c}<alias>${rst} ${dim}to launch the TUI.${rst}\n\n"
 }
 
 # Git Sparse Clone and Checkout
