@@ -62,3 +62,5 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 source "/Users/hs094/.openclaw/completions/openclaw.zsh"
 
 alias claude-mem='bun "/Users/hs094/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi

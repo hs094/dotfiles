@@ -223,6 +223,13 @@ dozzle() {
     -p 8080:8080
 }
 
+floci() {
+  _docker_svc "${1:-start}" floci http://localhost:4566 floci/floci:latest \
+    -p 4566:4566 \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -u root
+}
+
 n8n() {
   local tz="${GENERIC_TIMEZONE:-Asia/Mumbai}"
   _docker_svc "${1:-start}" n8n http://localhost:5678 docker.n8n.io/n8nio/n8n \
@@ -272,6 +279,7 @@ infisical() {
 # (lobechat's docker container is named lobe-chat to match the original compose)
 typeset -gA DSVC_REGISTRY=(
   dozzle    "http://localhost:8080|Live docker container log viewer"
+  floci     "http://localhost:4566|Floci docker UI"
   n8n       "http://localhost:5678|Workflow automation / low-code"
   metabase  "http://localhost:3000|Open-source BI dashboards"
   lobechat  "http://localhost:3210|Multi-LLM chat UI"
@@ -340,6 +348,48 @@ lsvc() {
 
   printf "\n  ${dim}Run${rst} ${name_c}<alias>${rst} ${dim}to launch the TUI.${rst}\n\n"
 }
+
+# Registry: submenu -> "command|description"
+typeset -gA MH_REGISTRY=(
+  docker "dsvc|Docker service wrappers (start/stop/status/rm)"
+  lazy   "lsvc|Lazy-toolkit TUIs (lazygit, lazydocker, lazysql, ...)"
+)
+
+# mh = my help. Top-level menu, dispatches to submenu commands.
+# Usage: mh                 -> list submenus
+#        mh <submenu>       -> run the submenu's command (e.g. mh docker -> dsvc)
+mh() {
+  local hdr=$'\e[1;36m' name_c=$'\e[1;35m' cmd_c=$'\e[36m'
+  local dim=$'\e[2m' rst=$'\e[0m'
+
+  if [[ -n "$1" ]]; then
+    local entry="${MH_REGISTRY[$1]}"
+    if [[ -z "$entry" ]]; then
+      echo "mh: unknown submenu '$1'" >&2
+      echo "Available: ${(ko)MH_REGISTRY}" >&2
+      return 1
+    fi
+    "${entry%%|*}"
+    return
+  fi
+
+  printf "\n  ${hdr}%-10s %-10s %s${rst}\n" "SUBMENU" "COMMAND" "DESCRIPTION"
+  printf "  ${dim}%s${rst}\n" "──────────────────────────────────────────────────────────────────────────────"
+
+  local key entry cmd desc
+  for key in ${(ko)MH_REGISTRY}; do
+    entry="${MH_REGISTRY[$key]}"
+    cmd="${entry%%|*}"
+    desc="${entry#*|}"
+    printf "  ${name_c}%-10s${rst} ${cmd_c}%-10s${rst} %s\n" "$key" "$cmd" "$desc"
+  done
+
+  printf "\n  ${dim}Run${rst} ${name_c}mh <submenu>${rst} ${dim}or the command directly.${rst}\n\n"
+}
+
+# Tab-complete `mh` with its registered submenus
+_mh_complete() { compadd -- ${(ko)MH_REGISTRY}; }
+(( $+functions[compdef] )) && compdef _mh_complete mh
 
 # Git Sparse Clone and Checkout
 gcls() {
