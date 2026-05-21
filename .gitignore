@@ -87,13 +87,8 @@ zed/themes/
 # Duplicate config paths
 tealdeer/~/
 ~/
-
-# OpenCode
-opencode/
 /gcloud
-/opencode
 /lazypg
-/opencode
 /qBittorrent
 /raycast-x/extensions
 /manicode
