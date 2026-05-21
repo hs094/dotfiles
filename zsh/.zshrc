@@ -58,9 +58,6 @@ export PATH="/Users/hs094/.antigravity/antigravity/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
-# OpenClaw Completion
-source "/Users/hs094/.openclaw/completions/openclaw.zsh"
-
 alias claude-mem='bun "/Users/hs094/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
