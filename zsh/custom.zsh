@@ -255,6 +255,18 @@ metabase() {
     -v metabase_data:/metabase-data
 }
 
+jackett() {
+  _docker_svc "${1:-start}" jackett http://localhost:9117 lscr.io/linuxserver/jackett:latest \
+    --restart unless-stopped \
+    -p 9117:9117 \
+    -e PUID=1000 \
+    -e PGID=1000 \
+    -e TZ="${GENERIC_TIMEZONE:-Etc/UTC}" \
+    -e AUTO_UPDATE=true \
+    -v jackett_config:/config \
+    -v jackett_downloads:/downloads
+}
+
 lobechat() {
   local envfile="$HOME/.config/images/lobechat/.env"
   local args=(--restart always -p 3210:3210 -e ACCESS_CODE=lobe66)
@@ -284,6 +296,7 @@ typeset -gA DSVC_REGISTRY=(
   metabase  "http://localhost:3000|Open-source BI dashboards"
   lobechat  "http://localhost:3210|Multi-LLM chat UI"
   infisical "http://localhost:80|Self-hosted secrets manager"
+  jackett  "http://localhost:9117|Torrent indexer / proxy"
 )
 
 # Pretty-print all docker service wrappers with current state
