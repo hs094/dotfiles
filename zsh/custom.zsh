@@ -150,6 +150,10 @@ killp() {
   echo "$pids" | xargs kill -"$sig"
 }
 
+bashly() {
+  docker run --rm -it --user "$(id -u):$(id -g)" --volume "$PWD:/app" dannyben/bashly "$@"
+}
+
 drmpat() {
   local pattern="${1:?Provide a regex pattern}"
   docker volume ls -q | grep -E "$pattern" | xargs docker volume rm
@@ -297,6 +301,7 @@ typeset -gA DSVC_REGISTRY=(
   lobechat  "http://localhost:3210|Multi-LLM chat UI"
   infisical "http://localhost:80|Self-hosted secrets manager"
   jackett  "http://localhost:9117|Torrent indexer / proxy"
+  bashly   "—|CLI generator via dannyben/bashly (ephemeral)"
 )
 
 # Pretty-print all docker service wrappers with current state
