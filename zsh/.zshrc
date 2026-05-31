@@ -35,6 +35,10 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f "$HOME/.config/zsh/custom.zsh" ] && source "$HOME/.config/zsh/custom.zsh"
 # Bindkeys
 [ -f "$HOME/.config/zsh/bindkeys.zsh" ] && source "$HOME/.config/zsh/bindkeys.zsh"
+# Hooks
+[ -f "$HOME/.config/zsh/hooks.zsh" ] && source "$HOME/.config/zsh/hooks.zsh"
+# Utility functions (backing aliases)
+[ -f "$HOME/.config/zsh/utils.zsh" ] && source "$HOME/.config/zsh/utils.zsh"
 # Aliases
 [ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
 # Plugins
@@ -47,7 +51,8 @@ export INTELLI_HOME="/Users/hs094/Library/Application Support/org.IntelliShell.I
 # export INTELLI_SEARCH_HOTKEY='^@'
 # export INTELLI_VARIABLE_HOTKEY='^l'
 # export INTELLI_BOOKMARK_HOTKEY='^b'
-# export INTELLI_FIX_HOTKEY='^x'
+# Chord under ^X so the bare ^X stays a free prefix (^Xl, ^Xc, ^x^e)
+export INTELLI_FIX_HOTKEY='^xf'
 # export INTELLI_SKIP_ESC_BIND=0ƒ
 alias is="intelli-shell"
 export PATH="$INTELLI_HOME/bin:$PATH"

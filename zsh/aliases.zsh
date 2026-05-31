@@ -24,6 +24,14 @@ alias bai='npx @langwatch/better-agents init'
 alias skill-add='npx skills add'
 alias rm="trash"
 alias jl='jless'
+
+# Suffix aliases — run `file.ext` directly to open it
+alias -s json='jless'
+alias -s {py,java,cpp,c,go,js,ts}="$EDITOR"
+alias -s {mov,mp4,png}='open'
+# md/yaml: cmux preview when inside cmux, else $EDITOR / bat (see utils.zsh)
+alias -s {md,yaml,yml}='_open_cmux'
+
 # Brew Upgrade and Update
 alias brewup="brew update && brew upgrade && brew cleanup && brew doctor"
 
