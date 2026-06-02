@@ -246,28 +246,20 @@ A curated collection of dotfiles and tools for a productive, terminal-based deve
 ```bash
 # Install Homebrew (macOS/Linux)
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Install core package managers
-brew install bbrew nvm uv
 ```
 
-### Essential Tools Installation
+### Install Everything
+All packages are declared in the [`Brewfile`](homebrew/Brewfile) — install them
+in one shot with `brew bundle`:
+
 ```bash
-# Core terminal environment
-brew install tmux neovim starship zoxide fzf ripgrep
-
-# Development essentials  
-brew install git lazygit git-delta direnv
-
-# System monitoring and file management
-brew install btop yazi eza ncdu
-
-# Language runtimes
-brew install nvm uv go rust
-
-# TUI applications
-brew install postings jless csvlens
+# From the repo root
+brew bundle --file=homebrew/Brewfile
 ```
+
+> Adding a tool? Put it in `homebrew/Brewfile` and re-run `brew bundle`.
+> Run `brew bundle cleanup --file=homebrew/Brewfile` to remove anything not
+> listed in the Brewfile.
 
 ### Configuration
 1. Clone this dotfiles repository
