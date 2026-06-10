@@ -63,6 +63,7 @@ alias kil="kilocode"
 alias qw="qwen"
 alias ag="auggie"
 alias misv="vibe"
+alias fb="freebuff"
 # alias cf=
 
 # Neovim Configuration Aliases
