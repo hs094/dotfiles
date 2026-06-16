@@ -1,23 +1,23 @@
 autoload -Uz add-zsh-hook
 
 # chpwd hook for python
-# On cd: activate a virtualenv (.venv or venv) in the current directory. If
-# there's none here, look one level down in the immediate children — activate
-# the sole match, or pop an fzf chooser when there are several. With nothing
-# nearby, drop the env we activated. Only this hook's env is auto-deactivated,
-# so a manually `source`d or conda env is left alone. $_AUTO_VENV holds the
-# path we sourced (compared instead of $VIRTUAL_ENV, which activate bakes as
-# the symlink-resolved path, so it may not match $PWD).
+# On cd: if a venv is already active (auto-activated here, a manual `source`,
+# or conda), leave it alone. Otherwise activate a virtualenv (.venv or venv) in
+# the current directory; failing that, look one level down in the immediate
+# children — activate the sole match, or pop an fzf chooser when there are
+# several. Never auto-deactivates: once an env is on, it stays until you leave
+# it yourself.
 _chpwd_python_venv() {
   local venv
   local -a found
 
+  # 0. a venv is already active — leave it
+  [[ -n "$VIRTUAL_ENV" ]] && return
+
   # 1. venv in the current directory
   for venv in "$PWD/.venv" "$PWD/venv"; do
     if [[ -f "$venv/bin/activate" ]]; then
-      [[ "$_AUTO_VENV" == "$venv" ]] && return  # already activated by us
       source "$venv/bin/activate"
-      _AUTO_VENV="$venv"
       return
     fi
   done
@@ -25,9 +25,6 @@ _chpwd_python_venv() {
   # 2. venvs in immediate children
   found=( $PWD/*/.venv/bin/activate(N) $PWD/*/venv/bin/activate(N) )
   found=( ${found%/bin/activate} )
-
-  # keep our selection if it's still one of the children here
-  [[ -n "$_AUTO_VENV" ]] && (( ${found[(Ie)$_AUTO_VENV]} )) && return
 
   venv=""
   if (( ${#found} == 1 )); then
@@ -40,17 +37,7 @@ _chpwd_python_venv() {
     fi
   fi
 
-  if [[ -n "$venv" ]]; then
-    source "$venv/bin/activate"
-    _AUTO_VENV="$venv"
-    return
-  fi
-
-  # 3. nothing nearby — drop the env we activated
-  if [[ -n "$_AUTO_VENV" ]]; then
-    deactivate 2>/dev/null
-    unset _AUTO_VENV
-  fi
+  [[ -n "$venv" ]] && source "$venv/bin/activate"
 }
 
 # chpwd hook for node
