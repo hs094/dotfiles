@@ -1,0 +1,8 @@
+{
+  "$schema": "https://app.kilo.ai/config.json",
+  "auto_collapse_reasoning": true,
+  "layout": "stretch",
+  "permission": {
+    "bash": "allow"
+  }
+}

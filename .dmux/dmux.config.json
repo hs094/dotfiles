@@ -1,0 +1,69 @@
+{
+  "projectName": ".config",
+  "projectRoot": "/Users/hs094/.config",
+  "panes": [
+    {
+      "id": "dmux-1",
+      "slug": "shell-1",
+      "prompt": "",
+      "paneId": "%6",
+      "projectRoot": "/Users/hs094/Dev.hs/Notion-Automation",
+      "projectName": "Notion-Automation",
+      "type": "shell",
+      "shellType": "shell",
+      "colorTheme": "orange",
+      "hidden": true
+    },
+    {
+      "id": "dmux-2",
+      "slug": "shell-2",
+      "prompt": "",
+      "paneId": "%7",
+      "projectRoot": "/Users/hs094/Dev.hs/Notion-Automation",
+      "projectName": "Notion-Automation",
+      "type": "shell",
+      "shellType": "shell",
+      "colorTheme": "orange",
+      "hidden": true
+    },
+    {
+      "id": "dmux-3",
+      "slug": "shell-3",
+      "prompt": "",
+      "paneId": "%27",
+      "projectRoot": "/Users/hs094/Dev.hs/LazySCP",
+      "projectName": "LazySCP",
+      "type": "shell",
+      "shellType": "zsh",
+      "colorTheme": "orange",
+      "hidden": true
+    }
+  ],
+  "sidebarProjects": [
+    {
+      "projectRoot": "/Users/hs094/.config",
+      "projectName": ".config"
+    },
+    {
+      "projectRoot": "/Users/hs094/Dev.hs/Notion-Automation",
+      "projectName": "Notion-Automation"
+    },
+    {
+      "projectRoot": "/Users/hs094/Dev.hs/LazySCP",
+      "projectName": "LazySCP"
+    }
+  ],
+  "settings": {},
+  "lastUpdated": "2026-05-26T16:04:08.830Z",
+  "controlPaneSize": 40,
+  "controlPaneId": "%37",
+  "updateSettings": {
+    "checkIntervalHours": 24,
+    "autoUpdateEnabled": true,
+    "lastCheckTime": 1779811417509,
+    "cachedCurrentVersion": "5.8.1",
+    "cachedLatestVersion": "5.9.0",
+    "cachedHasUpdate": true
+  },
+  "welcomePaneId": "%40"
+}
