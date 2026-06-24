@@ -14,6 +14,11 @@
     "portRange" : 10,
     "socketControlMode" : "cmuxOnly"
   },
+  "browser" : {
+    "defaultSearchEngine" : "custom",
+    "customSearchEngineName" : "unduck",
+    "customSearchEngineURLTemplate" : "https:\/\/unduck.link?q=%s"
+  },
   "schemaVersion" : 1,
   "shortcuts" : {
     "bindings" : {
