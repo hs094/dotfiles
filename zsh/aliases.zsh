@@ -152,6 +152,7 @@ alias gcl='git clone git@github.com:' # Usage: gcl <username/repo.git>
 alias gs="git status --short"
 alias gf='git fetch'
 alias gpu='git push origin'
+alias gpuf='git push --force-with-lease'
 alias gfo='git fetch origin'
 alias gfp='git fetch --prune'
 alias gup='git fetch && git rebase'

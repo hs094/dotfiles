@@ -3,7 +3,7 @@
 // Required parameters:
 // @raycast.schemaVersion 1
 // @raycast.title Add Youtube Video
-// @raycast.mode inline
+// @raycast.mode silent
 
 // Optional parameters:
 // @raycast.icon youtube.svg 
