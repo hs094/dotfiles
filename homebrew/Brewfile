@@ -33,7 +33,7 @@ tap "legostin/tap", trusted: true
 tap "localstack/tap", trusted: true
 tap "lusingander/tap", trusted: true
 tap "manaflow-ai/cmux", trusted: true
-tap "maniacsan/torrra", "https://github.com/Maniacsan/homebrew-torrra", trusted: true
+tap "maniacsss/torrra", "https://github.com/Maniacsss/homebrew-torrra.git"
 tap "markmarkoh/lt", trusted: true
 tap "metalbear-co/mirrord", trusted: true
 tap "modem-dev/tap"
