@@ -1,0 +1,1 @@
+/Users/hs094/.config/opencode/ponytail/.opencode/command/ponytail-gain.md
