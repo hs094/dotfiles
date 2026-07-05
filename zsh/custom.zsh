@@ -367,10 +367,71 @@ lsvc() {
   printf "\n  ${dim}Run${rst} ${name_c}<alias>${rst} ${dim}to launch the TUI.${rst}\n\n"
 }
 
+wth() {
+  local hdr=$'\e[1;36m' alias_c=$'\e[1;35m' cmd_c=$'\e[36m'
+  local dim=$'\e[2m' rst=$'\e[0m'
+
+  printf "\n  ${hdr}%-10s %-20s %s${rst}\n" "ALIAS" "EXPANDS TO" "DESCRIPTION"
+  printf "  ${dim}%s${rst}\n" "────────────────────────────────────────────────────────────────────────────────"
+
+  local -A WT_ALIASES=(
+    ws   "wt switch <branch>          |Switch to a worktree branch"
+    wsc  "wt switch -c <branch>       |Create + switch to a new worktree"
+    wsx  "wt switch -c -x <cmd> <br>  |Create worktree + run command (e.g. wsx claude feat-a)"
+    wl   "wt list                     |List worktrees"
+    wlf  "wt list --full              |List worktrees with CI status + summaries"
+    wm   "wt merge [branch]           |Merge worktree branch + clean up"
+    wr   "wt remove [branch]          |Remove a worktree"
+  )
+
+  local key entry cmd desc
+  for key in ${(ko)WT_ALIASES}; do
+    entry="${WT_ALIASES[$key]}"
+    cmd="${entry%%|*}"
+    desc="${entry#*|}"
+    printf "  ${alias_c}%-10s${rst} ${cmd_c}%-20s${rst} %s\n" "$key" "$cmd" "$desc"
+  done
+
+  printf "\n  ${dim}Core wt workflow:${rst} ${alias_c}wsc <branch>${rst} → work → ${alias_c}wm${rst}\n"
+  printf "  ${dim}For Claude Code in a worktree:${rst} ${alias_c}wsx claude <branch>${rst}\n\n"
+}
+
+codh() {
+  local hdr=$'\e[1;36m' alias_c=$'\e[1;35m' bin_c=$'\e[36m'
+  local dim=$'\e[2m' rst=$'\e[0m'
+
+  printf "\n  ${hdr}%-8s %-12s %s${rst}\n" "ALIAS" "BINARY" "DESCRIPTION"
+  printf "  ${dim}%s${rst}\n" "──────────────────────────────────────────────────────────────────────────────"
+
+  local -A COD_ALIASES=(
+    co   "codex   |Codex CLI"
+    oc   "opencode|OpenCode"
+    cc   "claude  |Claude Code"
+    cl   "cline   |Cline"
+    cpl  "copilot |GitHub Copilot"
+    kil  "kilocode|Kilo Code"
+    qw   "qwen    |Qwen"
+    ag   "auggie  |Auggie"
+    misv "vibe    |Vibe coding"
+    fb   "freebuff|FreeBuff"
+  )
+
+  local key entry bin desc
+  for key in ${(ko)COD_ALIASES}; do
+    entry="${COD_ALIASES[$key]}"
+    bin="${entry%%|*}"
+    desc="${entry#*|}"
+    printf "  ${alias_c}%-8s${rst} ${bin_c}%-12s${rst} %s\n" "$key" "$bin" "$desc"
+  done
+  printf "\n"
+}
+
 # Registry: submenu -> "command|description"
 typeset -gA MH_REGISTRY=(
   docker "dsvc|Docker service wrappers (start/stop/status/rm)"
   lazy   "lsvc|Lazy-toolkit TUIs (lazygit, lazydocker, lazysql, ...)"
+  wt     "wth|Worktrunk aliases (wt switch, list, merge, remove)"
+  agent  "codh|Coding agent aliases (claude, opencode, codex, ...)"
 )
 
 # mh = my help. Top-level menu, dispatches to submenu commands.

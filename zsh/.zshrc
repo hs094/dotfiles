@@ -67,3 +67,7 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 alias claude-mem='bun "/Users/hs094/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/hs094/.local/bin:$PATH"

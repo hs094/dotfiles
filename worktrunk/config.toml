@@ -1,0 +1,2 @@
+[post-switch]
+rename = "tmux rename-window '{{ repo }}:{{ branch }}' 2>/dev/null || true"
