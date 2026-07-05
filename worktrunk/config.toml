@@ -1,2 +1,16 @@
 [post-switch]
 rename = "tmux rename-window '{{ repo }}:{{ branch }}' 2>/dev/null || true"
+
+[post-start]
+env = "wt copy-hidden"
+
+[aliases]
+copy-hidden = """
+  rsync -a --ignore-existing \
+    {{ primary_worktree_path }}/.env \
+    {{ primary_worktree_path }}/.env.local \
+    {{ primary_worktree_path }}/.envrc \
+    {{ primary_worktree_path }}/.python-version \
+    {{ worktree_path }}/ \
+    2>/dev/null; true
+"""

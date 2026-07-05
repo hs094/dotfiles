@@ -183,12 +183,14 @@ alias gwl='git worktree list'
 
 # Worktrunk (wt) — git worktree management (brew install worktrunk)
 alias ws='wt switch'
-alias wsc='wt switch -c'
+alias wsc='wt switch -c'           # post-start hook auto-copies hidden files (.env, .envrc, etc.)
 alias wsx='wt switch -c -x'        # Usage: wsx <cmd> <branch>, e.g. wsx claude feat-a
 alias wl='wt list'
 alias wlf='wt list --full'
 alias wm='wt merge'
 alias wr='wt remove'
+alias wch='wt copy-hidden'         # Manually copy hidden files from primary worktree
+wscp() { wt switch -c "$@" && echo "✓ Hidden files copied (via post-start hook)"; }
 
 # Git Stash Alias Shortcuts
 alias gsl='git stash list'

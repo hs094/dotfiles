@@ -72,6 +72,15 @@ A curated collection of dotfiles and tools for a productive, terminal-based deve
 - **[tldr](https://tldr.sh/)** - Simplified man pages with practical examples
 - **[thefuck](https://github.com/nvbn/thefuck)** - Command correction tool
 
+### Worktrunk Worktree Management
+- **[worktrunk](https://worktrunk.dev)** (`brew install worktrunk`) - Git worktree management with hooks and aliases
+  - `ws` / `wsc` / `wsx` - Switch / create / create+execute worktrees
+  - `wch` - Manually copy hidden files (`.env`, `.envrc`, `.python-version`) from primary worktree
+  - `wscp <branch>` - Create worktree + auto-copy hidden files via post-start hook
+  - `wl` / `wlf` - List worktrees / full detail
+  - `wm` / `wr` - Merge / remove worktrees
+  - **post-start hook** auto-copies `.env*` and `.python-version` on new worktree creation
+
 </details>
 
 ---
