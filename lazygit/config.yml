@@ -1,28 +1,30 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
-# cyberdream theme for lazygit
+os:
+  editPreset: "nvim-remote"
 gui:
   border: rounded
   theme:
     activeBorderColor:
-      - "#5ef1ff"
+      - "#fab387"
       - bold
     inactiveBorderColor:
-      - "#7b8496"
+      - "#89b4fa"
     searchingActiveBorderColor:
-      - "#ff5ef1"
+      - "#fab387"
+      - bold
     optionsTextColor:
-      - "#ffffff"
+      - "#89b4fa"
     selectedLineBgColor:
-      - "#3c4048"
+      - "#45475a"
     cherryPickedCommitBgColor:
-      - "#3c4048"
+      - "#f2cdcd"
     cherryPickedCommitFgColor:
-      - "#ff5ea0"
+      - "#89b4fa"
     unstagedChangesColor:
-      - "#ffbd5e"
+      - "#f38ba8"
     defaultFgColor:
-      - "#ffffff"
+      - "#cdd6f4"
+  nerdFontsVersion: "3"
 git:
   pagers:
     - pager: delta --dark --paging=never
-
