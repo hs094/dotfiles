@@ -3,6 +3,7 @@ os:
   editPreset: "nvim-remote"
 gui:
   border: rounded
+  showBottomLine: false
   theme:
     activeBorderColor:
       - "#fab387"
