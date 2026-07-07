@@ -1,1 +1,0 @@
-/Users/hs094/.config/opencode/ponytail/.opencode/command/ponytail-review.md

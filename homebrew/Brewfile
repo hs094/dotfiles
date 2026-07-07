@@ -30,6 +30,7 @@ tap "kriuchkov/tap", trusted: true
 tap "krtirtho/apps", trusted: true
 tap "lazynop/tap", trusted: true
 tap "legostin/tap", trusted: true
+tap "leohenon/tap"
 tap "localstack/tap", trusted: true
 tap "lusingander/tap", trusted: true
 tap "manaflow-ai/cmux", trusted: true
@@ -425,6 +426,8 @@ brew "kontext-security/tap/kontext"
 brew "kriuchkov/tap/tock"
 # TUI for managing .env files
 brew "lazynop/tap/lazyenv"
+# OpenCode with Vim keybindings - AI coding assistant for the terminal
+brew "leohenon/tap/ocv", trusted: true
 # Terminal DynamoDB Viewer
 brew "lusingander/tap/ddv"
 # An unofficial TUI client for Linear.app issues
