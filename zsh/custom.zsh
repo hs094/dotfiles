@@ -652,21 +652,21 @@ h() {
 # export KEYTIMEOUT=1 # Makes switching modes quicker
 # export VI_MODE_SET_CURSOR=true 
 
-# function zle-keymap-select {
-#   if [[ ${KEYMAP} == vicmd ]]; then
-#     echo -ne '\e[1 q' # block
-#   else
-#     echo -ne '\e[5 q' # beam
-#   fi
-# }
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]]; then
+    echo -ne '\e[1 q' # block
+  else
+    echo -ne '\e[5 q' # beam
+  fi
+}
 
-# zle -N zle-keymap-select
-# zle-line-init() {
-#   zle -K viins # initiate 'vi insert' as keymap (can be removed if 'binkey -V has been set elsewhere')
-#   echo -ne '\e[5 q'
-# }
-# zle -N zle-line-init
-# echo -ne '\e[5 q' # Use beam shape cursor on startup
+zle -N zle-keymap-select
+zle-line-init() {
+  zle -K viins
+  echo -ne '\e[5 q'
+}
+zle -N zle-line-init
+echo -ne '\e[5 q'
 
 # Yank to the system clipboard
 function vi-yank-xclip {

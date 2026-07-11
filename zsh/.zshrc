@@ -19,6 +19,12 @@ fpath=($HOME/.config/zsh $fpath)
 autoload -Uz compinit
 compinit
 
+# Use vim keybindings (before plugins/widgets)
+bindkey -v
+
+# Reduce delay when pressing Esc (tenths of second, 10 = 1s)
+export KEYTIMEOUT=10
+
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Custom Exports to Load
@@ -37,10 +43,5 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f "$HOME/.config/zsh/plugins.zsh" ] && source "$HOME/.config/zsh/plugins.zsh"
 # Cleanup
 [ -f "$HOME/.config/zsh/cleanup.zsh" ] && source "$HOME/.config/zsh/cleanup.zsh"
-
-# IntelliShell
-alias is="intelli-shell"
-eval "$(intelli-shell init zsh)"
-
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi

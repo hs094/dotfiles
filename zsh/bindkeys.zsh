@@ -6,6 +6,9 @@ bindkey '^n' history-search-forward
 bindkey '^U' undo
 bindkey ' ' magic-space
 
+# Backspace in insert mode (ensure autosuggestions wraps the right widget)
+bindkey '^?' backward-delete-char
+
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line

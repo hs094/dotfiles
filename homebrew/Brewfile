@@ -39,6 +39,7 @@ tap "markmarkoh/lt", trusted: true
 tap "metalbear-co/mirrord", trusted: true
 tap "modem-dev/tap"
 tap "mongodb/brew", trusted: true
+tap "muesli-hq/muesli", "https://github.com/Muesli-HQ/homebrew-muesli.git"
 tap "nakabonne/ali", trusted: true
 tap "nikitabobko/tap", trusted: true
 tap "nkzw-tech/tap", trusted: true
@@ -46,7 +47,6 @@ tap "nnnkkk7/tap"
 tap "openclaw/tap", trusted: true
 tap "oven-sh/bun", trusted: true
 tap "owloops/tap", "https://github.com/Owloops/homebrew-tap", trusted: true
-tap "phequals7/muesli", "https://github.com/pHequals7/homebrew-muesli", trusted: true
 tap "rebelice/tap", trusted: true
 tap "s-sigdel/tap", "https://github.com/S-Sigdel/homebrew-tap", trusted: true
 tap "skardyy/mcat", "https://github.com/Skardyy/homebrew-mcat", trusted: true
@@ -65,7 +65,7 @@ tap "yakitrak/yakitrak", trusted: true
 tap "zackelia/formulae", trusted: true
 tap "zackriya-solutions/meetily", trusted: true
 # Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
+brew "openssl@3", link: false
 # Download with resuming and segmented downloading
 brew "aria2"
 # Simple API client (Postman-like) in your terminal
@@ -327,7 +327,7 @@ brew "pngquant"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Object-relational database system
-brew "postgresql@17", restart_service: :changed, link: true
+brew "postgresql@17", link: true
 # Protocol buffers (Google's data interchange format)
 brew "protobuf"
 # Cloud native development platform
@@ -335,9 +335,7 @@ brew "pulumi"
 # Rsync for cloud storage
 brew "rclone"
 # Persistent key-value database, with built-in net interface
-brew "redis"
-# Persistent key-value database, with built-in net interface
-brew "redis@6.2", restart_service: :changed
+brew "redis", link: false
 # Extremely fast tool to remove dupes and other lint from your filesystem
 brew "rmlint"
 # Utility that provides fast incremental file transfer
@@ -505,6 +503,8 @@ cask "cmux"
 cask "codex"
 # Create and run Linux containers using lightweight virtual machines
 cask "container"
+# Offline voice-to-text dictation app with AI enhancement
+cask "fluidvoice"
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 # Set of tools to manage resources and applications hosted on Google Cloud
@@ -532,6 +532,7 @@ uv "cloctui"
 uv "cocoindex"
 uv "git-filter-repo"
 uv "git-gud"
+uv "graphifyy"
 uv "huggingface-hub"
 uv "kaggle"
 uv "llamactl"

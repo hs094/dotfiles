@@ -1,7 +1,7 @@
 # ~/.config/starship.toml
 
 add_newline = false
-command_timeout = 10000
+command_timeout = 50000
 
 [directory]
 truncate_to_repo=true
