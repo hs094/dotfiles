@@ -165,6 +165,19 @@ _docker_svc() {
   local action="$1" name="$2" url="$3" image="$4"
   shift 4
 
+  # Split $@ into docker-run options and CMD (everything after a bare --)
+  local -a opts=() cmd=()
+  local found_sep=false
+  for arg in "$@"; do
+    if $found_sep; then
+      cmd+=("$arg")
+    elif [[ "$arg" == "--" ]]; then
+      found_sep=true
+    else
+      opts+=("$arg")
+    fi
+  done
+
   local state
   state=$(docker inspect -f '{{.State.Status}}' "$name" 2>/dev/null)
 
@@ -180,7 +193,7 @@ _docker_svc() {
           ;;
         "")
           echo "Creating and starting $name container..."
-          docker run -d --name "$name" "$@" "$image" >/dev/null \
+          docker run -d --name "$name" "${opts[@]}" "$image" "${cmd[@]}" >/dev/null \
             && echo "$name running at $url"
           ;;
         *)
@@ -292,6 +305,27 @@ infisical() {
 }
 
 # Registry: container-name -> "url|description"
+teleup() {
+  local action="${1:-start}"
+  local name="teleup"
+  local image="nekmo/telegram-upload:master"
+  local config_dir="${HOME}/.config/telegram-upload"
+  local files_dir="${HOME}/Movies"
+
+  if [[ "$action" == "start" ]]; then
+    mkdir -p "$config_dir" "$files_dir"
+    # Run sleep-infinity container so exec works later
+    _docker_svc start "$name" "—" "$image" \
+      --restart unless-stopped \
+      -v "$config_dir:/config" \
+      -v "$files_dir:/files" \
+      -e TZ="${GENERIC_TIMEZONE:-Etc/UTC}" \
+      --entrypoint sleep -- infinity
+  else
+    _docker_svc "$@" "$name" "—" "$image"
+  fi
+}
+
 # (lobechat's docker container is named lobe-chat to match the original compose)
 typeset -gA DSVC_REGISTRY=(
   dozzle    "http://localhost:8080|Live docker container log viewer"
@@ -302,6 +336,7 @@ typeset -gA DSVC_REGISTRY=(
   infisical "http://localhost:80|Self-hosted secrets manager"
   jackett  "http://localhost:9117|Torrent indexer / proxy"
   bashly   "—|CLI generator via dannyben/bashly (ephemeral)"
+  teleup   "—|Telegram upload via nekmo/telegram-upload (files: ~/Movies)"
 )
 
 # Pretty-print all docker service wrappers with current state
@@ -428,7 +463,7 @@ codh() {
 
 # Registry: submenu -> "command|description"
 typeset -gA MH_REGISTRY=(
-  docker "dsvc|Docker service wrappers (start/stop/status/rm)"
+  docker "dsvc|Docker service wrappers (start/stop/status/rm); also teleup, tupload"
   lazy   "lsvc|Lazy-toolkit TUIs (lazygit, lazydocker, lazysql, ...)"
   wt     "wth|Worktrunk aliases (wt switch, list, merge, remove)"
   agent  "codh|Coding agent aliases (claude, opencode, codex, ...)"

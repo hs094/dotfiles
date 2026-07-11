@@ -4,19 +4,13 @@ MAILCHECK=0
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-export INTELLI_BOOKMARK_HOTKEY=\C-o
-
 # Ensure Homebrew is available
 if [ -f "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-export PATH="$HOME/.local/bin:$PATH"
-
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-
-export PATH="$PATH:/Users/hs094/.cargo/bin"
 
 # Add completion directories to fpath BEFORE compinit
 fpath=($HOME/.config/zsh $fpath)
@@ -25,9 +19,6 @@ fpath=($HOME/.config/zsh $fpath)
 autoload -Uz compinit
 compinit
 
-export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
-export FUNCNEST=1000
-export PATH=$PATH:/usr/local/bin
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Custom Exports to Load
@@ -48,26 +39,8 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f "$HOME/.config/zsh/cleanup.zsh" ] && source "$HOME/.config/zsh/cleanup.zsh"
 
 # IntelliShell
-export INTELLI_HOME="/Users/hs094/Library/Application Support/org.IntelliShell.Intelli-Shell"
-# export INTELLI_SEARCH_HOTKEY='^@'
-# export INTELLI_VARIABLE_HOTKEY='^l'
-# export INTELLI_BOOKMARK_HOTKEY='^b'
-# Chord under ^X so the bare ^X stays a free prefix (^Xl, ^Xc, ^x^e)
-export INTELLI_FIX_HOTKEY='^xf'
-# export INTELLI_SKIP_ESC_BIND=0ƒ
 alias is="intelli-shell"
-export PATH="$INTELLI_HOME/bin:$PATH"
 eval "$(intelli-shell init zsh)"
 
-# Added by Antigravity
-export PATH="/Users/hs094/.antigravity/antigravity/bin:$PATH"
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-
-alias claude-mem='bun "/Users/hs094/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
-
-
-# Added by Antigravity CLI installer
-export PATH="/Users/hs094/.local/bin:$PATH"

@@ -12,8 +12,10 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH="$PATH:$BUN_INSTALL/bin"
 export PATH="$PATH:/Users/hardiksoni/.meteor"
 export PATH="$PATH:/Users/hardiksoni/Library/pnpm"
+export PATH="$PATH:/usr/local/bin"
+export PATH="$PATH:/Users/hs094/.cargo/bin"
 
-export STARSHIP_CONFIG="~/.config/starship/starship.toml"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export FUNCNEST=1000
 export EDITOR="nvim"
 
@@ -45,6 +47,16 @@ export FZF_TMUX_OPTS=" -p90%,70% "
 
 export obsidian="/Users/hs094/Library/Mobile Documents/iCloud~md~obsidian/Documents"
 export rcscriptcmd="$HOME/.config/raycast/commands"
+
+# IntelliShell
+export INTELLI_BOOKMARK_HOTKEY=\C-o
+export INTELLI_HOME="/Users/hs094/Library/Application Support/org.IntelliShell.Intelli-Shell"
+export INTELLI_FIX_HOTKEY='^xf'
+
+# Tooling paths
+export PATH="/Users/hs094/.antigravity/antigravity/bin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 
 # Function to count files up to a specified depth level
 countfiles() {

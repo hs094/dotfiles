@@ -34,7 +34,7 @@ tap "leohenon/tap"
 tap "localstack/tap", trusted: true
 tap "lusingander/tap", trusted: true
 tap "manaflow-ai/cmux", trusted: true
-tap "maniacsss/torrra", "https://github.com/Maniacsss/homebrew-torrra.git"
+tap "maniacsss/torrra", "https://github.com/Maniacsss/homebrew-torrra.git", trusted: true
 tap "markmarkoh/lt", trusted: true
 tap "metalbear-co/mirrord", trusted: true
 tap "modem-dev/tap"
@@ -42,6 +42,7 @@ tap "mongodb/brew", trusted: true
 tap "nakabonne/ali", trusted: true
 tap "nikitabobko/tap", trusted: true
 tap "nkzw-tech/tap", trusted: true
+tap "nnnkkk7/tap"
 tap "openclaw/tap", trusted: true
 tap "oven-sh/bun", trusted: true
 tap "owloops/tap", "https://github.com/Owloops/homebrew-tap", trusted: true
@@ -79,6 +80,10 @@ brew "bat"
 brew "btop"
 # Multi-shell multi-command argument completer
 brew "carapace"
+# C access to FITS data files with optional Fortran wrappers
+brew "cfitsio"
+# GIF encoder written in C
+brew "cgif"
 # Versatile and fast Unicode/ASCII/ANSI graphics renderer
 brew "chafa"
 # Manage your dotfiles across multiple diverse machines, securely
@@ -92,7 +97,7 @@ brew "lima"
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima"
 # Create and run Linux containers using lightweight virtual machines
-brew "container", link: false
+brew "container"
 # GNU multiple precision arithmetic library
 brew "gmp"
 # GNU File, Shell, and Text utilities
@@ -105,10 +110,6 @@ brew "decompose"
 brew "deno"
 # TUI system monitor for Apple Silicon
 brew "devcockpit"
-# Good-lookin' diffs with diff-highlight and more
-brew "diff-so-fancy"
-# Diff that understands syntax
-brew "difftastic"
 # Load/unload environment variables based on $PWD
 brew "direnv"
 # Tool for exploring each layer in a docker image
@@ -141,6 +142,8 @@ brew "fd"
 brew "felinks"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# C routines to compute the Discrete Fourier Transform
+brew "fftw"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Interactive git commands in the terminal
@@ -171,6 +174,8 @@ brew "gitleaks"
 brew "go"
 # Command-line tool for generating regular expressions
 brew "grex"
+# File format designed to store large amounts of data
+brew "hdf5"
 # Post-modern modal text editor
 brew "helix"
 # Kubernetes package manager
@@ -179,8 +184,12 @@ brew "helm"
 brew "herdr"
 # User-friendly cURL replacement (command-line HTTP client)
 brew "httpie"
+# Portable abstraction of the hierarchical topology of modern architectures
+brew "hwloc"
 # Command-line benchmarking tool
 brew "hyperfine"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@77", link: true
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
 # Download media from Instagram
@@ -189,6 +198,8 @@ brew "instaloader"
 brew "intelli-shell"
 # Update of iperf: measures TCP, UDP, and SCTP bandwidth
 brew "iperf3"
+# Library for manipulating JPEG-2000 images
+brew "jasper"
 # Git-compatible distributed version control system
 brew "jj"
 # Command-line pager for JSON data
@@ -213,10 +224,30 @@ brew "lazydocker"
 brew "lazygit"
 # Cross-platform TUI database management tool
 brew "lazysql"
+# DICOM WSI read library
+brew "libdicom"
+# EXIF parsing library
+brew "libexif"
+# Palette quantization library extracted from pnquant2
+brew "libimagequant"
+# C/C++ seam carving library
+brew "liblqr"
+# C library for reading and writing MATLAB MAT files
+brew "libmatio"
 # Light HTTP/1.1 server library
 brew "libmicrohttpd"
 # Postgres C API library
 brew "libpq"
+# Library for reading RAW files from digital photo cameras
+brew "libraw"
+# SIXEL encoder/decoder implementation
+brew "libsixel"
+# C library for reading and writing PNG format files
+brew "libspng"
+# GNOME XML library
+brew "libxml2"
+# C library for reading, creating, and modifying zip archives
+brew "libzip"
 # Small memory footprint, flexible web-server
 brew "lighttpd"
 # Additional guest agents for Lima
@@ -227,10 +258,6 @@ brew "llmfit"
 brew "locust"
 # Package manager for the Lua programming language
 brew "luarocks"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
-# CLI for Mermaid library
-brew "mermaid-cli"
 # Modern and intuitive terminal-based text editor
 brew "micro"
 # Run a Kubernetes cluster locally
@@ -239,8 +266,8 @@ brew "minikube"
 brew "mise"
 # Deep clean and optimize your Mac
 brew "mole"
-# Atlas CLI enables you to manage your MongoDB Atlas
-brew "mongodb-atlas-cli"
+# Improved JPEG encoder
+brew "mozjpeg"
 # Run multiple commands in parallel
 brew "mprocs"
 # Feature-rich command-line audio/video downloader
@@ -259,6 +286,8 @@ brew "neovim"
 brew "nginx"
 # Port scanning utility for large networks
 brew "nmap"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
 # Send push notifications to your phone or desktop via PUT/POST
 brew "ntfy"
 # Modern shell for the GitHub era
@@ -267,6 +296,8 @@ brew "nushell"
 brew "nvm"
 # HTTP load generator, inspired by rakyll/hey with tui animation
 brew "oha"
+# High performance message passing library
+brew "open-mpi"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # AI coding agent, built for the terminal
@@ -274,7 +305,9 @@ brew "opencode"
 # Development kit for the Java programming language
 brew "openjdk"
 # Development kit for the Java programming language
-brew "openjdk@21"
+brew "openjdk@21", link: true
+# C library to read whole-slide images (a.k.a. virtual slides)
+brew "openslide"
 # PNG file optimizer
 brew "optipng"
 # 7-Zip (high compression file archiver) implementation
@@ -321,6 +354,8 @@ brew "scrcpy"
 brew "sd"
 # 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
+# Database of common MIME types
+brew "shared-mime-info"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
@@ -329,6 +364,8 @@ brew "shfmt"
 brew "snyk-cli"
 # Launcher to analyze a project with SonarQube
 brew "sonar-scanner"
+# Super fast C++ logging library
+brew "spdlog"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
@@ -347,6 +384,8 @@ brew "superfile"
 brew "tabiew"
 # TOML toolkit written in Rust
 brew "taplo"
+# Rich and complete approach to parallelism in C++
+brew "tbb"
 # Command-line packet analyzer
 brew "tcpdump"
 # High performance TCP and WebSocket load generator and sink
@@ -373,6 +412,8 @@ brew "uv"
 brew "vegeta"
 # Your CLI home video recorder
 brew "vhs"
+# Image processing library
+brew "vips"
 # Simple terminal image viewer written in Rust
 brew "viu"
 # Internet file retriever
@@ -383,8 +424,6 @@ brew "worktrunk"
 brew "xh"
 # Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
-# Pluggable terminal workspace, with terminal multiplexer as the base feature
-brew "zellij"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Fish-like fast/unobtrusive autosuggestions for zsh
@@ -437,8 +476,8 @@ brew "markmarkoh/lt/lt"
 brew "metalbear-co/mirrord/mirrord"
 # Desktop-inspired terminal diff viewer for agent-authored changesets
 brew "modem-dev/tap/hunk", trusted: true
-# Google CLI for Gmail, Calendar, Drive, Docs, Sheets, and more
-brew "openclaw/tap/gogcli"
+# A TUI to visualize and manage GitHub Actions
+brew "nnnkkk7/tap/lazyactions", trusted: true
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # Record Terraform runs with git context, timing, and resource events
@@ -447,16 +486,12 @@ brew "owloops/tap/tfjournal"
 brew "rebelice/tap/lazypg"
 # Terminal trainer that drills advanced Vim techniques in real vim/nvim
 brew "s-sigdel/tap/vimhjkl"
-# Find & fix known vulnerabilities in open-source dependencies
-brew "snyk/tap/snyk", link: false
 # Model Context Protocol runtime and CLI generator
 brew "steipete/tap/mcporter"
 # A Git history screensaver - watch your code rewrite itself
 brew "unhappychoice/tap/gitlogue"
 # Modern TUI for managing Homebrew packages and casks on macOS and Linux
 brew "valkyrie00/bbrew/bbrew"
-# Allows you to manage your stacked changes and submit them for review on GitHub
-brew "withgraphite/tap/graphite"
 brew "yakitrak/yakitrak/notesmd-cli", link: false
 # Securely stores and accesses AWS credentials in a development environment
 cask "aws-vault-binary"
@@ -479,7 +514,7 @@ cask "ghostty"
 # Clone any website for offline viewing, with the JavaScript stripped out
 cask "tamnd/tap/kage", trusted: true
 # Local-first dictation and meeting transcription
-cask "phequals7/muesli/muesli"
+cask "muesli"
 # App to write, plan, collaborate, and get organised
 cask "notion"
 # Peer to peer Bitorrent client
@@ -492,16 +527,6 @@ cask "vlc"
 cask "wallspace"
 # Torrent streaming application
 cask "webtorrent"
-go "github.com/keidarcy/e1s/cmd/e1s"
-go "github.com/nlamirault/e2c/cmd/e2c"
-go "golang.org/x/tools/cmd/goimports"
-go "github.com/golangci/golangci-lint/v2/cmd/golangci-lint"
-go "github.com/projectdiscovery/katana/cmd/katana"
-go "github.com/nnnkkk7/lazyactions/cmd/lazyactions"
-go "github.com/jesseduffield/lazynpm"
-go "github.com/unkn0wn-root/resterm/cmd/resterm"
-go "github.com/arpxspace/smartcommit"
-go "github.com/Gaurav-Gosain/tuios/cmd/tuios"
 cargo "octotype"
 uv "cloctui"
 uv "cocoindex"
@@ -520,10 +545,8 @@ npm "@aisuite/chub"
 npm "@dbml/cli"
 npm "@mariozechner/pi-coding-agent"
 npm "@openai/codex"
-npm "@pierre/diffs"
 npm "@razakadam74/gitmsg"
 npm "cline"
-npm "codeburn"
 npm "freebuff"
 npm "openskills"
 npm "opensrc"

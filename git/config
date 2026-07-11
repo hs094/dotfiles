@@ -17,6 +17,7 @@
 [core]
 	excludesfile = ~/.config/git/.gitignore_global
 	editor = nvim
+	fsmonitor = true
 
 [status]
 	branch = true
@@ -27,6 +28,7 @@
 	context = 3
 	renames = true
 	interHunkContext = 10
+	algorithm = histogram
 
 [pager]
 	diff = delta
@@ -44,6 +46,9 @@
 	whitespace = yellow reverse
 	old = red
 
+[merge]
+	conflictStyle = zdiff3
+
 [push]
 	autoSetupRemote = true
 	default = current
@@ -53,9 +58,22 @@
 	default = current
 	rebase = true
 
+[fetch]
+	prune = true
+
 [rebase]
 	autoStash = true
 	missingCommitsCheck = warn
+	updateRefs = true
+
+[protocol]
+	version = 2
+
+[branch]
+	sort = -committerdate
+
+[rerere]
+	enabled = true
 
 [url "git@github.com:hs094/"]
 	insteadOf = hs:
