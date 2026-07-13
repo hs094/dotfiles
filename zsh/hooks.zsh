@@ -1,20 +1,16 @@
 autoload -Uz add-zsh-hook
 
 # chpwd hook for python
-# On cd: if a venv is already active (auto-activated here, a manual `source`,
-# or conda), leave it alone. Otherwise activate a virtualenv (.venv or venv) in
-# the current directory; failing that, look one level down in the immediate
-# children — activate the sole match, or pop an fzf chooser when there are
-# several. Never auto-deactivates: once an env is on, it stays until you leave
-# it yourself.
+# On cd into a dir with .venv/ or venv/, activate it. If one is already active
+# (auto-activated here, manual `source`, or conda), leave it alone. Only
+# considers the current directory — no child search.
+# HOOKS_FLAG=1: also prompt to create .venv if missing (creates + activates,
+#               then installs deps in background with tmux notification).
 _chpwd_python_venv() {
-  local venv
-  local -a found
+  local venv flag=${HOOKS_FLAG:-0}
 
-  # 0. a venv is already active — leave it
   [[ -n "$VIRTUAL_ENV" ]] && return
 
-  # 1. venv in the current directory
   for venv in "$PWD/.venv" "$PWD/venv"; do
     if [[ -f "$venv/bin/activate" ]]; then
       source "$venv/bin/activate"
@@ -22,30 +18,40 @@ _chpwd_python_venv() {
     fi
   done
 
-  # 2. venvs in immediate children
-  found=( $PWD/*/.venv/bin/activate(N) $PWD/*/venv/bin/activate(N) )
-  found=( ${found%/bin/activate} )
-
-  venv=""
-  if (( ${#found} == 1 )); then
-    venv=$found[1]
-  elif (( ${#found} > 1 )); then
-    if (( $+commands[fzf] )); then
-      venv=$(print -rl -- $found | fzf --prompt='venv> ' --height=40% --reverse) || return
+  # No venv found — prompt to create one if HOOKS_FLAG=1 and this looks like a
+  # Python project.
+  if (( flag )) && [[ -f $PWD/requirements.txt || -f $PWD/pyproject.toml || -f $PWD/setup.py || -f $PWD/Pipfile ]]; then
+    echo -n "🐍 No venv found — create .venv? [y/N] "
+    read -q || return
+    echo
+    if (( $+commands[uv] )); then
+      uv venv "$PWD/.venv" || return
     else
-      venv=$found[1]
+      python3 -m venv "$PWD/.venv" || return
+    fi
+    source "$PWD/.venv/bin/activate"
+    if [[ -f requirements.txt ]]; then
+      if (( $+commands[uv] )); then
+        (uv pip install -r requirements.txt; tmux display-message "🐍 uv done: ${PWD:t}") &!
+      else
+        (pip install -r requirements.txt; tmux display-message "🐍 pip done: ${PWD:t}") &!
+      fi
     fi
   fi
-
-  [[ -n "$venv" ]] && source "$venv/bin/activate"
 }
-
 # chpwd hook for node
 # On entering a folder with a package.json but no node_modules, install deps.
+# HOOKS_FLAG=0 (default): no prompt, install silently.
+# HOOKS_FLAG=1:          ask y/n before installing.
 _chpwd_node_install() {
+  local flag=${HOOKS_FLAG:-0}
   if [[ -f package.json && ! -d node_modules ]]; then
-    echo "📦 package.json found, no node_modules — running npm i…"
-    npm i
+    if (( flag )); then
+      echo -n "📦 package.json found, no node_modules — install? [y/N] "
+      read -q || return
+      echo
+    fi
+    (npm i; tmux display-message "📦 npm done: ${PWD:t}") &!
   fi
 }
 
