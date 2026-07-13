@@ -81,9 +81,6 @@
 [url "git@github.com:"]
 	insteadOf = gh:
 
-[url "git@github.com:Tailored-AI-Hub/"]
-	insteadOf = tai:
-
 [alias]
 	commit-at = "!f() { \
 	  TS=$(date -j -f \"%Y-%m-%d %H:%M:%S\" \"$1\" \"+%Y-%m-%dT%H:%M:%S\"); \

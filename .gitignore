@@ -97,4 +97,5 @@ tealdeer/~/
 /opencode/.ponytail-active
 /pgcli/log
 /herdr
-/pgcli/history
+
+pgcli/history
