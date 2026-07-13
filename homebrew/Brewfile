@@ -25,6 +25,7 @@ tap "kaushiksrini/parqeye", trusted: true
 tap "kdash-rs/kdash", trusted: true
 tap "keidarcy/tap", trusted: true
 tap "kilo-org/tap", "https://github.com/Kilo-Org/homebrew-tap", trusted: true
+tap "kitlangton/tap"
 tap "kontext-security/tap", trusted: true
 tap "kriuchkov/tap", trusted: true
 tap "krtirtho/apps", trusted: true
@@ -457,6 +458,8 @@ brew "kdash-rs/kdash/kdash"
 brew "keidarcy/tap/e1s"
 # The AI coding agent built for the terminal.
 brew "kilo-org/tap/kilo"
+# Terminal UI for GitHub pull requests
+brew "kitlangton/tap/ghui", trusted: true
 # Identity, credentials, and governance for AI agents
 brew "kontext-security/tap/kontext"
 # Tock v1.9.8 is a simple timetracker for the command line

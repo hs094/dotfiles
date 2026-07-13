@@ -1,3 +1,5 @@
+alias n="nvim"
+
 alias ghbranches='git fetch --quiet 2>/dev/null; printf "\033[1;37m%-35s %-15s %10s\033[0m\n" "BRANCH" "UPDATED" "BEHIND|AHEAD"; printf "\033[2m%s\033[0m\n" "$(printf "%.80s" "────────────────────────────────────────────────────────────────────────────────")"; git for-each-ref --sort=-committerdate --format="%(refname:short)|%(committerdate:relative)" refs/heads/ | while IFS="|" read branch date; do
   if [ "$branch" != "main" ]; then
     counts=$(git rev-list --left-right --count main...${branch} 2>/dev/null)
@@ -129,8 +131,6 @@ alias grmfzf='git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0
 alias grfzf='git diff --name-only | fzf -m --print0 | xargs -0 -o -t git restore' # Git restore with fzf
 alias grsfzf='git diff --name-only | fzf -m --print0 | xargs -0 -o -t git restore --staged' # Git restore --staged with fzf
 
-
-alias nvima='NVIM_APPNAME=nvim-astro nvim'
 
 # Git
 alias ga='git add'
