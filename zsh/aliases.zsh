@@ -62,12 +62,11 @@ alias cpl="copilot"
 alias kil="kilocode"
 alias qw="qwen"
 alias ag="auggie"
-alias misv="vibe"
 alias fb="freebuff"
 # alias cf=
 
-# Neovim Configuration Aliases
-alias nvims="nvims"
+# Hunk Aliases
+alias hm="hunk diff main"
 
 alias lc="nvim leetcode.nvim"
 

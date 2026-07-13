@@ -48,6 +48,7 @@ tap "openclaw/tap", trusted: true
 tap "oven-sh/bun", trusted: true
 tap "owloops/tap", "https://github.com/Owloops/homebrew-tap", trusted: true
 tap "rebelice/tap", trusted: true
+tap "riii111/sabiql", trusted: { formulae: ["sabiql"] }
 tap "s-sigdel/tap", "https://github.com/S-Sigdel/homebrew-tap", trusted: true
 tap "skardyy/mcat", "https://github.com/Skardyy/homebrew-mcat", trusted: true
 tap "snyk/tap", trusted: true
@@ -194,8 +195,6 @@ brew "icu4c@77", link: true
 brew "imagemagick"
 # Download media from Instagram
 brew "instaloader"
-# Like IntelliSense, but for shells
-brew "intelli-shell"
 # Update of iperf: measures TCP, UDP, and SCTP bandwidth
 brew "iperf3"
 # Library for manipulating JPEG-2000 images
@@ -335,7 +334,7 @@ brew "pulumi"
 # Rsync for cloud storage
 brew "rclone"
 # Persistent key-value database, with built-in net interface
-brew "redis", link: false
+brew "redis"
 # Extremely fast tool to remove dupes and other lint from your filesystem
 brew "rmlint"
 # Utility that provides fast incremental file transfer
@@ -549,6 +548,7 @@ npm "@openai/codex"
 npm "@razakadam74/gitmsg"
 npm "cline"
 npm "freebuff"
+npm "omniroute"
 npm "openskills"
 npm "opensrc"
 npm "prettier"

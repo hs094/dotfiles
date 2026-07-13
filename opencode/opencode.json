@@ -10,6 +10,7 @@
     }
   },
   "plugin": [
-    "@dietrichgebert/ponytail"
+    "@dietrichgebert/ponytail",
+    "@omniroute/opencode-provider"
   ]
 }
