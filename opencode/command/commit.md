@@ -1,6 +1,6 @@
 ---
 description: Commit staged files with detailed conventional message
-allowed-tools: Read, Bash(git:*)
+allowed-tools: Read, Bash(git:commit:*), Bash(git:diff:*), Bash(git:show:*)
 ---
 
 Check for staged files: !`git diff --cached --stat`
