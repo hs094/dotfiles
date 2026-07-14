@@ -7,17 +7,42 @@
 
 // Optional parameters:
 // @raycast.icon youtube.svg 
+// @raycast.key ctrl+cmd+y
 // @raycast.description Add a Video to Youtube DB Page
-// @raycast.argument1 { "type": "url", "placeholder": "Youtube Video URL" }
+// @raycast.argument1 { "type": "url", "placeholder": "Youtube Video URL", "optional": true }
 
 // Documentation:
 // @raycast.author hs094
 // @raycast.authorURL https://raycast.com/hs094
 
 
+import { execSync } from "node:child_process"
 import { Client } from "@notionhq/client"
 
 process.loadEnvFile(`${import.meta.dirname}/.env`)
+
+function getBrowserUrl() {
+  // ponytail: tries common browsers via osascript, silent on miss
+  const scripts = [
+    'tell application "Google Chrome" to get URL of active tab of front window',
+    'tell application "Safari" to get URL of current tab of front window',
+    'tell application "Arc" to get URL of active tab of front window',
+    'tell application "Brave Browser" to get URL of active tab of front window',
+    'tell application "Microsoft Edge" to get URL of active tab of front window',
+  ]
+  for (const script of scripts) {
+    try {
+      return execSync(`osascript -e ${JSON.stringify(script)}`, {
+        encoding: "utf-8",
+        timeout: 2000,
+        stdio: ["pipe", "pipe", "ignore"],
+      }).trim()
+    } catch {
+      // try next browser
+    }
+  }
+  throw new Error("Could not get URL from any browser tab")
+}
 
 // Validate that the argument is a YouTube video link and return a canonical
 // https://www.youtube.com/watch?v=ID URL, preserving playlist params (list,
@@ -59,9 +84,11 @@ function normalizeYoutubeUrl(input) {
   return clean.toString()
 }
 
+const rawUrl = process.argv[2]?.trim() || getBrowserUrl()
+
 let videoUrl
 try {
-  videoUrl = normalizeYoutubeUrl(process.argv[2] ?? "")
+  videoUrl = normalizeYoutubeUrl(rawUrl)
 } catch (err) {
   console.error(err.message)
   process.exit(1)

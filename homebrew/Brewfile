@@ -49,7 +49,7 @@ tap "openclaw/tap", trusted: true
 tap "oven-sh/bun", trusted: true
 tap "owloops/tap", "https://github.com/Owloops/homebrew-tap", trusted: true
 tap "rebelice/tap", trusted: true
-tap "riii111/sabiql", trusted: { formulae: ["sabiql"] }
+tap "riii111/sabiql"
 tap "s-sigdel/tap", "https://github.com/S-Sigdel/homebrew-tap", trusted: true
 tap "skardyy/mcat", "https://github.com/Skardyy/homebrew-mcat", trusted: true
 tap "snyk/tap", trusted: true
@@ -484,6 +484,8 @@ brew "oven-sh/bun/bun"
 brew "owloops/tap/tfjournal"
 # A simple terminal UI for PostgreSQL
 brew "rebelice/tap/lazypg"
+# Fast, driver-less TUI to browse, query, and edit PostgreSQL databases
+brew "riii111/sabiql/sabiql", trusted: true
 # Terminal trainer that drills advanced Vim techniques in real vim/nvim
 brew "s-sigdel/tap/vimhjkl"
 # Model Context Protocol runtime and CLI generator
