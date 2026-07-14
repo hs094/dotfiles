@@ -25,8 +25,5 @@ eval "$(zoxide init zsh)"
 
 export STARSHIP_CONFIG="~/.config/starship/starship.toml"
 export FUNCNEST=1000
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/hardiksoni/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
-# End of Docker CLI completions
