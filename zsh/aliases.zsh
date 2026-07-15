@@ -211,6 +211,7 @@ alias dinspect='docker inspect'
 # Docker Compose
 alias dc='docker compose'
 alias dcd='docker compose down'
+alias dcr='docker compose restart'
 alias dcu='docker compose up'
 alias dcud='docker compose up -d'
 alias dcub='docker compose up --build'
