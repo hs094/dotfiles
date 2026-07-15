@@ -1,27 +1,28 @@
 ---
-description: Commit staged files with Profressional message
-allowed-tools: Read, Bash(git:commit:*), Bash(git:diff:*), Bash(git:show:*)
+description: Commit staged files with a professional message
+agent: git-commit
 ---
 
-Check for staged files: !`git diff --cached --stat`
+---
 
-If none staged: report "Nothing staged. Use `git add <files>` first." and stop.
+Create exactly one professional Git commit from the staged changes supplied below.
 
-Read full diff: !`git diff --cached`
+Do not ask for confirmation or clarification. Do not modify or stage files. If nothing is staged, respond exactly:
 
-Extract ticket from branch name (e.g. `PP-337`, `PROJ-123`). If none, skip.
+`Nothing staged. Use git add <files> first.`
 
-Build commit message.
-**Title:** `<ticket> | <imperative description>` (≤72 chars, no period). If no ticket, use plain `<imperative description>`.
-**Body:** blank line, then bullet points — `* <what changed>. <why>.`. Every file gets covered. "Why" is critical (not what the diff says, but why done this way). Connect related changes across files. No vague descriptions.
+Otherwise, generate the commit title and body according to your agent instructions and immediately execute the commit.
 
-Example:
+The body must use real newlines (line breaks) between bullet points — never `<br>`, `\n`, or inline separators.
 
-```
-PP-337 | Add agent spec push-down to child tenants
+## Current branch
 
-* Add ConfigType.PLAYBOOK and ConfigType.AGENT_SPEC to push-down registry so playbooks and agent specs inherit alongside integrations/skills.
-* Copy agent spec into child schema on push (same UUID) since Trigger.harness_spec is a hard FK requiring same-schema rows.
-```
+!`git branch --show-current`
 
-Commit: !`git commit -m "$title" -m "$body"`
+## Staged changes summary
+
+!`git diff --cached --stat`
+
+## Complete staged diff
+
+!`git diff --cached`
