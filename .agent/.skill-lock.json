@@ -1,0 +1,1356 @@
+{
+  "version": 3,
+  "skills": {
+    "find-skills": {
+      "source": "vercel-labs/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/skills.git",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "skillFolderHash": "3013fdeb8a11b10b1eb795ec3ae8bfca38f7c26d",
+      "installedAt": "2026-02-02T17:01:09.080Z",
+      "updatedAt": "2026-03-19T06:10:04.071Z"
+    },
+    "dispatching-parallel-agents": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/dispatching-parallel-agents/SKILL.md",
+      "skillFolderHash": "ebd0490e6b0bccfdb9f9c0cc9dd6a066036c8d89",
+      "installedAt": "2026-02-02T17:08:46.280Z",
+      "updatedAt": "2026-03-19T06:10:12.750Z"
+    },
+    "executing-plans": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/executing-plans/SKILL.md",
+      "skillFolderHash": "7c20d2bd7ff7b166ea3064e21b1e5f0455750878",
+      "installedAt": "2026-02-02T17:08:46.323Z",
+      "updatedAt": "2026-05-15T15:55:41.401Z"
+    },
+    "finishing-a-development-branch": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/finishing-a-development-branch/SKILL.md",
+      "skillFolderHash": "782e09faa5dcf7e9a7a173bd14b5622e35b80169",
+      "installedAt": "2026-02-02T17:08:46.365Z",
+      "updatedAt": "2026-05-15T15:55:45.273Z"
+    },
+    "subagent-driven-development": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/subagent-driven-development/SKILL.md",
+      "skillFolderHash": "73b43347c1bdc10f6ab81a5cdb036dd1c8098cc0",
+      "installedAt": "2026-02-02T17:08:46.486Z",
+      "updatedAt": "2026-05-15T15:55:50.594Z"
+    },
+    "systematic-debugging": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/systematic-debugging/SKILL.md",
+      "skillFolderHash": "e96f5f2620c17069d668be1880d5492e34c84ceb",
+      "installedAt": "2026-02-02T17:08:46.527Z",
+      "updatedAt": "2026-05-15T15:55:54.012Z"
+    },
+    "using-git-worktrees": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/using-git-worktrees/SKILL.md",
+      "skillFolderHash": "13a9643fb9e4b236173f7d4b56b15dac10394f1b",
+      "installedAt": "2026-02-02T17:08:46.608Z",
+      "updatedAt": "2026-05-15T15:55:57.207Z"
+    },
+    "using-superpowers": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/using-superpowers/SKILL.md",
+      "skillFolderHash": "225dd70596c396940ff158335a954a64d93ece40",
+      "installedAt": "2026-02-02T17:08:46.647Z",
+      "updatedAt": "2026-05-15T15:55:59.311Z"
+    },
+    "verification-before-completion": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/verification-before-completion/SKILL.md",
+      "skillFolderHash": "ceb2f1f67f4cadb29b32a06e54d3d0be832071f5",
+      "installedAt": "2026-02-02T17:08:46.688Z",
+      "updatedAt": "2026-02-02T17:08:46.688Z"
+    },
+    "writing-plans": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/writing-plans/SKILL.md",
+      "skillFolderHash": "8fe8e8b6ee9e5cbe53cb172a36f0dc31f9875847",
+      "installedAt": "2026-02-02T17:08:46.740Z",
+      "updatedAt": "2026-05-15T15:56:01.952Z"
+    },
+    "writing-skills": {
+      "source": "obra/superpowers",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers.git",
+      "skillPath": "skills/writing-skills/SKILL.md",
+      "skillFolderHash": "80e8c7d3be99d55d5d76c9516cc45a1e7f48f281",
+      "installedAt": "2026-02-02T17:08:46.781Z",
+      "updatedAt": "2026-05-02T11:02:49.211Z"
+    },
+    "finding-duplicate-functions": {
+      "source": "obra/superpowers-lab",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers-lab.git",
+      "skillPath": "skills/finding-duplicate-functions/SKILL.md",
+      "skillFolderHash": "eef852842c28be76f33d0c6801399f80059c7cfd",
+      "installedAt": "2026-02-02T17:12:02.430Z",
+      "updatedAt": "2026-03-26T13:02:08.634Z"
+    },
+    "mcp-cli": {
+      "source": "obra/superpowers-lab",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers-lab.git",
+      "skillPath": "skills/mcp-cli/SKILL.md",
+      "skillFolderHash": "93ec202c811f3dc6b3be051f33c95d2f64ac3c2b",
+      "installedAt": "2026-02-02T17:12:02.471Z",
+      "updatedAt": "2026-02-02T17:12:02.471Z"
+    },
+    "slack-messaging": {
+      "source": "obra/superpowers-lab",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/obra/superpowers-lab.git",
+      "skillPath": "skills/slack-messaging/SKILL.md",
+      "skillFolderHash": "10b3a3215ad165c1db7fd8d7609741c014860667",
+      "installedAt": "2026-02-02T17:12:02.512Z",
+      "updatedAt": "2026-02-02T17:12:02.512Z"
+    },
+    "pict-test-designer": {
+      "source": "omkamal/pypict-claude-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/omkamal/pypict-claude-skill.git",
+      "skillPath": "SKILL.md",
+      "skillFolderHash": "fbda212bca79dfa7611be12527b102c89cc8faeb",
+      "installedAt": "2026-02-02T17:13:46.457Z",
+      "updatedAt": "2026-05-02T11:02:51.551Z"
+    },
+    "azure-usage": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/azure-tools/skills/azure-usage/SKILL.md",
+      "skillFolderHash": "ee48e748d26a0b3f302504a57c285f97be70d9cc",
+      "installedAt": "2026-02-02T17:15:58.999Z",
+      "updatedAt": "2026-02-02T17:15:58.999Z"
+    },
+    "setup": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/setup/SKILL.md",
+      "skillFolderHash": "0cba8e80e47142ffb1cee96f90c363feb735e976",
+      "installedAt": "2026-02-02T17:15:59.049Z",
+      "updatedAt": "2026-05-24T10:32:18.029Z"
+    },
+    "gcloud-usage": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/gcloud-tools/skills/gcloud-usage/SKILL.md",
+      "skillFolderHash": "7bf1cb8274f7d7c1cb1c905518c5ab09dacceb49",
+      "installedAt": "2026-02-02T17:15:59.088Z",
+      "updatedAt": "2026-02-02T17:15:59.088Z"
+    },
+    "agent-development": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/plugin-dev/skills/agent-development/SKILL.md",
+      "skillFolderHash": "e195da69c492fd24bbbbb8e7be5f05c30b9c723d",
+      "installedAt": "2026-02-02T17:15:59.209Z",
+      "updatedAt": "2026-02-02T17:15:59.209Z"
+    },
+    "command-development": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/plugin-dev/skills/command-development/SKILL.md",
+      "skillFolderHash": "0858e3f9859d8a3f9c15660192dba81f7ab8a0e3",
+      "installedAt": "2026-02-02T17:15:59.248Z",
+      "updatedAt": "2026-02-02T17:15:59.248Z"
+    },
+    "mcp-integration": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/plugin-dev/skills/mcp-integration/SKILL.md",
+      "skillFolderHash": "7e09bf3a3ea507421f6c1a9f789e1eac120ff1f2",
+      "installedAt": "2026-02-02T17:15:59.288Z",
+      "updatedAt": "2026-02-02T17:15:59.288Z"
+    },
+    "slack-usage": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/slack-tools/skills/slack-usage/SKILL.md",
+      "skillFolderHash": "e94d1b752e8401e8b9cea373b5adc64950ce83bc",
+      "installedAt": "2026-02-02T17:15:59.328Z",
+      "updatedAt": "2026-02-02T17:15:59.328Z"
+    },
+    "skill-development": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/plugin-dev/skills/skill-development/SKILL.md",
+      "skillFolderHash": "2e7b19ef353652fb717ddcf29027af04b5785875",
+      "installedAt": "2026-02-02T17:15:59.365Z",
+      "updatedAt": "2026-02-02T17:15:59.365Z"
+    },
+    "plugin-structure": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/plugin-dev/skills/plugin-structure/SKILL.md",
+      "skillFolderHash": "a1b140a62d022cf9af4c239f1277b0cbc2551f8f",
+      "installedAt": "2026-02-02T17:15:59.402Z",
+      "updatedAt": "2026-02-02T17:15:59.402Z"
+    },
+    "plugin-settings": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/plugin-dev/skills/plugin-settings/SKILL.md",
+      "skillFolderHash": "ce9660843f0d716cca54a798e4d90ac8c6d7fb7b",
+      "installedAt": "2026-02-02T17:15:59.441Z",
+      "updatedAt": "2026-02-02T17:15:59.441Z"
+    },
+    "hook-development": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/plugin-dev/skills/hook-development/SKILL.md",
+      "skillFolderHash": "c80af766fdfb64a80398e276a5367066e6ca0b21",
+      "installedAt": "2026-02-02T17:15:59.479Z",
+      "updatedAt": "2026-02-02T17:15:59.479Z"
+    },
+    "playwright-testing": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/playwright-tools/skills/playwright-testing/SKILL.md",
+      "skillFolderHash": "ad56b0eac3058701c90a4b6bb642bc980c5f4aed",
+      "installedAt": "2026-02-02T17:15:59.515Z",
+      "updatedAt": "2026-02-02T17:15:59.515Z"
+    },
+    "paper-search-usage": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/paper-search-tools/skills/paper-search-usage/SKILL.md",
+      "skillFolderHash": "ce344042bcc9c69bb4ef5e3d5e023dbc7f9df457",
+      "installedAt": "2026-02-02T17:15:59.554Z",
+      "updatedAt": "2026-02-02T17:15:59.554Z"
+    },
+    "mongodb-usage": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/mongodb-tools/skills/mongodb-usage/SKILL.md",
+      "skillFolderHash": "385414695675e5667d3626a18b0f54f768091dfc",
+      "installedAt": "2026-02-02T17:15:59.593Z",
+      "updatedAt": "2026-02-02T17:15:59.593Z"
+    },
+    "linear-usage": {
+      "source": "fcakyon/claude-codex-settings",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/fcakyon/claude-codex-settings.git",
+      "skillPath": "plugins/linear-tools/skills/linear-usage/SKILL.md",
+      "skillFolderHash": "e910adb6e6854a1c73528fa69160f44a15a57ec2",
+      "installedAt": "2026-02-02T17:15:59.631Z",
+      "updatedAt": "2026-02-02T17:15:59.631Z"
+    },
+    "fastapi-templates": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/api-scaffolding/skills/fastapi-templates/SKILL.md",
+      "skillFolderHash": "87c553f9f78dd6ccd352572058b947886d0b9052",
+      "installedAt": "2026-03-24T06:11:06.155Z",
+      "updatedAt": "2026-05-24T10:32:21.330Z"
+    },
+    "sqlalchemy-postgres": {
+      "source": "cfircoo/claude-code-toolkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cfircoo/claude-code-toolkit.git",
+      "skillPath": "skills/sqlalchemy-postgres/SKILL.md",
+      "skillFolderHash": "607f6daaeb3984e7718cd3e017330897b48e2ef8",
+      "installedAt": "2026-03-24T06:12:05.776Z",
+      "updatedAt": "2026-03-24T06:12:05.776Z"
+    },
+    "fastapi-code-review": {
+      "source": "existential-birds/beagle",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/existential-birds/beagle.git",
+      "skillPath": "plugins/beagle-python/skills/fastapi-code-review/SKILL.md",
+      "skillFolderHash": "e47279d18e9cc3b86d8b97e9001d202642c6bd5a",
+      "installedAt": "2026-03-24T06:14:50.547Z",
+      "updatedAt": "2026-05-15T15:56:20.172Z"
+    },
+    "fastapi-dependency-injection": {
+      "source": "thebushidocollective/han",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/thebushidocollective/han.git",
+      "skillPath": "plugins/frameworks/fastapi/skills/fastapi-dependency-injection/SKILL.md",
+      "skillFolderHash": "849846d48aa07d8f0184839405e5183a0ecec252",
+      "installedAt": "2026-03-24T10:50:43.120Z",
+      "updatedAt": "2026-03-24T10:50:43.120Z"
+    },
+    "accessibility": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/accessibility/SKILL.md",
+      "skillFolderHash": "a40ce6d14697b38ebeb7fd4343735386884c7b0a",
+      "installedAt": "2026-03-24T10:52:55.028Z",
+      "updatedAt": "2026-05-24T10:32:35.540Z"
+    },
+    "agent-orchestration": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/agent-orchestration/SKILL.md",
+      "skillFolderHash": "f7f69b153c77f921b3fce2e4042e85059a121326",
+      "installedAt": "2026-03-24T10:52:56.194Z",
+      "updatedAt": "2026-05-24T10:32:49.935Z"
+    },
+    "ai-ui-generation": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/ai-ui-generation/SKILL.md",
+      "skillFolderHash": "8f213ce941b360f4bc8739e5cd8e836204eb0a8c",
+      "installedAt": "2026-03-24T10:52:57.607Z",
+      "updatedAt": "2026-05-24T10:33:03.673Z"
+    },
+    "analytics": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/analytics/SKILL.md",
+      "skillFolderHash": "fb84d83d59b7041cd077c768117dd1c113a5fb28",
+      "installedAt": "2026-03-24T10:52:58.463Z",
+      "updatedAt": "2026-05-24T10:33:17.813Z"
+    },
+    "api-design": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/api-design/SKILL.md",
+      "skillFolderHash": "e54b77b7265fa49c8a80960fddca6e0bd02339be",
+      "installedAt": "2026-03-24T10:53:01.207Z",
+      "updatedAt": "2026-05-24T10:33:32.444Z"
+    },
+    "architecture-decision-record": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/architecture-decision-record/SKILL.md",
+      "skillFolderHash": "312c20762385ebfcd6abcbd35012b48dfc7d84ef",
+      "installedAt": "2026-03-24T10:53:01.998Z",
+      "updatedAt": "2026-05-24T10:33:46.905Z"
+    },
+    "architecture-patterns": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/architecture-patterns/SKILL.md",
+      "skillFolderHash": "2aef944a686e3416e358e18fe84b3e0bac77d775",
+      "installedAt": "2026-03-24T10:53:03.109Z",
+      "updatedAt": "2026-05-24T10:34:01.628Z"
+    },
+    "ascii-visualizer": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/ascii-visualizer/SKILL.md",
+      "skillFolderHash": "0803bf1fe11c31551fa0e51a6e3c006d94dcf728",
+      "installedAt": "2026-03-24T10:53:03.882Z",
+      "updatedAt": "2026-05-24T10:34:15.520Z"
+    },
+    "assess": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/assess/SKILL.md",
+      "skillFolderHash": "048ea3289efcf734664a975c1a6d6c04cd222f9d",
+      "installedAt": "2026-03-24T10:53:05.225Z",
+      "updatedAt": "2026-05-24T10:34:30.394Z"
+    },
+    "async-jobs": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/async-jobs/SKILL.md",
+      "skillFolderHash": "265f844dc4419d87e5b24607fd5cc1e7ce1247f7",
+      "installedAt": "2026-03-24T10:53:06.367Z",
+      "updatedAt": "2026-05-24T10:34:44.604Z"
+    },
+    "audit-full": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/audit-full/SKILL.md",
+      "skillFolderHash": "8d2d1c0b2b515e292f7f45dc2289bb500ba27ba1",
+      "installedAt": "2026-03-24T10:53:07.127Z",
+      "updatedAt": "2026-05-24T10:34:58.274Z"
+    },
+    "audit-skills": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/audit-skills/SKILL.md",
+      "skillFolderHash": "50305ba4026f95a2aff0f26b570e987869623eb7",
+      "installedAt": "2026-03-24T10:53:07.975Z",
+      "updatedAt": "2026-05-24T10:35:13.026Z"
+    },
+    "brainstorm": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/brainstorm/SKILL.md",
+      "skillFolderHash": "72f0ca492dd38a42d21ef446a08ba64ae584c281",
+      "installedAt": "2026-03-24T10:53:09.045Z",
+      "updatedAt": "2026-05-24T10:35:27.459Z"
+    },
+    "browser-tools": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/browser-tools/SKILL.md",
+      "skillFolderHash": "320770246cbf464313c8b4131e75b8b8d2432e4a",
+      "installedAt": "2026-03-24T10:53:10.513Z",
+      "updatedAt": "2026-05-24T10:35:41.053Z"
+    },
+    "business-case": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/business-case/SKILL.md",
+      "skillFolderHash": "f4cf050a844849436a4600fa5d9731349501244d",
+      "installedAt": "2026-03-24T10:53:11.172Z",
+      "updatedAt": "2026-05-24T10:35:55.444Z"
+    },
+    "chain-patterns": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/chain-patterns/SKILL.md",
+      "skillFolderHash": "95d16e1c53829eea6671441848eb73a70367aa3a",
+      "installedAt": "2026-03-24T10:53:12.551Z",
+      "updatedAt": "2026-05-24T10:36:09.600Z"
+    },
+    "checkpoint-resume": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/checkpoint-resume/SKILL.md",
+      "skillFolderHash": "8eb697f5739d7340178e667d316a3cd86be2df62",
+      "installedAt": "2026-03-24T10:53:14.062Z",
+      "updatedAt": "2026-05-24T10:36:23.707Z"
+    },
+    "competitive-analysis": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/competitive-analysis/SKILL.md",
+      "skillFolderHash": "3653dbad92911f0f97415789d2e6681ed84508dc",
+      "installedAt": "2026-03-24T10:53:17.952Z",
+      "updatedAt": "2026-05-24T10:36:51.410Z"
+    },
+    "component-search": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/component-search/SKILL.md",
+      "skillFolderHash": "cf0a9226c1adc176c28a3062c05212ded47bbf86",
+      "installedAt": "2026-03-24T10:53:19.027Z",
+      "updatedAt": "2026-05-24T10:37:05.233Z"
+    },
+    "configure": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/configure/SKILL.md",
+      "skillFolderHash": "437828d24f60319ac5764a625591c60f757e547a",
+      "installedAt": "2026-03-24T10:53:20.325Z",
+      "updatedAt": "2026-05-24T10:37:19.712Z"
+    },
+    "cover": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/cover/SKILL.md",
+      "skillFolderHash": "43e189be683a9a822860dcfcdfffb111b4256be7",
+      "installedAt": "2026-03-24T10:53:21.589Z",
+      "updatedAt": "2026-05-24T10:37:33.531Z"
+    },
+    "create-pr": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/create-pr/SKILL.md",
+      "skillFolderHash": "129e551cd257aec524654e9f02d72c0693e586dd",
+      "installedAt": "2026-03-24T10:53:22.982Z",
+      "updatedAt": "2026-05-24T10:37:47.498Z"
+    },
+    "demo-producer": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/demo-producer/SKILL.md",
+      "skillFolderHash": "ca96b6ca42b63f5afab69b62bfd406b87e5d3b33",
+      "installedAt": "2026-03-24T10:53:25.624Z",
+      "updatedAt": "2026-05-24T10:38:02.268Z"
+    },
+    "design-context-extract": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/design-context-extract/SKILL.md",
+      "skillFolderHash": "8f368c454db0394b3821354cc3cbce6d80c8b5b0",
+      "installedAt": "2026-03-24T10:53:26.692Z",
+      "updatedAt": "2026-05-24T10:38:16.392Z"
+    },
+    "design-system-tokens": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/design-system-tokens/SKILL.md",
+      "skillFolderHash": "8f0853bbd3f125cff739b654a3a20afe004b4c46",
+      "installedAt": "2026-03-24T10:53:28.046Z",
+      "updatedAt": "2026-05-24T10:38:30.728Z"
+    },
+    "design-to-code": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/design-to-code/SKILL.md",
+      "skillFolderHash": "482db06243f902479a7c6701adf980f01e4e8916",
+      "installedAt": "2026-03-24T10:53:29.286Z",
+      "updatedAt": "2026-05-24T10:38:44.767Z"
+    },
+    "devops-deployment": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/devops-deployment/SKILL.md",
+      "skillFolderHash": "c84d388f49c4ae67a2ca3e2b26e08df667fbd0ae",
+      "installedAt": "2026-03-24T10:53:30.555Z",
+      "updatedAt": "2026-05-24T10:38:59.014Z"
+    },
+    "distributed-systems": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/distributed-systems/SKILL.md",
+      "skillFolderHash": "2a2eaf677e7d0dabecff3be0bb1f94fa0fe1c5cd",
+      "installedAt": "2026-03-24T10:53:31.854Z",
+      "updatedAt": "2026-05-24T10:39:13.152Z"
+    },
+    "documentation-patterns": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/documentation-patterns/SKILL.md",
+      "skillFolderHash": "dae8d2c8b0208a19ac5d5ab9725aef34c8506877",
+      "installedAt": "2026-03-24T10:53:34.004Z",
+      "updatedAt": "2026-05-24T10:39:26.930Z"
+    },
+    "domain-driven-design": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/domain-driven-design/SKILL.md",
+      "skillFolderHash": "fdaad7eb780ef42cdbaa199931fe060f986dd4fa",
+      "installedAt": "2026-03-24T10:53:34.960Z",
+      "updatedAt": "2026-05-24T10:39:41.212Z"
+    },
+    "errors": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/errors/SKILL.md",
+      "skillFolderHash": "2b0987990e16fef58030aa5ae3e29059958bbae4",
+      "installedAt": "2026-03-24T10:53:35.659Z",
+      "updatedAt": "2026-05-24T10:39:55.087Z"
+    },
+    "explore": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/explore/SKILL.md",
+      "skillFolderHash": "272d5b4b3e7ca0280541c2684c2a79cc418edfc7",
+      "installedAt": "2026-03-24T10:53:36.588Z",
+      "updatedAt": "2026-05-24T10:40:09.760Z"
+    },
+    "feedback": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/feedback/SKILL.md",
+      "skillFolderHash": "c7382bba8f9754c7eb8ab6acfbc13d7f0319313e",
+      "installedAt": "2026-03-24T10:53:37.642Z",
+      "updatedAt": "2026-05-24T10:40:23.815Z"
+    },
+    "figma-design-handoff": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/figma-design-handoff/SKILL.md",
+      "skillFolderHash": "3b6a838742be40b616a2c462e99b260fea08fefc",
+      "installedAt": "2026-03-24T10:53:38.769Z",
+      "updatedAt": "2026-05-24T10:40:37.523Z"
+    },
+    "fix-issue": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/fix-issue/SKILL.md",
+      "skillFolderHash": "e141bc0f799aa572c7a16280fb6a721cc3e6b458",
+      "installedAt": "2026-03-24T10:53:39.568Z",
+      "updatedAt": "2026-05-24T10:40:52.252Z"
+    },
+    "github-operations": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/github-operations/SKILL.md",
+      "skillFolderHash": "de2d9fdd9679d9416725bf3dffca1b9ea77dd050",
+      "installedAt": "2026-03-24T10:53:41.051Z",
+      "updatedAt": "2026-05-24T10:41:06.493Z"
+    },
+    "golden-dataset": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/golden-dataset/SKILL.md",
+      "skillFolderHash": "52d0d0941012e7932b44cc464a99d2a46f50dcb1",
+      "installedAt": "2026-03-24T10:53:41.789Z",
+      "updatedAt": "2026-05-24T10:41:20.708Z"
+    },
+    "help": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/help/SKILL.md",
+      "skillFolderHash": "497ea425db2f3722d66a372540a396d1cf7b87b6",
+      "installedAt": "2026-03-24T10:53:42.680Z",
+      "updatedAt": "2026-05-24T10:41:34.867Z"
+    },
+    "i18n-date-patterns": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/i18n-date-patterns/SKILL.md",
+      "skillFolderHash": "dc94333e4268e7f1f4d282983bde4626af6211ed",
+      "installedAt": "2026-03-24T10:53:43.724Z",
+      "updatedAt": "2026-05-24T10:41:48.776Z"
+    },
+    "implement": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/implement/SKILL.md",
+      "skillFolderHash": "7209732898ed24e38e65b8223303e75eb1eab6c3",
+      "installedAt": "2026-03-24T10:53:45.056Z",
+      "updatedAt": "2026-05-24T10:42:02.761Z"
+    },
+    "interaction-patterns": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/interaction-patterns/SKILL.md",
+      "skillFolderHash": "2453b75786cb695a564f95dd7799402b3242135b",
+      "installedAt": "2026-03-24T10:53:45.563Z",
+      "updatedAt": "2026-05-24T10:42:16.625Z"
+    },
+    "issue-progress-tracking": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/issue-progress-tracking/SKILL.md",
+      "skillFolderHash": "df4177a35589b51a9cea90f585249b11a05bb2ee",
+      "installedAt": "2026-03-24T10:53:46.133Z",
+      "updatedAt": "2026-05-24T10:42:30.535Z"
+    },
+    "langgraph": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/langgraph/SKILL.md",
+      "skillFolderHash": "a5dcee1833f166d8488b8ed9a7b2c6044cdfe106",
+      "installedAt": "2026-03-24T10:53:46.858Z",
+      "updatedAt": "2026-05-24T10:42:44.207Z"
+    },
+    "llm-integration": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/llm-integration/SKILL.md",
+      "skillFolderHash": "b5955af64638050af2f417139dfd869287b655dc",
+      "installedAt": "2026-03-24T10:53:48.166Z",
+      "updatedAt": "2026-05-24T10:42:58.461Z"
+    },
+    "mcp-patterns": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/mcp-patterns/SKILL.md",
+      "skillFolderHash": "57d9acb179687193224324023d14fa03f25dd74f",
+      "installedAt": "2026-03-24T10:53:49.955Z",
+      "updatedAt": "2026-05-24T10:43:12.025Z"
+    },
+    "memory": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/memory/SKILL.md",
+      "skillFolderHash": "d6dbbc1bd47d918b54d99e02063a78dc3bc0338b",
+      "installedAt": "2026-03-24T10:53:50.694Z",
+      "updatedAt": "2026-05-24T10:43:25.646Z"
+    },
+    "monitoring-observability": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/monitoring-observability/SKILL.md",
+      "skillFolderHash": "a06c24900253b9a1398b15640fbc62bf59900495",
+      "installedAt": "2026-03-24T10:53:53.306Z",
+      "updatedAt": "2026-05-24T10:43:39.938Z"
+    },
+    "multimodal-llm": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/multimodal-llm/SKILL.md",
+      "skillFolderHash": "2f28a095be991ed5076b24169bbc4d9538e7b4dd",
+      "installedAt": "2026-03-24T10:53:54.420Z",
+      "updatedAt": "2026-05-24T10:43:54.371Z"
+    },
+    "notebooklm": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/notebooklm/SKILL.md",
+      "skillFolderHash": "154babdef397ce77eb74fab4d689b15b8b6c2b9f",
+      "installedAt": "2026-03-24T10:53:55.099Z",
+      "updatedAt": "2026-05-24T10:44:08.407Z"
+    },
+    "okr-design": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/okr-design/SKILL.md",
+      "skillFolderHash": "0e9f5688194d4d61f087b1da011f7704f53ac23e",
+      "installedAt": "2026-03-24T10:53:56.326Z",
+      "updatedAt": "2026-05-24T10:44:23.066Z"
+    },
+    "performance": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/performance/SKILL.md",
+      "skillFolderHash": "9c954afabc9bb9b4afb6d7c1a13276188e9859cf",
+      "installedAt": "2026-03-24T10:53:57.076Z",
+      "updatedAt": "2026-05-24T10:44:37.186Z"
+    },
+    "presentation-builder": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/presentation-builder/SKILL.md",
+      "skillFolderHash": "8d2fdefb600f5537f961d43356705203f0925946",
+      "installedAt": "2026-03-24T10:53:57.831Z",
+      "updatedAt": "2026-05-24T10:44:51.912Z"
+    },
+    "prioritization": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/prioritization/SKILL.md",
+      "skillFolderHash": "54ed61dd8112695700b62648088b1148a2c88116",
+      "installedAt": "2026-03-24T10:53:58.515Z",
+      "updatedAt": "2026-05-24T10:45:05.658Z"
+    },
+    "product-analytics": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/product-analytics/SKILL.md",
+      "skillFolderHash": "b2ba12d2335222b34c37865469995acf7a182076",
+      "installedAt": "2026-03-24T10:53:59.133Z",
+      "updatedAt": "2026-05-24T10:45:20.041Z"
+    },
+    "product-frameworks": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/product-frameworks/SKILL.md",
+      "skillFolderHash": "dd8592f8fde7e6f759f19e6309a9ed2baa7eb4b9",
+      "installedAt": "2026-03-24T10:53:59.651Z",
+      "updatedAt": "2026-05-02T11:17:16.098Z"
+    },
+    "python-backend": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/python-backend/SKILL.md",
+      "skillFolderHash": "2236a40dec612e16489dc458c46a530b39148f10",
+      "installedAt": "2026-03-24T10:54:00.340Z",
+      "updatedAt": "2026-05-24T10:50:35.916Z"
+    },
+    "quality-gates": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/quality-gates/SKILL.md",
+      "skillFolderHash": "ba7e7dade72ab2d425037f674bf28894f828629e",
+      "installedAt": "2026-03-24T10:54:00.845Z",
+      "updatedAt": "2026-05-24T10:50:50.401Z"
+    },
+    "rag-retrieval": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/rag-retrieval/SKILL.md",
+      "skillFolderHash": "f2d865967ecfd7f061a9aebb15335783e66908bd",
+      "installedAt": "2026-03-24T10:54:02.159Z",
+      "updatedAt": "2026-05-24T10:51:05.304Z"
+    },
+    "react-server-components-framework": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/react-server-components-framework/SKILL.md",
+      "skillFolderHash": "6a2b99778bfb9cd58d62b9df321fe264596569b4",
+      "installedAt": "2026-03-24T10:54:03.544Z",
+      "updatedAt": "2026-05-24T10:51:19.646Z"
+    },
+    "release-checklist": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/release-checklist/SKILL.md",
+      "skillFolderHash": "c0c9bd46c5d2f727eed7e6b5bd941f3216cc54b2",
+      "installedAt": "2026-03-24T10:54:04.376Z",
+      "updatedAt": "2026-05-24T10:51:34.051Z"
+    },
+    "release-management": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/release-management/SKILL.md",
+      "skillFolderHash": "c29b3ea0b267d4e5b1d3ed15f92ee145798ff0b1",
+      "installedAt": "2026-03-24T10:54:05.217Z",
+      "updatedAt": "2026-05-24T10:51:48.622Z"
+    },
+    "remember": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/remember/SKILL.md",
+      "skillFolderHash": "72fbfba9c148b4eb5e433b0694032bc78e7e7c81",
+      "installedAt": "2026-03-24T10:54:06.549Z",
+      "updatedAt": "2026-05-24T10:52:02.862Z"
+    },
+    "responsive-patterns": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/responsive-patterns/SKILL.md",
+      "skillFolderHash": "b6f6417c8944e8a87344b25cf55e788f6ef493f0",
+      "installedAt": "2026-03-24T10:54:07.591Z",
+      "updatedAt": "2026-05-24T10:52:16.610Z"
+    },
+    "review-pr": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/review-pr/SKILL.md",
+      "skillFolderHash": "a94f300c04932f8394e57a0df388c54147457dbc",
+      "installedAt": "2026-03-24T10:54:08.262Z",
+      "updatedAt": "2026-05-24T10:52:31.643Z"
+    },
+    "scope-appropriate-architecture": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/scope-appropriate-architecture/SKILL.md",
+      "skillFolderHash": "be8b6fa5f5d18ef53e9b984a948b7d6c7efdfefe",
+      "installedAt": "2026-03-24T10:54:09.364Z",
+      "updatedAt": "2026-05-24T10:52:45.709Z"
+    },
+    "security-patterns": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/security-patterns/SKILL.md",
+      "skillFolderHash": "8c270e18fa8fd768f29510f803e5ac33b95ca085",
+      "installedAt": "2026-03-24T10:54:10.456Z",
+      "updatedAt": "2026-05-24T10:53:00.023Z"
+    },
+    "skill-evolution": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/skill-evolution/SKILL.md",
+      "skillFolderHash": "ac6a7a4e080c1826331f0d3d6899b8fb5c2c4762",
+      "installedAt": "2026-03-24T10:54:11.837Z",
+      "updatedAt": "2026-05-24T10:53:16.020Z"
+    },
+    "storybook-testing": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/storybook-testing/SKILL.md",
+      "skillFolderHash": "4283a7b0faf672caddbe27c344bfd736c75052c1",
+      "installedAt": "2026-03-24T10:54:13.109Z",
+      "updatedAt": "2026-05-24T10:53:31.652Z"
+    },
+    "task-dependency-patterns": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/task-dependency-patterns/SKILL.md",
+      "skillFolderHash": "51383761ca446fdc9c645aaabd3e14a622e525f3",
+      "installedAt": "2026-03-24T10:54:14.027Z",
+      "updatedAt": "2026-05-24T10:53:45.787Z"
+    },
+    "testing-e2e": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/testing-e2e/SKILL.md",
+      "skillFolderHash": "0d834782bb8803da0e2c9d36592c8b3e81f7c04f",
+      "installedAt": "2026-03-24T10:54:14.725Z",
+      "updatedAt": "2026-05-24T10:54:00.139Z"
+    },
+    "testing-integration": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/testing-integration/SKILL.md",
+      "skillFolderHash": "d149bbda29339d11bf6503fdc9084676c9526c1d",
+      "installedAt": "2026-03-24T10:54:15.330Z",
+      "updatedAt": "2026-05-24T10:54:14.189Z"
+    },
+    "testing-llm": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/testing-llm/SKILL.md",
+      "skillFolderHash": "76f53d8ce2f6d515ae39ccd0ef80e57acb08316f",
+      "installedAt": "2026-03-24T10:54:15.884Z",
+      "updatedAt": "2026-05-24T10:54:28.151Z"
+    },
+    "testing-patterns": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/testing-patterns/SKILL.md",
+      "skillFolderHash": "ba7871ffe5d5c9750fb29015d794073c06a74ef0",
+      "installedAt": "2026-03-24T10:54:16.989Z",
+      "updatedAt": "2026-05-24T10:54:42.264Z"
+    },
+    "testing-perf": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/testing-perf/SKILL.md",
+      "skillFolderHash": "64b699a4e244348c69ba46eadc7a7532e9407503",
+      "installedAt": "2026-03-24T10:54:18.259Z",
+      "updatedAt": "2026-05-24T10:54:56.399Z"
+    },
+    "testing-unit": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/testing-unit/SKILL.md",
+      "skillFolderHash": "2ac979b2a68b7275ad5b92fd3c9fbc044be7532f",
+      "installedAt": "2026-03-24T10:54:18.942Z",
+      "updatedAt": "2026-05-24T10:55:11.165Z"
+    },
+    "ui-components": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/ui-components/SKILL.md",
+      "skillFolderHash": "4706d90a8daced76281f0e7cbc9a025ec8b7c928",
+      "installedAt": "2026-03-24T10:54:19.888Z",
+      "updatedAt": "2026-05-24T10:55:25.114Z"
+    },
+    "upgrade-assessment": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/upgrade-assessment/SKILL.md",
+      "skillFolderHash": "03094812bd9d3d8fef19f5188f7ca80aa2a169bd",
+      "installedAt": "2026-03-24T10:54:20.757Z",
+      "updatedAt": "2026-05-24T10:55:39.518Z"
+    },
+    "user-research": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/user-research/SKILL.md",
+      "skillFolderHash": "d8717ca63d6902a1d4eef9c65dbac17c8ccd5e3b",
+      "installedAt": "2026-03-24T10:54:22.195Z",
+      "updatedAt": "2026-05-24T10:55:53.195Z"
+    },
+    "validate-counts": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/validate-counts/SKILL.md",
+      "skillFolderHash": "ef5617314c855d956a2c8697b33c5f89885fd677",
+      "installedAt": "2026-03-24T10:54:23.161Z",
+      "updatedAt": "2026-05-24T10:56:07.331Z"
+    },
+    "verify": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/verify/SKILL.md",
+      "skillFolderHash": "69145cae28970023cd37312a0a67807a137a8ff8",
+      "installedAt": "2026-03-24T10:54:24.445Z",
+      "updatedAt": "2026-05-24T10:56:22.042Z"
+    },
+    "vite-advanced": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/vite-advanced/SKILL.md",
+      "skillFolderHash": "762940db61e570ab75a3a32661d79549f2192c19",
+      "installedAt": "2026-03-24T10:54:27.261Z",
+      "updatedAt": "2026-05-24T10:56:37.625Z"
+    },
+    "web-research-workflow": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/web-research-workflow/SKILL.md",
+      "skillFolderHash": "73234a1bf77554ff7702d24df89d502d02819b1f",
+      "installedAt": "2026-03-24T10:54:28.216Z",
+      "updatedAt": "2026-05-24T10:56:51.789Z"
+    },
+    "write-prd": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/write-prd/SKILL.md",
+      "skillFolderHash": "ca7b5b157650fb593cc6a7bb576552878151c9fa",
+      "installedAt": "2026-03-24T10:54:28.877Z",
+      "updatedAt": "2026-05-24T10:57:05.777Z"
+    },
+    "zustand-patterns": {
+      "source": "yonatangross/orchestkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/yonatangross/orchestkit.git",
+      "skillPath": "plugins/ork/skills/zustand-patterns/SKILL.md",
+      "skillFolderHash": "6dff13b47ac83bca09c7151d6cf49181b73ce808",
+      "installedAt": "2026-03-24T10:54:30.161Z",
+      "updatedAt": "2026-05-24T10:57:20.012Z"
+    },
+    "redis-best-practices": {
+      "source": "mindrally/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mindrally/skills.git",
+      "skillPath": "redis-best-practices/SKILL.md",
+      "skillFolderHash": "19b01802360e693c66f522097649d08f7ba49891",
+      "installedAt": "2026-03-24T17:45:36.633Z",
+      "updatedAt": "2026-03-24T17:45:36.633Z"
+    },
+    "redis-development": {
+      "source": "redis/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/redis/agent-skills.git",
+      "skillPath": "skills/redis-development/SKILL.md",
+      "skillFolderHash": "2c9b11db1c4755a1ba653d1af64a09091181356c",
+      "installedAt": "2026-03-25T03:30:11.180Z",
+      "updatedAt": "2026-05-24T10:57:22.992Z"
+    },
+    "code-deduplication": {
+      "source": "alinaqi/claude-bootstrap",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/alinaqi/claude-bootstrap.git",
+      "skillPath": "skills/code-deduplication/SKILL.md",
+      "skillFolderHash": "03f10d4c9a5616e85ad5125a4289d817fe510c31",
+      "installedAt": "2026-03-25T05:57:40.594Z",
+      "updatedAt": "2026-05-02T11:24:05.635Z"
+    },
+    "dead-code": {
+      "source": "parcadei/continuous-claude-v3",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/parcadei/continuous-claude-v3.git",
+      "skillPath": ".claude/skills/dead-code/SKILL.md",
+      "skillFolderHash": "9ef56bc4e33bf7a9c217a366bb16e38e04873e30",
+      "installedAt": "2026-03-26T15:21:56.072Z",
+      "updatedAt": "2026-03-26T15:21:56.072Z"
+    },
+    "postgresql-optimization": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/github/awesome-copilot.git",
+      "skillPath": "skills/postgresql-optimization/SKILL.md",
+      "skillFolderHash": "c9fb08005c2dc38d46b1369d9cb4bc24075ece50",
+      "installedAt": "2026-03-27T03:27:35.275Z",
+      "updatedAt": "2026-03-27T03:27:35.275Z"
+    },
+    "microservices-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/backend-development/skills/microservices-patterns/SKILL.md",
+      "skillFolderHash": "740eeacdc402a2fff9df5c0b5bf85c50ab192251",
+      "installedAt": "2026-03-27T14:22:10.356Z",
+      "updatedAt": "2026-05-24T10:57:25.888Z"
+    },
+    "pytest-coverage": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/github/awesome-copilot.git",
+      "skillPath": "skills/pytest-coverage/SKILL.md",
+      "skillFolderHash": "abd9a3fb4ce4642bcc016982cbf0afba0c8f7222",
+      "installedAt": "2026-04-07T09:04:34.886Z",
+      "updatedAt": "2026-04-07T09:04:34.886Z"
+    },
+    "caveman": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
+      "skillPath": "caveman/SKILL.md",
+      "skillFolderHash": "f524c391d466fe35e0bdbe9707854fcb2be52b26",
+      "installedAt": "2026-04-08T02:25:19.953Z",
+      "updatedAt": "2026-05-02T11:24:07.931Z"
+    },
+    "caveman-compress": {
+      "source": "JuliusBrussee/caveman",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/JuliusBrussee/caveman.git",
+      "skillPath": "caveman-compress/SKILL.md",
+      "skillFolderHash": "eb81d1ed6ddeb1767f56817572c232e66bdc1167",
+      "installedAt": "2026-04-08T02:25:20.424Z",
+      "updatedAt": "2026-05-02T11:24:10.334Z"
+    },
+    "async-python-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/python-development/skills/async-python-patterns/SKILL.md",
+      "skillFolderHash": "993d10828bde72457893b68f6055274d5095558b",
+      "installedAt": "2026-04-15T07:15:25.265Z",
+      "updatedAt": "2026-05-24T10:57:29.659Z"
+    },
+    "memory-safety-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/systems-programming/skills/memory-safety-patterns/SKILL.md",
+      "skillFolderHash": "ee0c5ebc5a6ccccfc8c9e6bf9c63cdde3e7070ad",
+      "installedAt": "2026-04-21T15:56:09.735Z",
+      "updatedAt": "2026-05-24T10:57:32.664Z"
+    },
+    "documentation-writer": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/github/awesome-copilot.git",
+      "skillPath": "skills/documentation-writer/SKILL.md",
+      "skillFolderHash": "016d8040a3f91c8360b1003e74fbf29f34c283f5",
+      "installedAt": "2026-04-27T06:47:02.516Z",
+      "updatedAt": "2026-04-27T06:47:02.516Z"
+    },
+    "spec-driven-development": {
+      "source": "addyosmani/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/addyosmani/agent-skills.git",
+      "skillPath": "skills/spec-driven-development/SKILL.md",
+      "skillFolderHash": "a73f385d99fb07ec0a8f1d8bbd17ec478d11f46b",
+      "installedAt": "2026-04-27T08:20:10.853Z",
+      "updatedAt": "2026-05-15T16:01:18.063Z"
+    },
+    "to-prd": {
+      "source": "mattpocock/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/mattpocock/skills.git",
+      "skillPath": "to-prd/SKILL.md",
+      "skillFolderHash": "e031bc9bba9b213f044ee59f3fd4ff2feeacbaf6",
+      "installedAt": "2026-04-27T09:44:14.018Z",
+      "updatedAt": "2026-04-27T09:44:14.018Z"
+    },
+    "celery-patterns": {
+      "source": "kjnez/claude-code-django",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/kjnez/claude-code-django.git",
+      "skillPath": ".claude/skills/celery-patterns/SKILL.md",
+      "skillFolderHash": "422d8ce4ec1a88f61676e1a88b85bb47ba716d07",
+      "installedAt": "2026-04-27T11:49:10.768Z",
+      "updatedAt": "2026-04-27T11:49:10.768Z"
+    },
+    "game-changing-features": {
+      "source": "softaworks/agent-toolkit",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/softaworks/agent-toolkit.git",
+      "skillPath": "skills/game-changing-features/SKILL.md",
+      "skillFolderHash": "3538ed17db233eedc52b8039d43172313c88d842",
+      "installedAt": "2026-04-29T16:39:56.240Z",
+      "updatedAt": "2026-04-29T16:48:26.373Z"
+    },
+    "ui-ux-pro-max": {
+      "source": "nextlevelbuilder/ui-ux-pro-max-skill",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+      "skillPath": ".claude/skills/ui-ux-pro-max/SKILL.md",
+      "skillFolderHash": "75e1acaafe8b08e59d4b86fc253ac7873aff6bba",
+      "pluginName": "ui-ux-pro-max",
+      "installedAt": "2026-05-04T11:09:58.053Z",
+      "updatedAt": "2026-05-04T14:06:21.334Z"
+    },
+    "technical-roadmaps": {
+      "source": "refoundai/lenny-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/refoundai/lenny-skills.git",
+      "skillPath": "skills/technical-roadmaps/SKILL.md",
+      "skillFolderHash": "badad3dcf9730ce816e9dacb0bb20a9c8bbb2e50",
+      "installedAt": "2026-05-05T04:58:15.952Z",
+      "updatedAt": "2026-05-05T04:58:15.952Z"
+    },
+    "vercel-react-best-practices": {
+      "source": "vercel-labs/agent-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/vercel-labs/agent-skills.git",
+      "skillPath": "skills/react-best-practices/SKILL.md",
+      "skillFolderHash": "343db72180d05814949fef7d46be96b5c6ee86b3",
+      "installedAt": "2026-05-05T09:39:41.536Z",
+      "updatedAt": "2026-05-05T09:39:41.536Z"
+    },
+    "fix-merge-conflicts": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/cursor/plugins.git",
+      "skillPath": "cursor-team-kit/skills/fix-merge-conflicts/SKILL.md",
+      "skillFolderHash": "9a539a5c5359e25c9a57df5a741e42524f2fe3c8",
+      "installedAt": "2026-05-05T10:51:14.935Z",
+      "updatedAt": "2026-05-05T10:51:14.935Z"
+    },
+    "stage-chapters": {
+      "source": "ReviewStage/stage-cli",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/ReviewStage/stage-cli.git",
+      "skillPath": "skills/stage-chapters/SKILL.md",
+      "skillFolderHash": "845de9820c9ad0fb858fc5454bdb7d74a2b2aef6",
+      "installedAt": "2026-05-14T13:06:26.056Z",
+      "updatedAt": "2026-05-24T10:57:34.972Z"
+    },
+    "prompt-engineering-patterns": {
+      "source": "wshobson/agents",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/wshobson/agents.git",
+      "skillPath": "plugins/llm-application-dev/skills/prompt-engineering-patterns/SKILL.md",
+      "skillFolderHash": "3bfa348502ae6972541f780916ac568fc0cdc4a8",
+      "installedAt": "2026-05-16T12:36:54.602Z",
+      "updatedAt": "2026-05-24T10:57:38.099Z"
+    },
+    "stripe-best-practices": {
+      "source": "docs.stripe.com",
+      "sourceType": "well-known",
+      "sourceUrl": "https://docs.stripe.com/.well-known/skills/stripe-best-practices/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-25T19:03:26.103Z",
+      "updatedAt": "2026-05-25T19:03:26.103Z"
+    },
+    "stripe-projects": {
+      "source": "docs.stripe.com",
+      "sourceType": "well-known",
+      "sourceUrl": "https://docs.stripe.com/.well-known/skills/stripe-projects/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-25T19:03:26.105Z",
+      "updatedAt": "2026-05-25T19:03:26.105Z"
+    },
+    "upgrade-stripe": {
+      "source": "docs.stripe.com",
+      "sourceType": "well-known",
+      "sourceUrl": "https://docs.stripe.com/.well-known/skills/upgrade-stripe/SKILL.md",
+      "skillFolderHash": "",
+      "installedAt": "2026-05-25T19:03:26.105Z",
+      "updatedAt": "2026-05-25T19:03:26.105Z"
+    },
+    "autofix": {
+      "source": "coderabbitai/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/coderabbitai/skills.git",
+      "skillPath": "skills/autofix/SKILL.md",
+      "skillFolderHash": "6bf6634dc86f933da9a9ade797c2d9cc8d49a886",
+      "installedAt": "2026-05-31T04:23:45.636Z",
+      "updatedAt": "2026-05-31T04:23:45.636Z"
+    },
+    "code-review": {
+      "source": "coderabbitai/skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/coderabbitai/skills.git",
+      "skillPath": "skills/code-review/SKILL.md",
+      "skillFolderHash": "5049a0877f3e224666b7bdfe4a42aaccd78b3379",
+      "installedAt": "2026-05-31T04:23:45.639Z",
+      "updatedAt": "2026-05-31T04:23:45.639Z"
+    },
+    "creating-mermaid-diagrams": {
+      "source": "Agents365-ai/365-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Agents365-ai/365-skills.git",
+      "skillPath": "plugins/mermaid/skills/mermaid-skill/SKILL.md",
+      "skillFolderHash": "d719cf9444208ddb71f99c9679e6e1703db125a7",
+      "installedAt": "2026-06-18T17:05:54.106Z",
+      "updatedAt": "2026-06-18T17:05:54.106Z"
+    },
+    "drawio-skill": {
+      "source": "Agents365-ai/365-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Agents365-ai/365-skills.git",
+      "skillPath": "plugins/drawio/skills/drawio-skill/SKILL.md",
+      "skillFolderHash": "40f4e63095913e45d4b66bb3ddd9c319df1d7554",
+      "installedAt": "2026-06-18T17:05:54.109Z",
+      "updatedAt": "2026-06-18T17:05:54.109Z"
+    },
+    "tldraw-skill": {
+      "source": "Agents365-ai/365-skills",
+      "sourceType": "github",
+      "sourceUrl": "https://github.com/Agents365-ai/365-skills.git",
+      "skillPath": "plugins/tldraw/skills/tldraw-skill/SKILL.md",
+      "skillFolderHash": "f9246ad574da685fb93736831b6fcbc2f9250a92",
+      "installedAt": "2026-06-18T17:05:54.111Z",
+      "updatedAt": "2026-06-18T17:05:54.111Z"
+    }
+  },
+  "dismissed": {
+    "findSkillsPrompt": true
+  },
+  "lastSelectedAgents": [
+    "amp",
+    "antigravity",
+    "antigravity-cli",
+    "cline",
+    "codex",
+    "cursor",
+    "deepagents",
+    "gemini-cli",
+    "github-copilot",
+    "kimi-code-cli",
+    "opencode",
+    "warp",
+    "zed",
+    "claude-code",
+    "kilo",
+    "goose"
+  ]
+}

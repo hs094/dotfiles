@@ -462,7 +462,7 @@ brew "kilo-org/tap/kilo"
 brew "kitlangton/tap/ghui", trusted: true
 # Identity, credentials, and governance for AI agents
 brew "kontext-security/tap/kontext"
-# Tock v1.9.8 is a simple timetracker for the command line
+# Tock v2.0.2 is a simple timetracker for the command line
 brew "kriuchkov/tap/tock"
 # TUI for managing .env files
 brew "lazynop/tap/lazyenv"
@@ -547,7 +547,7 @@ uv "pysonar"
 uv "xonsh[full]"
 npm "@aisuite/chub"
 npm "@dbml/cli"
-npm "@mariozechner/pi-coding-agent"
+npm "@earendil-works/pi-coding-agent"
 npm "@openai/codex"
 npm "@razakadam74/gitmsg"
 npm "cline"

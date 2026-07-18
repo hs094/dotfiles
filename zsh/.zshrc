@@ -5,7 +5,8 @@ MAILCHECK=0
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # Ensure Homebrew is available
-if [ -f "/opt/homebrew/bin/brew" ]; then
+# ponytail: guard to skip subprocess if brew already in PATH
+if ! command -v brew >/dev/null 2>&1 && [ -f "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
@@ -16,8 +17,14 @@ eval "$(zoxide init zsh)"
 fpath=($HOME/.config/zsh $fpath)
 
 # Initialize completion system once, after fpath is set
+# ponytail: skip compaudit when cache is fresh (saves ~30ms)
 autoload -Uz compinit
-compinit
+local zdump="${ZDOTDIR:-$HOME}/.zcompdump"
+if [[ -f "$zdump" ]]; then
+  compinit -C -d "$zdump"
+else
+  compinit -d "$zdump"
+fi
 
 # Use vim keybindings (before plugins/widgets)
 bindkey -v
