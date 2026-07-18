@@ -6,7 +6,14 @@
 
 [user]
 	name = hs094
-  email = iamhardika11@gmail.com
+  email = iamhardikat11@gmail.com
+	signingkey = ~/.ssh/id_ed25519.pub
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
 
 [credential]
 	helper = osxkeychain
@@ -88,3 +95,5 @@
 	}; f"
 	prune-gone = "!git config --global --get alias.prune-gone fetch --prune && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D"
 
+[gpg "ssh"]
+	allowedSignersFile = /Users/hs094/.config/git/allowed_signers

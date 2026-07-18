@@ -101,8 +101,22 @@ alias zshreload="source ~/.zshrc"
 alias zshr="source ~/.zshrc"
 alias sshconf='bat ~/.ssh/config'
 alias zshconfig="bat ~/.zshrc"
-alias ls="eza --no-filesize --icons=always --color=always --ignore-glob=.git --no-user"
-alias ll="eza -al --no-filesize  --icons=always --color=always --ignore-glob=.git --no-user"
+# eza bug: v0.23.0+ silently produces no output when called without a path
+# See https://github.com/eza-community/eza/issues/1568
+ls() {
+  if [ $# -eq 0 ]; then
+    eza --no-filesize --icons=always --color=always --ignore-glob=.git --no-user .
+  else
+    eza --no-filesize --icons=always --color=always --ignore-glob=.git --no-user "$@"
+  fi
+}
+ll() {
+  if [ $# -eq 0 ]; then
+    eza -al --no-filesize --icons=always --color=always --ignore-glob=.git --no-user .
+  else
+    eza -al --no-filesize --icons=always --color=always --ignore-glob=.git --no-user "$@"
+  fi
+}
 
 # System
 alias shutdown='sudo shutdown now'

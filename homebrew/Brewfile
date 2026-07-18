@@ -501,8 +501,6 @@ cask "aws-vault-binary"
 cask "bitwarden"
 # Not so boring notch That Rocks 🎸🎶 
 cask "theboredteam/boring-notch/boring-notch"
-# Ghostty-based terminal with vertical tabs and notifications for AI coding agents
-cask "cmux"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 cask "container"

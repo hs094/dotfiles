@@ -4,9 +4,8 @@ MAILCHECK=0
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# Ensure Homebrew is available
-# ponytail: guard to skip subprocess if brew already in PATH
-if ! command -v brew >/dev/null 2>&1 && [ -f "/opt/homebrew/bin/brew" ]; then
+# Homebrew
+if [[ -x /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
