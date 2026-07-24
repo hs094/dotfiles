@@ -85,7 +85,7 @@ alias uvr="uv remove --active"
 # Edit Important Files
 alias ezshrc="nvim ~/.zshrc"
 alias ealias="nvim ~/.config/zsh/aliases.zsh"
-alias eexport="nvim ~/.config/zsh/exports.zsh"
+alias eexport="nvim ~/.config/zsh/export.zsh"
 alias ecustom="nvim ~/.config/zsh/custom.zsh"
 alias eghost="nvim ~/.config/ghostty/config"
 
