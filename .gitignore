@@ -103,3 +103,4 @@ pgcli/history
 /telegram-upload.json
 /telegram-upload.session
 /jiratui/config.yaml
+.agents/.skill-lock.json
