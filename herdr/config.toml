@@ -1,0 +1,47 @@
+onboarding = false
+
+[keys]
+prefix = "ctrl+a"
+
+# Split — tmux style
+split_horizontal = "prefix+minus"
+split_vertical = "prefix+|"
+
+# Detach — tmux default
+detach = "prefix+d"
+
+# Copy/scroll mode — tmux default
+copy_mode = "prefix+["
+
+# Pane navigation
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# Tab navigation (defaults — same as tmux)
+next_tab = "prefix+n"
+previous_tab = "prefix+p"
+
+# Workspace navigation (unbound by default)
+previous_workspace = "prefix+up"
+next_workspace = "prefix+down"
+
+# Agent cycling (unbound by default)
+next_agent = "ctrl+alt+n"
+previous_agent = "ctrl+alt+p"
+
+# Workspace/tab rename — tmux style
+rename_workspace = "prefix+$"
+rename_tab = "prefix+,"
+
+[experimental]
+pane_history = true
+
+[ui.toast]
+delivery = "off"
+
+[ui]
+agent_panel_sort = "spaces"
+prompt_new_tab_name = false
+prompt_new_workspace_name = false
