@@ -66,3 +66,26 @@ _chpwd_nvm_use() {
 #add-zsh-hook chpwd _chpwd_python_venv
 #add-zsh-hook chpwd _chpwd_node_install
 add-zsh-hook chpwd _chpwd_nvm_use
+
+# herdr tab rename — set tab title to folder or folder:branch
+_chpwd_herdr_tab_title() {
+  command -v herdr >/dev/null || return
+
+  local folder="${PWD:t}" branch title
+
+  if branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null); then
+    title="${folder}:${branch}"
+  else
+    title="${folder}"
+  fi
+
+  [[ "$title" == "$_HERDR_LAST_TAB_TITLE" ]] && return
+  typeset -g _HERDR_LAST_TAB_TITLE="$title"
+
+  local tab_id
+  tab_id=$(herdr api snapshot 2>/dev/null | sed -n 's/.*"focused_tab_id":"\([^"]*\)".*/\1/p')
+  [[ -n "$tab_id" ]] && herdr tab rename "$tab_id" "$title" &>/dev/null
+}
+
+add-zsh-hook chpwd _chpwd_herdr_tab_title
+_chpwd_herdr_tab_title
