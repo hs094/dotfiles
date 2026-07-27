@@ -63,6 +63,6 @@ _chpwd_nvm_use() {
   fi
 }
 
-add-zsh-hook chpwd _chpwd_python_venv
-add-zsh-hook chpwd _chpwd_node_install
+#add-zsh-hook chpwd _chpwd_python_venv
+#add-zsh-hook chpwd _chpwd_node_install
 add-zsh-hook chpwd _chpwd_nvm_use

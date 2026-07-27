@@ -555,6 +555,9 @@ source ~/.config/scripts/fzf_git.sh
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
+# Autosuggestions — load before syntax highlighting so highlighting wraps it
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # Activate syntax highlighting
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Disable underline

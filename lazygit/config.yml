@@ -4,6 +4,20 @@ os:
 gui:
   border: rounded
   showBottomLine: false
+  filterMode: "fuzzy"
+  expandFocusedSidePanel: true
+  expandedSidePanelWeight: 3
+  skipAmendWarning: true
+  skipStashWarning: true
+  showCommandLog: true
+  commandLogSize: 3
+  showRandomTip: false
+  sidePanels:
+    - [status]
+    - [files]
+    - [branches, remotes, tags]
+    - [commits, reflog]
+    - [stash]
   theme:
     activeBorderColor:
       - "#fab387"
@@ -27,6 +41,7 @@ gui:
       - "#cdd6f4"
   nerdFontsVersion: "3"
 git:
+  diffContextSize: 5
   pagers:
     - pager: delta --dark --paging=never
 promptToReturnFromSubprocess: false

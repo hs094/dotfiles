@@ -12,7 +12,6 @@ expand = False
 auto_expand = True
 auto_retry_closed_connection = True
 generate_aliases = True
-alias_map_file = ~/.config/pgcli/aliases.json
 log_file = default
 keyword_casing = upper
 generate_casing_file = True

@@ -1,6 +1,3 @@
-# Set the dorectory we want to store zinit and plugins
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-
 # Ensure Homebrew is available
 if [ -f "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -27,3 +24,8 @@ export STARSHIP_CONFIG="~/.config/starship/starship.toml"
 export FUNCNEST=1000
 autoload -Uz compinit
 compinit
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+# Ghost shell completions
+command -v /Users/hardik.soni/.local/bin/ghost >/dev/null 2>&1 && source <(/Users/hardik.soni/.local/bin/ghost completion zsh)

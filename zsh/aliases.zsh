@@ -1,3 +1,21 @@
+# alias mformat="
+# make format-dirs dirs=\"$(
+#   git diff main...HEAD --name-only -- '*.py' \
+#     | sed -n 's#^python/security_assistant/##p' \
+#     | sort -u \
+#     | tr '\n' ' '
+# )\"
+# "
+alias mformat='make format-dirs dirs="$(
+  git diff main...HEAD --name-only -- "*.py" \
+    | sed -n "s#^python/security_assistant/##p" \
+    | sort -u \
+    | tr "\n" " "
+)"'
+
+
+alias web="docker compose down web && docker compose up -d web"
+
 alias n="nvim"
 
 alias ghbranches='git fetch --quiet 2>/dev/null; printf "\033[1;37m%-35s %-15s %10s\033[0m\n" "BRANCH" "UPDATED" "BEHIND|AHEAD"; printf "\033[2m%s\033[0m\n" "$(printf "%.80s" "────────────────────────────────────────────────────────────────────────────────")"; git for-each-ref --sort=-committerdate --format="%(refname:short)|%(committerdate:relative)" refs/heads/ | while IFS="|" read branch date; do
@@ -22,6 +40,7 @@ done'
 
 alias rm='trash'
 alias ghopen='gh repo view --web'
+alias ghb='gh browse --branch $(git rev-parse --abbrev-ref HEAD)'
 alias bai='npx @langwatch/better-agents init'
 alias skill-add='npx skills add'
 alias rm="trash"
