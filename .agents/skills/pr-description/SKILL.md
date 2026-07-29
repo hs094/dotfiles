@@ -60,8 +60,8 @@ structure — only empty/example values get replaced.
 - **Screenshots** — Keep the "Before:" / "After:" markers exactly as-is.
   Leave them empty (they're blank in the template too).
 
-- **Checklist** — Preserve all checkboxes exactly. Leave them unchecked
-  (the author should self-verify).
+- **Checklist** — Preserve all checkboxes exactly. Always mark every box
+  as checked (`[x]`).
 
 - **Deployment Notes** — Fill if config files, env vars, or migrations
   changed. Otherwise leave blank.

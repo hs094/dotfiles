@@ -13,12 +13,6 @@ detach = "prefix+d"
 # Copy/scroll mode — tmux default
 copy_mode = "prefix+["
 
-# Pane navigation
-focus_pane_left = "prefix+h"
-focus_pane_down = "prefix+j"
-focus_pane_up = "prefix+k"
-focus_pane_right = "prefix+l"
-
 # Tab navigation (defaults — same as tmux)
 next_tab = "prefix+n"
 previous_tab = "prefix+p"
@@ -34,6 +28,31 @@ previous_agent = "ctrl+alt+p"
 # Workspace/tab rename — tmux style
 rename_workspace = "prefix+$"
 rename_tab = "prefix+,"
+
+# Pane navigation — ctrl+h/j/k/l across herdr + Neovim splits (vim-herdr-navigation)
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "vim-herdr-navigation.left"
+description = "navigate left (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "vim-herdr-navigation.down"
+description = "navigate down (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "vim-herdr-navigation.up"
+description = "navigate up (vim/herdr)"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "vim-herdr-navigation.right"
+description = "navigate right (vim/herdr)"
 
 [experimental]
 pane_history = true

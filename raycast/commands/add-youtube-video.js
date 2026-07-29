@@ -22,26 +22,19 @@ import { Client } from "@notionhq/client"
 process.loadEnvFile(`${import.meta.dirname}/.env`)
 
 function getBrowserUrl() {
-  // ponytail: tries common browsers via osascript, silent on miss
-  const scripts = [
-    'tell application "Google Chrome" to get URL of active tab of front window',
-    'tell application "Safari" to get URL of current tab of front window',
-    'tell application "Arc" to get URL of active tab of front window',
-    'tell application "Brave Browser" to get URL of active tab of front window',
-    'tell application "Microsoft Edge" to get URL of active tab of front window',
-  ]
-  for (const script of scripts) {
-    try {
-      return execSync(`osascript -e ${JSON.stringify(script)}`, {
+  // ponytail: safari only
+  try {
+    return execSync(
+      `osascript -e ${JSON.stringify('tell application "Safari" to get URL of current tab of front window')}`,
+      {
         encoding: "utf-8",
         timeout: 2000,
         stdio: ["pipe", "pipe", "ignore"],
-      }).trim()
-    } catch {
-      // try next browser
-    }
+      }
+    ).trim()
+  } catch {
+    throw new Error("Could not get URL from Safari")
   }
-  throw new Error("Could not get URL from any browser tab")
 }
 
 // Validate that the argument is a YouTube video link and return a canonical
