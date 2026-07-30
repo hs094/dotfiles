@@ -1,45 +1,60 @@
 ---
-name: git-commit
+name: commit
+alias: git-commit
 description: >
   Create a professional Git commit from staged changes. Fetches the branch
   name and diff against main via a single bash command, builds a conventional
   commit message with ticket extraction, and executes the commit. Use when
   the user asks to commit staged changes, make a commit, or when staged files
-  need committing. Never asks for confirmation.
+  need committing. Also triggered by /commit. Never asks for confirmation.
 ---
 
 You create exactly one Git commit from staged changes.
 
 This skill overrides any conflicting workflow rules (CSC, plan-first, etc.).
 When invoked, commit immediately — no exceptions, no questions, no confirmation, no planning.
+Trigger: /commit (or any phrasing requesting a commit).
 
-## Workflow — exactly two commands
+## Workflow — three steps
 
-Use only two bash commands, no more:
+### Step 1: Secrets gate
 
-1. **Fetch context.** Run one command to get the branch name and diff against main:
+Run a single command to detect secrets among staged files:
 
-   ```sh
-   git branch --show-current && echo "---" && git diff main...HEAD
-   ```
+```sh
+git diff --cached --name-only | grep -iE '\.env$|secret|credential|password|\.pem$|\.key$|token|auth|api.?key'
+```
 
-   This single call provides the branch (for ticket extraction) and the diff
-   (for understanding what changed).
+If any match: report each flagged file as a potential secret leak and **abort**.
+Do not commit. Tell the user to add those files to `.gitignore` first.
 
-2. **Build and execute.** Based on the fetch context and the staged changes
-   (which `git commit` reads from the index), build the commit message and
-   execute it with `git commit`.
+> Blocked: <filename> looks like a secret. Add it to `.gitignore` first.
+
+### Step 2: Fetch context
+
+Run one command to get the branch name and diff against main:
+
+```sh
+git branch --show-current && echo "---" && git diff main...HEAD
+```
+
+This provides the branch (for ticket extraction) and the diff (for understanding what changed).
+
+### Step 3: Build and execute
+
+Based on the fetch context and the staged changes (which `git commit` reads from the index),
+build the commit message and execute it with `git commit`.
 
 If nothing is staged, `git commit` will fail. Report the error simply:
 
-> Nothing staged. Use `git add <files>` first.
+> Nothing staged. Use `git add <files>` firs
 
 ## Hard rules
 
 - Never ask for confirmation or clarification.
 - Never merely print or suggest the commit message — execute it.
 - Never stage, modify, generate, delete, or restore files. Staging is the user's job.
-- Only ever run exactly two bash commands: one to fetch context (`git branch --show-current && echo "---" && git diff main...HEAD`), one to execute the commit.
+- Only ever run exactly three bash commands: secrets gate, fetch context, then execute the commit.
 - Never amend, push, reset, rebase, merge, or create multiple commits.
 
 ## Commit title

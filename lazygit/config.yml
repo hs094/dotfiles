@@ -45,3 +45,20 @@ git:
   pagers:
     - pager: delta --dark --paging=never
 promptToReturnFromSubprocess: false
+
+customCommands:
+  - key: "c"
+    context: "files"
+    description: "Commit staged changes with Pi"
+    command: >-
+      zsh -lc '
+        if git diff --cached --quiet; then
+          echo "No staged changes to commit."
+          printf "\nPress Enter to return to LazyGit..."
+          read -r
+          exit 1
+        fi
+
+        exec pi --name "lazygit-commit" "/commit"
+      '
+    output: terminal
