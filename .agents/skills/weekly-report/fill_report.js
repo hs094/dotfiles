@@ -1,31 +1,33 @@
 (() => {
   const data = {
     highlights: [
-      'IP-218: Securonix sync state machine — refactored status transitions with explicit state machine, is_escalated guard, ticketing update pre-DB persist, escalation support (PR #5569)',
-      'ManageEngine ServiceDesk Plus ITSM integration — new integration with OAuth 2.0 refresh token flow',
-      'Integration framework docs — comprehensive docstrings and README for the integration framework (doc-update branch, 4.6k lines added)',
-      'Cato Networks enhancements backport (#5563) — merged',
-      'Backports merged: FreshService ticketing + Harness Config (#5482), Wiz CNAPP (#5484), Securonix LSTM (#5485), ja.json fix (#5488)'
+      "Securonix user mapping (IP-218): CSV user-mapping upload for assignee resolution, assignee sync from Securonix, escalation gated on terminal case status, fixed assignee loading state stuck on update error (PR #5647, merged + backported #5651)",
+      "Securonix escalation error handling & toast UX: extracted roster assignment into shared helper, sanitized error messages, improved toast UX (PRs #5604, #5611, #5615, all merged + backported to release-2.32.0)",
+      "ServiceDesk Plus (Manage Engine, IP-210) in progress: webhook consumer + tests, typed models with shared ValueMap refactor, SDP request schemas (PR #5613, open)",
+      "Shipped 4 feature/fix PRs to main + 4 backports to release-2.32.0: Securonix user mapping, escalation UX fixes, roster assignment helper, Sx fixes"
     ],
     lowlights: [
-      'Format/fix churn — 4 cleanup commits (Format Fix, Fix for Import, Restore Certain Parts x2)',
-      'PR #5483 (Submodule Updates) closed without merge'
+      "Lint churn: 'Format Fix' and ruff TC003/E402 fix commits were needed after initial pushes",
+      "Follow-up needed on user-mapping fix: #5657 'Small Fix' backport merged, but #5656 'Incorrect Function Fix' still open"
     ],
     priorities: [
-      'Get IP-218 Securonix sync PR #5569 reviewed and merged',
-      'Push doc-update branch changes to origin'
+      "Get #5656 (Incorrect Function Fix) reviewed, merged, and backported to release-2.32.0",
+      "Push #5613 Manage Engine integration (IP-210) through review",
+      "Finish ServiceDesk Plus webhook consumer + frontend integration docs",
+      "Close out doc-update PR #5570"
     ],
     docs: [
-      { link: 'https://github.com/simbianai/SimbianOS/pull/5569', desc: 'IP-218 Securonix sync — status state machine refactor, escalation guard, ticketing pre-DB persist' },
-      { link: 'https://github.com/simbianai/SimbianOS/pull/5426', desc: 'Elastic dialect support — aws.cloudtrail + azure audit/signin STIX mappings with per-index dialect config' },
-      { link: 'https://github.com/simbianai/SimbianOS/pull/5409', desc: 'FreshService ticketing integration — new provider, harness config consolidation, dynamic MCP tool exposure' }
+      { link: "https://github.com/simbianai/SimbianOS/pull/5647", desc: "Securonix user mapping + assignee sync (IP-218) — merged" },
+      { link: "https://github.com/simbianai/SimbianOS/pull/5615", desc: "Improve escalation error handling and toast UX — merged" },
+      { link: "https://github.com/simbianai/SimbianOS/pull/5613", desc: "Manage engine integration (IP-210) — open, in review" },
+      { link: "https://github.com/simbianai/SimbianOS/pull/5651", desc: "Backport: Sx users mapping to release-2.32.0 — merged" }
     ]
   };
 
   function fillSection(section, fieldId, values) {
     values.forEach(val => {
       addGroupRow(section, fieldId);
-      const container = document.getElementById('group-' + section + '-' + fieldId);
+      const container = document.getElementById(`group-${section}-${fieldId}`);
       const row = container.lastElementChild;
       const input = row.querySelector('input');
       input.value = val;
@@ -38,12 +40,8 @@
       addGroupRow('design_docs_prs', 'items');
       const container = document.getElementById('group-design_docs_prs-items');
       const row = container.lastElementChild;
-      const linkInput = row.querySelector('input[name*="link"]');
-      const descInput = row.querySelector('input[name*="description"]');
-      linkInput.value = doc.link;
-      linkInput.dispatchEvent(new Event('input', { bubbles: true }));
-      descInput.value = doc.desc;
-      descInput.dispatchEvent(new Event('input', { bubbles: true }));
+      row.querySelector('input[name*="link"]').value = doc.link;
+      row.querySelector('input[name*="description"]').value = doc.desc;
     });
   }
 

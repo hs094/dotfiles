@@ -158,7 +158,8 @@ The script must:
 
 1. Show the drafted report to the user for review
 2. Write the script to `~/.agents/skills/weekly-report/fill_report.js`
-3. Tell the user:
+3. Copy the script to the clipboard: `pbcopy < ~/.agents/skills/weekly-report/fill_report.js` (macOS)
+4. Tell the user:
    - Open the Pulse form URL in a browser
    - Open DevTools console (F12 → Console)
    - Paste the script contents and press Enter
