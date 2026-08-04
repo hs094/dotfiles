@@ -3,8 +3,9 @@ name: pr-description
 description: >
   Generate a PR description from the project's `.github/PULL_REQUEST_TEMPLATE.md`,
   filled with content inferred from the branch name and diff against main,
-  then copy the markdown to clipboard. Never loses a single section from the
-  template — every heading, checkbox, and placeholder is preserved.
+  copy the markdown to clipboard, then open the PR with `gh`. Never loses a
+  single section from the template — every heading, checkbox, and placeholder
+  is preserved.
 ---
 
 # PR Description Generator
@@ -13,7 +14,7 @@ Generate a complete PR description from the project's pull request template.
 Every section of the template is preserved exactly — nothing is deleted or
 summarized away.
 
-## Workflow — exactly three commands
+## Workflow — exactly four commands
 
 1. **Read the template.** Find and read the PR template (checks repo root
    `.github/PULL_REQUEST_TEMPLATE.md`, then
@@ -27,6 +28,35 @@ summarized away.
 3. **Generate and copy.** Fill every template section based on the git
    context, write the result to a temp file, and copy to clipboard with
    `pbcopy`. Report success and the temp file path.
+
+4. **Open the PR.** Create the PR from the same temp file (see
+   "Opening the PR" below). Report the PR URL.
+
+## Opening the PR
+
+Use the GitHub CLI (`gh`) with the temp file from step 3 as the body. The
+PR title comes from the branch name converted to a readable description —
+replace hyphens/underscores with spaces, capitalize, **keep the ticket
+prefix** (e.g. `PP-337: Fix session timeout bug`).
+
+Create the PR, falling back to an edit if one already exists for the branch:
+
+```sh
+if gh pr view --json number -q .number >/dev/null 2>&1; then
+  gh pr edit --title "TITLE" --body-file /tmp/pr-description-*.md
+else
+  gh pr create --title "TITLE" --body-file /tmp/pr-description-*.md
+fi
+```
+
+Notes:
+
+- `gh pr create` uses the repository's default base branch (typically
+  `main`) — correct for most repos.
+- Run from the repo root; `gh` requires the current branch to be pushed
+  already, otherwise push it first.
+- `gh pr create` auto-copies the PR URL to the clipboard and prints it —
+  report that URL to the user.
 
 ## Template filling rules
 
@@ -73,10 +103,13 @@ structure — only empty/example values get replaced.
 
 - `pbcopy` on macOS copies stdin to the system clipboard.
 - The temp file lives under `/tmp/pr-description-*.md`.
+- `gh` is the GitHub CLI; requires `gh auth login` to have been run.
 
 ## Hard rules
 
 - Never delete, reorder, or rewrite any template section.
-- Never ask for confirmation — generate, copy, report.
+- Never ask for confirmation — generate, copy, open, report.
 - Always copy to clipboard with `pbcopy`.
+- Always open the PR with `gh` (create, or edit if it already exists).
 - Always print the temp file path so the user can review/edit the raw file.
+- Always report the PR URL after opening it.

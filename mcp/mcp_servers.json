@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "safari-mcp": {
+      "command": "/usr/bin/safaridriver",
+      "args": ["--mcp"]
+    },
+    "jira": {
+      "command": "/Users/hardik.soni/.config/mcp/jira-mcp.sh",
+      "args": []
+    }
+  }
+}

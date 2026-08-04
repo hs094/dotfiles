@@ -1,7 +1,7 @@
 [post-switch]
 tmux = "tmux rename-window '{{ repo }}:{{ branch }}' 2>/dev/null || true"
 herdr = '''
-herdr tab rename "$(herdr api snapshot 2>/dev/null | sed -n 's/.*"focused_tab_id":"\([^"]*\)".*/\1/p')" '{{ repo }}:{{ branch }}' 2>/dev/null || true
+herdr tab rename "$(herdr api snapshot 2>/dev/null | sed -n 's/.*\"focused_tab_id\":\"\([^\"]*\)\".*/\1/p')" '{{ repo }}:{{ branch }}' 2>/dev/null || true
 '''
 
 [post-start]
