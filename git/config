@@ -25,6 +25,7 @@
 	excludesfile = ~/.config/git/.gitignore_global
 	editor = nvim
 	fsmonitor = true
+	pager = hunk pager
 
 [status]
 	branch = true
@@ -36,6 +37,7 @@
 	renames = true
 	interHunkContext = 10
 	algorithm = histogram
+	tool = hunk
 
 [pager]
 	diff = delta
@@ -94,6 +96,12 @@
 	  GIT_AUTHOR_DATE=\"$TS\" GIT_COMMITTER_DATE=\"$TS\" git commit -m \"$2\"; \
 	}; f"
 	prune-gone = "!git config --global --get alias.prune-gone fetch --prune && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs -r git branch -D"
+	hdiff = -c core.pager=\"hunk pager\" diff
+	hshow = -c core.pager=\"hunk pager\" show
 
 [gpg "ssh"]
 	allowedSignersFile = /Users/hs094/.config/git/allowed_signers
+[difftool "hunk"]
+	cmd = hunk difftool \"$LOCAL\" \"$REMOTE\" \"$MERGED\"
+[difftool]
+	prompt = false

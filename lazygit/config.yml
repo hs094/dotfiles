@@ -42,8 +42,8 @@ gui:
   nerdFontsVersion: "3"
 git:
   diffContextSize: 5
-  pagers:
-    - pager: delta --dark --paging=never
+  diffRenderers:
+    - command: delta --dark --paging=never
 promptToReturnFromSubprocess: false
 
 # customCommands:
