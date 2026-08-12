@@ -1,0 +1,20 @@
+exit
+ls
+ls -la
+pwd
+cd OS
+z
+zoxide
+zoxide init
+zoxide init -h
+zoxide init nushell
+cd OS
+alias cd
+cd ~/Work/SimbianOS
+c
+ls
+c
+exit
+ls
+e
+exit

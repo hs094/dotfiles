@@ -1,26 +1,28 @@
 (() => {
   const data = {
     highlights: [
-      "Securonix user mapping (IP-218): CSV user-mapping upload for assignee resolution, assignee sync from Securonix, escalation gated on terminal case status, fixed assignee loading state stuck on update error (PR #5647, merged + backported #5651)",
-      "Securonix escalation error handling & toast UX: extracted roster assignment into shared helper, sanitized error messages, improved toast UX (PRs #5604, #5611, #5615, all merged + backported to release-2.32.0)",
-      "ServiceDesk Plus (Manage Engine, IP-210) in progress: webhook consumer + tests, typed models with shared ValueMap refactor, SDP request schemas (PR #5613, open)",
-      "Shipped 4 feature/fix PRs to main + 4 backports to release-2.32.0: Securonix user mapping, escalation UX fixes, roster assignment helper, Sx fixes"
+      "Advanced Hunting support for Microsoft Defender integration - built and merged (#5733), plus a follow-up fix to alert conversion (#5738); release backport open as #5734",
+      "Jira JQL issue search + Investigation Enrichment tag (IP-225) - read-only Jira search with enrichment tagging, merged as #5724",
+      "ManageEngine ServiceDesk Plus integration - built with priority fixes (#5671) and backported (#5683)",
+      "Securonix synchronization - cron-sync of existing incidents to findings/cases, per-field update results, and template comments on resolution (#5687/5688 merged; per-field results #5686 open)",
+      "Block escalation for terminal case statuses when provider opts in - merged and backported (#5702/#5703)"
     ],
     lowlights: [
-      "Lint churn: 'Format Fix' and ruff TC003/E402 fix commits were needed after initial pushes",
-      "Follow-up needed on user-mapping fix: #5657 'Small Fix' backport merged, but #5656 'Incorrect Function Fix' still open"
+      "Palo Alto XSIAM XQL work (#5709) was closed and re-limited; new branch palo-alto-xsiam-tis-pov carries the reworked XQL filtering with some helper format/fix checkpoint commits",
+      "Multiple small 'Format Fix' helper commits scattered through the week added review noise"
     ],
     priorities: [
-      "Get #5656 (Incorrect Function Fix) reviewed, merged, and backported to release-2.32.0",
-      "Push #5613 Manage Engine integration (IP-210) through review",
-      "Finish ServiceDesk Plus webhook consumer + frontend integration docs",
-      "Close out doc-update PR #5570"
+      "Merge XQL filter-expression support for Palo Alto Cortex XSIAM (branch palo-alto-xsiam-tis-pov)",
+      "Land the Microsoft Defender Advanced Hunting backport into the release branch (#5734)",
+      "Close out the Securonix per-field case update results PR (#5686)",
+      "Continue extending threat-intel integration coverage (XSIAM/Defender XQL flow)"
     ],
     docs: [
-      { link: "https://github.com/simbianai/SimbianOS/pull/5647", desc: "Securonix user mapping + assignee sync (IP-218) — merged" },
-      { link: "https://github.com/simbianai/SimbianOS/pull/5615", desc: "Improve escalation error handling and toast UX — merged" },
-      { link: "https://github.com/simbianai/SimbianOS/pull/5613", desc: "Manage engine integration (IP-210) — open, in review" },
-      { link: "https://github.com/simbianai/SimbianOS/pull/5651", desc: "Backport: Sx users mapping to release-2.32.0 — merged" }
+      { link: "https://github.com/simbianai/SimbianOS/pull/5733", desc: "Advanced Hunting support in Microsoft Defender integration (IP-215)" },
+      { link: "https://github.com/simbianai/SimbianOS/pull/5724", desc: "Jira JQL issue search + Investigation Enrichment tag (IP-225)" },
+      { link: "https://github.com/simbianai/SimbianOS/pull/5703", desc: "Block escalation for terminal case statuses when provider opts in" },
+      { link: "https://github.com/simbianai/SimbianOS/pull/5698", desc: "Stix Shifter update" },
+      { link: "https://github.com/simbianai/SimbianOS/pull/5671", desc: "ManageEngine ServiceDesk Plus integration priority fixes" }
     ]
   };
 

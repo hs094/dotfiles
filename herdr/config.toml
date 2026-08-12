@@ -68,6 +68,7 @@ description = "open file from agent output"
 
 [experimental]
 pane_history = true
+kitty_graphics = true
 
 [ui.toast]
 delivery = "off"

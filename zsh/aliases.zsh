@@ -215,14 +215,45 @@ alias gwl='git worktree list'
 
 # Worktrunk (wt) — git worktree management (brew install worktrunk)
 alias ws='wt switch'
-alias wsc='wt switch -c'           # post-start hook auto-copies hidden files (.env, .envrc, etc.)
-alias wsx='wt switch -c -x'        # Usage: wsx <cmd> <branch>, e.g. wsx claude feat-a
+alias wsc='wt switch -c --base=@' # base = current branch; post-start hook auto-copies hidden files (.env, .envrc, etc.)
+alias wsx='wt switch -c -x --base=@' # Usage: wsx <cmd> <branch>, e.g. wsx claude feat-a
 alias wl='wt list'
 alias wlf='wt list --full'
 alias wm='wt merge'
 alias wr='wt remove'
 alias wch='wt copy-hidden'         # Manually copy hidden files from primary worktree
-wscp() { wt switch -c "$@" && echo "✓ Hidden files copied (via post-start hook)"; }
+wscp() { wt switch -c --base=@ "$@" && echo "✓ Hidden files copied (via post-start hook)"; }
+
+# wprune — remove worktrees whose branch has no remote AND no local changes
+# (clean working tree + fully merged into default). Skips current & main worktrees.
+wprune() {
+  local repo cur default up wt_path branch
+  repo=$(git rev-parse --show-toplevel 2>/dev/null) || { echo "Not a git repo"; return 1; }
+  cur=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+  default=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null); default=${default:-main}
+  for r in $(git remote); do git remote prune "$r" >/dev/null 2>&1; done
+  local -a cand=()
+  while read -r wt_path branch; do
+    branch=${branch#refs/heads/}
+    [[ -z "$branch" || "$branch" == "$cur" || "$wt_path" == "$repo" ]] && continue
+    up=$(git rev-parse --abbrev-ref --symbolic-full-name "$branch@{upstream}" 2>/dev/null) || up=
+    if [[ -n "$up" ]] && git rev-parse --verify --quiet "$up" >/dev/null 2>&1; then
+      continue  # remote branch still exists
+    fi
+    [[ -n "$(git -C "$wt_path" status --porcelain 2>/dev/null)" ]] && continue  # uncommitted changes
+    git merge-base --is-ancestor "$branch" "$default" 2>/dev/null || continue  # unpushed commits
+    cand+=("$branch")
+  done < <(git worktree list --porcelain | awk '/^worktree /{p=$2} /^$/{p=""} /^branch /{if (p != "") print p, $2}')
+  if (( ${#cand} == 0 )); then
+    echo "No worktrees to prune."; return 0
+  fi
+  echo "Removing ${#cand} worktree(s) with no remote and no local changes:"
+  printf '  %s\n' "${cand[@]}"
+  read -q "reply?Proceed? [y/N] " || { echo; return 0 }
+  echo
+  local b
+  for b in "${cand[@]}"; do wt remove "$b" --foreground -y; done
+}
 
 # Git Stash Alias Shortcuts
 alias gsl='git stash list'

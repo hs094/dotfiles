@@ -411,12 +411,13 @@ wth() {
 
   local -A WT_ALIASES=(
     ws   "wt switch <branch>          |Switch to a worktree branch"
-    wsc  "wt switch -c <branch>       |Create + switch to a new worktree"
-    wsx  "wt switch -c -x <cmd> <br>  |Create worktree + run command (e.g. wsx claude feat-a)"
+    wsc  "wt switch -c --base=@ <br>  |Create + switch (base = current branch)"
+    wsx  "wt switch -c -x --base=@    |Create + run command (e.g. wsx claude feat-a)"
     wl   "wt list                     |List worktrees"
     wlf  "wt list --full              |List worktrees with CI status + summaries"
     wm   "wt merge [branch]           |Merge worktree branch + clean up"
     wr   "wt remove [branch]          |Remove a worktree"
+    wprune "wprune                    |Remove worktrees w/ no remote + no local changes"
   )
 
   local key entry cmd desc

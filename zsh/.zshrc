@@ -31,7 +31,7 @@ export FUNCNEST=1000
 autoload -Uz compinit
 compinit
 
-if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
-
 # Ghost shell completions
 command -v /Users/hardik.soni/.local/bin/ghost >/dev/null 2>&1 && source <(/Users/hardik.soni/.local/bin/ghost completion zsh)
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
