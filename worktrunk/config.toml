@@ -2,6 +2,12 @@
 herdr = '''
 herdr tab rename "$(herdr api snapshot 2>/dev/null | sed -n 's/.*\"focused_tab_id\":\"\([^\"]*\)\".*/\1/p')" '{{ repo }}:{{ branch }}' 2>/dev/null || true
 '''
+herdr-wt = '''
+path='{{ worktree_path }}'
+branch='{{ branch }}'
+herdr worktree open --cwd '{{ repo_path }}' --path "$path" --label "$branch" --focus 2>/dev/null
+exit 0
+'''
 
 [list]
 json-schema = 2

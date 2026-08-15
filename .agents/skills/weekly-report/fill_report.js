@@ -1,28 +1,25 @@
 (() => {
   const data = {
     highlights: [
-      "Advanced Hunting support for Microsoft Defender integration - built and merged (#5733), plus a follow-up fix to alert conversion (#5738); release backport open as #5734",
-      "Jira JQL issue search + Investigation Enrichment tag (IP-225) - read-only Jira search with enrichment tagging, merged as #5724",
-      "ManageEngine ServiceDesk Plus integration - built with priority fixes (#5671) and backported (#5683)",
-      "Securonix synchronization - cron-sync of existing incidents to findings/cases, per-field update results, and template comments on resolution (#5687/5688 merged; per-field results #5686 open)",
-      "Block escalation for terminal case statuses when provider opts in - merged and backported (#5702/#5703)"
+      'IP-225: Confluence integration merged (PR #5769) - Atlassian OAuth 2.0 with token refresh + 14 read-only actions (search, pages, spaces, blogposts, comments, attachments); action-scoped authorization, migration + seed script, full React config UI with OAuth/Basic toggle',
+      'Securonix case updates now warn instead of failing quietly (PR #5790, open) - IntegrationUnavailableError -> 409 + warning flag when a provider update is blocked by a missing active integration; warning toasts across SummaryCards, Metadata, InvestigationDetails, FindingCaseSection; current_assignee plumbed through send_comment; sender resolved from email',
+      'User mapping gains First/Last name + display name support (PR #5790)',
+      'Cato Stix Fix merged (PR #5786) - STIX translation correction for the Cato Networks integration',
+      'Defender documentation update merged (PR #5781)'
     ],
     lowlights: [
-      "Palo Alto XSIAM XQL work (#5709) was closed and re-limited; new branch palo-alto-xsiam-tis-pov carries the reworked XQL filtering with some helper format/fix checkpoint commits",
-      "Multiple small 'Format Fix' helper commits scattered through the week added review noise"
+      'PR #5790 (Securonix assignee fix) is CI-blocked - checkstyle and pr-template-check are FAILING and review is still required, so the Securonix assignee + user-mapping work cannot land'
     ],
     priorities: [
-      "Merge XQL filter-expression support for Palo Alto Cortex XSIAM (branch palo-alto-xsiam-tis-pov)",
-      "Land the Microsoft Defender Advanced Hunting backport into the release branch (#5734)",
-      "Close out the Securonix per-field case update results PR (#5686)",
-      "Continue extending threat-intel integration coverage (XSIAM/Defender XQL flow)"
+      'Fix failing CI on PR #5790 (checkstyle, pr-template-check) to unblock the merge',
+      'Get PR #5790 reviewed and merged',
+      'Land the Lookup IP Tool (IP-236, branch cato-lookup-tool-ip-236) - open a PR or finish the branch',
+      'Clean up the leftover stash on jira-confluence-ip-225 (stale "index on ..." commit remains post-merge)'
     ],
     docs: [
-      { link: "https://github.com/simbianai/SimbianOS/pull/5733", desc: "Advanced Hunting support in Microsoft Defender integration (IP-215)" },
-      { link: "https://github.com/simbianai/SimbianOS/pull/5724", desc: "Jira JQL issue search + Investigation Enrichment tag (IP-225)" },
-      { link: "https://github.com/simbianai/SimbianOS/pull/5703", desc: "Block escalation for terminal case statuses when provider opts in" },
-      { link: "https://github.com/simbianai/SimbianOS/pull/5698", desc: "Stix Shifter update" },
-      { link: "https://github.com/simbianai/SimbianOS/pull/5671", desc: "ManageEngine ServiceDesk Plus integration priority fixes" }
+      { link: 'https://github.com/simbianai/SimbianOS/pull/5769', desc: 'IP-225 Confluence integration - OAuth 2.0, 14 read-only actions, full config UI' },
+      { link: 'https://github.com/simbianai/SimbianOS/pull/5790', desc: 'Securonix assignee fix - clear warnings when provider updates are blocked by missing integration (open, CI red)' },
+      { link: 'https://github.com/simbianai/SimbianOS/pull/5786', desc: 'Cato Stix Fix - STIX translation correction for Cato Networks' }
     ]
   };
 

@@ -157,7 +157,87 @@
       "repo": "herdr-plugin-gh-pr",
       "resolved_commit": "6fe22de9a90c569f2186595cfddc3707f55ba1bd",
       "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/gh-pr-9d83f0425098",
-      "installed_unix_ms": 1785608560472
+      "installed_unix_ms": 1786769052592
+    }
+  },
+  {
+    "plugin_id": "jira-board",
+    "name": "jira-board",
+    "version": "0.1.0",
+    "min_herdr_version": "0.7.5",
+    "description": "Jira kanban board with Claude session launcher and live agent status",
+    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/jira-board-bfdcfcaf4ec4/herdr-plugin.toml",
+    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/jira-board-bfdcfcaf4ec4",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "build": [
+      {
+        "command": [
+          "bash",
+          "bin/setup"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "close-other-tabs",
+        "title": "Close other tabs",
+        "contexts": [
+          "tab"
+        ],
+        "command": [
+          "bash",
+          "-c",
+          "exec \"$HERDR_PLUGIN_ROOT/bin/close-tabs\" other"
+        ]
+      },
+      {
+        "id": "close-right-tabs",
+        "title": "Close tabs to the right",
+        "contexts": [
+          "tab"
+        ],
+        "command": [
+          "bash",
+          "-c",
+          "exec \"$HERDR_PLUGIN_ROOT/bin/close-tabs\" right"
+        ]
+      },
+      {
+        "id": "open-board",
+        "title": "Open Jira board",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "-c",
+          "exec herdr plugin pane open --plugin jira-board --entrypoint board"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "board",
+        "title": "Jira Board",
+        "placement": "tab",
+        "command": [
+          "bash",
+          "-c",
+          "exec \"$HERDR_PLUGIN_ROOT/bin/jira-board\""
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "kiitosu",
+      "repo": "herdr-jira-board",
+      "resolved_commit": "8518b7c1bc68901ca4d2faee5483d4d1e72c3caf",
+      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/jira-board-bfdcfcaf4ec4",
+      "installed_unix_ms": 1786681972315
     }
   },
   {
@@ -208,13 +288,78 @@
     }
   },
   {
+    "plugin_id": "kukv.github-dash",
+    "name": "GitHub Dash",
+    "version": "0.2.0",
+    "min_herdr_version": "0.7.0",
+    "description": "Browse GitHub pull requests and issues for the current workspace, and post comments.",
+    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/kukv.github-dash-000b2def50e3/herdr-plugin.toml",
+    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/kukv.github-dash-000b2def50e3",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "build": [
+      {
+        "command": [
+          "go",
+          "build",
+          "-o",
+          "bin/github-dash",
+          "."
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "open",
+        "title": "Open GitHub dashboard",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "bash",
+          "open.sh"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "dash",
+        "title": "GitHub Dash",
+        "placement": "overlay",
+        "command": [
+          "bash",
+          "run.sh"
+        ]
+      }
+    ],
+    "link_handlers": [
+      {
+        "id": "github-pr-issue",
+        "title": "Open in GitHub Dash",
+        "pattern": "^https://github\\.com/[^/]+/[^/]+/(issues|pull)/[0-9]+/?$",
+        "action": "open"
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "kukv",
+      "repo": "herdr-plugin-github-dash",
+      "resolved_commit": "7fb2ee508ab771e2a044a82917c48b6424fda4d9",
+      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/kukv.github-dash-000b2def50e3",
+      "installed_unix_ms": 1786683346627
+    }
+  },
+  {
     "plugin_id": "vim-herdr-navigation",
     "name": "Vim Herdr Navigation",
     "version": "0.1.0",
     "min_herdr_version": "0.7.0",
     "description": "Seamless Ctrl+h/j/k/l navigation across herdr panes and Vim/Neovim splits",
-    "manifest_path": "/private/tmp/vim-herdr-navigation/herdr-plugin.toml",
-    "plugin_root": "/private/tmp/vim-herdr-navigation",
+    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/vim-herdr-navigation/herdr-plugin.toml",
+    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/vim-herdr-navigation",
     "enabled": true,
     "platforms": [
       "linux",

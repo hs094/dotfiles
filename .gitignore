@@ -106,3 +106,6 @@ pgcli/history
 /herdr/release-notes.json
 /herdr/session-history.json
 /herdr/session.json
+/worktrunk/approvals.toml
+/devin/config.json
+/herdr/plugins/config/jira-board/config.toml
