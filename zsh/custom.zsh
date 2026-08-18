@@ -411,7 +411,7 @@ wth() {
 
   local -A WT_ALIASES=(
     ws   "wt switch <branch>          |Switch to a worktree branch"
-    wsc  "wt switch -c --base=@ <br>  |Create + switch (base = current branch)"
+    wsc  "picker / wt <branch>       |Create from current branch; native Herdr workspace"
     wsx  "wt switch -c -x --base=@    |Create + run command (e.g. wsx claude feat-a)"
     wl   "wt list                     |List worktrees"
     wlf  "wt list --full              |List worktrees with CI status + summaries"

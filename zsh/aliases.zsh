@@ -215,7 +215,14 @@ alias gwl='git worktree list'
 
 # Worktrunk (wt) — git worktree management (brew install worktrunk)
 alias ws='wt switch'
-alias wsc='wt switch -c --base=@' # base = current branch; post-start hook auto-copies hidden files (.env, .envrc, etc.)
+unalias wsc 2>/dev/null
+wsc() {
+  if [[ "${HERDR_ENV:-}" == 1 ]]; then
+    wt switch -c --base=@ --no-cd "$@"
+  else
+    wt switch -c --base=@ "$@"
+  fi
+}
 alias wsx='wt switch -c -x --base=@' # Usage: wsx <cmd> <branch>, e.g. wsx claude feat-a
 alias wl='wt list'
 alias wlf='wt list --full'
