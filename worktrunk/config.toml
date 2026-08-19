@@ -1,4 +1,4 @@
-[post-start]
+[post-switch]
 herdr = '''
 herdr worktree open --cwd '{{ repo_path }}' --path '{{ worktree_path }}' --label '{{ branch }}' --focus 2>/dev/null || true
 '''
