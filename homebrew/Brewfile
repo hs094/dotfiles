@@ -69,8 +69,6 @@ tap "zackriya-solutions/meetily", trusted: true
 brew "openssl@3", link: false
 # Download with resuming and segmented downloading
 brew "aria2"
-# Simple API client (Postman-like) in your terminal
-brew "atac"
 # Securely store and access AWS credentials in development environments
 brew "aws-vault"
 # Official Amazon AWS command-line interface
@@ -97,8 +95,6 @@ brew "cmake"
 brew "lima"
 # Container runtimes on MacOS (and Linux) with minimal setup
 brew "colima"
-# Create and run Linux containers using lightweight virtual machines
-brew "container"
 # GNU multiple precision arithmetic library
 brew "gmp"
 # GNU File, Shell, and Text utilities
@@ -215,8 +211,6 @@ brew "k9s"
 brew "kind"
 # Kubernetes command-line interface
 brew "kubernetes-cli"
-# Terminal UI for Apple Containers
-brew "lazycontainer"
 # Lazier way to manage everything docker
 brew "lazydocker"
 # Simple terminal UI for git commands
@@ -236,7 +230,7 @@ brew "libmatio"
 # Light HTTP/1.1 server library
 brew "libmicrohttpd"
 # Postgres C API library
-brew "libpq"
+brew "libpq", link: true
 # Library for reading RAW files from digital photo cameras
 brew "libraw"
 # SIXEL encoder/decoder implementation
@@ -295,6 +289,8 @@ brew "nushell"
 brew "nvm"
 # HTTP load generator, inspired by rakyll/hey with tui animation
 brew "oha"
+# Create, run, and share large language models (LLMs)
+brew "ollama", restart_service: :changed
 # High performance message passing library
 brew "open-mpi"
 # Search tool like grep and The Silver Searcher
@@ -325,16 +321,12 @@ brew "pgvector"
 brew "pngquant"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
-# Object-relational database system
-brew "postgresql@17", link: true
 # Protocol buffers (Google's data interchange format)
 brew "protobuf"
 # Cloud native development platform
 brew "pulumi"
 # Rsync for cloud storage
 brew "rclone"
-# Persistent key-value database, with built-in net interface
-brew "redis"
 # Extremely fast tool to remove dupes and other lint from your filesystem
 brew "rmlint"
 # Utility that provides fast incremental file transfer
@@ -395,8 +387,6 @@ brew "tealdeer"
 brew "television"
 # User interface to the TELNET protocol
 brew "telnet"
-# Command-line time tracking application
-brew "timewarrior"
 # Terminal multiplexer
 brew "tmux"
 # Find and download torrents without leaving your CLI
@@ -457,13 +447,11 @@ brew "kaushiksrini/parqeye/parqeye"
 brew "kdash-rs/kdash/kdash"
 # e1s is a terminal application to simply browsing and manage AWS ECS resources, with a focus on Fargate. Inspired by k9s.
 brew "keidarcy/tap/e1s"
-# The AI coding agent built for the terminal.
-brew "kilo-org/tap/kilo"
 # Terminal UI for GitHub pull requests
 brew "kitlangton/tap/ghui", trusted: true
 # Identity, credentials, and governance for AI agents
 brew "kontext-security/tap/kontext"
-# Tock v2.0.2 is a simple timetracker for the command line
+# Tock v2.0.4 is a simple timetracker for the command line
 brew "kriuchkov/tap/tock"
 # TUI for managing .env files
 brew "lazynop/tap/lazyenv"
@@ -477,8 +465,6 @@ brew "markmarkoh/lt/lt"
 brew "metalbear-co/mirrord/mirrord"
 # Desktop-inspired terminal diff viewer for agent-authored changesets
 brew "modem-dev/tap/hunk", trusted: true
-# A TUI to visualize and manage GitHub Actions
-brew "nnnkkk7/tap/lazyactions", trusted: true
 # Incredibly fast JavaScript runtime, bundler, transpiler and package manager - all in one.
 brew "oven-sh/bun/bun"
 # Record Terraform runs with git context, timing, and resource events
@@ -502,17 +488,19 @@ cask "aws-vault-binary"
 cask "bitwarden"
 # Not so boring notch That Rocks 🎸🎶 
 cask "theboredteam/boring-notch/boring-notch"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 cask "container"
-# Offline voice-to-text dictation app with AI enhancement
-cask "fluidvoice"
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 # Set of tools to manage resources and applications hosted on Google Cloud
 cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Keyboard shortcuts for every button on your screen
+cask "homerow"
 # Clone any website for offline viewing, with the JavaScript stripped out
 cask "tamnd/tap/kage", trusted: true
 # GPU-based terminal emulator
@@ -523,6 +511,8 @@ cask "muesli"
 cask "notion"
 # Peer to peer Bitorrent client
 cask "qbittorrent"
+# Dictation tool including LLM reformatting
+cask "superwhisper"
 # Messaging app with a focus on speed and security
 cask "telegram"
 # Multimedia player
@@ -535,20 +525,17 @@ cargo "octotype"
 uv "cloctui"
 uv "cocoindex"
 uv "git-filter-repo"
-uv "git-gud"
 uv "graphifyy"
 uv "huggingface-hub"
 uv "kaggle"
 uv "llamactl"
 uv "marimo"
 uv "markitdown[all]"
-uv "mlx-lm"
 uv "pgcli"
-uv "pysonar"
-uv "xonsh[full]"
 npm "@aisuite/chub"
 npm "@dbml/cli"
 npm "@earendil-works/pi-coding-agent"
+npm "@kilocode/cli"
 npm "@openai/codex"
 npm "@razakadam74/gitmsg"
 npm "cline"

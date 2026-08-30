@@ -15,7 +15,9 @@ config_version = 1
 [vim]
 enabled = true  # true | false — CodeMirror Vim bindings
 insert_escape = ""  # key sequence to leave insert mode, e.g. "jk"; empty disables
-yank_to_clipboard = false  # sync the system clipboard with Vim yank/delete/change and p/P paste
+yank_to_clipboard = true  # sync the system clipboard with Vim yank/delete/change and p/P paste
+block_ime_in_normal_mode = true  # keep the OS input method (a CJK IME) from composing in normal and visual mode, so hjkl stay motions
+wrapped_line_motions = "display"  # display | logical — how $, I, A and dependent operators treat soft-wrapped lines
 which_key_hints = true  # show the leader-key hint overlay (Vim only)
 which_key_hint_mode = "timed"  # timed | sticky
 which_key_hint_timeout_ms = 900  # how long timed hints stay visible (ms)
@@ -74,7 +76,7 @@ mono_font = ""  # code / monospace font; empty = system default
 
 [view]
 atlas_enabled = true  # the Atlas map view of the vault (sidebar row, command, Space g); on by default
-workflows_enabled = false  # opt in to the Workflows view, its sidebar row, command, and leader shortcut (off by default)
+workflows_enabled = true  # opt in to the Workflows view, its sidebar row, command, and leader shortcut (off by default)
 asset_sort_order = "name-asc"  # Assets view sort: name | used | type | size | modified, each -asc or -desc
 note_sort_order = "none"  # none | manual | updated-desc | updated-asc | created-desc | created-asc | name-asc | name-desc
 group_by_kind = true  # group notes by kind in the list
@@ -208,6 +210,7 @@ hidden_workflow_presets = []  # built-in workflow recipes hidden from the galler
 # "editor.moveLineUp" = "Alt+ArrowUp"  # Move line up
 # "editor.moveLineDown" = "Alt+ArrowDown"  # Move line down
 # "editor.toggleCheckbox" = "Mod+L"  # Toggle checkbox
+# "editor.reflowParagraph" = "Ctrl+Q"  # Reflow paragraph
 # "nav.localEx" = ":"  # Open local ex prompt
 # "nav.newQuickNote" = "n"  # New quick note from Quick Notes view
 # "nav.unarchive" = "u"  # Unarchive selected note
