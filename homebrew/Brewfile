@@ -89,6 +89,8 @@ brew "chafa"
 brew "chezmoi"
 # Statistics utility to count lines of code
 brew "cloc"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
 # Cross-platform make
 brew "cmake"
 # Linux virtual machines

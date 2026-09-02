@@ -6,6 +6,9 @@
 #     | tr '\n' ' '
 # )\"
 # "
+
+alias herd-remote="herdr plugin action invoke setup --plugin herdr-mobile-relay.events"
+
 alias mformat='make format-dirs dirs="$(
   git diff main...HEAD --name-only -- "*.py" \
     | sed -n "s#^python/security_assistant/##p" \
