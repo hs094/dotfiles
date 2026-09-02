@@ -161,6 +161,555 @@
     }
   },
   {
+    "plugin_id": "herdr-mobile-relay.events",
+    "name": "Herdr Mobile Relay",
+    "version": "0.19.1",
+    "min_herdr_version": "0.7.5",
+    "description": "Remote mobile control for Herdr: approve and monitor agents from your smartphone (Android/iOS) with an installable web app, push notifications, QR pairing, and a blind gateway plus direct WebRTC transport (Cloudflare tunnels remain supported)",
+    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/herdr-mobile-relay.events-cf495399b2fa/herdr-plugin.toml",
+    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/herdr-mobile-relay.events-cf495399b2fa",
+    "enabled": true,
+    "platforms": [
+      "macos",
+      "linux"
+    ],
+    "build": [
+      {
+        "command": [
+          "bash",
+          "relay/plugin-build.sh"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "change-hostname",
+        "title": "Herdr Mobile Relay: Change Tunnel Hostname",
+        "command": [
+          "bash",
+          "relay/open-plugin-pane.sh",
+          "change-hostname"
+        ]
+      },
+      {
+        "id": "configure-app-deploy",
+        "title": "Herdr Mobile Relay: Configure App Deployment",
+        "command": [
+          "bash",
+          "relay/open-plugin-pane.sh",
+          "configure-app-deploy"
+        ]
+      },
+      {
+        "id": "install-service",
+        "title": "Herdr Mobile Relay: Stable Cloudflare Tunnel Setup",
+        "command": [
+          "bash",
+          "relay/open-plugin-pane.sh",
+          "install-service"
+        ]
+      },
+      {
+        "id": "quick-start",
+        "title": "Herdr Mobile Relay: Start or Restart Relay",
+        "command": [
+          "bash",
+          "relay/open-plugin-pane.sh",
+          "quick-start"
+        ]
+      },
+      {
+        "id": "setup",
+        "title": "Herdr Mobile Relay: Setup",
+        "command": [
+          "bash",
+          "relay/open-plugin-pane.sh",
+          "setup"
+        ]
+      },
+      {
+        "id": "setup-link",
+        "title": "Herdr Mobile Relay: Show Phone Setup QR",
+        "command": [
+          "bash",
+          "relay/open-plugin-pane.sh",
+          "setup-link"
+        ]
+      },
+      {
+        "id": "stable-teardown",
+        "title": "Herdr Mobile Relay: Stable Tunnel Teardown",
+        "command": [
+          "bash",
+          "relay/open-plugin-pane.sh",
+          "stable-teardown"
+        ]
+      },
+      {
+        "id": "status",
+        "title": "Herdr Mobile Relay: Status",
+        "command": [
+          "bash",
+          "relay/open-plugin-pane.sh",
+          "status"
+        ]
+      },
+      {
+        "id": "uninstall",
+        "title": "Herdr Mobile Relay: Full Uninstall",
+        "command": [
+          "bash",
+          "relay/open-plugin-pane.sh",
+          "uninstall"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "pane.agent_status_changed",
+        "command": [
+          "sh",
+          "relay/plugin-on-event.sh"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "change-hostname",
+        "title": "Herdr Mobile Relay: Change Tunnel Hostname",
+        "placement": "zoomed",
+        "command": [
+          "bash",
+          "relay/plugin-change-hostname.sh"
+        ]
+      },
+      {
+        "id": "configure-app-deploy",
+        "title": "Herdr Mobile Relay: Configure App Deployment",
+        "placement": "zoomed",
+        "command": [
+          "bash",
+          "relay/plugin-configure-app-deploy.sh"
+        ]
+      },
+      {
+        "id": "install-service",
+        "title": "Herdr Mobile Relay: Stable Cloudflare Tunnel Setup",
+        "placement": "zoomed",
+        "command": [
+          "bash",
+          "relay/plugin-install-service.sh"
+        ]
+      },
+      {
+        "id": "quick-start",
+        "title": "Herdr Mobile Relay: Start or Restart Relay",
+        "placement": "zoomed",
+        "command": [
+          "bash",
+          "relay/plugin-quick-start.sh"
+        ]
+      },
+      {
+        "id": "setup",
+        "title": "Herdr Mobile Relay: Setup",
+        "placement": "zoomed",
+        "command": [
+          "bash",
+          "relay/plugin-setup-menu.sh"
+        ]
+      },
+      {
+        "id": "setup-link",
+        "title": "Herdr Mobile Relay: Show Phone Setup QR",
+        "placement": "zoomed",
+        "command": [
+          "bash",
+          "relay/plugin-setup-link.sh"
+        ]
+      },
+      {
+        "id": "stable-teardown",
+        "title": "Herdr Mobile Relay: Stable Tunnel Teardown",
+        "placement": "zoomed",
+        "command": [
+          "bash",
+          "relay/plugin-stable-teardown.sh"
+        ]
+      },
+      {
+        "id": "status",
+        "title": "Herdr Mobile Relay: Status",
+        "placement": "overlay",
+        "command": [
+          "bash",
+          "relay/plugin-status.sh"
+        ]
+      },
+      {
+        "id": "uninstall",
+        "title": "Herdr Mobile Relay: Full Uninstall",
+        "placement": "zoomed",
+        "command": [
+          "bash",
+          "relay/uninstall.sh"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "0cv",
+      "repo": "herdr-mobile-relay",
+      "resolved_commit": "7400537a429e754fc5af82ee9ac9d28f6e058c1d",
+      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/herdr-mobile-relay.events-cf495399b2fa",
+      "installed_unix_ms": 1788241270012
+    }
+  },
+  {
+    "plugin_id": "herdr.push",
+    "name": "Herdr Push",
+    "version": "0.2.0",
+    "min_herdr_version": "0.7.0",
+    "description": "Push agent status to a remote dashboard for mobile monitoring and one-tap approval",
+    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/herdr.push-daeaa1550340/herdr-plugin.toml",
+    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/herdr.push-daeaa1550340",
+    "enabled": true,
+    "platforms": [
+      "macos",
+      "linux"
+    ],
+    "actions": [
+      {
+        "id": "test",
+        "title": "Test push to relay",
+        "command": [
+          "sh",
+          "test.sh"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "pane.agent_status_changed",
+        "command": [
+          "sh",
+          "on_event.sh"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "dcolinmorgan",
+      "repo": "herdr-push",
+      "resolved_commit": "f4fdb06d5413ac2d96ca225ea33f288f41bfc001",
+      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/herdr.push-daeaa1550340",
+      "installed_unix_ms": 1788160854790
+    }
+  },
+  {
+    "plugin_id": "jhochenbaum.hunkdiff",
+    "name": "hunk",
+    "version": "0.1.0",
+    "min_herdr_version": "0.8.0",
+    "description": "Review agent-authored diffs in hunk, and send your inline comments back to the agent that wrote them.",
+    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/jhochenbaum.hunkdiff-a2dc99e853fa/herdr-plugin.toml",
+    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/jhochenbaum.hunkdiff-a2dc99e853fa",
+    "enabled": true,
+    "platforms": [
+      "macos",
+      "linux"
+    ],
+    "build": [
+      {
+        "command": [
+          "npm",
+          "ci"
+        ]
+      },
+      {
+        "command": [
+          "npm",
+          "run",
+          "build"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "close-review",
+        "title": "hunk: close the review pane",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "close-review"
+        ]
+      },
+      {
+        "id": "install-pager",
+        "title": "hunk: set up hunk as your VCS pager (git automatically, jj and sl by hand)",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "install-pager"
+        ]
+      },
+      {
+        "id": "next-comment",
+        "title": "hunk: go to the next review comment",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "next-comment"
+        ]
+      },
+      {
+        "id": "prev-comment",
+        "title": "hunk: go to the previous review comment",
+        "contexts": [
+          "pane",
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "prev-comment"
+        ]
+      },
+      {
+        "id": "reload",
+        "title": "hunk: reload the open review",
+        "contexts": [
+          "workspace",
+          "pane"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "reload"
+        ]
+      },
+      {
+        "id": "remove-keys",
+        "title": "hunk: remove default keybindings",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "remove-keys"
+        ]
+      },
+      {
+        "id": "review",
+        "title": "hunk: review changes",
+        "contexts": [
+          "workspace",
+          "pane"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "review"
+        ]
+      },
+      {
+        "id": "review:branch",
+        "title": "hunk: review this branch against its base",
+        "contexts": [
+          "workspace",
+          "pane"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "review:branch"
+        ]
+      },
+      {
+        "id": "review:commit",
+        "title": "hunk: review the last commit (or a clicked GitHub commit link)",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "review:commit"
+        ]
+      },
+      {
+        "id": "review:staged",
+        "title": "hunk: review staged changes",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "review:staged"
+        ]
+      },
+      {
+        "id": "review:stash",
+        "title": "hunk: review the most recent stash entry",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "review:stash"
+        ]
+      },
+      {
+        "id": "send-review",
+        "title": "hunk: send review to agent",
+        "contexts": [
+          "pane"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "send-review"
+        ]
+      },
+      {
+        "id": "setup-keys",
+        "title": "hunk: install default keybindings",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "setup-keys"
+        ]
+      },
+      {
+        "id": "uninstall-pager",
+        "title": "hunk: stop using hunk as your VCS pager",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "node",
+          "dist/bin/action.js",
+          "uninstall-pager"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "pane.agent_status_changed",
+        "command": [
+          "node",
+          "dist/bin/event.js"
+        ]
+      },
+      {
+        "on": "pane.closed",
+        "command": [
+          "node",
+          "dist/bin/event.js"
+        ]
+      },
+      {
+        "on": "pane.exited",
+        "command": [
+          "node",
+          "dist/bin/event.js"
+        ]
+      },
+      {
+        "on": "worktree.removed",
+        "command": [
+          "node",
+          "dist/bin/event.js"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "review",
+        "title": "hunk review",
+        "placement": "split",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review"
+        ]
+      },
+      {
+        "id": "review-branch",
+        "title": "hunk review (branch)",
+        "placement": "split",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review:branch"
+        ]
+      },
+      {
+        "id": "review-commit",
+        "title": "hunk review (commit)",
+        "placement": "split",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review:commit"
+        ]
+      },
+      {
+        "id": "review-staged",
+        "title": "hunk review (staged)",
+        "placement": "split",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review:staged"
+        ]
+      },
+      {
+        "id": "review-stash",
+        "title": "hunk review (stash)",
+        "placement": "split",
+        "command": [
+          "sh",
+          "-c",
+          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review:stash"
+        ]
+      }
+    ],
+    "link_handlers": [
+      {
+        "id": "github-commit",
+        "title": "hunk: review this GitHub commit",
+        "pattern": "^https://github\\.com/[^/]+/[^/]+/commit/[0-9a-fA-F]{7,40}/?$",
+        "action": "review:commit"
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "jhochenbaum",
+      "repo": "herdr-hunk-diff",
+      "resolved_commit": "81b85cea5484099acea93f2e9a08c2677eef461b",
+      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/jhochenbaum.hunkdiff-a2dc99e853fa",
+      "installed_unix_ms": 1787302227342
+    }
+  },
+  {
     "plugin_id": "jira-board",
     "name": "jira-board",
     "version": "0.1.0",

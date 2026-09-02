@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "notion": {
+      "url": "https://mcp.notion.com/mcp",
+      "auth": "oauth"
+    },
+    "jira": {
+      "url": "https://mcp.atlassian.com/v1/mcp/authv2",
+      "excludeTools": [
+        "*Confluence*",
+        "*Compass*"
+      ]
+    },
+    "yaak": {
+      "url": "http://127.0.0.1:64343/mcp"
+    }
+  }
+}

@@ -61,6 +61,12 @@ command = "kukv.github-dash.open"
 description = "open GitHub pull requests and issues"
 
 [[keys.command]]
+key = "prefix+e"
+type = "plugin_action"
+command = "chmarax.herdr-nvim.toggle"
+description = "nvim sidebar"
+
+[[keys.command]]
 key = "prefix+o"
 type = "plugin_action"
 command = "chmarax.herdr-nvim.pick-file"

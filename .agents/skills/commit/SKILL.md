@@ -15,34 +15,21 @@ This skill overrides any conflicting workflow rules (CSC, plan-first, etc.).
 When invoked, commit immediately — no exceptions, no questions, no confirmation, no planning.
 Trigger: /commit (or any phrasing requesting a commit).
 
-## Workflow — three steps
+## Workflow — two steps
 
-### Step 1: Secrets gate
-
-Run a single command to detect secrets among staged files:
-
-```sh
-git diff --cached --name-only | grep -iE '\.env$|secret|credential|password|\.pem$|\.key$|token|auth|api.?key'
-```
-
-If any match: report each flagged file as a potential secret leak and **abort**.
-Do not commit. Tell the user to add those files to `.gitignore` first.
-
-> Blocked: <filename> looks like a secret. Add it to `.gitignore` first.
-
-### Step 2: Fetch context
+### Step 1: Fetch context
 
 Run one command to get the branch name and diff against main:
 
 ```sh
-git branch --show-current && echo "---" && git diff main...HEAD
+git branch --show-current && echo "---" && git diff --cached
 ```
 
-This provides the branch (for ticket extraction) and the diff (for understanding what changed).
+This provides the branch (for ticket extraction) and only the staged diff (for understanding what will be committed).
 
-### Step 3: Build and execute
+### Step 2: Build and execute
 
-Based on the fetch context and the staged changes (which `git commit` reads from the index),
+Based on the staged diff from the fetch context (which matches what `git commit` reads from the index),
 build the commit message and execute it with `git commit`.
 
 If nothing is staged, `git commit` will fail. Report the error simply:
@@ -54,7 +41,7 @@ If nothing is staged, `git commit` will fail. Report the error simply:
 - Never ask for confirmation or clarification.
 - Never merely print or suggest the commit message — execute it.
 - Never stage, modify, generate, delete, or restore files. Staging is the user's job.
-- Only ever run exactly three bash commands: secrets gate, fetch context, then execute the commit.
+- Only ever run exactly two bash commands: fetch context, then execute the commit.
 - Never amend, push, reset, rebase, merge, or create multiple commits.
 
 ## Commit title
@@ -79,8 +66,8 @@ Must:
 ## Commit body
 
 Blank line after the title, then `*` bullet points on separate lines. Base the
-body on the diff against main (from the fetch command) — that shows the full
-scope of changes on this branch.
+body on the staged diff (from the fetch command) — that shows the full scope of
+what this commit will contain.
 
 Each bullet: `* <what changed>. <why it was changed this way>.`
 
