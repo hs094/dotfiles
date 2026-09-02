@@ -35,3 +35,9 @@ compinit
 command -v /Users/hardik.soni/.local/bin/ghost >/dev/null 2>&1 && source <(/Users/hardik.soni/.local/bin/ghost completion zsh)
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+export PATH="$HOME/.config/herdr/plugins/github/dnzzl.automations-c6e92c72ec60/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.11/libexec/bin:$PATH"
+
+# opencode
+export PATH=/Users/hardik.soni/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"

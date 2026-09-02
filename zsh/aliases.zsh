@@ -224,6 +224,7 @@ alias wl='wt list'
 alias wlf='wt list --full'
 alias wm='wt merge'
 alias wr='wt remove'
+alias wrd='wt remove -D'
 alias wch='wt copy-hidden'         # Manually copy hidden files from primary worktree
 wscp() { wt switch -c --base=@ "$@" && echo "✓ Hidden files copied (via post-start hook)"; }
 

@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  echo "Usage: wsc-init"
+  echo "Start web and static containers for the current linked worktree."
+  exit 0
+fi
+
+worktree_root="$(git rev-parse --show-toplevel 2>/dev/null)" || {
+  echo "Run wsc-init from inside a Git worktree." >&2
+  exit 1
+}
+
+if [[ ! -f "$worktree_root/.git" ]]; then
+  echo "Refusing to start the main checkout. Run wsc-init from a linked worktree." >&2
+  exit 1
+fi
+
+app_dir="$worktree_root/python/security_assistant"
+env_file="$app_dir/.env.docker"
+compose_file="$app_dir/docker-compose.yml"
+
+[[ -f "$env_file" ]] || { echo "Missing $env_file; create the worktree with wsc first." >&2; exit 1; }
+[[ -f "$compose_file" ]] || { echo "Missing $compose_file." >&2; exit 1; }
+docker network inspect simbian-network >/dev/null 2>&1 || {
+  echo "Shared simbian-network is not running. Start the original stack first." >&2
+  exit 1
+}
+
+project_name="$(awk -F= '$1 == "COMPOSE_PROJECT_NAME" {print $2; exit}' "$env_file")"
+[[ -n "$project_name" ]] || { echo "COMPOSE_PROJECT_NAME is missing from $env_file." >&2; exit 1; }
+[[ "$project_name" != "security_assistant" ]] || {
+  echo "Refusing to reuse the original Compose project. Recreate the worktree with wsc." >&2
+  exit 1
+}
+
+override_file="$(mktemp "${TMPDIR:-/tmp}/wsc-init.XXXXXX.yml")"
+trap 'rm -f "$override_file"' EXIT
+
+cat >"$override_file" <<'YAML'
+services:
+  web:
+    image: security_assistant-web:latest
+    ports: !override
+      - "${WEB_PORT:-8000}:8000"
+      - "${JUPYTER_PORT:-8888}:8888"
+      - "${DEBUG_PORT:-3000}:3000"
+    networks: !override
+      - simbian-network
+      - worktree-network
+    volumes:
+      - sandbox_workspace:/workspace
+  static:
+    image: security_assistant-static:latest
+    ports: !override
+      - "${STATIC_PORT:-8001}:8001"
+    networks: !override
+      - worktree-network
+
+networks:
+  simbian-network:
+    external: true
+    name: simbian-network
+  worktree-network:
+    name: ${COMPOSE_PROJECT_NAME}-worktree
+
+volumes:
+  sandbox_workspace:
+    external: true
+    name: ${SANDBOX_VOLUME_NAME:-security_assistant_sandbox_workspace}
+YAML
+
+cd "$app_dir"
+compose=(docker compose --env-file "$env_file" -p "$project_name" -f "$compose_file" -f "$override_file")
+"${compose[@]}" up -d --no-deps web static
+"${compose[@]}" ps
+
+echo "Web: http://localhost:$(awk -F= '$1 == "WEB_PORT" {print $2; exit}' "$env_file")"

@@ -92,6 +92,380 @@
     }
   },
   {
+    "plugin_id": "devswha.herdr-web-ui",
+    "name": "herdr web ui",
+    "version": "0.4.8",
+    "min_herdr_version": "0.9.0",
+    "description": "Browser and phone client for herdr: chat and live terminal for every agent pane, remote PCs over SSH, web push alerts",
+    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/devswha.herdr-web-ui-210f619d6b7b/herdr-plugin.toml",
+    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/devswha.herdr-web-ui-210f619d6b7b",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos",
+      "windows"
+    ],
+    "build": [
+      {
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "sh",
+          "scripts/preflight.sh"
+        ]
+      },
+      {
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "scripts/preflight.ps1"
+        ]
+      },
+      {
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "sh",
+          "scripts/with-bun.sh",
+          "install"
+        ]
+      },
+      {
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "bun",
+          "install"
+        ]
+      },
+      {
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "sh",
+          "scripts/with-bun.sh",
+          "run",
+          "build"
+        ]
+      },
+      {
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "bun",
+          "run",
+          "build"
+        ]
+      }
+    ],
+    "startup": [
+      {
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "sh",
+          "scripts/with-bun.sh",
+          "scripts/plugin.ts",
+          "start"
+        ]
+      },
+      {
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "scripts/plugin.ps1",
+          "start"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "phone",
+        "title": "Phone setup",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "herdr",
+          "plugin",
+          "pane",
+          "open",
+          "--plugin",
+          "devswha.herdr-web-ui",
+          "--entrypoint",
+          "phone",
+          "--placement",
+          "zoomed",
+          "--focus"
+        ]
+      },
+      {
+        "id": "phone-windows",
+        "title": "Phone setup",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "herdr",
+          "plugin",
+          "pane",
+          "open",
+          "--plugin",
+          "devswha.herdr-web-ui",
+          "--entrypoint",
+          "phone-windows",
+          "--placement",
+          "zoomed",
+          "--focus"
+        ]
+      },
+      {
+        "id": "start",
+        "title": "Start herdr web ui",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "sh",
+          "scripts/with-bun.sh",
+          "scripts/plugin.ts",
+          "start"
+        ]
+      },
+      {
+        "id": "start-windows",
+        "title": "Start herdr web ui",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "scripts/plugin.ps1",
+          "start"
+        ]
+      },
+      {
+        "id": "status",
+        "title": "herdr web ui status",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "sh",
+          "scripts/with-bun.sh",
+          "scripts/plugin.ts",
+          "status"
+        ]
+      },
+      {
+        "id": "status-windows",
+        "title": "herdr web ui status",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "scripts/plugin.ps1",
+          "status"
+        ]
+      },
+      {
+        "id": "stop",
+        "title": "Stop herdr web ui",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "command": [
+          "sh",
+          "scripts/with-bun.sh",
+          "scripts/plugin.ts",
+          "stop"
+        ]
+      },
+      {
+        "id": "stop-windows",
+        "title": "Stop herdr web ui",
+        "contexts": [
+          "workspace"
+        ],
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "scripts/plugin.ps1",
+          "stop"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "phone",
+        "title": "Phone setup",
+        "platforms": [
+          "linux",
+          "macos"
+        ],
+        "placement": "zoomed",
+        "command": [
+          "sh",
+          "scripts/with-bun.sh",
+          "scripts/plugin.ts",
+          "phone-setup"
+        ]
+      },
+      {
+        "id": "phone-windows",
+        "title": "Phone setup",
+        "platforms": [
+          "windows"
+        ],
+        "placement": "zoomed",
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "scripts/plugin.ps1",
+          "phone-setup"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "devswha",
+      "repo": "herdr-web-ui",
+      "requested_ref": "v0.4.8",
+      "resolved_commit": "cb65ecb9d1d251b42a6875427b6c7d0958150796",
+      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/devswha.herdr-web-ui-210f619d6b7b",
+      "installed_unix_ms": 1791950512488
+    }
+  },
+  {
+    "plugin_id": "dnzzl.automations",
+    "name": "Automations",
+    "version": "0.8.2",
+    "min_herdr_version": "0.8.0",
+    "description": "Cron-scheduled agent prompts for Herdr — the trigger layer: prompt + cron, agent launched in a fresh worktree or the repo root.",
+    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/dnzzl.automations-c6e92c72ec60/herdr-plugin.toml",
+    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/dnzzl.automations-c6e92c72ec60",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "build": [
+      {
+        "command": [
+          "sh",
+          "scripts/install.sh"
+        ]
+      }
+    ],
+    "startup": [
+      {
+        "command": [
+          "./bin/herdr-automations",
+          "daemon"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "run-now",
+        "title": "Automations: run now",
+        "contexts": [
+          "workspace"
+        ],
+        "command": [
+          "./bin/herdr-automations",
+          "run",
+          "--pick"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "board",
+        "title": "Automations",
+        "placement": "overlay",
+        "command": [
+          "./bin/herdr-automations",
+          "pane"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "DnzzL",
+      "repo": "herdr-automations",
+      "resolved_commit": "2bae3f9ad2c016bd694dcb39a95fb02578378c17",
+      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/dnzzl.automations-c6e92c72ec60",
+      "installed_unix_ms": 1791975548852
+    }
+  },
+  {
     "plugin_id": "gh-pr",
     "name": "GitHub PR Status",
     "version": "0.4.0",
@@ -158,6 +532,103 @@
       "resolved_commit": "6fe22de9a90c569f2186595cfddc3707f55ba1bd",
       "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/gh-pr-9d83f0425098",
       "installed_unix_ms": 1786769052592
+    }
+  },
+  {
+    "plugin_id": "herdr-bar",
+    "name": "Bar",
+    "version": "0.7.3",
+    "min_herdr_version": "0.9.0",
+    "description": "Cmd+K command bar with agent icons, fuzzy search, and optional automatic tab titles",
+    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/herdr-bar-96eebe452a9c/herdr-plugin.toml",
+    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/herdr-bar-96eebe452a9c",
+    "enabled": true,
+    "platforms": [
+      "linux",
+      "macos"
+    ],
+    "startup": [
+      {
+        "command": [
+          "python3",
+          "run.py",
+          "--start-titles"
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "open",
+        "title": "Open bar",
+        "description": "Fuzzy-jump to any tab, pane, or agent",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "sh",
+          "-c",
+          "herdr_bin=\"${HERDR_BIN_PATH:-herdr}\"; [ -x \"$herdr_bin\" ] || herdr_bin=herdr; exec \"$herdr_bin\" plugin pane open --plugin herdr-bar --entrypoint bar --placement popup"
+        ]
+      },
+      {
+        "id": "start-titles",
+        "title": "Start tab watcher",
+        "description": "Start task title and tab status updates enabled in the plugin config",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "python3",
+          "run.py",
+          "--start-titles",
+          "--resume"
+        ]
+      },
+      {
+        "id": "stop-titles",
+        "title": "Stop tab watcher",
+        "description": "Stop this server's title and status watcher, restoring bare tab names",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "python3",
+          "run.py",
+          "--stop-titles"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "pane.agent_detected",
+        "command": [
+          "python3",
+          "run.py",
+          "--start-titles"
+        ]
+      }
+    ],
+    "panes": [
+      {
+        "id": "bar",
+        "title": "Bar",
+        "description": "Fuzzy-jump to any tab, pane, or agent",
+        "placement": "popup",
+        "width": "74%",
+        "height": "62%",
+        "command": [
+          "python3",
+          "run.py"
+        ]
+      }
+    ],
+    "source": {
+      "kind": "github",
+      "owner": "jeffarese",
+      "repo": "herdr-bar",
+      "resolved_commit": "e22455068e26340b6be02cec8a07707fc1f11ae1",
+      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/herdr-bar-96eebe452a9c",
+      "installed_unix_ms": 1791950525790
     }
   },
   {

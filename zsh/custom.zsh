@@ -677,3 +677,136 @@ function vi-yank-xclip {
   zle vi-yank
   echo "$CUTBUFFER" | pbcopy -i
 }
+
+pg-forward() {
+  local action="${1:-start}"
+  local region="${2:-in}"
+  local config_dir="$HOME/port-forward"
+  local pidfile="/tmp/pg-forward.pid"
+  local logfile="/tmp/pg-forward.log"
+  local kubeconfig service_name pid
+
+  case "$action" in
+    start)
+      # Normalize region
+      [[ "$region" == "sa" ]] && region="us"
+
+      case "$region" in
+        in|eu|jp|us) ;;
+        *)
+          echo "Invalid region: $region"
+          echo "Supported regions: in, eu, jp, us (sa)"
+          return 1
+          ;;
+      esac
+
+      # Select region-specific Kubernetes config
+      kubeconfig="$config_dir/simbian-prod-${region}.yaml"
+
+      if [[ ! -f "$kubeconfig" ]]; then
+        echo "Kubernetes config not found: $kubeconfig"
+        return 1
+      fi
+
+      # Select PostgreSQL proxy service
+      if [[ "$region" == "us" ]]; then
+        service_name="prod-postgres-proxy"
+      else
+        service_name="simbian-prod-${region}-postgres-proxy"
+      fi
+
+      # Check existing forwarding process
+      if [[ -f "$pidfile" ]]; then
+        pid=$(/bin/cat "$pidfile")
+
+        if kill -0 "$pid" 2>/dev/null; then
+          echo "Already running (PID: $pid)"
+          return 0
+        fi
+
+        /bin/rm -f "$pidfile"
+      fi
+
+      # Start forwarding in background
+      nohup kubectl --kubeconfig="$kubeconfig" \
+        port-forward -n simbian \
+        "svc/$service_name" \
+        15432:5432 > "$logfile" 2>&1 < /dev/null &
+
+      pid=$!
+      echo "$pid" > "$pidfile"
+
+      # Verify forwarding started successfully
+      local attempt
+      for attempt in {1..10}; do
+        if grep -q "Forwarding from 127.0.0.1:15432" "$logfile" 2>/dev/null; then
+          echo "PostgreSQL forwarding started"
+          echo "Region:     $region"
+          echo "Service:    $service_name"
+          echo "Kubeconfig: $kubeconfig"
+          echo "Address:    localhost:15432"
+          echo "PID:        $pid"
+          return 0
+        fi
+
+        if ! kill -0 "$pid" 2>/dev/null; then
+          break
+        fi
+
+        /bin/sleep 1
+      done
+
+      echo "Failed to start PostgreSQL forwarding:"
+      /bin/cat "$logfile"
+      kill "$pid" 2>/dev/null
+      /bin/rm -f "$pidfile"
+      return 1
+      ;;
+
+    stop)
+      if [[ -f "$pidfile" ]]; then
+        pid=$(/bin/cat "$pidfile")
+
+        if kill -0 "$pid" 2>/dev/null; then
+          kill "$pid" 2>/dev/null
+          echo "PostgreSQL forwarding stopped"
+        else
+          echo "Forwarding process was not running"
+        fi
+
+        /bin/rm -f "$pidfile"
+      else
+        echo "No forwarding process found"
+      fi
+      ;;
+
+    status)
+      if [[ -f "$pidfile" ]]; then
+        pid=$(/bin/cat "$pidfile")
+
+        if kill -0 "$pid" 2>/dev/null; then
+          echo "Running (PID: $pid)"
+          echo "Address: localhost:15432"
+        else
+          echo "Not running (stale PID file)"
+          /bin/rm -f "$pidfile"
+        fi
+      else
+        echo "Not running"
+      fi
+      ;;
+
+    logs)
+      if [[ -f "$logfile" ]]; then
+        tail -f "$logfile"
+      else
+        echo "No forwarding logs found"
+      fi
+      ;;
+
+    *)
+      echo "Usage: pg-forward {start [region]|stop|status|logs}"
+      return 1
+      ;;
+  esac
+}

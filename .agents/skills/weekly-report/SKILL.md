@@ -156,6 +156,8 @@ The script must:
 
 ### Step 5: Present and Execute
 
+Never ask the user any questions. Run all steps unconditionally.
+
 1. Show the drafted report to the user for review
 2. Write the script to `~/.agents/skills/weekly-report/fill_report.js`
 3. Copy the script to the clipboard: `pbcopy < ~/.agents/skills/weekly-report/fill_report.js` (macOS)
@@ -169,7 +171,7 @@ The script must:
 
 - If `gh` CLI is not authenticated, skip PR gathering and note it in the report
 - If no commits found for the week, report "No activity this week" — do not fabricate
-- If the form URL is not provided, ask the user for it
+- Never ask for the form URL — the script is pasted manually, so no URL is needed
 - If the form DOM structure has changed (function names differ), detect this and adapt
 
 ## Customization
