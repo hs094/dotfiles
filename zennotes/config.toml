@@ -98,6 +98,7 @@ hidden_workflow_presets = []  # built-in workflow recipes hidden from the galler
 # Binding syntax: "Mod+P" = Cmd/Ctrl+P, "Shift+Mod+K", "Ctrl+W", "Space",
 # or a two-key sequence like "g g". Uncomment a reference line to remap it.
 [keymaps]
+"global.toggleSidebar" = "Mod+\\"
 
 # --- All actions (defaults shown; uncomment + edit to override) ---
 # Global
@@ -108,7 +109,6 @@ hidden_workflow_presets = []  # built-in workflow recipes hidden from the galler
 # "global.newNoteHere" = "Mod+N"  # New note in current folder
 # "global.openSettings" = "Mod+,"  # Open settings
 # "global.openFile" = "Mod+O"  # Open file
-# "global.toggleSidebar" = "Mod+1"  # Toggle sidebar
 # "global.toggleConnections" = "Mod+2"  # Toggle connections panel
 # "global.toggleOutlinePanel" = "Mod+3"  # Toggle outline panel
 # "global.toggleCommentsPanel" = "Shift+Mod+C"  # Toggle comments panel
