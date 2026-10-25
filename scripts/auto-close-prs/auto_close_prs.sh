@@ -77,6 +77,7 @@ fi
 
 # 4. Merge eligible PRs
 echo "Found matching PRs. Processing queue..."
+FAILED_UPDATES=0
 
 for PR_NUM in $PR_LIST; do
     echo "----------------------------------------"
@@ -124,10 +125,36 @@ for PR_NUM in $PR_LIST; do
             ;;
         UPDATE)
             echo "Updating PR #$PR_NUM branch from its base branch..."
-            if ! gh pr update-branch "$PR_NUM" --repo "$TARGET_REPO"; then
-                echo "Failed to update PR #$PR_NUM branch." >&2
-            else
+            UPDATE_SUCCEEDED=false
+
+            for ATTEMPT in 1 2 3; do
+                if UPDATE_OUTPUT=$(gh pr update-branch "$PR_NUM" --repo "$TARGET_REPO" 2>&1); then
+                    printf '%s\n' "$UPDATE_OUTPUT"
+                    UPDATE_SUCCEEDED=true
+                    break
+                fi
+
+                printf '%s\n' "$UPDATE_OUTPUT" >&2
+
+                # GitHub rejects the mutation if the head changed after gh read it.
+                # Retry that race with a fresh head SHA; real conflicts are not retryable.
+                if [[ "$UPDATE_OUTPUT" == *"Cannot update PR branch due to conflicts"* ]]; then
+                    break
+                fi
+
+                if [[ "$UPDATE_OUTPUT" != *"head sha didn't match"* || "$ATTEMPT" -eq 3 ]]; then
+                    break
+                fi
+
+                echo "PR #$PR_NUM head changed; retrying branch update..."
+                sleep 2
+            done
+
+            if [ "$UPDATE_SUCCEEDED" = true ]; then
                 echo "Updated PR #$PR_NUM branch from its base branch."
+            else
+                FAILED_UPDATES=$((FAILED_UPDATES + 1))
+                echo "Failed to update PR #$PR_NUM branch." >&2
             fi
             continue
             ;;
@@ -149,5 +176,9 @@ for PR_NUM in $PR_LIST; do
 done
 
 echo "=================================================="
+if [ "$FAILED_UPDATES" -gt 0 ]; then
+    echo "Completed with $FAILED_UPDATES failed PR branch update(s)." >&2
+    exit 1
+fi
 echo "All eligible PRs processed successfully."
 echo "=================================================="

@@ -678,134 +678,196 @@ function vi-yank-xclip {
   echo "$CUTBUFFER" | pbcopy -i
 }
 
+# Region -> local port map for pg-forward
+_pgf_region_port() {
+  case "$1" in
+    in) echo 15432 ;;
+    eu) echo 15433 ;;
+    jp) echo 15434 ;;
+    us) echo 15435 ;;
+    *) return 1 ;;
+  esac
+}
+
+_pgf_start_region() {
+  local region="$1"
+  local port kubeconfig service_name pidfile logfile pid attempt
+
+  [[ "$region" == "sa" ]] && region="us"
+  port=$(_pgf_region_port "$region") || {
+    echo "[$region] invalid region"
+    return 1
+  }
+
+  kubeconfig="$HOME/port-forward/simbian-prod-${region}.yaml"
+  [[ -f "$kubeconfig" ]] || {
+    echo "[$region] Kubernetes config not found: $kubeconfig"
+    return 1
+  }
+
+  service_name="simbian-prod-${region}-postgres-proxy"
+  [[ "$region" == "us" ]] && service_name="prod-postgres-proxy"
+
+  pidfile="/tmp/pg-forward-${region}.pid"
+  logfile="/tmp/pg-forward-${region}.log"
+
+  if [[ -f "$pidfile" ]]; then
+    pid=$(/bin/cat "$pidfile")
+    if kill -0 "$pid" 2>/dev/null; then
+      echo "[$region] already running (PID: $pid, localhost:$port)"
+      return 0
+    fi
+    /bin/rm -f "$pidfile"
+  fi
+
+  # another process is on our port — fail loudly instead of a broken forward
+  if lsof -ti tcp:"$port" -sTCP:LISTEN >/dev/null 2>&1; then
+    echo "[$region] port $port already in use by another process; not starting"
+    return 1
+  fi
+
+  nohup kubectl --kubeconfig="$kubeconfig" \
+    port-forward -n simbian \
+    "svc/$service_name" \
+    "${port}:5432" > "$logfile" 2>&1 < /dev/null &
+
+  pid=$!
+  echo "$pid" > "$pidfile"
+
+  for attempt in {1..10}; do
+    if grep -q "Forwarding from 127.0.0.1:${port}" "$logfile" 2>/dev/null; then
+      echo "[$region] forwarding started (localhost:$port, PID: $pid)"
+      return 0
+    fi
+    if ! kill -0 "$pid" 2>/dev/null; then
+      break
+    fi
+    /bin/sleep 1
+  done
+
+  echo "[$region] failed to start:"
+  /bin/sed 's/^/  /' "$logfile"
+  kill "$pid" 2>/dev/null
+  /bin/rm -f "$pidfile"
+  return 1
+}
+
+_pgf_stop_region() {
+  local region="$1"
+  local port pidfile pid
+
+  [[ "$region" == "sa" ]] && region="us"
+  port=$(_pgf_region_port "$region") || {
+    echo "[$region] invalid region"
+    return 1
+  }
+
+  pidfile="/tmp/pg-forward-${region}.pid"
+  if [[ -f "$pidfile" ]]; then
+    pid=$(/bin/cat "$pidfile")
+    if kill -0 "$pid" 2>/dev/null; then
+      kill "$pid" 2>/dev/null
+      echo "[$region] stopped"
+    else
+      echo "[$region] process was not running"
+    fi
+    /bin/rm -f "$pidfile"
+  else
+    echo "[$region] no forwarding process found"
+  fi
+}
+
+_pgf_status_region() {
+  local region="$1"
+  local port pidfile pid
+
+  [[ "$region" == "sa" ]] && region="us"
+  port=$(_pgf_region_port "$region")
+  pidfile="/tmp/pg-forward-${region}.pid"
+
+  if [[ -f "$pidfile" ]]; then
+    pid=$(/bin/cat "$pidfile")
+    if kill -0 "$pid" 2>/dev/null; then
+      printf '  \e[32m%-4s\e[0m  \e[32m● running\e[0m  localhost:%s  %s\n' "$region" "$port" "$pid"
+      return 0
+    fi
+    /bin/rm -f "$pidfile"
+  fi
+  printf '  \e[31m%-4s\e[0m  \e[31m○ stopped\e[0m  %-15s %s\n' "$region" '-' '-'
+}
+
 pg-forward() {
   local action="${1:-start}"
-  local region="${2:-in}"
-  local config_dir="$HOME/port-forward"
-  local pidfile="/tmp/pg-forward.pid"
-  local logfile="/tmp/pg-forward.log"
-  local kubeconfig service_name pid
+  local region="${2:-}"
+  local legacy_pid r failed
+
+  case "$action" in
+    start|stop)
+      # kill legacy single-region forward from the old scheme
+      if [[ -f /tmp/pg-forward.pid ]]; then
+        legacy_pid=$(/bin/cat /tmp/pg-forward.pid 2>/dev/null)
+        if kill -0 "$legacy_pid" 2>/dev/null; then
+          kill "$legacy_pid" 2>/dev/null
+          echo "[legacy forward stopped (PID: $legacy_pid)]"
+        fi
+        /bin/rm -f /tmp/pg-forward.pid
+      fi
+      ;;
+  esac
 
   case "$action" in
     start)
-      # Normalize region
-      [[ "$region" == "sa" ]] && region="us"
-
-      case "$region" in
-        in|eu|jp|us) ;;
-        *)
-          echo "Invalid region: $region"
-          echo "Supported regions: in, eu, jp, us (sa)"
-          return 1
-          ;;
-      esac
-
-      # Select region-specific Kubernetes config
-      kubeconfig="$config_dir/simbian-prod-${region}.yaml"
-
-      if [[ ! -f "$kubeconfig" ]]; then
-        echo "Kubernetes config not found: $kubeconfig"
-        return 1
-      fi
-
-      # Select PostgreSQL proxy service
-      if [[ "$region" == "us" ]]; then
-        service_name="prod-postgres-proxy"
+      failed=0
+      if [[ -z "$region" ]]; then
+        for r in in eu jp us; do
+          _pgf_start_region "$r" || failed=1
+        done
       else
-        service_name="simbian-prod-${region}-postgres-proxy"
+        _pgf_start_region "$region" || failed=1
       fi
-
-      # Check existing forwarding process
-      if [[ -f "$pidfile" ]]; then
-        pid=$(/bin/cat "$pidfile")
-
-        if kill -0 "$pid" 2>/dev/null; then
-          echo "Already running (PID: $pid)"
-          return 0
-        fi
-
-        /bin/rm -f "$pidfile"
-      fi
-
-      # Start forwarding in background
-      nohup kubectl --kubeconfig="$kubeconfig" \
-        port-forward -n simbian \
-        "svc/$service_name" \
-        15432:5432 > "$logfile" 2>&1 < /dev/null &
-
-      pid=$!
-      echo "$pid" > "$pidfile"
-
-      # Verify forwarding started successfully
-      local attempt
-      for attempt in {1..10}; do
-        if grep -q "Forwarding from 127.0.0.1:15432" "$logfile" 2>/dev/null; then
-          echo "PostgreSQL forwarding started"
-          echo "Region:     $region"
-          echo "Service:    $service_name"
-          echo "Kubeconfig: $kubeconfig"
-          echo "Address:    localhost:15432"
-          echo "PID:        $pid"
-          return 0
-        fi
-
-        if ! kill -0 "$pid" 2>/dev/null; then
-          break
-        fi
-
-        /bin/sleep 1
-      done
-
-      echo "Failed to start PostgreSQL forwarding:"
-      /bin/cat "$logfile"
-      kill "$pid" 2>/dev/null
-      /bin/rm -f "$pidfile"
-      return 1
+      return "$failed"
       ;;
 
     stop)
-      if [[ -f "$pidfile" ]]; then
-        pid=$(/bin/cat "$pidfile")
-
-        if kill -0 "$pid" 2>/dev/null; then
-          kill "$pid" 2>/dev/null
-          echo "PostgreSQL forwarding stopped"
-        else
-          echo "Forwarding process was not running"
-        fi
-
-        /bin/rm -f "$pidfile"
+      failed=0
+      if [[ -z "$region" ]]; then
+        for r in in eu jp us; do
+          _pgf_stop_region "$r" || failed=1
+        done
       else
-        echo "No forwarding process found"
+        _pgf_stop_region "$region" || failed=1
       fi
+      return "$failed"
       ;;
 
     status)
-      if [[ -f "$pidfile" ]]; then
-        pid=$(/bin/cat "$pidfile")
-
-        if kill -0 "$pid" 2>/dev/null; then
-          echo "Running (PID: $pid)"
-          echo "Address: localhost:15432"
-        else
-          echo "Not running (stale PID file)"
-          /bin/rm -f "$pidfile"
-        fi
+      echo "PostgreSQL port forwards:"
+      printf '  \e[2mREGION  STATE      ADDRESS           PID\e[0m\n'
+      if [[ -z "$region" ]]; then
+        for r in in eu jp us; do
+          _pgf_status_region "$r"
+        done
       else
-        echo "Not running"
+        _pgf_status_region "$region"
       fi
       ;;
 
     logs)
-      if [[ -f "$logfile" ]]; then
-        tail -f "$logfile"
+      if [[ -z "$region" ]]; then
+        echo "Usage: pg-forward logs <region>"
+        return 1
+      fi
+      [[ "$region" == "sa" ]] && region="us"
+      if [[ -f "/tmp/pg-forward-${region}.log" ]]; then
+        tail -f "/tmp/pg-forward-${region}.log"
       else
-        echo "No forwarding logs found"
+        echo "No forwarding logs for region: $region"
+        return 1
       fi
       ;;
 
     *)
-      echo "Usage: pg-forward {start [region]|stop|status|logs}"
+      echo "Usage: pg-forward {start [region]|stop [region]|status [region]|logs <region>}"
       return 1
       ;;
   esac

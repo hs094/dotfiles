@@ -22,7 +22,7 @@
       "experimental-*": "ask"
     }
   },
-  "plugin": [
-    "@dietrichgebert/ponytail",
+  "plugins": [
+    "DietrichGebert/ponytail"
   ]
 }

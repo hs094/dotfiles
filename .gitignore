@@ -114,3 +114,6 @@ pgcli/history
 /scripts/youtube-session
 /scripts/storage
 /raycast/node-compile-cache/v22.23.3-arm64-4adecfaa-501
+/herdr/session-snapshots
+/opencode/service.json
+/raycast/node-compile-cache/v22.23.4-arm64-4adecfaa-501
