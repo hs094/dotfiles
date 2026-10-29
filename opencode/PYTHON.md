@@ -1,1 +1,0 @@
-/Users/hardik.soni/.pi/agent/PYTHON.md
