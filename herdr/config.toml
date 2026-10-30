@@ -2,6 +2,10 @@ onboarding = false
 
 [keys]
 prefix = "ctrl+a"
+# Indexed navigation
+switch_tab = "prefix+1..9"
+switch_workspace = "prefix+shift+1..9"
+focus_agent = "ctrl+1..9"
 
 # Split — tmux style
 split_horizontal = "prefix+minus"
@@ -29,7 +33,6 @@ previous_agent = "ctrl+alt+p"
 rename_workspace = "prefix+$"
 rename_tab = "prefix+,"
 
-# Pane navigation — ctrl+h/j/k/l across herdr + Neovim splits (vim-herdr-navigation)
 [[keys.command]]
 key = "ctrl+h"
 type = "plugin_action"
@@ -84,18 +87,55 @@ type = "plugin_action"
 command = "gh-pr.open-pr"
 description = "open PR in browser"
 
-[ui.sidebar.agents]
-rows = [["state_icon", "workspace", "$pr"], ["agent"]]
+[[keys.command]]
+key = "ctrl+shift+u"
+type = "plugin_action"
+command = "usagebar.open-limits"
+description = "Agent Usage: open limits pane"
 
-[experimental]
-pane_history = true
-kitty_graphics = true
-
-[ui.toast]
-delivery = "off"
+[[keys.command]]
+key = "ctrl+shift+m"
+type = "plugin_action"
+command = "usagebar.refresh"
+description = "Agent Usage: refresh sidebar meters"
 
 [ui]
 agent_panel_sort = "spaces"
 prompt_new_tab_name = false
 prompt_new_workspace_name = false
 
+[ui.toast]
+delivery = "off"
+
+[ui.sidebar.agents]
+row_gap = 1
+rows = [
+  # Context window usage
+  [
+    { token = "$context", fg = "#89b4fa" }
+  ],
+
+  # Cache performance
+  [
+    { token = "$cache_high", fg = "#a6e3a1" },
+    { token = "$cache_mid", fg = "#e0af68" },
+    { token = "$cache_low", fg = "#f7768e", bold = true }
+  ],
+
+  # Provider and quota
+  [
+    { token = "$provider", fg = "#a6e3a1" },
+    { token = "$limit", bold = true }
+  ],
+
+  # Agent name and status
+  [
+    "state_icon",
+    { token = "agent", bold = true, fg = "#89b4fa" },
+    { token = "state_text", dim = true }
+  ]
+]
+
+[experimental]
+pane_history = true
+kitty_graphics = true

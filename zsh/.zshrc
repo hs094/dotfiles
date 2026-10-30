@@ -25,6 +25,8 @@ eval "$(zoxide init zsh)"
 [ -f "$HOME/.config/zsh/plugins.zsh" ] && source "$HOME/.config/zsh/plugins.zsh"
 # Work
 # [ -f "$HOME/.config/zsh/git-completion.zsh" ] && source "$HOME/.config/zsh/git-completion.zsh"
+# Secrets
+[ -f "$HOME/.config/zsh/secrets.zsh" ] && source "$HOME/.config/zsh/secrets.zsh"
 
 export STARSHIP_CONFIG="~/.config/starship/starship.toml"
 export FUNCNEST=1000
@@ -41,3 +43,6 @@ export PATH="/opt/homebrew/opt/python@3.11/libexec/bin:$PATH"
 # opencode
 export PATH=/Users/hardik.soni/.opencode/bin:$PATH
 export PATH="$HOME/.opencode/bin:$PATH"
+
+# added by dbx installer
+export PATH="$HOME/.dbx/bin:$PATH"

@@ -4,6 +4,7 @@ raycast/my-extensions
 raycast/ai
 raycast/ca.pem
 raycast/config.json
+/raycast/node-compile-cache
 
 helix/languages.toml
 
@@ -90,7 +91,6 @@ tealdeer/~/
 /gcloud
 /lazypg
 /qBittorrent
-/raycast-x/extensions
 /manicode
 /notion
 /dotfiles
@@ -98,7 +98,6 @@ tealdeer/~/
 /pgcli/log
 
 pgcli/history
-/raycast-x/node-compile-cache/v22.22.2-arm64-2b4477fa-501
 /telegram-upload.json
 /telegram-upload.session
 /jiratui/config.yaml
@@ -109,11 +108,10 @@ pgcli/history
 /worktrunk/approvals.toml
 /devin/config.json
 /herdr/plugins/config/jira-board/config.toml
-/raycast/node-compile-cache/v22.22.2-arm64-2b4477fa-501
 /herdr/plugins
 /scripts/youtube-session
 /scripts/storage
-/raycast/node-compile-cache/v22.23.3-arm64-4adecfaa-501
 /herdr/session-snapshots
 /opencode/service.json
-/raycast/node-compile-cache/v22.23.4-arm64-4adecfaa-501
+
+/zsh/secrets.zsh
