@@ -219,7 +219,13 @@ alias gwl='git worktree list'
 
 # Worktrunk (wt) — git worktree management (brew install worktrunk)
 alias ws='wt switch'
-alias wsc='wt switch -c --base=@'
+wsc() {
+  if [[ -n ${HERDR_PANE_ID:-} ]]; then
+    wt switch -c --base=@ --no-cd "$@"
+  else
+    wt switch -c --base=@ "$@"
+  fi
+}
 alias wsx='wt switch -c -x --base=@' # Usage: wsx <cmd> <branch>, e.g. wsx claude feat-a
 alias wl='wt list'
 alias wlf='wt list --full'
