@@ -124,6 +124,12 @@ for PR_NUM in $PR_LIST; do
             continue
             ;;
         UPDATE)
+            PR_FILES=$(gh api --paginate "repos/$TARGET_REPO/pulls/$PR_NUM/files" --jq '.[].filename')
+            if ! grep -qi 'migration' <<< "$PR_FILES"; then
+                echo "Skipping PR #$PR_NUM branch update: its diff has no migration file."
+                continue
+            fi
+
             echo "Updating PR #$PR_NUM branch from its base branch..."
             UPDATE_SUCCEEDED=false
 

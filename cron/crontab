@@ -1,0 +1,12 @@
+SHELL=/bin/zsh
+HOME=/Users/hardik.soni
+PATH=/Users/hardik.soni/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin
+
+# Auto Close PRs
+*/15 * * * * cd "$HOME/.config/scripts/auto-close-prs" && "$HOME/.config/scripts/cron-log.sh" ./auto_close_prs.sh >> "$HOME/.config/logs/auto_pr.log" 2>&1
+
+# Update Pi
+* * * * * "$HOME/.config/scripts/cron-log.sh" pi update --all >> "$HOME/.config/logs/update_pi.log" 2>&1
+
+# Remove logs
+0 * * * * /bin/rm -f "$HOME"/.config/logs/*.log

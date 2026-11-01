@@ -1,6 +1,4 @@
 [post-switch]
 herdr = '''
-repo=$(git -C {{ repo_path }} remote get-url origin 2>/dev/null | sed -E 's#^[^:/]+://[^/]+/##; s#^[^@]+@[^:]+:##; s#\.git$##; s#.*/##')
-repo=${repo:-{{ repo }}}
-herdr worktree open --cwd {{ repo_path }} --path {{ worktree_path }} --label "$repo" --focus 2>/dev/null || true
+herdr worktree open --cwd {{ repo_path }} --path {{ worktree_path }} --label "{{ branch }}" --focus 2>/dev/null || true
 '''

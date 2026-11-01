@@ -6,7 +6,8 @@
 #     | tr '\n' ' '
 # )\"
 # "
-
+alias ecron='nvim ~/.config/cron/crontab'
+alias cron-sync='crontab "$HOME/.config/cron/crontab"'
 alias cn="container"
 alias herd-remote="herdr plugin action invoke setup --plugin herdr-mobile-relay.events"
 
