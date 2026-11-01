@@ -1,3 +1,5 @@
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 # Locale and input
 export LANG=en_US.UTF-8
 export INPUTRC="$HOME/.config/readline/inputrc"

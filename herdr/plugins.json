@@ -2,21 +2,47 @@
   {
     "plugin_id": "chmarax.herdr-nvim",
     "name": "herdr-nvim",
-    "version": "0.1.1",
-    "min_herdr_version": "0.7.4",
+    "version": "1.2.2",
+    "min_herdr_version": "0.7.5",
     "description": "Full-height nvim sidebar with agent annotations: toggle with one key, comment code, send to any agent.",
-    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/chmarax.herdr-nvim-178624809c23/herdr-plugin.toml",
-    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/chmarax.herdr-nvim-178624809c23",
+    "manifest_path": "/Users/hs094/.config/herdr/plugins/github-installations/chmarax.herdr-nvim-178624809c23/79949-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/hs094/.config/herdr/plugins/github-installations/chmarax.herdr-nvim-178624809c23/79949-0/checkout",
     "enabled": true,
     "platforms": [
       "macos",
-      "linux"
+      "linux",
+      "windows"
     ],
     "build": [
       {
+        "platforms": [
+          "macos",
+          "linux"
+        ],
         "command": [
           "bash",
           "herdr/install.sh"
+        ]
+      },
+      {
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "powershell.exe",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "herdr/install.ps1"
+        ]
+      }
+    ],
+    "startup": [
+      {
+        "command": [
+          "bin/herdr-nvim",
+          "daemon-gc"
         ]
       }
     ],
@@ -25,9 +51,8 @@
         "id": "open-link",
         "title": "nvim sidebar: open clicked file",
         "command": [
-          "sh",
-          "-c",
-          "exec sh \"$HERDR_PLUGIN_ROOT/herdr/run.sh\" open-link"
+          "bin/herdr-nvim",
+          "open-link"
         ]
       },
       {
@@ -37,9 +62,8 @@
           "pane"
         ],
         "command": [
-          "sh",
-          "-c",
-          "exec sh \"$HERDR_PLUGIN_ROOT/herdr/run.sh\" pick-file"
+          "bin/herdr-nvim",
+          "pick-file"
         ]
       },
       {
@@ -50,9 +74,24 @@
           "workspace"
         ],
         "command": [
-          "sh",
-          "-c",
-          "exec sh \"$HERDR_PLUGIN_ROOT/herdr/run.sh\" toggle"
+          "bin/herdr-nvim",
+          "toggle"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "on": "tab.closed",
+        "command": [
+          "bin/herdr-nvim",
+          "on-event"
+        ]
+      },
+      {
+        "on": "workspace.closed",
+        "command": [
+          "bin/herdr-nvim",
+          "on-event"
         ]
       }
     ],
@@ -62,9 +101,17 @@
         "title": "open file",
         "placement": "popup",
         "command": [
-          "sh",
-          "-c",
-          "exec sh \"$HERDR_PLUGIN_ROOT/herdr/run.sh\" picker"
+          "bin/herdr-nvim",
+          "picker"
+        ]
+      },
+      {
+        "id": "sidebar",
+        "title": "nvim sidebar",
+        "placement": "split",
+        "command": [
+          "bin/herdr-nvim",
+          "sidebar"
         ]
       }
     ],
@@ -72,7 +119,7 @@
       {
         "id": "file-path",
         "title": "Open in nvim sidebar",
-        "pattern": "^~?[\\w.@/()\\[\\]+-]+/[\\w.@()\\[\\]+-]+\\.[A-Za-z]\\w*(?::\\d+){0,2}$",
+        "pattern": "^(?:~|[A-Za-z]:)?[\\w.@/()\\[\\]\\\\+-]+[\\\\/][\\w.@()\\[\\]\\\\+-]+\\.[A-Za-z]\\w*(?::\\d+){0,2}$",
         "action": "open-link"
       },
       {
@@ -86,19 +133,19 @@
       "kind": "github",
       "owner": "ChmaraX",
       "repo": "herdr-nvim",
-      "resolved_commit": "8172ecdcb64a8e65e12584f0a105e0616f166cb2",
-      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/chmarax.herdr-nvim-178624809c23",
-      "installed_unix_ms": 1785610298481
+      "resolved_commit": "b7c69cab2c1eb8754b505061e942fffc4a557a3e",
+      "managed_path": "/Users/hs094/.config/herdr/plugins/github-installations/chmarax.herdr-nvim-178624809c23/79949-0/checkout",
+      "installed_unix_ms": 1792906928666
     }
   },
   {
-    "plugin_id": "devswha.herdr-web-ui",
-    "name": "herdr web ui",
-    "version": "0.4.8",
+    "plugin_id": "herdr-bar",
+    "name": "Bar",
+    "version": "0.14.0",
     "min_herdr_version": "0.9.0",
-    "description": "Browser and phone client for herdr: chat and live terminal for every agent pane, remote PCs over SSH, web push alerts",
-    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/devswha.herdr-web-ui-210f619d6b7b/herdr-plugin.toml",
-    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/devswha.herdr-web-ui-210f619d6b7b",
+    "description": "Cmd+K command bar with agent icons, fuzzy search, and optional automatic tab titles",
+    "manifest_path": "/Users/hs094/.config/herdr/plugins/github-installations/herdr-bar-96eebe452a9c/63551-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/hs094/.config/herdr/plugins/github-installations/herdr-bar-96eebe452a9c/63551-0/checkout",
     "enabled": true,
     "platforms": [
       "linux",
@@ -113,445 +160,27 @@
         ],
         "command": [
           "sh",
-          "scripts/preflight.sh"
-        ]
-      },
-      {
-        "platforms": [
-          "windows"
-        ],
-        "command": [
-          "powershell",
-          "-NoProfile",
-          "-NonInteractive",
-          "-ExecutionPolicy",
-          "Bypass",
-          "-File",
-          "scripts/preflight.ps1"
-        ]
-      },
-      {
-        "platforms": [
-          "linux",
-          "macos"
-        ],
-        "command": [
-          "sh",
-          "scripts/with-bun.sh",
-          "install"
-        ]
-      },
-      {
-        "platforms": [
-          "windows"
-        ],
-        "command": [
-          "bun",
-          "install"
-        ]
-      },
-      {
-        "platforms": [
-          "linux",
-          "macos"
-        ],
-        "command": [
-          "sh",
-          "scripts/with-bun.sh",
-          "run",
-          "build"
-        ]
-      },
-      {
-        "platforms": [
-          "windows"
-        ],
-        "command": [
-          "bun",
-          "run",
-          "build"
-        ]
-      }
-    ],
-    "startup": [
-      {
-        "platforms": [
-          "linux",
-          "macos"
-        ],
-        "command": [
-          "sh",
-          "scripts/with-bun.sh",
-          "scripts/plugin.ts",
-          "start"
-        ]
-      },
-      {
-        "platforms": [
-          "windows"
-        ],
-        "command": [
-          "powershell",
-          "-NoProfile",
-          "-ExecutionPolicy",
-          "Bypass",
-          "-File",
-          "scripts/plugin.ps1",
-          "start"
-        ]
-      }
-    ],
-    "actions": [
-      {
-        "id": "phone",
-        "title": "Phone setup",
-        "contexts": [
-          "workspace"
-        ],
-        "platforms": [
-          "linux",
-          "macos"
-        ],
-        "command": [
-          "herdr",
-          "plugin",
-          "pane",
-          "open",
-          "--plugin",
-          "devswha.herdr-web-ui",
-          "--entrypoint",
-          "phone",
-          "--placement",
-          "zoomed",
-          "--focus"
-        ]
-      },
-      {
-        "id": "phone-windows",
-        "title": "Phone setup",
-        "contexts": [
-          "workspace"
-        ],
-        "platforms": [
-          "windows"
-        ],
-        "command": [
-          "herdr",
-          "plugin",
-          "pane",
-          "open",
-          "--plugin",
-          "devswha.herdr-web-ui",
-          "--entrypoint",
-          "phone-windows",
-          "--placement",
-          "zoomed",
-          "--focus"
-        ]
-      },
-      {
-        "id": "start",
-        "title": "Start herdr web ui",
-        "contexts": [
-          "workspace"
-        ],
-        "platforms": [
-          "linux",
-          "macos"
-        ],
-        "command": [
-          "sh",
-          "scripts/with-bun.sh",
-          "scripts/plugin.ts",
-          "start"
-        ]
-      },
-      {
-        "id": "start-windows",
-        "title": "Start herdr web ui",
-        "contexts": [
-          "workspace"
-        ],
-        "platforms": [
-          "windows"
-        ],
-        "command": [
-          "powershell",
-          "-NoProfile",
-          "-ExecutionPolicy",
-          "Bypass",
-          "-File",
-          "scripts/plugin.ps1",
-          "start"
-        ]
-      },
-      {
-        "id": "status",
-        "title": "herdr web ui status",
-        "contexts": [
-          "workspace"
-        ],
-        "platforms": [
-          "linux",
-          "macos"
-        ],
-        "command": [
-          "sh",
-          "scripts/with-bun.sh",
-          "scripts/plugin.ts",
-          "status"
-        ]
-      },
-      {
-        "id": "status-windows",
-        "title": "herdr web ui status",
-        "contexts": [
-          "workspace"
-        ],
-        "platforms": [
-          "windows"
-        ],
-        "command": [
-          "powershell",
-          "-NoProfile",
-          "-ExecutionPolicy",
-          "Bypass",
-          "-File",
-          "scripts/plugin.ps1",
-          "status"
-        ]
-      },
-      {
-        "id": "stop",
-        "title": "Stop herdr web ui",
-        "contexts": [
-          "workspace"
-        ],
-        "platforms": [
-          "linux",
-          "macos"
-        ],
-        "command": [
-          "sh",
-          "scripts/with-bun.sh",
-          "scripts/plugin.ts",
-          "stop"
-        ]
-      },
-      {
-        "id": "stop-windows",
-        "title": "Stop herdr web ui",
-        "contexts": [
-          "workspace"
-        ],
-        "platforms": [
-          "windows"
-        ],
-        "command": [
-          "powershell",
-          "-NoProfile",
-          "-ExecutionPolicy",
-          "Bypass",
-          "-File",
-          "scripts/plugin.ps1",
-          "stop"
-        ]
-      }
-    ],
-    "panes": [
-      {
-        "id": "phone",
-        "title": "Phone setup",
-        "platforms": [
-          "linux",
-          "macos"
-        ],
-        "placement": "zoomed",
-        "command": [
-          "sh",
-          "scripts/with-bun.sh",
-          "scripts/plugin.ts",
-          "phone-setup"
-        ]
-      },
-      {
-        "id": "phone-windows",
-        "title": "Phone setup",
-        "platforms": [
-          "windows"
-        ],
-        "placement": "zoomed",
-        "command": [
-          "powershell",
-          "-NoProfile",
-          "-ExecutionPolicy",
-          "Bypass",
-          "-File",
-          "scripts/plugin.ps1",
-          "phone-setup"
-        ]
-      }
-    ],
-    "source": {
-      "kind": "github",
-      "owner": "devswha",
-      "repo": "herdr-web-ui",
-      "requested_ref": "v0.4.8",
-      "resolved_commit": "cb65ecb9d1d251b42a6875427b6c7d0958150796",
-      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/devswha.herdr-web-ui-210f619d6b7b",
-      "installed_unix_ms": 1791950512488
-    }
-  },
-  {
-    "plugin_id": "dnzzl.automations",
-    "name": "Automations",
-    "version": "0.8.2",
-    "min_herdr_version": "0.8.0",
-    "description": "Cron-scheduled agent prompts for Herdr — the trigger layer: prompt + cron, agent launched in a fresh worktree or the repo root.",
-    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/dnzzl.automations-c6e92c72ec60/herdr-plugin.toml",
-    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/dnzzl.automations-c6e92c72ec60",
-    "enabled": true,
-    "platforms": [
-      "linux",
-      "macos"
-    ],
-    "build": [
-      {
-        "command": [
-          "sh",
           "scripts/install.sh"
         ]
+      },
+      {
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "powershell",
+          "-NoProfile",
+          "-ExecutionPolicy",
+          "Bypass",
+          "-File",
+          "scripts/install.ps1"
+        ]
       }
     ],
     "startup": [
       {
         "command": [
-          "./bin/herdr-automations",
-          "daemon"
-        ]
-      }
-    ],
-    "actions": [
-      {
-        "id": "run-now",
-        "title": "Automations: run now",
-        "contexts": [
-          "workspace"
-        ],
-        "command": [
-          "./bin/herdr-automations",
-          "run",
-          "--pick"
-        ]
-      }
-    ],
-    "panes": [
-      {
-        "id": "board",
-        "title": "Automations",
-        "placement": "overlay",
-        "command": [
-          "./bin/herdr-automations",
-          "pane"
-        ]
-      }
-    ],
-    "source": {
-      "kind": "github",
-      "owner": "DnzzL",
-      "repo": "herdr-automations",
-      "resolved_commit": "2bae3f9ad2c016bd694dcb39a95fb02578378c17",
-      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/dnzzl.automations-c6e92c72ec60",
-      "installed_unix_ms": 1791975548852
-    }
-  },
-  {
-    "plugin_id": "gh-pr",
-    "name": "GitHub PR Status",
-    "version": "0.4.0",
-    "min_herdr_version": "0.7.4",
-    "description": "Labels the focused agent pane's sidebar row with its branch's GitHub PR status.",
-    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/gh-pr-9d83f0425098/herdr-plugin.toml",
-    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/gh-pr-9d83f0425098",
-    "enabled": true,
-    "platforms": [
-      "macos",
-      "linux"
-    ],
-    "actions": [
-      {
-        "id": "open-pr",
-        "title": "Open PR in browser",
-        "contexts": [
-          "workspace"
-        ],
-        "command": [
-          "bun",
-          "bin/open-pr.ts"
-        ]
-      },
-      {
-        "id": "refresh",
-        "title": "Refresh PR status",
-        "contexts": [
-          "workspace"
-        ],
-        "command": [
-          "bun",
-          "bin/update-pr-status.ts"
-        ]
-      }
-    ],
-    "events": [
-      {
-        "on": "pane.focused",
-        "command": [
-          "bun",
-          "bin/update-pr-status.ts"
-        ]
-      },
-      {
-        "on": "worktree.created",
-        "command": [
-          "bun",
-          "bin/update-pr-status.ts"
-        ]
-      },
-      {
-        "on": "worktree.opened",
-        "command": [
-          "bun",
-          "bin/update-pr-status.ts"
-        ]
-      }
-    ],
-    "source": {
-      "kind": "github",
-      "owner": "wyattjoh",
-      "repo": "herdr-plugin-gh-pr",
-      "resolved_commit": "6fe22de9a90c569f2186595cfddc3707f55ba1bd",
-      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/gh-pr-9d83f0425098",
-      "installed_unix_ms": 1786769052592
-    }
-  },
-  {
-    "plugin_id": "herdr-bar",
-    "name": "Bar",
-    "version": "0.7.3",
-    "min_herdr_version": "0.9.0",
-    "description": "Cmd+K command bar with agent icons, fuzzy search, and optional automatic tab titles",
-    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/herdr-bar-96eebe452a9c/herdr-plugin.toml",
-    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/herdr-bar-96eebe452a9c",
-    "enabled": true,
-    "platforms": [
-      "linux",
-      "macos"
-    ],
-    "startup": [
-      {
-        "command": [
-          "python3",
-          "run.py",
+          "bin/herdr-bar",
           "--start-titles"
         ]
       }
@@ -565,9 +194,23 @@
           "global"
         ],
         "command": [
-          "sh",
-          "-c",
-          "herdr_bin=\"${HERDR_BIN_PATH:-herdr}\"; [ -x \"$herdr_bin\" ] || herdr_bin=herdr; exec \"$herdr_bin\" plugin pane open --plugin herdr-bar --entrypoint bar --placement popup"
+          "bin/herdr-bar",
+          "--open"
+        ]
+      },
+      {
+        "id": "open-windows",
+        "title": "Open bar",
+        "description": "Fuzzy-jump to any tab, pane, or agent",
+        "contexts": [
+          "global"
+        ],
+        "platforms": [
+          "windows"
+        ],
+        "command": [
+          "bin/herdr-bar.exe",
+          "--open"
         ]
       },
       {
@@ -578,8 +221,7 @@
           "global"
         ],
         "command": [
-          "python3",
-          "run.py",
+          "bin/herdr-bar",
           "--start-titles",
           "--resume"
         ]
@@ -592,8 +234,7 @@
           "global"
         ],
         "command": [
-          "python3",
-          "run.py",
+          "bin/herdr-bar",
           "--stop-titles"
         ]
       }
@@ -602,8 +243,7 @@
       {
         "on": "pane.agent_detected",
         "command": [
-          "python3",
-          "run.py",
+          "bin/herdr-bar",
           "--start-titles"
         ]
       }
@@ -617,8 +257,7 @@
         "width": "74%",
         "height": "62%",
         "command": [
-          "python3",
-          "run.py"
+          "bin/herdr-bar"
         ]
       }
     ],
@@ -626,823 +265,9 @@
       "kind": "github",
       "owner": "jeffarese",
       "repo": "herdr-bar",
-      "resolved_commit": "e22455068e26340b6be02cec8a07707fc1f11ae1",
-      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/herdr-bar-96eebe452a9c",
-      "installed_unix_ms": 1791950525790
-    }
-  },
-  {
-    "plugin_id": "herdr-mobile-relay.events",
-    "name": "Herdr Mobile Relay",
-    "version": "0.19.1",
-    "min_herdr_version": "0.7.5",
-    "description": "Remote mobile control for Herdr: approve and monitor agents from your smartphone (Android/iOS) with an installable web app, push notifications, QR pairing, and a blind gateway plus direct WebRTC transport (Cloudflare tunnels remain supported)",
-    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/herdr-mobile-relay.events-cf495399b2fa/herdr-plugin.toml",
-    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/herdr-mobile-relay.events-cf495399b2fa",
-    "enabled": true,
-    "platforms": [
-      "macos",
-      "linux"
-    ],
-    "build": [
-      {
-        "command": [
-          "bash",
-          "relay/plugin-build.sh"
-        ]
-      }
-    ],
-    "actions": [
-      {
-        "id": "change-hostname",
-        "title": "Herdr Mobile Relay: Change Tunnel Hostname",
-        "command": [
-          "bash",
-          "relay/open-plugin-pane.sh",
-          "change-hostname"
-        ]
-      },
-      {
-        "id": "configure-app-deploy",
-        "title": "Herdr Mobile Relay: Configure App Deployment",
-        "command": [
-          "bash",
-          "relay/open-plugin-pane.sh",
-          "configure-app-deploy"
-        ]
-      },
-      {
-        "id": "install-service",
-        "title": "Herdr Mobile Relay: Stable Cloudflare Tunnel Setup",
-        "command": [
-          "bash",
-          "relay/open-plugin-pane.sh",
-          "install-service"
-        ]
-      },
-      {
-        "id": "quick-start",
-        "title": "Herdr Mobile Relay: Start or Restart Relay",
-        "command": [
-          "bash",
-          "relay/open-plugin-pane.sh",
-          "quick-start"
-        ]
-      },
-      {
-        "id": "setup",
-        "title": "Herdr Mobile Relay: Setup",
-        "command": [
-          "bash",
-          "relay/open-plugin-pane.sh",
-          "setup"
-        ]
-      },
-      {
-        "id": "setup-link",
-        "title": "Herdr Mobile Relay: Show Phone Setup QR",
-        "command": [
-          "bash",
-          "relay/open-plugin-pane.sh",
-          "setup-link"
-        ]
-      },
-      {
-        "id": "stable-teardown",
-        "title": "Herdr Mobile Relay: Stable Tunnel Teardown",
-        "command": [
-          "bash",
-          "relay/open-plugin-pane.sh",
-          "stable-teardown"
-        ]
-      },
-      {
-        "id": "status",
-        "title": "Herdr Mobile Relay: Status",
-        "command": [
-          "bash",
-          "relay/open-plugin-pane.sh",
-          "status"
-        ]
-      },
-      {
-        "id": "uninstall",
-        "title": "Herdr Mobile Relay: Full Uninstall",
-        "command": [
-          "bash",
-          "relay/open-plugin-pane.sh",
-          "uninstall"
-        ]
-      }
-    ],
-    "events": [
-      {
-        "on": "pane.agent_status_changed",
-        "command": [
-          "sh",
-          "relay/plugin-on-event.sh"
-        ]
-      }
-    ],
-    "panes": [
-      {
-        "id": "change-hostname",
-        "title": "Herdr Mobile Relay: Change Tunnel Hostname",
-        "placement": "zoomed",
-        "command": [
-          "bash",
-          "relay/plugin-change-hostname.sh"
-        ]
-      },
-      {
-        "id": "configure-app-deploy",
-        "title": "Herdr Mobile Relay: Configure App Deployment",
-        "placement": "zoomed",
-        "command": [
-          "bash",
-          "relay/plugin-configure-app-deploy.sh"
-        ]
-      },
-      {
-        "id": "install-service",
-        "title": "Herdr Mobile Relay: Stable Cloudflare Tunnel Setup",
-        "placement": "zoomed",
-        "command": [
-          "bash",
-          "relay/plugin-install-service.sh"
-        ]
-      },
-      {
-        "id": "quick-start",
-        "title": "Herdr Mobile Relay: Start or Restart Relay",
-        "placement": "zoomed",
-        "command": [
-          "bash",
-          "relay/plugin-quick-start.sh"
-        ]
-      },
-      {
-        "id": "setup",
-        "title": "Herdr Mobile Relay: Setup",
-        "placement": "zoomed",
-        "command": [
-          "bash",
-          "relay/plugin-setup-menu.sh"
-        ]
-      },
-      {
-        "id": "setup-link",
-        "title": "Herdr Mobile Relay: Show Phone Setup QR",
-        "placement": "zoomed",
-        "command": [
-          "bash",
-          "relay/plugin-setup-link.sh"
-        ]
-      },
-      {
-        "id": "stable-teardown",
-        "title": "Herdr Mobile Relay: Stable Tunnel Teardown",
-        "placement": "zoomed",
-        "command": [
-          "bash",
-          "relay/plugin-stable-teardown.sh"
-        ]
-      },
-      {
-        "id": "status",
-        "title": "Herdr Mobile Relay: Status",
-        "placement": "overlay",
-        "command": [
-          "bash",
-          "relay/plugin-status.sh"
-        ]
-      },
-      {
-        "id": "uninstall",
-        "title": "Herdr Mobile Relay: Full Uninstall",
-        "placement": "zoomed",
-        "command": [
-          "bash",
-          "relay/uninstall.sh"
-        ]
-      }
-    ],
-    "source": {
-      "kind": "github",
-      "owner": "0cv",
-      "repo": "herdr-mobile-relay",
-      "resolved_commit": "7400537a429e754fc5af82ee9ac9d28f6e058c1d",
-      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/herdr-mobile-relay.events-cf495399b2fa",
-      "installed_unix_ms": 1788241270012
-    }
-  },
-  {
-    "plugin_id": "herdr.push",
-    "name": "Herdr Push",
-    "version": "0.2.0",
-    "min_herdr_version": "0.7.0",
-    "description": "Push agent status to a remote dashboard for mobile monitoring and one-tap approval",
-    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/herdr.push-daeaa1550340/herdr-plugin.toml",
-    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/herdr.push-daeaa1550340",
-    "enabled": true,
-    "platforms": [
-      "macos",
-      "linux"
-    ],
-    "actions": [
-      {
-        "id": "test",
-        "title": "Test push to relay",
-        "command": [
-          "sh",
-          "test.sh"
-        ]
-      }
-    ],
-    "events": [
-      {
-        "on": "pane.agent_status_changed",
-        "command": [
-          "sh",
-          "on_event.sh"
-        ]
-      }
-    ],
-    "source": {
-      "kind": "github",
-      "owner": "dcolinmorgan",
-      "repo": "herdr-push",
-      "resolved_commit": "f4fdb06d5413ac2d96ca225ea33f288f41bfc001",
-      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/herdr.push-daeaa1550340",
-      "installed_unix_ms": 1788160854790
-    }
-  },
-  {
-    "plugin_id": "jhochenbaum.hunkdiff",
-    "name": "hunk",
-    "version": "0.1.0",
-    "min_herdr_version": "0.8.0",
-    "description": "Review agent-authored diffs in hunk, and send your inline comments back to the agent that wrote them.",
-    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/jhochenbaum.hunkdiff-a2dc99e853fa/herdr-plugin.toml",
-    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/jhochenbaum.hunkdiff-a2dc99e853fa",
-    "enabled": true,
-    "platforms": [
-      "macos",
-      "linux"
-    ],
-    "build": [
-      {
-        "command": [
-          "npm",
-          "ci"
-        ]
-      },
-      {
-        "command": [
-          "npm",
-          "run",
-          "build"
-        ]
-      }
-    ],
-    "actions": [
-      {
-        "id": "close-review",
-        "title": "hunk: close the review pane",
-        "contexts": [
-          "pane",
-          "workspace"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "close-review"
-        ]
-      },
-      {
-        "id": "install-pager",
-        "title": "hunk: set up hunk as your VCS pager (git automatically, jj and sl by hand)",
-        "contexts": [
-          "workspace"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "install-pager"
-        ]
-      },
-      {
-        "id": "next-comment",
-        "title": "hunk: go to the next review comment",
-        "contexts": [
-          "pane",
-          "workspace"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "next-comment"
-        ]
-      },
-      {
-        "id": "prev-comment",
-        "title": "hunk: go to the previous review comment",
-        "contexts": [
-          "pane",
-          "workspace"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "prev-comment"
-        ]
-      },
-      {
-        "id": "reload",
-        "title": "hunk: reload the open review",
-        "contexts": [
-          "workspace",
-          "pane"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "reload"
-        ]
-      },
-      {
-        "id": "remove-keys",
-        "title": "hunk: remove default keybindings",
-        "contexts": [
-          "workspace"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "remove-keys"
-        ]
-      },
-      {
-        "id": "review",
-        "title": "hunk: review changes",
-        "contexts": [
-          "workspace",
-          "pane"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "review"
-        ]
-      },
-      {
-        "id": "review:branch",
-        "title": "hunk: review this branch against its base",
-        "contexts": [
-          "workspace",
-          "pane"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "review:branch"
-        ]
-      },
-      {
-        "id": "review:commit",
-        "title": "hunk: review the last commit (or a clicked GitHub commit link)",
-        "contexts": [
-          "workspace"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "review:commit"
-        ]
-      },
-      {
-        "id": "review:staged",
-        "title": "hunk: review staged changes",
-        "contexts": [
-          "workspace"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "review:staged"
-        ]
-      },
-      {
-        "id": "review:stash",
-        "title": "hunk: review the most recent stash entry",
-        "contexts": [
-          "workspace"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "review:stash"
-        ]
-      },
-      {
-        "id": "send-review",
-        "title": "hunk: send review to agent",
-        "contexts": [
-          "pane"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "send-review"
-        ]
-      },
-      {
-        "id": "setup-keys",
-        "title": "hunk: install default keybindings",
-        "contexts": [
-          "workspace"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "setup-keys"
-        ]
-      },
-      {
-        "id": "uninstall-pager",
-        "title": "hunk: stop using hunk as your VCS pager",
-        "contexts": [
-          "workspace"
-        ],
-        "command": [
-          "node",
-          "dist/bin/action.js",
-          "uninstall-pager"
-        ]
-      }
-    ],
-    "events": [
-      {
-        "on": "pane.agent_status_changed",
-        "command": [
-          "node",
-          "dist/bin/event.js"
-        ]
-      },
-      {
-        "on": "pane.closed",
-        "command": [
-          "node",
-          "dist/bin/event.js"
-        ]
-      },
-      {
-        "on": "pane.exited",
-        "command": [
-          "node",
-          "dist/bin/event.js"
-        ]
-      },
-      {
-        "on": "worktree.removed",
-        "command": [
-          "node",
-          "dist/bin/event.js"
-        ]
-      }
-    ],
-    "panes": [
-      {
-        "id": "review",
-        "title": "hunk review",
-        "placement": "split",
-        "command": [
-          "sh",
-          "-c",
-          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review"
-        ]
-      },
-      {
-        "id": "review-branch",
-        "title": "hunk review (branch)",
-        "placement": "split",
-        "command": [
-          "sh",
-          "-c",
-          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review:branch"
-        ]
-      },
-      {
-        "id": "review-commit",
-        "title": "hunk review (commit)",
-        "placement": "split",
-        "command": [
-          "sh",
-          "-c",
-          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review:commit"
-        ]
-      },
-      {
-        "id": "review-staged",
-        "title": "hunk review (staged)",
-        "placement": "split",
-        "command": [
-          "sh",
-          "-c",
-          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review:staged"
-        ]
-      },
-      {
-        "id": "review-stash",
-        "title": "hunk review (stash)",
-        "placement": "split",
-        "command": [
-          "sh",
-          "-c",
-          "exec node \"$HERDR_PLUGIN_ROOT/dist/bin/pane.js\" review:stash"
-        ]
-      }
-    ],
-    "link_handlers": [
-      {
-        "id": "github-commit",
-        "title": "hunk: review this GitHub commit",
-        "pattern": "^https://github\\.com/[^/]+/[^/]+/commit/[0-9a-fA-F]{7,40}/?$",
-        "action": "review:commit"
-      }
-    ],
-    "source": {
-      "kind": "github",
-      "owner": "jhochenbaum",
-      "repo": "herdr-hunk-diff",
-      "resolved_commit": "81b85cea5484099acea93f2e9a08c2677eef461b",
-      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/jhochenbaum.hunkdiff-a2dc99e853fa",
-      "installed_unix_ms": 1787302227342
-    }
-  },
-  {
-    "plugin_id": "jira-board",
-    "name": "jira-board",
-    "version": "0.1.0",
-    "min_herdr_version": "0.7.5",
-    "description": "Jira kanban board with Claude session launcher and live agent status",
-    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/jira-board-bfdcfcaf4ec4/herdr-plugin.toml",
-    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/jira-board-bfdcfcaf4ec4",
-    "enabled": true,
-    "platforms": [
-      "linux",
-      "macos"
-    ],
-    "build": [
-      {
-        "command": [
-          "bash",
-          "bin/setup"
-        ]
-      }
-    ],
-    "actions": [
-      {
-        "id": "close-other-tabs",
-        "title": "Close other tabs",
-        "contexts": [
-          "tab"
-        ],
-        "command": [
-          "bash",
-          "-c",
-          "exec \"$HERDR_PLUGIN_ROOT/bin/close-tabs\" other"
-        ]
-      },
-      {
-        "id": "close-right-tabs",
-        "title": "Close tabs to the right",
-        "contexts": [
-          "tab"
-        ],
-        "command": [
-          "bash",
-          "-c",
-          "exec \"$HERDR_PLUGIN_ROOT/bin/close-tabs\" right"
-        ]
-      },
-      {
-        "id": "open-board",
-        "title": "Open Jira board",
-        "contexts": [
-          "workspace"
-        ],
-        "command": [
-          "bash",
-          "-c",
-          "exec herdr plugin pane open --plugin jira-board --entrypoint board"
-        ]
-      }
-    ],
-    "panes": [
-      {
-        "id": "board",
-        "title": "Jira Board",
-        "placement": "tab",
-        "command": [
-          "bash",
-          "-c",
-          "exec \"$HERDR_PLUGIN_ROOT/bin/jira-board\""
-        ]
-      }
-    ],
-    "source": {
-      "kind": "github",
-      "owner": "kiitosu",
-      "repo": "herdr-jira-board",
-      "resolved_commit": "8518b7c1bc68901ca4d2faee5483d4d1e72c3caf",
-      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/jira-board-bfdcfcaf4ec4",
-      "installed_unix_ms": 1786681972315
-    }
-  },
-  {
-    "plugin_id": "jt.command-palette",
-    "name": "Command Palette (fzf)",
-    "version": "0.1.0",
-    "min_herdr_version": "0.7.0",
-    "description": "An fzf command palette for herdr: pops up a fuzzy-searchable list of every action exposed by every installed plugin (via `herdr plugin action list`) and invokes the one you pick. The picker runs in an overlay pane so fzf gets a real TTY; the origin workspace's cwd is forwarded so context-aware actions resolve the right repo.",
-    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/jt.command-palette-24905dca5f16/herdr-plugin.toml",
-    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/jt.command-palette-24905dca5f16",
-    "enabled": true,
-    "platforms": [
-      "linux",
-      "macos"
-    ],
-    "actions": [
-      {
-        "id": "open",
-        "title": "Command palette (all plugin actions)",
-        "contexts": [
-          "workspace"
-        ],
-        "command": [
-          "bash",
-          "open.sh"
-        ]
-      }
-    ],
-    "panes": [
-      {
-        "id": "palette",
-        "title": "Command palette",
-        "placement": "overlay",
-        "command": [
-          "bash",
-          "-c",
-          "exec \"$HERDR_PLUGIN_ROOT/palette.sh\""
-        ]
-      }
-    ],
-    "source": {
-      "kind": "github",
-      "owner": "JanTvrdik",
-      "repo": "herdr-command-palette",
-      "resolved_commit": "eab940018c2135ac23718efa11e23e9dddcd2a75",
-      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/jt.command-palette-24905dca5f16",
-      "installed_unix_ms": 1785607633584
-    }
-  },
-  {
-    "plugin_id": "kukv.github-dash",
-    "name": "GitHub Dash",
-    "version": "0.2.0",
-    "min_herdr_version": "0.7.0",
-    "description": "Browse GitHub pull requests and issues for the current workspace, and post comments.",
-    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/kukv.github-dash-000b2def50e3/herdr-plugin.toml",
-    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/kukv.github-dash-000b2def50e3",
-    "enabled": true,
-    "platforms": [
-      "linux",
-      "macos"
-    ],
-    "build": [
-      {
-        "command": [
-          "go",
-          "build",
-          "-o",
-          "bin/github-dash",
-          "."
-        ]
-      }
-    ],
-    "actions": [
-      {
-        "id": "open",
-        "title": "Open GitHub dashboard",
-        "contexts": [
-          "workspace"
-        ],
-        "command": [
-          "bash",
-          "open.sh"
-        ]
-      }
-    ],
-    "panes": [
-      {
-        "id": "dash",
-        "title": "GitHub Dash",
-        "placement": "overlay",
-        "command": [
-          "bash",
-          "run.sh"
-        ]
-      }
-    ],
-    "link_handlers": [
-      {
-        "id": "github-pr-issue",
-        "title": "Open in GitHub Dash",
-        "pattern": "^https://github\\.com/[^/]+/[^/]+/(issues|pull)/[0-9]+/?$",
-        "action": "open"
-      }
-    ],
-    "source": {
-      "kind": "github",
-      "owner": "kukv",
-      "repo": "herdr-plugin-github-dash",
-      "resolved_commit": "7fb2ee508ab771e2a044a82917c48b6424fda4d9",
-      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/kukv.github-dash-000b2def50e3",
-      "installed_unix_ms": 1786683346627
-    }
-  },
-  {
-    "plugin_id": "pickr",
-    "name": "herdr-pickr",
-    "version": "0.1.2",
-    "min_herdr_version": "0.7.0",
-    "description": "Ctrl+click a PR/MR link → pick a reviewer (tuicr · hunk · diff · browser), with an optional AI first pass.",
-    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github/pickr-456bc09209fc/herdr-plugin.toml",
-    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github/pickr-456bc09209fc",
-    "enabled": true,
-    "platforms": [
-      "macos",
-      "linux"
-    ],
-    "build": [
-      {
-        "command": [
-          "bash",
-          "install.sh"
-        ]
-      }
-    ],
-    "actions": [
-      {
-        "id": "route",
-        "title": "Review PR (pickr)",
-        "command": [
-          "bash",
-          "bin/pickr-open"
-        ]
-      },
-      {
-        "id": "toggle-auto",
-        "title": "pickr: toggle auto-route",
-        "command": [
-          "bash",
-          "bin/pickr-toggle"
-        ]
-      }
-    ],
-    "panes": [
-      {
-        "id": "chooser",
-        "title": "pickr",
-        "placement": "overlay",
-        "command": [
-          "bash",
-          "bin/pickr-chooser"
-        ]
-      }
-    ],
-    "link_handlers": [
-      {
-        "id": "github-pr",
-        "title": "Review GitHub PR (pickr)",
-        "pattern": "^https://github\\.com/[^/]+/[^/]+/pull/[0-9]+([/#?].*)?$",
-        "action": "route"
-      },
-      {
-        "id": "gitlab-mr",
-        "title": "Review GitLab MR (pickr)",
-        "pattern": "^https://gitlab\\.com/.+/-/merge_requests/[0-9]+([/#?].*)?$",
-        "action": "route"
-      }
-    ],
-    "source": {
-      "kind": "github",
-      "owner": "tomasvarga",
-      "repo": "herdr-pickr",
-      "resolved_commit": "e393ef593e44d2497f43d20aa7b0e4a26ea3d445",
-      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github/pickr-456bc09209fc",
-      "installed_unix_ms": 1787025072938
+      "resolved_commit": "d642f7964231b86e82e1ac7f3a390fd5baa03e98",
+      "managed_path": "/Users/hs094/.config/herdr/plugins/github-installations/herdr-bar-96eebe452a9c/63551-0/checkout",
+      "installed_unix_ms": 1793522695945
     }
   },
   {

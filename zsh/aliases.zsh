@@ -7,6 +7,7 @@
 # )\"
 # "
 
+alias cn="container"
 alias herd-remote="herdr plugin action invoke setup --plugin herdr-mobile-relay.events"
 
 alias mformat='make format-dirs dirs="$(
