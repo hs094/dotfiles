@@ -1,0 +1,45 @@
+# Global navigation
+[hotkeys]
+"Cmd+Shift+Space" = "hints --action left_click"
+"Cmd+Shift+R" = "hints --action right_click"
+
+# Clickable UI navigation
+[hints]
+strategy = "axtree"
+hint_characters = "asdfghjkl"
+label_direction = "normal"
+
+# Vim-style scrolling
+[scroll]
+scroll_step = 80
+scroll_step_half = 500
+
+# Continuous movement on held keys
+[held_repeat]
+enabled = true
+accel_enabled = true
+accel_ramp_ms = 500
+accel_max_multiplier = 4.0
+
+# Smoother scrolling
+[smooth_scroll]
+enabled = true
+
+# Optional cursor animation
+[smooth_cursor]
+move_mouse_enabled = false
+#max_duration = 150
+
+# Multi-monitor support
+[monitor_select]
+enabled = true
+characters = "asdf"
+
+# Visual feedback on click actions
+[mouse_action_indicator]
+enabled = true
+actions = ["left_click", "right_click"]
+
+# Let unused modifier shortcuts reach the app
+[general]
+passthrough_unbounded_keys = true

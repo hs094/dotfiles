@@ -1,4 +1,12 @@
 [post-switch]
 herdr = '''
-herdr worktree open --cwd {{ repo_path }} --path {{ worktree_path }} --label "{{ branch }}" --focus 2>/dev/null || true
+herdr worktree open --cwd "{{ repo_path }}" --path "{{ worktree_path }}" --focus 2>/dev/null || true
+'''
+
+[post-remove]
+herdr-workspace = '''
+workspace_id=$(herdr workspace list 2>/dev/null | jq -r --arg path "{{ worktree_path }}" '.result.workspaces[] | select(.worktree.checkout_path == $path) | .workspace_id // empty')
+if [[ -n "$workspace_id" ]]; then
+  herdr workspace close "$workspace_id" 2>/dev/null || true
+fi
 '''

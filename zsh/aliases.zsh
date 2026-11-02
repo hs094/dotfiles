@@ -219,7 +219,13 @@ alias gcph='git push origin $1'
 alias gwl='git worktree list'
 
 # Worktrunk (wt) — git worktree management (brew install worktrunk)
-alias ws='wt switch'
+ws() {
+  if [[ -n ${HERDR_PANE_ID:-} ]]; then
+    wt switch --no-cd "$@"
+  else
+    wt switch "$@"
+  fi
+}
 wsc() {
   if [[ -n ${HERDR_PANE_ID:-} ]]; then
     wt switch -c --base=@ --no-cd "$@"
