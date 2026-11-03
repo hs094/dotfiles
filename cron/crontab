@@ -10,3 +10,9 @@ PATH=/Users/hardik.soni/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bi
 
 # Remove logs
 0 * * * * /bin/rm -f "$HOME"/.config/logs/*.log
+
+# Regenerate Brewfile
+0 * * * * /opt/homebrew/bin/brew bundle dump --force --file=/Users/hs094/.config/homebrew/Brewfile >> /Users/hs094/.config/logs/cron_homebrew_generate.log 2>&1
+
+# Tldr Update
+*/15 * * * * /opt/homebrew/bin/tldr --update >> /Users/hs094/.config/logs/tldr_update.log 2>&1
