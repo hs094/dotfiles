@@ -115,3 +115,5 @@ pgcli/history
 /opencode/service.json
 
 /zsh/secrets.zsh
+/ovis
+/herdr/herdr.sock.agent

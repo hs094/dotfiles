@@ -18,8 +18,8 @@ detach = "prefix+d"
 copy_mode = "prefix+["
 
 # Tab navigation (defaults — same as tmux)
-next_tab = "prefix+n"
-previous_tab = "prefix+p"
+next_tab = "ctrl+n"
+previous_tab = "ctrl+p"
 
 # Workspace navigation (unbound by default)
 previous_workspace = "prefix+up"
@@ -69,49 +69,59 @@ type = "plugin_action"
 command = "chmarax.herdr-nvim.pick-file"
 description = "open file from agent output"
 
+# [[keys.command]]
+# key = "prefix+i"
+# type = "plugin_action"
+# command = "gh-pr.refresh"
+# description = "refresh PR status"
+
+[[keys.command]]
+key = "prefix+u"
+type = "plugin_action"
+command = "gh-pr.open-pr"
+description = "open PR in browser"
+
+[[keys.command]]
+key = "ctrl+shift+u"
+type = "plugin_action"
+command = "usagebar.open-limits"
+description = "Agent Usage: open limits pane"
+
+[[keys.command]]
+key = "ctrl+shift+m"
+type = "plugin_action"
+command = "usagebar.refresh"
+description = "Agent Usage: refresh sidebar meters"
+
 [ui]
 agent_panel_sort = "spaces"
 prompt_new_tab_name = false
 prompt_new_workspace_name = false
 
-[ui.toast]
-delivery = "terminal"
+status_indicators = "symbols"
 
-[ui.sidebar.spaces]
-row_gap = 0
-rows = [
-  [
-    "state_icon",
-    { token = "workspace", bold = true }
-  ],
-  [
-    { token = "branch", fg = "#cba6f7" },
-    "git_status"
-  ]
-]
+[theme]
+name = "catppuccin"
+auto_switch = false
 
-[ui.sidebar.agents]
-row_gap = 1
-rows = [
-  [
-    "state_icon",
-    # { token = "agent", bold = true, fg = "#89b4fa" },
-    { token = "agent", fg = "#a6e3a1" },
-    { token = "$limit", bold = true },
-    { token = "state_text", dim = true }
-  ],
-  [
-    { token = "$title", fg = "#cba6f7" }
-  ],
-  [
-    { token = "$context", fg = "#89b4fa" },
-    { token = "$cache_high", fg = "#a6e3a1" },
-    { token = "$cache_mid", fg = "#e0af68" },
-    { token = "$cache_low", fg = "#f7768e", bold = true }
-  ]
-]
+[[keys.command]]
+key = "prefix+k"
+type = "plugin_action"
+command = "herdr-bar.open"
+description = "command bar"
 
 
 [experimental]
-pane_history = true
 kitty_graphics = true
+
+[[keys.command]]
+key = "prefix+i"
+type = "plugin_action"
+command = "herdr-github.toggle"
+description = "PR and issue panel"
+
+[[keys.command]]
+key = "prefix+m"
+type = "plugin_action"
+command = "ray.plugin-manager.open"
+description = "open plugin manager"

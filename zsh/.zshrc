@@ -46,3 +46,5 @@ export PATH="$HOME/.opencode/bin:$PATH"
 
 # added by dbx installer
 export PATH="$HOME/.dbx/bin:$PATH"
+# bun completions
+[ -s "/Users/hs094/.bun/_bun" ] && source "/Users/hs094/.bun/_bun"

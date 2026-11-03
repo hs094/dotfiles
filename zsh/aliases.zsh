@@ -19,7 +19,7 @@ alias mformat='make format-dirs dirs="$(
 )"'
 
 
-alias web="docker compose down web && docker compose up -d web"
+alias eherdr="nvim ~/.config/herdr/config.toml"
 
 alias n="nvim"
 
