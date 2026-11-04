@@ -1,18 +1,25 @@
 SHELL=/bin/zsh
-HOME=/Users/hardik.soni
-PATH=/Users/hardik.soni/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin
+HOME=/Users/hs094
+PATH=/Users/hs094/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin
+homebrew_prefix=/opt/homebrew
 
-# Auto Close PRs
+
+# auto close prs
 */15 * * * * cd "$HOME/.config/scripts/auto-close-prs" && "$HOME/.config/scripts/cron-log.sh" ./auto_close_prs.sh >> "$HOME/.config/logs/auto_pr.log" 2>&1
 
-# Update Pi
+# update pi
 * * * * * "$HOME/.config/scripts/cron-log.sh" pi update --all >> "$HOME/.config/logs/update_pi.log" 2>&1
 
-# Remove logs
-0 * * * * /bin/rm -f "$HOME"/.config/logs/*.log
+# regenerate brewfile
+0 * * * * "$homebrew_prefix/bin/brew" bundle dump --force --file="$HOME/.config/homebrew/brewfile" >> "$HOME/.config/logs/cron_homebrew_generate.log" 2>&1
 
-# Regenerate Brewfile
-0 * * * * /opt/homebrew/bin/brew bundle dump --force --file=/Users/hs094/.config/homebrew/Brewfile >> /Users/hs094/.config/logs/cron_homebrew_generate.log 2>&1
+# tldr update
+*/15 * * * * "$homebrew_prefix/bin/tldr" --update >> "$HOME/.config/logs/tldr_update.log" 2>&1
 
-# Tldr Update
-*/15 * * * * /opt/homebrew/bin/tldr --update >> /Users/hs094/.config/logs/tldr_update.log 2>&1
+
+# # Move Safari Reading List to Notion
+# * * * * * cd /Users/hs094/Dev.hs/Automation/Safari-Reading-List-Parser && /opt/homebrew/bin/uv run main.py >> /Users/hs094/Dev.hs/Automation/Safari-Reading-List-Parser/cron.log 2>&1
+
+
+# remove logs
+5 * * * * /bin/rm -f "$HOME"/.config/logs/*.log

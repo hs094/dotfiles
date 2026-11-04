@@ -1,3 +1,4 @@
+tap "abue-ammar/tinycast", trusted: true
 tap "achannarasappa/tap", "https://github.com/achannarasappa/tap.git", trusted: true
 tap "adembc/tap", "https://github.com/Adembc/homebrew-tap", trusted: true
 tap "antoniorodr/cronboard", trusted: true
@@ -11,6 +12,7 @@ tap "danvergara/tools", trusted: true
 tap "dart-lang/dart", trusted: true
 tap "dhth/tap", trusted: true
 tap "dlvhdr/formulae", trusted: true
+tap "dopplerhq/doppler", "https://github.com/DopplerHQ/homebrew-doppler.git", trusted: true
 tap "f/mcptools", trusted: true
 tap "f/textream", trusted: true
 tap "gromgit/brewtils", trusted: true
@@ -27,7 +29,6 @@ tap "keidarcy/tap", trusted: true
 tap "kilo-org/tap", "https://github.com/Kilo-Org/homebrew-tap", trusted: true
 tap "kitlangton/tap"
 tap "kontext-security/tap", trusted: true
-tap "kriuchkov/tap", trusted: true
 tap "krtirtho/apps", trusted: true
 tap "lazynop/tap", trusted: true
 tap "legostin/tap", trusted: true
@@ -35,7 +36,6 @@ tap "leohenon/tap"
 tap "localstack/tap", trusted: true
 tap "lusingander/tap", trusted: true
 tap "manaflow-ai/cmux", trusted: true
-tap "maniacsss/torrra", "https://github.com/Maniacsss/homebrew-torrra.git", trusted: true
 tap "markmarkoh/lt", trusted: true
 tap "metalbear-co/mirrord", trusted: true
 tap "modem-dev/tap"
@@ -43,12 +43,12 @@ tap "mongodb/brew", trusted: true
 tap "nakabonne/ali", trusted: true
 tap "nikitabobko/tap", trusted: true
 tap "nkzw-tech/tap", trusted: true
-tap "nnnkkk7/tap"
+tap "nnnkkk7/tap", trusted: true
 tap "openclaw/tap", trusted: true
 tap "oven-sh/bun", trusted: true
 tap "owloops/tap", "https://github.com/Owloops/homebrew-tap", trusted: true
 tap "rebelice/tap", trusted: true
-tap "riii111/sabiql"
+tap "riii111/sabiql", trusted: { formulae: ["sabiql"] }
 tap "s-sigdel/tap", "https://github.com/S-Sigdel/homebrew-tap", trusted: true
 tap "skardyy/mcat", "https://github.com/Skardyy/homebrew-mcat", trusted: true
 tap "snyk/tap", trusted: true
@@ -62,11 +62,14 @@ tap "tw93/tap", trusted: true
 tap "unhappychoice/tap", trusted: true
 tap "valkyrie00/bbrew", "https://github.com/Valkyrie00/homebrew-bbrew", trusted: true
 tap "withgraphite/tap", trusted: true
+tap "y3owk1n/tap"
 tap "yakitrak/yakitrak", trusted: true
 tap "zackelia/formulae", trusted: true
 tap "zackriya-solutions/meetily", trusted: true
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3", link: false
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Browser automation CLI for AI agents
+brew "agent-browser"
 # Download with resuming and segmented downloading
 brew "aria2"
 # Securely store and access AWS credentials in development environments
@@ -101,10 +104,12 @@ brew "colima"
 brew "gmp"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Power of curl, ease of use of httpie
-brew "curlie"
+# Lightweight and powerful workflow engine
+brew "dagu", restart_service: :changed
 # Reverse-engineering tool for docker environments
 brew "decompose"
+# Process manager for dev and prod
+brew "dekit"
 # Secure runtime for JavaScript and TypeScript
 brew "deno"
 # TUI system monitor for Apple Silicon
@@ -165,6 +170,8 @@ brew "git-delta"
 brew "git-flow-next"
 # Git extension for versioning large files
 brew "git-lfs"
+# GNU Privacy Guard (OpenPGP)
+brew "gnupg"
 # Bash-tool to store the private data inside a git repo
 brew "git-secret"
 # Audit git repos for secrets
@@ -175,8 +182,6 @@ brew "go"
 brew "grex"
 # File format designed to store large amounts of data
 brew "hdf5"
-# Post-modern modal text editor
-brew "helix"
 # Kubernetes package manager
 brew "helm"
 # Agent multiplexer that lives in your terminal
@@ -217,8 +222,6 @@ brew "kubernetes-cli"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Cross-platform TUI database management tool
-brew "lazysql"
 # DICOM WSI read library
 brew "libdicom"
 # EXIF parsing library
@@ -259,12 +262,12 @@ brew "micro"
 brew "minikube"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Matroska media files manipulation tools
+brew "mkvtoolnix"
 # Deep clean and optimize your Mac
 brew "mole"
 # Improved JPEG encoder
 brew "mozjpeg"
-# Run multiple commands in parallel
-brew "mprocs"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # Media player based on MPlayer and mplayer2
@@ -281,8 +284,6 @@ brew "neovim"
 brew "nginx"
 # Port scanning utility for large networks
 brew "nmap"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node"
 # Send push notifications to your phone or desktop via PUT/POST
 brew "ntfy"
 # Modern shell for the GitHub era
@@ -321,6 +322,8 @@ brew "pgrok"
 brew "pgvector"
 # PNG image optimizing utility
 brew "pngquant"
+# Fast, disk space efficient package manager
+brew "pnpm"
 # PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
 # Protocol buffers (Google's data interchange format)
@@ -339,6 +342,8 @@ brew "rtk"
 brew "rtorrent"
 # Safe, concurrent, practical language
 brew "rust"
+# Fast, safe-by-design, driverless, Vim-first DB TUI with ER diagrams
+brew "sabiql"
 # Build tool for Scala projects
 brew "sbt"
 # Display and control your Android device
@@ -371,10 +376,10 @@ brew "stylua"
 brew "subversion"
 # Multi-modal AI tool to extract and summarize content
 brew "summarize"
-# Modern and pretty fancy file manager for the terminal
-brew "superfile"
 # TUI to view and query tabular files (CSV,TSV, Parquet, etc.)
 brew "tabiew"
+# Easiest, most secure way to use WireGuard and 2FA
+brew "tailscale"
 # TOML toolkit written in Rust
 brew "taplo"
 # Rich and complete approach to parallelism in C++
@@ -385,14 +390,8 @@ brew "tcpdump"
 brew "tcpkali"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
-# General purpose fuzzy finder TUI
-brew "television"
 # User interface to the TELNET protocol
 brew "telnet"
-# Terminal multiplexer
-brew "tmux"
-# Find and download torrents without leaving your CLI
-brew "torrra"
 # CLI tool that moves files or folder to the trash
 brew "trash"
 # Command-line tool for sharing terminal over the web
@@ -421,18 +420,12 @@ brew "zoxide"
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# Terminal stock ticker with live updates and position tracking
-brew "achannarasappa/tap/ticker"
-# A simple terminal UI for managing SSH connections.  
-brew "adembc/tap/lazyssh"
 # Interactive JSON query tool with real-time output
 brew "bellicose100xp/tap/jiq"
 # Terminal Excel viewer with interactive TUI, search, formulas, and export
 brew "bgreenwell/xleak/xleak"
 # A terminal user interface client for Discord
 brew "chojs23/tap/concord"
-# Command-line interface for interacting with MCP (Model Context Protocol) servers
-brew "f/mcptools/mcp"
 # Interactive TUI for Homebrew
 brew "gromgit/brewtils/taproom"
 # Terraform
@@ -453,8 +446,6 @@ brew "keidarcy/tap/e1s"
 brew "kitlangton/tap/ghui", trusted: true
 # Identity, credentials, and governance for AI agents
 brew "kontext-security/tap/kontext"
-# Tock v2.0.4 is a simple timetracker for the command line
-brew "kriuchkov/tap/tock"
 # TUI for managing .env files
 brew "lazynop/tap/lazyenv"
 # OpenCode with Vim keybindings - AI coding assistant for the terminal
@@ -473,32 +464,22 @@ brew "oven-sh/bun/bun"
 brew "owloops/tap/tfjournal"
 # A simple terminal UI for PostgreSQL
 brew "rebelice/tap/lazypg"
-# Fast, driver-less TUI to browse, query, and edit PostgreSQL databases
-brew "riii111/sabiql/sabiql", trusted: true
 # Terminal trainer that drills advanced Vim techniques in real vim/nvim
 brew "s-sigdel/tap/vimhjkl"
 # Model Context Protocol runtime and CLI generator
 brew "steipete/tap/mcporter"
-# A Git history screensaver - watch your code rewrite itself
-brew "unhappychoice/tap/gitlogue"
-# Modern TUI for managing Homebrew packages and casks on macOS and Linux
-brew "valkyrie00/bbrew/bbrew"
 brew "yakitrak/yakitrak/notesmd-cli", link: false
 # Securely stores and accesses AWS credentials in a development environment
 cask "aws-vault-binary"
-# Desktop password and login vault
-cask "bitwarden"
-# Not so boring notch That Rocks 🎸🎶 
+# Not so boring notch That Rocks
 cask "theboredteam/boring-notch/boring-notch"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
-# OpenAI's coding agent that runs in your terminal
-cask "codex"
 cask "container"
+# Music player
+cask "doppler-app"
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
-# Set of tools to manage resources and applications hosted on Google Cloud
-cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Keyboard shortcuts for every button on your screen
@@ -507,23 +488,24 @@ cask "homerow"
 cask "tamnd/tap/kage", trusted: true
 # GPU-based terminal emulator
 cask "kitty"
-# Local-first dictation and meeting transcription
-cask "muesli"
+# Keyboard driven navigation
+cask "y3owk1n/tap/neru", trusted: true
 # App to write, plan, collaborate, and get organised
 cask "notion"
-# Peer to peer Bitorrent client
-cask "qbittorrent"
 # Dictation tool including LLM reformatting
 cask "superwhisper"
-# Messaging app with a focus on speed and security
-cask "telegram"
+# Terminal-based web browser
+cask "terminal-browser"
+# Tiny, fully native launcher, hotkeys, and clipboard history
+cask "abue-ammar/tinycast/tinycast"
 # Multimedia player
 cask "vlc"
+# Menu bar toolkit with keep-awake, system monitor and volume mixer
+cask "vorssaint"
 # Live wallpaper app
 cask "wallspace"
-# Torrent streaming application
-cask "webtorrent"
 cargo "octotype"
+cargo "wasm-pack"
 uv "cloctui"
 uv "cocoindex"
 uv "git-filter-repo"
@@ -534,15 +516,8 @@ uv "llamactl"
 uv "marimo"
 uv "markitdown[all]"
 uv "pgcli"
-npm "@aisuite/chub"
-npm "@dbml/cli"
-npm "@earendil-works/pi-coding-agent"
 npm "@kilocode/cli"
-npm "@openai/codex"
-npm "@razakadam74/gitmsg"
 npm "cline"
 npm "freebuff"
-npm "omniroute"
 npm "openskills"
 npm "opensrc"
-npm "prettier"
