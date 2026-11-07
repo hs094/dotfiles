@@ -1,3 +1,4 @@
+skip-commit-generation-prompt = true
 [post-switch]
 herdr = '''
 herdr worktree open --cwd "{{ repo_path }}" --path "{{ worktree_path }}" --focus 2>/dev/null || true

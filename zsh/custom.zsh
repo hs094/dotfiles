@@ -237,7 +237,8 @@ dozzle() {
   _docker_svc "${1:-start}" dozzle http://localhost:8080 amir20/dozzle:latest \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v dozzle_data:/data \
-    -p 8080:8080
+    -p 8080:8080 \
+    -e DOZZLE_ENABLE_MCP=true
 }
 
 floci() {

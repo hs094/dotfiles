@@ -78,16 +78,10 @@ alias pnq="weather Pune"
 alias blr="weather Bengaluru"
 
 # CLI AI Editors
-alias a="agent"
-alias co="codex"
 alias oc="opencode"
-alias cc="claude"
 alias cl="cline"
-alias ge="goose"
-alias cpl="copilot"
 alias kil="kilocode"
 alias qw="qwen"
-alias ag="auggie"
 alias fb="freebuff"
 # alias cf=
 
@@ -153,7 +147,6 @@ alias e='exit'
 # Modern Replacements to Linux Distros
 alias cat='bat'
 alias cd='z'
-alias diff='difft'
 alias htop='btop'
 alias y='yazi'
 

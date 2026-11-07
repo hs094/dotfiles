@@ -117,3 +117,5 @@ pgcli/history
 /zsh/secrets.zsh
 /ovis
 /herdr/herdr.sock.agent
+/pairfob
+/herdr/.pairfob-server.json

@@ -609,13 +609,13 @@
     }
   },
   {
-    "plugin_id": "vim-herdr-navigation",
-    "name": "Vim Herdr Navigation",
-    "version": "0.1.0",
+    "plugin_id": "herdr-splits",
+    "name": "Herdr Splits",
+    "version": "0.5.3",
     "min_herdr_version": "0.7.0",
-    "description": "Seamless Ctrl+h/j/k/l navigation across herdr panes and Vim/Neovim splits",
-    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/vim-herdr-navigation/herdr-plugin.toml",
-    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/vim-herdr-navigation",
+    "description": "Seamless navigation and resizing between Herdr panes and Neovim splits",
+    "manifest_path": "/Users/hs094/.config/herdr/plugins/github-installations/herdr-splits-d880c4924f2b/68138-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/hs094/.config/herdr/plugins/github-installations/herdr-splits-d880c4924f2b/68138-0/checkout",
     "enabled": true,
     "platforms": [
       "linux",
@@ -623,56 +623,109 @@
     ],
     "actions": [
       {
-        "id": "down",
-        "title": "Navigate down (Vim/herdr)",
+        "id": "nav-down",
+        "title": "Navigate down (Neovim/Herder)",
         "contexts": [
           "global"
         ],
         "command": [
           "bash",
-          "navigate.sh",
+          "scripts/herdr-nav.sh",
           "down"
         ]
       },
       {
-        "id": "left",
-        "title": "Navigate left (Vim/herdr)",
+        "id": "nav-left",
+        "title": "Navigate left (Neovim/Herder)",
         "contexts": [
           "global"
         ],
         "command": [
           "bash",
-          "navigate.sh",
+          "scripts/herdr-nav.sh",
           "left"
         ]
       },
       {
-        "id": "right",
-        "title": "Navigate right (Vim/herdr)",
+        "id": "nav-right",
+        "title": "Navigate right (Neovim/Herder)",
         "contexts": [
           "global"
         ],
         "command": [
           "bash",
-          "navigate.sh",
+          "scripts/herdr-nav.sh",
           "right"
         ]
       },
       {
-        "id": "up",
-        "title": "Navigate up (Vim/herdr)",
+        "id": "nav-up",
+        "title": "Navigate up (Neovim/Herder)",
         "contexts": [
           "global"
         ],
         "command": [
           "bash",
-          "navigate.sh",
+          "scripts/herdr-nav.sh",
+          "up"
+        ]
+      },
+      {
+        "id": "resize-down",
+        "title": "Resize down (Neovim/Herder)",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "bash",
+          "scripts/herdr-resize.sh",
+          "down"
+        ]
+      },
+      {
+        "id": "resize-left",
+        "title": "Resize left (Neovim/Herder)",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "bash",
+          "scripts/herdr-resize.sh",
+          "left"
+        ]
+      },
+      {
+        "id": "resize-right",
+        "title": "Resize right (Neovim/Herder)",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "bash",
+          "scripts/herdr-resize.sh",
+          "right"
+        ]
+      },
+      {
+        "id": "resize-up",
+        "title": "Resize up (Neovim/Herder)",
+        "contexts": [
+          "global"
+        ],
+        "command": [
+          "bash",
+          "scripts/herdr-resize.sh",
           "up"
         ]
       }
     ],
     "source": {
-      "kind": "local"
+      "kind": "github",
+      "owner": "lmilojevicc",
+      "repo": "herdr-splits.nvim",
+      "resolved_commit": "94f30cf4e9ac76ddf185a3acd0977be728fa4106",
+      "managed_path": "/Users/hs094/.config/herdr/plugins/github-installations/herdr-splits-d880c4924f2b/68138-0/checkout",
+      "installed_unix_ms": 1794038567340
     }
   }
 ]
