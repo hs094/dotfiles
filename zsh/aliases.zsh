@@ -230,7 +230,17 @@ alias wsx='wt switch -c -x --base=@' # Usage: wsx <cmd> <branch>, e.g. wsx claud
 alias wl='wt list'
 alias wlf='wt list --full'
 alias wm='wt merge'
-alias wr='wt remove'
+wr() {
+  local branch=${1:-$(git branch --show-current)} up default
+  [[ -n "$branch" && "$branch" != -* && $# -le 1 ]] || { wt remove "$@"; return }
+  up=$(git rev-parse --abbrev-ref --symbolic-full-name "$branch@{upstream}" 2>/dev/null) || up=
+  default=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null); default=${default:-main}
+  wt remove --no-delete-branch "$@" || return
+  if [[ -n "$up" ]] && ! git rev-parse --verify --quiet "$up" >/dev/null 2>&1 &&
+    git merge-base --is-ancestor "$branch" "$default" 2>/dev/null; then
+    git branch -d "$branch"
+  fi
+}
 alias wrd='wt remove -D'
 alias wch='wt copy-hidden'         # Manually copy hidden files from primary worktree
 wscp() { wt switch -c --base=@ "$@" && echo "✓ Hidden files copied (via post-start hook)"; }

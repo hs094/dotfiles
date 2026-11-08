@@ -2,6 +2,7 @@
 [hotkeys]
 "Cmd+Shift+Space" = "hints --action left_click"
 "Cmd+Shift+R" = "hints --action right_click"
+"Cmd+Shift+J" = "scroll"
 
 # Clickable UI navigation
 [hints]
@@ -43,3 +44,9 @@ actions = ["left_click", "right_click"]
 # Let unused modifier shortcuts reach the app
 [general]
 passthrough_unbounded_keys = true
+
+[grid]
+enabled = false
+
+[recursive_grid]
+enabled = false

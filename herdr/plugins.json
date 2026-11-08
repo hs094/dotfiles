@@ -138,8 +138,8 @@
     "version": "1.2.2",
     "min_herdr_version": "0.7.5",
     "description": "Full-height nvim sidebar with agent annotations: toggle with one key, comment code, send to any agent.",
-    "manifest_path": "/Users/hs094/.config/herdr/plugins/github-installations/chmarax.herdr-nvim-178624809c23/79949-0/checkout/herdr-plugin.toml",
-    "plugin_root": "/Users/hs094/.config/herdr/plugins/github-installations/chmarax.herdr-nvim-178624809c23/79949-0/checkout",
+    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github-installations/chmarax.herdr-nvim-178624809c23/9299-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github-installations/chmarax.herdr-nvim-178624809c23/9299-0/checkout",
     "enabled": true,
     "platforms": [
       "macos",
@@ -266,9 +266,9 @@
       "kind": "github",
       "owner": "ChmaraX",
       "repo": "herdr-nvim",
-      "resolved_commit": "b7c69cab2c1eb8754b505061e942fffc4a557a3e",
-      "managed_path": "/Users/hs094/.config/herdr/plugins/github-installations/chmarax.herdr-nvim-178624809c23/79949-0/checkout",
-      "installed_unix_ms": 1792906928666
+      "resolved_commit": "26cd43e38126be8012b59f95fd41ef33574d0d08",
+      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github-installations/chmarax.herdr-nvim-178624809c23/9299-0/checkout",
+      "installed_unix_ms": 1793711123807
     }
   },
   {
