@@ -203,7 +203,7 @@
     "enabled": false
   },
   "ai": {
-    "enabled": true,
+    "enabled": false,
     "webSearch": false,
     "choices": true,
     "expandsReasoning": false,

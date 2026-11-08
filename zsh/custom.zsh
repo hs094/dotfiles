@@ -202,6 +202,17 @@ _docker_svc() {
           ;;
       esac
       ;;
+    update)
+      docker pull "$image" || return 1
+      if [[ "$state" == "running" ]]; then
+        docker stop "$name" >/dev/null || return 1
+      fi
+      if [[ -n "$state" ]]; then
+        docker rm "$name" >/dev/null || return 1
+      fi
+      docker run -d --name "$name" "${opts[@]}" "$image" "${cmd[@]}" >/dev/null \
+        && echo "$name updated and running at $url"
+      ;;
     stop)
       if [[ "$state" == "running" ]]; then
         docker stop "$name" >/dev/null && echo "$name stopped"
@@ -227,7 +238,7 @@ _docker_svc() {
       fi
       ;;
     *)
-      echo "Usage: $name [start|stop|status|rm]" >&2
+      echo "Usage: $name [start|update|stop|status|rm]" >&2
       return 1
       ;;
   esac
@@ -238,7 +249,8 @@ dozzle() {
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v dozzle_data:/data \
     -p 8080:8080 \
-    -e DOZZLE_ENABLE_MCP=true
+    -e DOZZLE_ENABLE_MCP=true \
+    -- --enable-mcp
 }
 
 floci() {
