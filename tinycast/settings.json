@@ -258,7 +258,13 @@
   "snippets": {
     "showInLauncher": true,
     "folder": null,
-    "commands": {}
+    "commands": {
+      "search-snippets": {
+        "shortcut": "hyper+s",
+        "alias": null,
+        "showInLauncher": true
+      }
+    }
   },
   "navigation": {
     "enabled": false,

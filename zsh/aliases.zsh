@@ -78,7 +78,6 @@ alias pnq="weather Pune"
 alias blr="weather Bengaluru"
 
 # CLI AI Editors
-alias oc="opencode"
 alias cl="cline"
 alias kil="kilocode"
 alias qw="qwen"
