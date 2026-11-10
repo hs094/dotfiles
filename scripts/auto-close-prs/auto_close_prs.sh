@@ -64,8 +64,8 @@ PR_LIST=$(
         --author "@me" \
         --repo "$TARGET_REPO" \
         --state open \
-        --json number \
-        --jq '.[].number'
+        --json number,isDraft \
+        --jq '.[] | select(.isDraft == false) | .number'
 )
 
 # Handle empty results cleanly
@@ -89,9 +89,10 @@ for PR_NUM in $PR_LIST; do
     PR_STATE=$(
         gh pr view "$PR_NUM" \
             --repo "$TARGET_REPO" \
-            --json labels,mergeable,mergeStateStatus \
+            --json isDraft,labels,mergeable,mergeStateStatus \
             --jq '
-                if any(.labels[]?; (.name | ascii_downcase) == "do not merge") then "SKIP_LABEL"
+                if .isDraft then "SKIP_DRAFT"
+                elif any(.labels[]?; (.name | ascii_downcase) == "do not merge") then "SKIP_LABEL"
                 elif .mergeStateStatus == "BEHIND" then "UPDATE"
                 elif (
                     .mergeable == "MERGEABLE"
@@ -119,6 +120,10 @@ for PR_NUM in $PR_LIST; do
     fi
 
     case "$PR_STATE" in
+        SKIP_DRAFT)
+            echo "Skipping PR #$PR_NUM: it is a draft."
+            continue
+            ;;
         SKIP_LABEL)
             echo "Skipping PR #$PR_NUM: it has the 'do not merge' label."
             continue

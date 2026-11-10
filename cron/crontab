@@ -5,7 +5,7 @@ homebrew_prefix=/opt/homebrew
 
 
 # auto close prs
-*/15 * * * * cd "$HOME/.config/scripts/auto-close-prs" && "$HOME/.config/scripts/cron-log.sh" ./auto_close_prs.sh >> "$HOME/.config/logs/auto_pr.log" 2>&1
+* * * * * cd "$HOME/.config/scripts/auto-close-prs" && "$HOME/.config/scripts/cron-log.sh" ./auto_close_prs.sh >> "$HOME/.config/logs/auto_pr.log" 2>&1
 
 # update pi
 * * * * * "$HOME/.config/scripts/cron-log.sh" pi update --all >> "$HOME/.config/logs/update_pi.log" 2>&1

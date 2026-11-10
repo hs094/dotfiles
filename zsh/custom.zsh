@@ -249,8 +249,7 @@ dozzle() {
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v dozzle_data:/data \
     -p 8080:8080 \
-    -e DOZZLE_ENABLE_MCP=true \
-    -- --enable-mcp
+    -- --enable-mcp --enable-actions --enable-shell
 }
 
 floci() {
