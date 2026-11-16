@@ -139,6 +139,11 @@
         "alias": "'calendar",
         "showInLauncher": true
       },
+      "com.dbx.app": {
+        "shortcut": "option+d",
+        "alias": null,
+        "showInLauncher": true
+      },
       "com.mitchellh.ghostty": {
         "shortcut": "option+q",
         "alias": "'ghostty",

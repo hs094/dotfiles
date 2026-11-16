@@ -218,3 +218,9 @@ rows = [
 
 [experimental]
 kitty_graphics = true
+
+[ui.sound]
+enabled = true
+
+[ui.toast]
+delivery = "terminal"

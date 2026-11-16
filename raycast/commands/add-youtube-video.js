@@ -9,7 +9,6 @@
 // @raycast.icon youtube.svg 
 // @raycast.key ctrl+cmd+y
 // @raycast.description Add a Video to Youtube DB Page
-// @raycast.argument1 { "type": "url", "placeholder": "Youtube Video URL", "optional": true }
 
 // Documentation:
 // @raycast.author hs094
