@@ -273,11 +273,11 @@
   {
     "plugin_id": "herdr-splits",
     "name": "Herdr Splits",
-    "version": "0.5.3",
+    "version": "0.5.4",
     "min_herdr_version": "0.7.0",
     "description": "Seamless navigation and resizing between Herdr panes and Neovim splits",
-    "manifest_path": "/Users/hs094/.config/herdr/plugins/github-installations/herdr-splits-d880c4924f2b/68138-0/checkout/herdr-plugin.toml",
-    "plugin_root": "/Users/hs094/.config/herdr/plugins/github-installations/herdr-splits-d880c4924f2b/68138-0/checkout",
+    "manifest_path": "/Users/hardik.soni/.config/herdr/plugins/github-installations/herdr-splits-d880c4924f2b/64998-0/checkout/herdr-plugin.toml",
+    "plugin_root": "/Users/hardik.soni/.config/herdr/plugins/github-installations/herdr-splits-d880c4924f2b/64998-0/checkout",
     "enabled": true,
     "platforms": [
       "linux",
@@ -291,7 +291,7 @@
           "global"
         ],
         "command": [
-          "bash",
+          "/bin/sh",
           "scripts/herdr-nav.sh",
           "down"
         ]
@@ -303,7 +303,7 @@
           "global"
         ],
         "command": [
-          "bash",
+          "/bin/sh",
           "scripts/herdr-nav.sh",
           "left"
         ]
@@ -315,7 +315,7 @@
           "global"
         ],
         "command": [
-          "bash",
+          "/bin/sh",
           "scripts/herdr-nav.sh",
           "right"
         ]
@@ -327,7 +327,7 @@
           "global"
         ],
         "command": [
-          "bash",
+          "/bin/sh",
           "scripts/herdr-nav.sh",
           "up"
         ]
@@ -339,7 +339,7 @@
           "global"
         ],
         "command": [
-          "bash",
+          "/bin/sh",
           "scripts/herdr-resize.sh",
           "down"
         ]
@@ -351,7 +351,7 @@
           "global"
         ],
         "command": [
-          "bash",
+          "/bin/sh",
           "scripts/herdr-resize.sh",
           "left"
         ]
@@ -363,7 +363,7 @@
           "global"
         ],
         "command": [
-          "bash",
+          "/bin/sh",
           "scripts/herdr-resize.sh",
           "right"
         ]
@@ -375,7 +375,7 @@
           "global"
         ],
         "command": [
-          "bash",
+          "/bin/sh",
           "scripts/herdr-resize.sh",
           "up"
         ]
@@ -385,9 +385,9 @@
       "kind": "github",
       "owner": "lmilojevicc",
       "repo": "herdr-splits.nvim",
-      "resolved_commit": "94f30cf4e9ac76ddf185a3acd0977be728fa4106",
-      "managed_path": "/Users/hs094/.config/herdr/plugins/github-installations/herdr-splits-d880c4924f2b/68138-0/checkout",
-      "installed_unix_ms": 1794038567340
+      "resolved_commit": "4556fc0e7d4895fd8c86a1727dd9104c39e6e7d4",
+      "managed_path": "/Users/hardik.soni/.config/herdr/plugins/github-installations/herdr-splits-d880c4924f2b/64998-0/checkout",
+      "installed_unix_ms": 1794500130548
     }
   }
 ]

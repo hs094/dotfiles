@@ -88,7 +88,7 @@
 	insteadOf = hs:
 
 [url "git@github.com:"]
-	insteadOf = gh:
+	insteadOf = https://github.com/
 
 [alias]
 	commit-at = "!f() { \

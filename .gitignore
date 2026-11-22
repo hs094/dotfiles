@@ -119,3 +119,4 @@ pgcli/history
 /herdr/herdr.sock.agent
 /pairfob
 /herdr/.pairfob-server.json
+/gh/hosts.yml

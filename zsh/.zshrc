@@ -37,6 +37,13 @@ compinit
 command -v /Users/hardik.soni/.local/bin/ghost >/dev/null 2>&1 && source <(/Users/hardik.soni/.local/bin/ghost completion zsh)
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+if (( $+functions[compdef] && $+functions[_wt_lazy_complete] )); then
+  compdef _ws_complete ws
+  compdef _wsc_complete wsc
+  compdef _wsx_complete wsx
+  compdef _wscp_complete wscp
+  compdef _wr_complete wr
+fi
 export PATH="$HOME/.config/herdr/plugins/github/dnzzl.automations-c6e92c72ec60/bin:$PATH"
 export PATH="/opt/homebrew/opt/python@3.11/libexec/bin:$PATH"
 
@@ -48,3 +55,11 @@ export PATH="$HOME/.opencode/bin:$PATH"
 export PATH="$HOME/.dbx/bin:$PATH"
 # bun completions
 [ -s "/Users/hs094/.bun/_bun" ] && source "/Users/hs094/.bun/_bun"
+
+# Added by Kiri: its docker and kiri commands (kiri setup --uninstall removes this)
+case ":$PATH:" in *":$HOME/.kiri/bin:"*) ;; *) export PATH="$PATH:$HOME/.kiri/bin" ;; esac
+
+# Keep Rex CLI available inside Rex terminals
+if [[ -n "$REX_BIN_DIR" ]]; then
+    export PATH="$REX_BIN_DIR:$PATH"
+fi

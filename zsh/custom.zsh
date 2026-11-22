@@ -884,3 +884,48 @@ pg-forward() {
       ;;
   esac
 }
+
+dimages() {
+  nu -c '
+    docker images --format "{{json .}}"
+    | from json -o
+    | insert Image {|r| $"($r.Repository):($r.Tag)"}
+    | select Image Size Containers CreatedSince
+    | table
+  '
+}
+
+dps() {
+  nu -c '
+    docker ps --format "{{json .}}"
+    | from json -o
+    | each {|c|
+        let name = ($c.Names | str replace "security_assistant-" "")
+        let img = ($c.Image | str replace ":latest" "")
+
+        {
+          Name: (
+            if (($name | str length) > 30) {
+              ($name | str substring 0..28) + "…"
+            } else {
+              $name
+            }
+          ),
+          Image: (
+            if (($img | str length) > 30) {
+              ($img | str substring 0..28) + "…"
+            } else {
+              $img
+            }
+          ),
+          Status: $c.Status,
+          Ports: (
+            $c.Ports
+            | split row ", "
+            | str join "\n"
+          )
+        }
+      }
+    | sort-by Name
+  '
+}

@@ -244,6 +244,20 @@ alias wrd='wt remove -D'
 alias wch='wt copy-hidden'         # Manually copy hidden files from primary worktree
 wscp() { wt switch -c --base=@ "$@" && echo "✓ Hidden files copied (via post-start hook)"; }
 
+# Worktrunk completions for wrappers: prepend their native wt command context.
+_wt_complete_as() {
+  local -a prefix=("$@") rest
+  rest=("${words[@]:2}")
+  words=("${prefix[@]}" "${rest[@]}")
+  (( CURRENT += ${#prefix[@]} - 1 ))
+  _wt_lazy_complete
+}
+_ws_complete()   { _wt_complete_as wt switch }
+_wsc_complete()  { _wt_complete_as wt switch -c --base=@ }
+_wsx_complete()  { _wt_complete_as wt switch -c -x --base=@ }
+_wscp_complete() { _wt_complete_as wt switch -c --base=@ }
+_wr_complete()   { _wt_complete_as wt remove }
+
 # wprune — remove worktrees whose branch has no remote AND no local changes
 # (clean working tree + fully merged into default). Skips current & main worktrees.
 wprune() {
@@ -283,7 +297,6 @@ alias gsu='git stash -u'
 alias d='docker'
 alias di='docker images --tree'
 alias ddf='docker system df'
-alias dps='docker ps'
 alias dpsa='docker ps -a'
 alias dstop='docker stop $(docker ps -q)'        # Stop all Containers 
 alias drmf='docker rm $(docker ps -aq)'          # Remove all Containers 
