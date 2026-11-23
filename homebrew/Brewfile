@@ -250,10 +250,6 @@ brew "libultrahdr"
 brew "libxml2"
 # Small memory footprint, flexible web-server
 brew "lighttpd"
-# Linux virtual machines
-brew "lima"
-# Additional guest agents for Lima
-brew "lima-additional-guestagents"
 # Find what models run on your hardware
 brew "llmfit"
 # Next-gen compiler infrastructure
