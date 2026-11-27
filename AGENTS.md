@@ -67,7 +67,7 @@ Config under `nvim/lua/config/`, plugins under `nvim/lua/plugins/`.
 ## OpenCode
 
 Config at `~/.config/opencode/opencode.json`. Agent workflows in `opencode/agent/`.
-Plugins: `@dietrichgebert/ponytail`, `@omniroute/opencode-provider`.
+Plugins: `@omniroute/opencode-provider`.
 Workflow: CSC-only (plan first, ask for "CSC" before code).
 
 ## Config load order pitfall

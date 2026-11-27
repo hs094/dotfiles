@@ -63,3 +63,10 @@ case ":$PATH:" in *":$HOME/.kiri/bin:"*) ;; *) export PATH="$PATH:$HOME/.kiri/bi
 if [[ -n "$REX_BIN_DIR" ]]; then
     export PATH="$REX_BIN_DIR:$PATH"
 fi
+# Keep Rex CLI available inside Rex terminals
+if [[ -n "$REX_BIN_DIR" ]]; then
+    export PATH="$REX_BIN_DIR:$PATH"
+fi
+
+# Added by Kiri: its docker and kiri commands (kiri setup --uninstall removes this)
+case ":$PATH:" in *":$HOME/.kiri/bin:"*) ;; *) export PATH="$PATH:$HOME/.kiri/bin" ;; esac

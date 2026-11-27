@@ -134,3 +134,4 @@ pgcli/history
 /herdr-mods/**/gpui-kit.d.ts
 /herdr-mods/**/herdr.d.ts
 /herdr-mods/**/jsconfig.json
+/rex/rex-extensions

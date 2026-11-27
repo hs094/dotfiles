@@ -1,3 +1,8 @@
+# Keep Rex CLI available inside Rex terminals
+if [[ -n "$REX_BIN_DIR" ]]; then
+    export PATH="$REX_BIN_DIR:$PATH"
+fi
+
 export HOMEBREW_NO_AUTO_UPDATE=1
 
 # Locale and input
