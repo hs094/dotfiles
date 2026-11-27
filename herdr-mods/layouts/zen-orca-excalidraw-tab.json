@@ -1,0 +1,275 @@
+{
+  "id": "root",
+  "cloned_from": {
+    "name": "zen-orca",
+    "version": "0.1.18"
+  },
+  "type": "column",
+  "children": [
+    {
+      "id": "body",
+      "type": "row",
+      "children": [
+        {
+          "id": "sidebar",
+          "type": "column",
+          "children": [
+            {
+              "id": "brand",
+              "type": "block",
+              "content": {
+                "mod": "zen-workspace-chrome"
+              },
+              "size": {
+                "px": 0
+              },
+              "window_drag": true
+            },
+            {
+              "id": "sidebar-lists",
+              "type": "column",
+              "children": [
+                {
+                  "id": "spaces",
+                  "type": "block",
+                  "content": {
+                    "mod": "better-sidebar"
+                  },
+                  "size": {
+                    "weight": 1
+                  },
+                  "min": 90
+                },
+                {
+                  "id": "agents",
+                  "type": "block",
+                  "content": {
+                    "mod": "better-sidebar",
+                    "props": {
+                      "view": "agents"
+                    }
+                  },
+                  "size": {
+                    "weight": 1
+                  },
+                  "min": 90
+                }
+              ]
+            },
+            {
+              "id": "sidebar-footer",
+              "type": "row",
+              "children": [
+                {
+                  "id": "sidebar-nav",
+                  "type": "block",
+                  "content": {
+                    "mod": "sidebar-nav"
+                  },
+                  "size": {
+                    "weight": 3
+                  }
+                },
+                {
+                  "id": "usage-limits",
+                  "type": "block",
+                  "content": {
+                    "mod": "usage-limits",
+                    "props": {
+                      "align": "left",
+                      "showRemaining": true,
+                      "iconOnly": true
+                    }
+                  },
+                  "size": {
+                    "weight": 1
+                  }
+                }
+              ],
+              "size": {
+                "px": 48
+              },
+              "padding": 0,
+              "gap": 0,
+              "resizable": false
+            }
+          ],
+          "size": {
+            "px": 268
+          },
+          "min": 44,
+          "max": 480,
+          "background": "chrome",
+          "resizable": false
+        },
+        {
+          "id": "work",
+          "type": "column",
+          "children": [
+            {
+              "id": "tabs-row",
+              "type": "row",
+              "children": [
+                {
+                  "id": "tabs",
+                  "type": "block",
+                  "content": {
+                    "mod": "orca-terminal-header"
+                  },
+                  "window_drag": true
+                },
+                {
+                  "id": "actions",
+                  "type": "block",
+                  "content": {
+                    "mod": "t3-actions",
+                    "props": {
+                      "block": "actions"
+                    }
+                  },
+                  "size": {
+                    "px": 108
+                  },
+                  "background": "background",
+                  "window_drag": true
+                },
+                {
+                  "id": "panel-toggle",
+                  "type": "block",
+                  "content": {
+                    "mod": "better-sidebar",
+                    "props": {
+                      "view": "panel-toggle",
+                      "target": "panel"
+                    }
+                  },
+                  "size": {
+                    "px": 36
+                  },
+                  "window_drag": true
+                }
+              ],
+              "size": {
+                "px": 42
+              },
+              "resizable": false
+            },
+            {
+              "id": "work-body",
+              "type": "row",
+              "children": [
+                {
+                  "id": "main",
+                  "type": "block",
+                  "content": {
+                    "tab": "active",
+                    "pane": {
+                      "background": "background",
+                      "border": {
+                        "width": 0,
+                        "color": "border"
+                      },
+                      "focus": {
+                        "width": 0,
+                        "color": "accent"
+                      },
+                      "radius": 0,
+                      "gap": 0
+                    }
+                  }
+                },
+                {
+                  "id": "panel",
+                  "type": "column",
+                  "children": [
+                    {
+                      "id": "panel-nav",
+                      "type": "block",
+                      "content": {
+                        "mod": "orca-terminal-header",
+                        "props": {
+                          "view": "panel-nav"
+                        }
+                      },
+                      "size": {
+                        "px": 42
+                      }
+                    },
+                    {
+                      "id": "panel-body",
+                      "type": "stack",
+                      "children": [
+                        {
+                          "id": "files",
+                          "type": "block",
+                          "content": {
+                            "mod": "files-open-with"
+                          }
+                        },
+                        {
+                          "id": "changes",
+                          "type": "block",
+                          "content": {
+                            "mod": "better-changes"
+                          }
+                        },
+                        {
+                          "id": "excalidraw",
+                          "type": "block",
+                          "content": {
+                            "mod": "excalidraw-tab"
+                          }
+                        }
+                      ],
+                      "active": "files"
+                    }
+                  ],
+                  "size": {
+                    "px": 368
+                  },
+                  "min": 280,
+                  "max": 900
+                }
+              ]
+            }
+          ],
+          "resizable": false
+        }
+      ]
+    },
+    {
+      "id": "b5a2555d665994827df99a6eda27d695e",
+      "type": "block",
+      "content": {
+        "mod": "desktop-notifications"
+      },
+      "size": {
+        "px": 0
+      }
+    },
+    {
+      "id": "hibernate",
+      "type": "block",
+      "content": {
+        "mod": "hibernate"
+      },
+      "size": {
+        "px": 0
+      }
+    }
+  ],
+  "background": "canvas",
+  "terminal_padding": [
+    0,
+    0
+  ],
+  "titlebar": "none",
+  "traffic_lights": [
+    -100,
+    -100
+  ],
+  "terminal_menu": "my-menu",
+  "link_handlers": [
+    "local-links"
+  ]
+}

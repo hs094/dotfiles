@@ -184,11 +184,11 @@ export default class UsageLimits extends View {
     const left = props()?.align === "left";
     const root = h_flex().id("root").size_full().px(12).gap(10).items_center().overflow_hidden()
       .when(left, (e) => e.justify_start()).when(!left, (e) => e.justify_end())
-      .bg(t.chrome).border_t(1).border_color(t.border).text_size(11.8).text_color(t.muted)
+      .bg(t.chrome).when(!props()?.iconOnly, (e) => e.border_t(1).border_color(t.border)).text_size(11.8).text_color(t.muted)
       .on_size_change((size, cx) => { this.width = size.width; cx.notify(); });
     // Only the limits themselves open the panel, not the empty rest of the block.
     const content = h_flex().id("ul-content").gap(18).items_center().flex_none().on_hover((on, cx) => this.hover(on, cx))
-      .child(div().flex_none().text_color(t.dim).child(prefs.showRemaining ? "Remaining" : "Used"));
+      .when(!props()?.iconOnly, (e) => e.child(div().flex_none().text_color(t.dim).child(prefs.showRemaining ? "Remaining" : "Used")));
     const showBars = prefs.showBars && this.compactWidth(model, numbersWidth, true) <= this.width - 70;
     if (numbers.length) {
       content.child(h_flex().gap(10).items_center().flex_none()
@@ -204,7 +204,7 @@ export default class UsageLimits extends View {
     return root.child(HoverCard.new("ul-panel").anchor(left ? "bottom_left" : "bottom_right").open_delay(PANEL_OPEN_DELAY).close_delay(PANEL_CLOSE_DELAY)
       .trigger(content)
       .content(body))
-      .child(this.iconButton("ul-bar-refresh", "refresh", cooling ? "Refreshing…" : "Refresh now", !cooling, (cx) => this.refresh(cx), t));
+      .when(!props()?.iconOnly, (e) => e.child(this.iconButton("ul-bar-refresh", "refresh", cooling ? "Refreshing…" : "Refresh now", !cooling, (cx) => this.refresh(cx), t)));
   }
 
   // Rough width of the compact bar, to drop the bars first when it doesn't fit.
@@ -213,19 +213,17 @@ export default class UsageLimits extends View {
       + g.segments.reduce((a, s) => a + 6.8 * s.compact.length + 18, 0), 80 + extra);
   }
 
-  // Icon, one bar for the first window, then every window as text joined by ·.
-  compactGroup(g, showBars, t) {
-    const first = g.segments[0];
-    const parts = [];
-    g.segments.forEach((s, i) => {
-      if (i > 0) parts.push(div().text_color(t.dim).child("·"));
-      parts.push(div().whitespace_nowrap().text_color(s.level === "ok" ? (s.text === "—" ? t.dim : t.foreground) : levelColor(s.level, t)).child(s.compact));
-    });
-    return h_flex().id(`ul-${g.providerId}`).gap(8).items_center().flex_none().opacity(g.dim ? 0.55 : 1)
-      .child(image(g.icon).size(14))
-      .when(g.mark != null, (e) => e.child(div().text_color(t.dim).child(g.mark)))
-      .when(showBars && first != null, (e) => e.child(usageBar(44, first.fill, null, first.level === "ok" ? t.muted : levelColor(first.level, t), t)))
-      .child(h_flex().gap(6).items_center().children(parts));
+  // The sidebar shows a Codex button; usage details live in its hover card.
+  compactGroup(g, _showBars, t) {
+    const size = Math.max(20, Math.min(36, (this.width || 60) - 24));
+    const iconSize = Math.max(12, Math.round(size * 0.56));
+    return div().id("ul-" + g.providerId).size(size).flex_none().flex().items_center().justify_center()
+      .rounded(7).cursor_pointer().text_color(t.muted)
+      .hover((e) => e.bg(t.hover).text_color(t.foreground))
+      .tooltip(g.name).role("button").accessibility_label(g.name)
+      .child(g.providerId === "codex"
+        ? svg("mods/usage-limits/icons/codex.svg").size(iconSize).opacity(g.dim ? 0.55 : 1)
+        : image(g.icon).size(iconSize).opacity(g.dim ? 0.55 : 1));
   }
 
   // ---------- panel: limits ----------
