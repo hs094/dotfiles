@@ -1,0 +1,11 @@
+{
+  "place": "none",
+  "cloned_from": {
+    "name": "workspace-status",
+    "version": "0.1.13"
+  },
+  "$schema": "./mod.schema.json",
+  "settings": {
+    "showClosedPRs": false
+  }
+}

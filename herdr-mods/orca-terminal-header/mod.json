@@ -1,0 +1,8 @@
+{
+  "place": "none",
+  "title": "Terminal header",
+  "cloned_from": {
+    "name": "my-tabs",
+    "version": "0.1.16"
+  }
+}

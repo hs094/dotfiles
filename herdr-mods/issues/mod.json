@@ -1,0 +1,21 @@
+{
+  "$schema": "./mod.schema.json",
+  "place": "none",
+  "title": "Issues",
+  "overlay": {
+    "kind": "dialog",
+    "frame": "none",
+    "width": 0.92,
+    "height": 0.9
+  },
+  "settings": {
+    "jira": {
+      "baseUrl": "https://simbianai.atlassian.net",
+      "email": "hardik.soni@simbian.ai",
+      "projects": [
+        "SOC"
+      ]
+    },
+    "provider": "jira"
+  }
+}

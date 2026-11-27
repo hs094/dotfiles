@@ -121,3 +121,16 @@ pgcli/history
 /herdr/.pairfob-server.json
 /gh/hosts.yml
 /hunk/extensions/installed
+/herdr-app/data
+/herdr-app/frame
+/herdr-app
+/herdr-mods/better-config
+
+# Herdr mod source: omit generated types and local Better Config settings
+!/herdr-mods/better-config/
+/herdr-mods/better-config/*.json
+!/herdr-mods/better-config/mod.json
+!/herdr-mods/better-config/mod.schema.json
+/herdr-mods/**/gpui-kit.d.ts
+/herdr-mods/**/herdr.d.ts
+/herdr-mods/**/jsconfig.json

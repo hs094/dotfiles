@@ -1,0 +1,10 @@
+{
+  "place": "none",
+  "title": "Open links on this machine",
+  "link_handlers": [
+    {
+      "kind": "url",
+      "pattern": "^https?://"
+    }
+  ]
+}

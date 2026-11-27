@@ -1,0 +1,17 @@
+{
+  "name": "herdr-excalidraw-cli",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@excalidraw/excalidraw": "0.18.1",
+    "@excalidraw/mermaid-to-excalidraw": "3.6.0",
+    "@resvg/resvg-js": "2.6.2",
+    "happy-dom": "20.0.10"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

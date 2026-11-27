@@ -1,0 +1,12 @@
+{
+  "version": "3.0.0",
+  "place": "none",
+  "title": "Better Sidebar",
+  "settings": {
+    "git": {
+      "retry_after": "15s"
+    },
+    "pull_request_status": true,
+    "pull_request_refresh_after": "5m"
+  }
+}

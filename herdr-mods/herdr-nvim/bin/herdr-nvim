@@ -1,0 +1,8 @@
+#!/bin/sh
+# Written by herdr-nvim's herdr-app/install.sh; run it again to change this.
+export HERDR_NVIM_HOST=app
+export HERDR_NVIM_SELF='/Users/hs094/.config/herdr-app/mods/herdr-nvim/bin/herdr-nvim'
+export HERDR_NVIM_PLUGIN_ROOT='/Users/hs094/.local/share/herdr-nvim/app/06ad1347b31fb19c'
+export HERDR_APP_BIN='/Users/hs094/.local/bin/herdr-app'
+export HERDR_APP_HOME='/Users/hs094/.config/herdr-app'
+exec '/Users/hs094/.local/share/herdr-nvim/app/06ad1347b31fb19c/bin/herdr-nvim' "$@"

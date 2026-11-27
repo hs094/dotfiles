@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Workspace Status settings",
+  "type": "object",
+  "properties": {
+    "settings": {
+      "type": "object",
+      "title": "Workspace Status",
+      "properties": {
+        "showClosedPRs": {
+          "type": "boolean",
+          "title": "Show closed or merged pull requests",
+          "description": "Show closed or merged pull requests for the focused branch in the status bar.",
+          "default": false
+        }
+      }
+    }
+  }
+}
